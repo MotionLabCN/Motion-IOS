@@ -1,0 +1,6 @@
+framework module MotionComponents {
+  umbrella header "MotionComponents-umbrella.h"
+
+  export *
+  module * { export * }
+}

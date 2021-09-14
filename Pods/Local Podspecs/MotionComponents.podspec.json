@@ -1,0 +1,71 @@
+{
+  "name": "MotionComponents",
+  "version": "0.1.0",
+  "summary": "天天数链SwiftUI组件",
+  "description": "天天数连组件：\n分类扩展",
+  "homepage": "https://github.com/LZRight123/MotionComponents",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "快乐的小梁同学": "350442340@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/LZRight123/MotionComponents.git",
+    "tag": "0.1.0",
+    "submodules": true
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "swift_versions": "5.3",
+  "requires_arc": true,
+  "static_framework": true,
+  "default_subspecs": [
+    "Extensions",
+    "Networking"
+  ],
+  "subspecs": [
+    {
+      "name": "Extensions",
+      "source_files": "MotionComponents/Extensions/**/*.swift",
+      "dependencies": {
+        "SwifterSwift/SwiftStdlib": [
+
+        ],
+        "SwifterSwift/Foundation": [
+
+        ],
+        "SwifterSwift/Dispatch": [
+
+        ]
+      }
+    },
+    {
+      "name": "Networking",
+      "source_files": "MotionComponents/Networking/**/*.swift",
+      "dependencies": {
+        "Moya": [
+
+        ],
+        "KakaJSON": [
+
+        ],
+        "SwiftyJSON": [
+
+        ]
+      }
+    },
+    {
+      "name": "Tools",
+      "source_files": "MotionComponents/Tools/**/*.swift",
+      "dependencies": {
+        "MotionComponents/Extensions": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.3"
+}

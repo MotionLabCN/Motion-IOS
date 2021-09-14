@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (5.4.3)
+  - KakaJSON (1.1.2)
+  - MotionComponents (0.1.0):
+    - MotionComponents/Extensions (= 0.1.0)
+    - MotionComponents/Networking (= 0.1.0)
+  - MotionComponents/Extensions (0.1.0):
+    - SwifterSwift/Dispatch
+    - SwifterSwift/Foundation
+    - SwifterSwift/SwiftStdlib
+  - MotionComponents/Networking (0.1.0):
+    - KakaJSON
+    - Moya
+    - SwiftyJSON
+  - MotionComponents/Tools (0.1.0):
+    - MotionComponents/Extensions
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - SwifterSwift/Dispatch (5.2.0)
+  - SwifterSwift/Foundation (5.2.0)
+  - SwifterSwift/SwiftStdlib (5.2.0)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - MotionComponents (from `../MotionComponents`)
+  - MotionComponents/Tools (from `../MotionComponents`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - KakaJSON
+    - Moya
+    - SwifterSwift
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  MotionComponents:
+    :path: "../MotionComponents"
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
+  MotionComponents: 43c33154bf23a082d61cd3372d80bebbedcfba8a
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 97eb667db13eccf318db248ad4846f90bb720a1d
+
+COCOAPODS: 1.10.1
