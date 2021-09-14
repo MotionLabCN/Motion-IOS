@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -95,9 +95,9 @@
 		DFE0C0AB26E783CE00EDB44F /* Motion */ = {
 			isa = PBXGroup;
 			children = (
-				DFE0C0BB26E7848400EDB44F /* Common */,
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
+				DFE0C0BB26E7848400EDB44F /* Common */,
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
 				DFE0C0B026E783CF00EDB44F /* Assets.xcassets */,
 				DFE0C0B526E783CF00EDB44F /* Info.plist */,

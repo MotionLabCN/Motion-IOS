@@ -17,14 +17,15 @@
     "submodules": true
   },
   "platforms": {
-    "ios": "13.0"
+    "ios": "14.0"
   },
   "swift_versions": "5.3",
   "requires_arc": true,
   "static_framework": true,
   "default_subspecs": [
     "Extensions",
-    "Networking"
+    "Networking",
+    "Tools"
   ],
   "subspecs": [
     {
@@ -46,8 +47,8 @@
       "name": "Networking",
       "source_files": "MotionComponents/Networking/**/*.swift",
       "dependencies": {
-        "Moya": [
-
+        "Moya/Combine": [
+          "~> 15.0"
         ],
         "KakaJSON": [
 
