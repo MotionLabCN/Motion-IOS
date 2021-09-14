@@ -6,5 +6,4 @@ target 'Motion' do
   use_frameworks!
 
   pod 'MotionComponents', :path => '../MotionComponents'
-  pod 'MotionComponents/Tools', :path => '../MotionComponents'
 end
