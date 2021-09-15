@@ -112,21 +112,24 @@ struct MTTabbar: View {
     @Binding var selectedKind: Kind
     
     var body: some View {
-        HStack(spacing: 1.0, content: {
-            ForEach(Kind.allCases) { kind in
-                Button(action: {
-                    withAnimation {
-                        selectedKind = kind
-                    }
-                }, label: {
-                    kind.image
-                        .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                })
-                .mtAnimation(isOverlay: false, scale: 0.8)
-            }
-            
-        })
+        VStack(spacing:0){
+            Divider().opacity(0.3)
+            HStack(spacing: 1.0, content: {
+                ForEach(Kind.allCases) { kind in
+                    Button(action: {
+                        withAnimation {
+                            selectedKind = kind
+                        }
+                    }, label: {
+                        kind.image
+                            .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    })
+                    .mtAnimation(isOverlay: false)
+                }
+                
+            })
+        }
         .frame(height: TabbarHeight)
     }
     
