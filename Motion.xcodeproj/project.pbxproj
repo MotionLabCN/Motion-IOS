@@ -33,6 +33,9 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
+		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
+		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
+		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
 		DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AE26E783CE00EDB44F /* ContentView.swift */; };
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
+		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionApp.swift; sourceTree = "<group>"; };
 		DFE0C0AE26E783CE00EDB44F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +80,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DF4145B626F1B1C700DD5F9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
+				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DFE0C0A026E783CE00EDB44F = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +113,8 @@
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
-				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
+				DF4145B626F1B1C700DD5F9F /* Views */,
+				DF8298B926F079ED0007DEEA /* NextView.swift */,
 				DFE0C0B026E783CF00EDB44F /* Assets.xcassets */,
 				DFE0C0B526E783CF00EDB44F /* Info.plist */,
 				DFE0C0B226E783CF00EDB44F /* Preview Content */,
@@ -117,6 +133,7 @@
 		DFE0C0BB26E7848400EDB44F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DF8298BB26F07A720007DEEA /* AppState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -285,8 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
+				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
+				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
+				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,17 @@
 @main
 struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var uiStateObj = AppState.UIState()
+    @StateObject var router = AppState.TopRouterTable()
 
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(uiStateObj)
+                .environmentObject(router)
+
         }
+        
     }
 }
