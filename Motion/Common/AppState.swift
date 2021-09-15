@@ -9,7 +9,7 @@ import Combine
 
 
 struct AppState {
-    class UIState: ObservableObject {
+    class TabbarState: ObservableObject {
         @Published var selectedKind = MTTabbar.Kind.home
         @Published var isShowTabbar = true
         

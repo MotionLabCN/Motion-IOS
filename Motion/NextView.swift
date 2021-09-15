@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NextView: View {
-    @EnvironmentObject var uiStateObj: AppState.UIState
+    @EnvironmentObject var uiStateObj: AppState.TabbarState
     @Environment(\.presentationMode) var persentationMode
     
     var body: some View {
@@ -31,6 +31,6 @@ struct NextView: View {
 struct NextView_Previews: PreviewProvider {
     static var previews: some View {
         NextView()
-            .environmentObject(AppState.UIState())
+            .environmentObject(AppState.TabbarState())
     }
 }

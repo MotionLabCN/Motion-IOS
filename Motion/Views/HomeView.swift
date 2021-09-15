@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MotionComponents
 
 struct HomeView: View {
 
@@ -14,10 +15,12 @@ struct HomeView: View {
         List(0..<50) { index in
             NavigationLink(destination: HomeSecondView()) {
                 Text("\(index)")
-
+                
             }
         }
+        .mtAttatchTabbarSpacer()
     }
+    
 }
 
 struct HomeSecondView: View {
@@ -39,7 +42,9 @@ struct HomeSecondView: View {
                 }
             }
         }
+        .mtAttatchTabbarSpacer()
     }
+    
 }
 
 

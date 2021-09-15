@@ -13,7 +13,7 @@ struct ContentView: View {
         UITabBar.appearance().isHidden = true
     }
         
-    @EnvironmentObject var uiStateObj: AppState.UIState
+    @EnvironmentObject var tabbarObj: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
     
     var body: some View {
@@ -55,7 +55,7 @@ extension ContentView {
     var main: some View {
         NavigationView {
             Group {
-                switch uiStateObj.selectedKind {
+                switch tabbarObj.selectedKind {
                 case .home:
                     HomeView()
                 case .search:
@@ -73,11 +73,11 @@ extension ContentView {
     
     @ViewBuilder
     var tabbar: some View {
-        if uiStateObj.isShowTabbar {
+        if tabbarObj.isShowTabbar {
             VStack {
                 Spacer(minLength: 0)
                 
-                MTTabbar(selectedKind: $uiStateObj.selectedKind)
+                MTTabbar(selectedKind: $tabbarObj.selectedKind)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
                     .background(Color.white.ignoresSafeArea(edges: .bottom))
             }
@@ -180,7 +180,7 @@ struct MTTabbar: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AppState.UIState())
+            .environmentObject(AppState.TabbarState())
             .previewDevice("iPhone 12")
     }
 }
