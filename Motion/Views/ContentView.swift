@@ -36,7 +36,7 @@ extension ContentView {
     var routerView: some View {
         Group {
             NavigationLink(
-                destination: HomeSecondView(),
+                destination: Text("待完善"),
                 isActive: $router.linkurl,
                 label: {
                     EmptyView()
@@ -79,7 +79,7 @@ extension ContentView {
                 
                 MTTabbar(selectedKind: $tabbarObj.selectedKind)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
-                    .background(Color.white.ignoresSafeArea(edges: .bottom))
+
             }
         }
     }
@@ -113,8 +113,9 @@ struct MTTabbar: View {
     
     var body: some View {
         VStack(spacing:0){
-            Divider().opacity(0.3)
-            HStack(spacing: 1.0, content: {
+            Divider.mt.defult()
+            
+            HStack(spacing: 20, content: {
                 ForEach(Kind.allCases) { kind in
                     Button(action: {
                         withAnimation {
@@ -124,13 +125,18 @@ struct MTTabbar: View {
                         kind.image
                             .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .contentShape(Rectangle())
                     })
-                    .mtAnimation(isOverlay: false)
+                    .mtAnimation(isOverlay: false, scale: 0.7)
                 }
-                
             })
         }
         .frame(height: TabbarHeight)
+        .background(
+            BlurView(style: .systemThinMaterial)
+                .ignoresSafeArea(edges: .bottom)
+        )
+
     }
     
 }
@@ -184,6 +190,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(AppState.TabbarState())
+            .environmentObject(AppState.TopRouterTable())
             .previewDevice("iPhone 12")
     }
 }
