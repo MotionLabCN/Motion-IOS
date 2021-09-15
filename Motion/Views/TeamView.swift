@@ -12,6 +12,7 @@ import MotionComponents
 struct TeamView: View {
     
     @State var show : Bool = false
+    
     var body: some View {
         GeometryReader { pox in
             //卡片宽度
@@ -41,9 +42,7 @@ struct TeamView: View {
                             ForEach(0 ..< 3) { item in
                                 TeamCard(width: cardWidth)
                             }
-                        }}
-                    
-                    
+                        }}  
                     //活跃小组
                     Section(header:
                                 HStack(alignment:.center) {
