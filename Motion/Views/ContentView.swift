@@ -76,6 +76,7 @@ extension ContentView {
                 switch tabbarObj.selectedKind {
                 case .home:
                     HomeView()
+                        .navigationBarHidden(true)
                 case .search:
                     Text("2")
                 case .team:
@@ -84,7 +85,6 @@ extension ContentView {
                     NotificationView()
                 }
             }
-            .navigationBarHidden(true)
         }
     }
     
@@ -150,7 +150,7 @@ struct MTTabbar: View {
         }
         .frame(height: TabbarHeight)
         .background(
-            BlurView(style: .systemThinMaterial)
+            Color.white
                 .ignoresSafeArea(edges: .bottom)
         )
 

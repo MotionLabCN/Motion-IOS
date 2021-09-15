@@ -10,9 +10,9 @@ import MotionComponents
 
 
 struct TeamView: View {
+    
+    @State var show : Bool = false
     var body: some View {
-        
-        
         GeometryReader { pox in
             //卡片宽度
             let cardWidth = (pox.width - 32 - 8 ) / 2
@@ -22,9 +22,8 @@ struct TeamView: View {
             
             ScrollView(.vertical , showsIndicators:true) {
                 LazyVStack{
+                    Spacer().frame( height: 16)
                     //我的小组
-                    
-                    //活跃小组
                     Section(header:
                                 HStack {
                         Text("我的小组")
@@ -47,13 +46,16 @@ struct TeamView: View {
                     
                     //活跃小组
                     Section(header:
-                                HStack {
+                                HStack(alignment:.center) {
                         Text("活跃小组")
                             .font(.mt.title3.mtBlod())
-                            .padding(.leading,16)
                         Spacer()
+                        Text("隐藏")
+                            .font(.mt.body2)
+                            .foregroundColor(Color.mt.accent_700)
                     }
                                 .padding(.vertical,8)
+                                .padding(.horizontal,16)
                     ) {
                         LazyVGrid(
                             columns:columns,
@@ -70,12 +72,34 @@ struct TeamView: View {
                 }
             }
         }
+        .navigationBarTitle(Text("小组"))
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(leading:               Circle()
+                                .foregroundColor(Color.random)
+                                .frame(width: 36, height: 36)
+                            ,
+                            trailing:
+                                Button(
+                                    action: {self.show = true},
+                                    label: {Image
+                                            .mt.load(.Setting)
+                                            .foregroundColor(.mt.gray_900)
+                                    }
+                                )
+                            
+        )
+        .fullScreenCover(isPresented: $show) {
+            SettingView()
+        }
+        
     }
 }
 
 struct TeamView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamView()
+        NavigationView{
+            TeamView()
+        }
     }
 }
 
@@ -85,6 +109,7 @@ struct TeamCard: View {
         VStack(alignment:.leading, spacing:20){
             HStack(alignment:.top,spacing: 32){
                 Rectangle()
+                    .foregroundColor(.mt.gray_300)
                     .frame(width: 88, height: 40)
                     .clipShape(Capsule())
                 
