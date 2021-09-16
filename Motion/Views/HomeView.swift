@@ -8,6 +8,7 @@
 import SwiftUI
 import MotionComponents
 
+
 //MARK: - 首页
 struct HomeView: View {
 
@@ -19,7 +20,6 @@ struct HomeView: View {
                 Spacer.mt.navbar()
                 header
                 Divider.mt.defult()
-                
                 main
             }
         }
@@ -35,16 +35,12 @@ struct HomeView: View {
             Circle()
                 .fill(Color.black)
                 .frame(size: .init(width: 33, height: 33))
-            
         }
         , trailing: {
             Image.mt.load(.Map_place)
         })
-        
         .mtAttatchTabbarSpacer()
-        
     }
-    
 }
 
 extension HomeView {
@@ -53,6 +49,7 @@ extension HomeView {
             HStack(spacing: 20, content: {
                 ForEach(1...100, id: \.self) { count in
                     HomeHeaderItemView()
+
 
                 }
             })
@@ -76,14 +73,13 @@ extension HomeView {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             
             Button(action: {
-                
             }, label: {
                 Text("查找朋友")
                     .modifier(MTButtonStyleModifier(style: .mainDefult(isEnable: true), customBackground: true))
                     .frame(width: 125)
                     .background(
                         Color.mt.accent_700.clipShape(Capsule())
-                    )
+              )
             })
             .mtAnimation()
         }
@@ -100,18 +96,6 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //MARK: - 圆形边框
 

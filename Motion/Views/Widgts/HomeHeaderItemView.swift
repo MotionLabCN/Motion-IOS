@@ -27,24 +27,19 @@ struct HomeHeaderItemView: View {
                     Group {
                         Circle()
                             .fill(Color.red)
-                            .mtFrame(width: 40, height: 40)
+                            .mtFrame(width: 44, height: 44)
                             .mtBoderCircle()
-                        
-                        
                         Circle()
                             .fill(Color.random)
-                            .mtFrame(width: 40, height: 40)
+                            .mtFrame(width: 44, height: 44)
                             .mtBoderCircle()
                             .padding(.leading, -20)
-                        
                     }
                     .padding(.all, 2)
                 }
-                
                 Text("+99")
                     .font(.mt.body2.mtBlod(), textColor: .white)
                     .padding(.trailing, 16)
-                
             }
             .background(Color.mt.accent_purple.clipShape(Capsule()))
             .overlay(
@@ -65,7 +60,6 @@ struct HomeHeaderItemView: View {
                 ZStack {
                     Color.mt.accent_purple.opacity(0.3)
                         .clipShape(Capsule())
-                    
 //                    Color.mt.accent_purple.opacity(0.3)
 //                        .clipShape(Capsule())
 //                        .scaleEffect(vm.isAnimation ? 1.2: 1)
@@ -78,7 +72,6 @@ struct HomeHeaderItemView: View {
                 ZStack {
                     Color.mt.accent_purple.opacity(0.1)
                         .clipShape(Capsule())
-                    
 //                    Color.mt.accent_purple.opacity(0.1)
 //                        .clipShape(Capsule())
 //                        .scaleEffect(vm.isAnimation ? 1.2: 1)
