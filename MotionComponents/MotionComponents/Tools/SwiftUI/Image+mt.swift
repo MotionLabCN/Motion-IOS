@@ -52,7 +52,7 @@ public extension MTImageSource {
 
 //MARK: - 资源
 public enum MTActionIcon: String, CaseIterable, MTImageSource {
-    case Add_circle, Bookmark_outline, Bookmark, Build, Cached, Dictation_mic, Done_circle_inactive, Done_circle_outline, Done_circle, Done, Drag_handle, FaceID, Favorites_outline, Favorites, Info_outline, Info, More_outline, More, Plus_outline, Remove, Search, Send_outline, Send, Setting, Visibility_Status_Off, Visibility_Status_On
+    case Add_circle, Bookmark_outline, Bookmark, Build, Cached, Dictation_mic, Done_circle_inactive, Done_circle_outline, Done_circle, Done, Drag_handle, FaceID, Favorites_outline, Favorites, Info_outline, Info, More_outline, More, Plus_outline, Remove, Search, Send_outline, Send, Setting, Visibility_Status_Off, Visibility_Status_On,Comment
     
     public var named: String { rawValue }
 }
