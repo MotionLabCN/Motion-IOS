@@ -31,7 +31,7 @@ struct FindViewTopTabBar: View {
                         ForEach(findViewTabs.indices,id:\.self) {index in
                             Text("\(findViewTabs[index])")
                                 .font(.mt.body1.mtBlod())
-                                .foregroundColor(.mt.gray_900 )
+                                .foregroundColor( getIndexFromOffset() == index ? .black :  .mt.gray_700)
                                 .frame(width: itemWidth , alignment: .center)
                         }
                     }
@@ -45,6 +45,10 @@ struct FindViewTopTabBar: View {
     func getOffset() -> CGFloat {
         let progress = offset / ScreenWidth()
         return progress * width
+    }
+    func getIndexFromOffset() -> Int {
+        let indexFloat = offset / ScreenWidth()
+        return Int(indexFloat.rounded(.toNearestOrAwayFromZero))
     }
 }
 

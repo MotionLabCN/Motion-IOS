@@ -22,7 +22,8 @@ struct TeamView: View {
         
         
         
-        ScrollView(.vertical , showsIndicators:true) {// scrollview start
+        ScrollView(.vertical , showsIndicators:true) {
+            // scrollview start
             LazyVGrid(
                 columns:columns,
                 alignment: .center,
@@ -39,7 +40,6 @@ struct TeamView: View {
                         ForEach(0 ..< 3) { item in
                             TeamCard(width: cardWidth)}
                     }
-                    
                     //活跃小组
                     Section(header:
                     HStack {
@@ -104,11 +104,12 @@ struct TeamCard: View {
                 }
                 VStack(alignment: .leading, spacing: 4) {
                     Text("天天数链武汉研发中心")
+                        .font(.mt.body2.mtBlod(),textColor: .black)
                         .lineLimit(1)
-                        .font(.mt.body2.mtBlod())
                     Text("相册新增相片13张")
+                        .font(.mt.caption2,textColor: .mt.gray_600)
                         .lineLimit(1)
-                        .font(.mt.caption2)
+                    
                 }
             }
             .padding(.all,12)

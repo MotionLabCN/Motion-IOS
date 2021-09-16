@@ -20,4 +20,9 @@ struct AppState {
         @Published var messageDetail = false
 
     }
+    
+    ///顶层Fullscreen表
+    class TopFullScreenPage: ObservableObject {
+        @Published var showProfile = false
+    }
 }

@@ -11,7 +11,6 @@ import MotionComponents
 struct SettingView: View {
     @Environment(\.presentationMode) var persentationMode
     
-   
     var body: some View {
         NavigationView{
             List{
