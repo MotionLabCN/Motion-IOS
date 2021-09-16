@@ -25,8 +25,13 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
 
-                Text("xxssss")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Group {
+                    Text("5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。")
+                        .font(.mt.body2, textColor: .mt.gray_900)
+                        + Text("@ElonMusk")
+                        .font(.mt.body2, textColor: .mt.accent_700)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer.mt.mid()
 
@@ -39,17 +44,22 @@ struct PostCell: View {
     }
     
     var name: some View {
-        HStack(spacing: 15.0) {
+        HStack(spacing: 2) {
             Text("姓名")
+                .font(.mt.body2.mtBlod(), textColor: .black)
             Text("@usernickname")
+                .font(.mt.body2, textColor: .mt.gray_600)
+
             Spacer()
         }
     }
     
     var team: some View {
-        HStack(spacing: 15.0) {
-            Text("姓名")
-            Text("@usernickname")
+        HStack(spacing: 2) {
+            Text("武汉大学计算机社团")
+                .font(.mt.caption2, textColor: .black)
+            Text("#lsimai.short")
+                .font(.mt.caption2, textColor: .mt.gray_600)
             Spacer()
         }
     }
@@ -67,7 +77,10 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Add)
+                            .resizable()
+                            .frame(width: 12, height: 12)
                         Text("123")
+                            .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
                 
@@ -77,8 +90,11 @@ extension PostCell {
                     
                 }, label: {
                     HStack {
-                        Image.mt.load(.Add)
+                        Image.mt.load(.Cached)
+                            .resizable()
+                            .frame(width: 12, height: 12)
                         Text("123")
+                            .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
                 
@@ -88,8 +104,12 @@ extension PostCell {
                     
                 }, label: {
                     HStack {
-                        Image.mt.load(.Add)
+                        Image.mt.load(.Penny)
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .foregroundColor(.mt.status_warnning)
                         Text("123")
+                            .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
             }
