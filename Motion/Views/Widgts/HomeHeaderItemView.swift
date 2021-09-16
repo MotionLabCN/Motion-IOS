@@ -1,4 +1,4 @@
-//
+
 //  HomeHeaderItemView.swift
 //  Motion
 //
@@ -18,8 +18,8 @@ class HomeHeaderItemVM: ObservableObject {
     }
 }
 struct HomeHeaderItemView: View {
-    @StateObject var vm = HomeHeaderItemVM()
-    
+    //@StateObject var vm = HomeHeaderItemVM()
+    @State var isAnimation = false
     var body: some View {
         VStack(spacing: 3.0) {
             HStack(spacing: 4.0) {
@@ -63,8 +63,8 @@ struct HomeHeaderItemView: View {
                     
                     Color.mt.accent_purple.opacity(0.3)
                         .clipShape(Capsule())
-                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-                        .opacity(vm.isAnimation ? 0 : 1)
+                        .scaleEffect(isAnimation ? 1.2: 1)
+                        .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
 
                 }
@@ -77,8 +77,8 @@ struct HomeHeaderItemView: View {
                     
                     Color.mt.accent_purple.opacity(0.1)
                         .clipShape(Capsule())
-                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-                        .opacity(vm.isAnimation ? 0 : 1)
+                        .scaleEffect(isAnimation ? 1.2: 1)
+                        .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
 
                 }
@@ -87,6 +87,9 @@ struct HomeHeaderItemView: View {
             
             Text("天天数链研发小队")
                 .font(.mt.caption1, textColor: .mt.gray_800)
+        }
+        .onAppear {
+            isAnimation = true
         }
    
     }
