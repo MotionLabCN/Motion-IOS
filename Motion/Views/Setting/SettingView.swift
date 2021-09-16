@@ -10,6 +10,8 @@ import MotionComponents
 
 struct SettingView: View {
     @Environment(\.presentationMode) var persentationMode
+    
+   
     var body: some View {
         NavigationView{
             List{
@@ -60,8 +62,8 @@ struct SettingView: View {
                 
                 //关于Sporip
                 Section {
-                    LinkToOutside(linkurl: "https://apps.apple.com/al/app/%E7%94%B5%E6%B5%81Sporip/id1552862011", text: "AppStore评分")
-                    LinkToOutside(linkurl: "https://apps.apple.com/cn/app/id1528460698", text: "微信公众号")
+                    LableRow(linkurl: "https://apps.apple.com/al/app/%E7%94%B5%E6%B5%81Sporip/id1552862011", text: "AppStore评分")
+                    LableRow(linkurl: "https://apps.apple.com/cn/app/id1528460698", text: "微信公众号")
                 }
                 
             }
@@ -69,19 +71,16 @@ struct SettingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("设置"))
             .navigationBarItems( trailing:
-                                    Button(action: {
+                Button(action: {
                 self.persentationMode.wrappedValue.dismiss()
             }, label: {
                 Text("完成").font(.mt.body2.mtBlod()).foregroundColor(.mt.gray_600)
             })
-                )
+          )
         }
      
     }
 }
-
-//public let settingRowText = ["账号","隐私","通知","队伍","关于","SDK声明"]
-//public let settingRowIcon = [Image.mt.load(.Person),Image.mt.load(.Person)]
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
@@ -89,12 +88,11 @@ struct SettingView_Previews: PreviewProvider {
     }
 }
 
-
-
-
-struct LinkToOutside: View {
+struct LableRow: View {
     var linkurl : String
     var text : String
+
+    
     var body: some View {
         Link(destination: URL(string: linkurl)!, label: {
             HStack {

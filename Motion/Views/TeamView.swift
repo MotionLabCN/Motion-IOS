@@ -105,28 +105,29 @@ struct TeamView_Previews: PreviewProvider {
 struct TeamCard: View {
     let width : CGFloat
     var body: some View {
-        VStack(alignment:.leading, spacing:20){
-            HStack(alignment:.top,spacing: 32){
-                Rectangle()
-                    .foregroundColor(.mt.gray_300)
-                    .frame(width: 88, height: 40)
-                    .clipShape(Capsule())
-                
-                Image.mt.load(.More_horiz)
-                    .foregroundColor(Color.mt.gray_400)
+        NavigationLink(destination: TeamProfileView()) {
+            VStack(alignment:.leading, spacing:20){
+                HStack(alignment:.top,spacing: 32){
+                    Rectangle()
+                        .foregroundColor(.mt.gray_300)
+                        .frame(width: 88, height: 40)
+                        .clipShape(Capsule())
+                    Image.mt.load(.More_horiz)
+                        .foregroundColor(Color.mt.gray_400)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("天天数链武汉研发中心")
+                        .lineLimit(1)
+                        .font(.mt.body2.mtBlod())
+                    Text("相册新增相片13张")
+                        .lineLimit(1)
+                        .font(.mt.caption2)
+                }
             }
-            VStack(alignment: .leading, spacing: 4) {
-                Text("天天数链武汉研发中心")
-                    .lineLimit(1)
-                    .font(.mt.body2.mtBlod())
-                Text("相册新增相片13张")
-                    .lineLimit(1)
-                    .font(.mt.caption2)
-            }
+            .padding(.all,12)
+            .frame(width: width)
+            .background(Color.mt.gray_100)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         }
-        .padding(.all,12)
-        .frame(width: width)
-        .background(Color.mt.gray_100)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }

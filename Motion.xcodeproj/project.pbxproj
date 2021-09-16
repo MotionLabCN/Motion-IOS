@@ -36,6 +36,10 @@
 		5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF526F1DE240026D870 /* NotificationView.swift */; };
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
+		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
+		5ACBA39126F2E69C00A5789E /* ScrollableTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */; };
+		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
+		5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
@@ -53,6 +57,10 @@
 		5A7EBFF526F1DE240026D870 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
+		5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTabbar.swift; sourceTree = "<group>"; };
+		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
+		5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewTopTabBar.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -89,6 +97,23 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		5ACBA38E26F2D44100A5789E /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		5ACBA38F26F2E66E00A5789E /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */,
+				5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */,
+			);
+			path = Find;
+			sourceTree = "<group>";
+		};
 		C964F152E958CB1785F74CA1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,8 +129,11 @@
 				DF4145BB26F2EB2100DD5F9F /* Widgts */,
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
 				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
-				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
+				5ACBA39226F2EBA600A5789E /* FindView.swift */,
 				5A7EBFF726F1DFDF0026D870 /* TeamView.swift */,
+				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
+				5ACBA38E26F2D44100A5789E /* Team */,
+				5ACBA38F26F2E66E00A5789E /* Find */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
 			);
 			path = Views;
@@ -335,9 +363,13 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
+				5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
+				5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */,
+				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
+				5ACBA39126F2E69C00A5789E /* ScrollableTabbar.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,

@@ -85,6 +85,7 @@ extension ContentView {
                     NotificationView()
                 }
             }
+           
         }
     }
     
