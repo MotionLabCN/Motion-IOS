@@ -78,7 +78,7 @@ extension ContentView {
                     HomeView()
                         .navigationBarHidden(true)
                 case .search:
-                    Text("2")
+                    FindView()
                 case .team:
                     TeamView()
                 case .message:

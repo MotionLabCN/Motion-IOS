@@ -22,6 +22,7 @@ struct FindViewTopTabBar: View {
             }
             return AnyView(
                 ZStack(alignment: .bottomLeading) {
+                    Color.mt.gray_050
                     Capsule()
                         .frame(width: itemWidth - 16, height: 4)
                         .foregroundColor(.mt.accent_600)

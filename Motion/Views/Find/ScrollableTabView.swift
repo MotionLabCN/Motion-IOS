@@ -27,6 +27,7 @@ struct ScrollableTabView<Content : View> : UIViewRepresentable {
         setUpScrollView()
         scrollview.contentSize = CGSize(width: rect.width * CGFloat(tabs.count), height: rect.height)
         scrollview.addSubview(extractView())
+        scrollview.delegate = context.coordinator
         return scrollview
     }
     
@@ -41,11 +42,11 @@ struct ScrollableTabView<Content : View> : UIViewRepresentable {
         scrollview.bounces = false
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
+   
         
     }
     
     func extractView() -> UIView{
-        
         let controller = UIHostingController(rootView: content)
         controller.view.frame = CGRect(x: 0, y: 0, width: rect.width * CGFloat(tabs.count), height: rect.height)
         return controller.view!
