@@ -24,6 +24,8 @@ struct ContentView: View {
                 main
                
                 tabbar
+                
+                actionCricleBtn
             }
             .navigationBarHidden(true)
         }
@@ -52,22 +54,37 @@ extension ContentView {
     }
     
     
+    var actionCricleBtn: some View {
+        VStack {
+            Spacer()
+            HStack{
+                Spacer()
+                Button {
+                } label: {
+                    Image.mt.load(.Add)
+                        .foregroundColor(.white)
+                }.custom(.cricleDefult(.mt.accent_700))
+                    .offset(y : -TabbarHeight - 16 )
+            }
+        }
+        .padding(.horizontal,16)
+    }
+    
     var main: some View {
         NavigationView {
             Group {
                 switch tabbarObj.selectedKind {
                 case .home:
                     HomeView()
+                        .navigationBarHidden(true)
                 case .search:
                     Text("2")
                 case .team:
-                    Text("3")
-
+                    TeamView()
                 case .message:
-                    Text("4")
+                    NotificationView()
                 }
             }
-            .navigationBarHidden(true)
         }
     }
     
@@ -133,7 +150,7 @@ struct MTTabbar: View {
         }
         .frame(height: TabbarHeight)
         .background(
-            BlurView(style: .systemThinMaterial)
+            Color.white
                 .ignoresSafeArea(edges: .bottom)
         )
 
