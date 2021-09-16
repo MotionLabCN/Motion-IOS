@@ -13,7 +13,7 @@ extension Font: MTCompatible {
     }
     
     public func mtBlod() -> Font {
-        self.weight(.bold)
+        self.weight(.black)
     }
 }
 

@@ -41,7 +41,7 @@ struct HomeHeaderItemView: View {
                     .font(.mt.body2.mtBlod(), textColor: .white)
                     .padding(.trailing, 16)
             }
-            .background(Color.mt.accent_purple.clipShape(Capsule()))
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing).clipShape(Capsule()))
             .overlay(
                 Image.mt.load(.Logo)
                     .resizable()
@@ -49,7 +49,7 @@ struct HomeHeaderItemView: View {
                     .foregroundColor(.white)
                     .frame(width: 18, height: 18)
                     .background(
-                        Color.mt.accent_purple
+                        LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing)
                             .clipShape(Circle())
                             .mtBoderCircle(lineWidth: 2)
                     )
@@ -66,7 +66,7 @@ struct HomeHeaderItemView: View {
                         .scaleEffect(isAnimation ? 1.2: 1)
                         .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
-
+                    
                 }
             )
             .padding(.all, 2)
@@ -80,7 +80,7 @@ struct HomeHeaderItemView: View {
                         .scaleEffect(isAnimation ? 1.2: 1)
                         .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
-
+                    
                 }
                 
             )
@@ -91,7 +91,7 @@ struct HomeHeaderItemView: View {
         .onAppear {
             isAnimation = true
         }
-   
+        
     }
 }
 

@@ -22,31 +22,29 @@ struct FindViewTopTabBar: View {
             }
             return AnyView(
                 ZStack(alignment: .bottomLeading) {
-                    Color.mt.gray_050
+                    BlurView()
                     Capsule()
                         .frame(width: itemWidth - 16, height: 4)
                         .foregroundColor(.mt.accent_600)
-                        .offset(x: getOffset(), y: 0)
+                        .offset(x: getOffset() + 8 , y: 0)
                     HStack(spacing:0){
                         ForEach(findViewTabs.indices,id:\.self) {index in
                             Text("\(findViewTabs[index])")
                                 .font(.mt.body1.mtBlod())
-                                .foregroundColor(.mt.gray_900)
+                                .foregroundColor(.mt.gray_900 )
                                 .frame(width: itemWidth , alignment: .center)
-                                .padding(.vertical,6)
                         }
                     }
                     .frame(maxWidth : .infinity ,maxHeight: 44, alignment: .leading)
                 }
             )
-        
         }
         .frame( height: 44)
     }
     
     func getOffset() -> CGFloat {
         let progress = offset / ScreenWidth()
-        return progress * width + 8
+        return progress * width
     }
 }
 
