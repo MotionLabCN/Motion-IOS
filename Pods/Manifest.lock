@@ -25,7 +25,7 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
-  - MotionComponents (from `../MotionComponents`)
+  - MotionComponents (from `./MotionComponents`)
 
 SPEC REPOS:
   trunk:
@@ -37,7 +37,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   MotionComponents:
-    :path: "../MotionComponents"
+    :path: "./MotionComponents"
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -47,6 +47,6 @@ SPEC CHECKSUMS:
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 5e27346b66808a0834b14067511c7a33b9592c90
+PODFILE CHECKSUM: d95ab52031ee2af1c5896692be5acdcff90d1251
 
 COCOAPODS: 1.10.1
