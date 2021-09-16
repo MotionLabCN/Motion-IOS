@@ -66,11 +66,11 @@ struct HomeHeaderItemView: View {
                     Color.mt.accent_purple.opacity(0.3)
                         .clipShape(Capsule())
                     
-//                    Color.mt.accent_purple.opacity(0.3)
-//                        .clipShape(Capsule())
-//                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-//                        .opacity(vm.isAnimation ? 0 : 1)
-//                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+                    Color.mt.accent_purple.opacity(0.3)
+                        .clipShape(Capsule())
+                        .scaleEffect(vm.isAnimation ? 1.2: 1)
+                        .opacity(vm.isAnimation ? 0 : 1)
+                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
                 }
             )
             .padding(.all, 2)
@@ -79,11 +79,11 @@ struct HomeHeaderItemView: View {
                     Color.mt.accent_purple.opacity(0.1)
                         .clipShape(Capsule())
                     
-//                    Color.mt.accent_purple.opacity(0.1)
-//                        .clipShape(Capsule())
-//                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-//                        .opacity(vm.isAnimation ? 0 : 1)
-//                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+                    Color.mt.accent_purple.opacity(0.1)
+                        .clipShape(Capsule())
+                        .scaleEffect(vm.isAnimation ? 1.2: 1)
+                        .opacity(vm.isAnimation ? 0 : 1)
+                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
                 }
                 
             )
