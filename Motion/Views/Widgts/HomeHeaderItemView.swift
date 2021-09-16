@@ -13,7 +13,7 @@ class HomeHeaderItemVM: ObservableObject {
     
     init() {
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
-//            self?.isAnimation = true
+            self?.isAnimation = true
         }
     }
 }
@@ -27,24 +27,19 @@ struct HomeHeaderItemView: View {
                     Group {
                         Circle()
                             .fill(Color.red)
-                            .mtFrame(width: 40, height: 40)
+                            .mtFrame(width: 44, height: 44)
                             .mtBoderCircle()
-                        
-                        
                         Circle()
                             .fill(Color.random)
-                            .mtFrame(width: 40, height: 40)
+                            .mtFrame(width: 44, height: 44)
                             .mtBoderCircle()
                             .padding(.leading, -20)
-                        
                     }
                     .padding(.all, 2)
                 }
-                
                 Text("+99")
                     .font(.mt.body2.mtBlod(), textColor: .white)
                     .padding(.trailing, 16)
-                
             }
             .background(Color.mt.accent_purple.clipShape(Capsule()))
             .overlay(
@@ -71,6 +66,7 @@ struct HomeHeaderItemView: View {
                         .scaleEffect(vm.isAnimation ? 1.2: 1)
                         .opacity(vm.isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+
                 }
             )
             .padding(.all, 2)
@@ -84,6 +80,7 @@ struct HomeHeaderItemView: View {
                         .scaleEffect(vm.isAnimation ? 1.2: 1)
                         .opacity(vm.isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+
                 }
                 
             )
