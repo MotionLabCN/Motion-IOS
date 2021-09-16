@@ -15,6 +15,7 @@ struct FindView: View {
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
     @State var offset : CGFloat = 0.0
     
+    
     var body: some View {
         VStack(spacing:0){
             FindViewTopTabBar(offset: $offset)
@@ -60,7 +61,7 @@ struct FindView: View {
                 )
         }, leading: {
             Button {
-                fullscreen.showProfile.toggle()
+                fullscreen.showFullScreen(type: .profile)
             } label: {
                 Circle()
                     .foregroundColor(Color.random)

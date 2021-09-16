@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Dispatch
 
 
 struct AppState {
@@ -23,6 +24,16 @@ struct AppState {
     
     ///顶层Fullscreen表
     class TopFullScreenPage: ObservableObject {
-        @Published var showProfile = false
+        @Published var show = false
+        @Published var type : FullScreenType  = .profile
+        enum FullScreenType {
+            case profile
+        }
+        func showFullScreen(type : FullScreenType){
+            DispatchQueue.main.async {
+                self.type = type
+            }
+            self.show.toggle()
+        }
     }
 }

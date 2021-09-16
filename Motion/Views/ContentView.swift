@@ -29,12 +29,13 @@ struct ContentView: View {
                 actionCricleBtn
             }
             .navigationBarHidden(true)
-            .fullScreenCover(isPresented: $fullscreen.showProfile) {
-                ProfileView()
+            .fullScreenCover(isPresented: $fullscreen.show) {
+                switch fullscreen.type {
+                case .profile : ProfileView()
+                }
             }
         }
     }
-   
 }
 
 //MARK: - body
