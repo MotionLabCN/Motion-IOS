@@ -18,9 +18,14 @@ struct FindView: View {
     
     var body: some View {
         VStack(spacing:0){
+            
+            //TOP Tabbar
             FindViewTopTabBar(offset: $offset)
+            
+            // UIKit 实现的横向分页滚动View
             ScrollableTabView(tabs: findViewTabs, rect: CGRect(x: 0, y: 0, width: ScreenWidth(), height: ScreenHeight()), offset: $offset) {
                 HStack(spacing:0){
+                    
                     //FindView分页
                     ForEach(0 ..< 5) { item in
                         switch item {
