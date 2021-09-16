@@ -203,6 +203,7 @@
 		DD5344672F9B9D18D969A10D3E44AAEB /* Optional+KJ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25003877CFA3F1A217D7AA55B85AEFA3 /* Optional+KJ.swift */; };
 		DDF9FA9CA0BC9DBCC8E48913B812CAD1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FBA87585DB345B29C65423680D96AB /* IntExtensions.swift */; };
 		DEBB3E94A9D6879AF6AD3591A237CEE7 /* GlobalParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC50E6636EB3C6DE1570BD90030AFF0 /* GlobalParameter.swift */; };
+		DF4145C126F2EBD000DD5F9F /* View+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145C026F2EBD000DD5F9F /* View+mt.swift */; };
 		DF7BC9DB8F3AAF5838DCB266000A536A /* NSPredicateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A3DA1E9C7EFC62E4805CC91434448 /* NSPredicateExtensions.swift */; };
 		E18E096617FDAC8985235527D1E75D4D /* MTViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF757B179229CFD67FAEC5BE0865A4A2 /* MTViewModifiers.swift */; };
 		E1FFB6D7D031F62749EBA1ECFEE0946F /* OptionalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4273398DAE985C4E09E1A4FBA0722 /* OptionalExtensions.swift */; };
@@ -339,7 +340,7 @@
 		21075E600458D3CF5961A2DAB32AEE68 /* MoyaPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoyaPublisher.swift; path = Sources/CombineMoya/MoyaPublisher.swift; sourceTree = "<group>"; };
 		211208F5BC635B7ED5EA2C7146211ABF /* Convertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Convertible.swift; path = Sources/KakaJSON/Convert/Convertible.swift; sourceTree = "<group>"; };
 		226A3DA1E9C7EFC62E4805CC91434448 /* NSPredicateExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSPredicateExtensions.swift; path = Sources/SwifterSwift/Foundation/NSPredicateExtensions.swift; sourceTree = "<group>"; };
-		226C194F34000B56FCBF4B29981F8D67 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		226C194F34000B56FCBF4B29981F8D67 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		23783EF661293C9042C89B1C7AC5476B /* Networking.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Networking.swift; path = MotionComponents/Networking/Networking.swift; sourceTree = "<group>"; };
 		25003877CFA3F1A217D7AA55B85AEFA3 /* Optional+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Optional+KJ.swift"; path = "Sources/KakaJSON/Extension/Optional+KJ.swift"; sourceTree = "<group>"; };
 		29500E61F8C9F92B49BAE51A11152D52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -349,7 +350,7 @@
 		2F746F71B09658547D7D0D912F3DB2F5 /* MotionComponents-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MotionComponents-dummy.m"; sourceTree = "<group>"; };
 		32F7211B35EFAF08134F2A5E9DB5744F /* CGFloatExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 		3472FF2DD4E8A3AB677C3FBD58286F7D /* Shadow+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Shadow+mt.swift"; sourceTree = "<group>"; };
-		3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Moya.framework; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C22D63F84345066430989D9E51F501B /* SecondCalculate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecondCalculate.swift; path = MotionComponents/Tools/SecondCalculate.swift; sourceTree = "<group>"; };
 		3CD3AF10E434CED3FE17E4FE79E654F5 /* Moya-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Moya-dummy.m"; sourceTree = "<group>"; };
 		3D6694E8B0D2FC9814592A80E3943754 /* FunctionLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionLayout.swift; path = Sources/KakaJSON/Metadata/Layout/FunctionLayout.swift; sourceTree = "<group>"; };
@@ -371,7 +372,7 @@
 		4B0EC9005E9D7CFE800532D5B75DE9DA /* Metadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Metadata.swift; path = Sources/KakaJSON/Metadata/Metadata.swift; sourceTree = "<group>"; };
 		4CA6CFD891AF0F1EED09617D1DCE2E72 /* ProgressView+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ProgressView+mt.swift"; sourceTree = "<group>"; };
 		4CB815622E151A136D6E35D2D8DA498B /* AuthorizationHeaderPlugin.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthorizationHeaderPlugin.swift; sourceTree = "<group>"; };
-		4D3F7AAFF49123E56E49F1421C1D5AFF /* MotionComponents.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MotionComponents.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4D3F7AAFF49123E56E49F1421C1D5AFF /* MotionComponents.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MotionComponents.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4D4B3433E4159D38B0291D24D87CEFAB /* KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KJ.swift; path = Sources/KakaJSON/Convert/KJ.swift; sourceTree = "<group>"; };
 		4D4FE71174C7DEC177E2956E59079B78 /* ProtocolType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProtocolType.swift; path = Sources/KakaJSON/Metadata/Type/ProtocolType.swift; sourceTree = "<group>"; };
 		4D79242F63EAE7F1918945A670A15BCC /* MoyaProviderType+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MoyaProviderType+Extension.swift"; sourceTree = "<group>"; };
@@ -399,7 +400,7 @@
 		5BF2DABADA9CABA747FB5F6B9C854CD9 /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
 		5C6124D0DDA99BA205677A8B23DC2A47 /* ListModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListModel.swift; path = MotionComponents/Networking/ListModel.swift; sourceTree = "<group>"; };
 		5CBE049C06F4BE6F226E0D759753D145 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E25D96F330ABF2A935F380FECCBE693 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		5E4E517FAA75A664787FDA730469E06A /* KakaJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KakaJSON-umbrella.h"; sourceTree = "<group>"; };
 		5F32DCCF9D940822914F8939516A354D /* MultiTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiTarget.swift; path = Sources/Moya/MultiTarget.swift; sourceTree = "<group>"; };
@@ -423,7 +424,7 @@
 		6FF584AF74B0975B04913D50C9B4EEC1 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		7001C22235107BA844850A8AFB8FA57A /* FloatingPointExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatingPointExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/FloatingPointExtensions.swift; sourceTree = "<group>"; };
 		719034D0F9797E36E6E0EC5BC85F6657 /* MoyaProvider+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MoyaProvider+Defaults.swift"; path = "Sources/Moya/MoyaProvider+Defaults.swift"; sourceTree = "<group>"; };
-		71E7EC8E97EAE57F0A90A679C82F9F91 /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Motion.framework; path = "Pods-Motion.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71E7EC8E97EAE57F0A90A679C82F9F91 /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7588992012B5E76CAF67CAB16C3C1882 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchQueueExtensions.swift; path = Sources/SwifterSwift/Dispatch/DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		777325D084D1CA4898CC7A21C320FCF9 /* MoyaError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoyaError.swift; path = Sources/Moya/MoyaError.swift; sourceTree = "<group>"; };
 		77B01075152D866E5697609AB473534F /* BaseLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseLayout.swift; path = Sources/KakaJSON/Metadata/Layout/BaseLayout.swift; sourceTree = "<group>"; };
@@ -432,7 +433,7 @@
 		7B737CAFB10BF45650D19D196AABB893 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		7C2C3905A9DA12844CCB4B320FD1E782 /* Coding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coding.swift; path = Sources/KakaJSON/Global/Coding.swift; sourceTree = "<group>"; };
 		7C9A1152DD295DB05EE395EB2EDB0B20 /* Font+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Font+mt.swift"; sourceTree = "<group>"; };
-		7D3ECBBFDE3A5E800F07584A97048F05 /* KakaJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KakaJSON.framework; path = KakaJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D3ECBBFDE3A5E800F07584A97048F05 /* KakaJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KakaJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D5BE7ABF0E098854074CF50545E246 /* TupleLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TupleLayout.swift; path = Sources/KakaJSON/Metadata/Layout/TupleLayout.swift; sourceTree = "<group>"; };
 		8111BE5876465EADBA29624013030F64 /* MotionComponents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MotionComponents.debug.xcconfig; sourceTree = "<group>"; };
 		8119D154A178FAEAAFD7B382BF9B49BC /* BoolExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BoolExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/BoolExtensions.swift; sourceTree = "<group>"; };
@@ -453,7 +454,7 @@
 		8AC6149EB1E85B698572AF8026F4B3FB /* AnyPublisher+Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AnyPublisher+Response.swift"; path = "Sources/CombineMoya/AnyPublisher+Response.swift"; sourceTree = "<group>"; };
 		8AD76C4F17B2D49C34CA78DB2C78A031 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		8C49CFA7DC6102CF4F1A696F1AC698DF /* RangeReplaceableCollectionExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RangeReplaceableCollectionExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/RangeReplaceableCollectionExtensions.swift; sourceTree = "<group>"; };
-		8C81A3F6D6E88BB13C101D6462262715 /* SwifterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwifterSwift.framework; path = SwifterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C81A3F6D6E88BB13C101D6462262715 /* SwifterSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwifterSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA0847809550E5828E273ED2E663832 /* CGSizeExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
 		8E244CCD31F6B3AFF3DDFC762DF8D260 /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
 		8E959DFE1C2E32BE58A5AFAB54017D58 /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/KakaJSON/Global/JSON.swift; sourceTree = "<group>"; };
@@ -469,7 +470,7 @@
 		9876D2AFC63549A974B5B2D68574FD10 /* StructDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StructDescriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/StructDescriptor.swift; sourceTree = "<group>"; };
 		99EAB9ADFAE112DE43FC31535DD969C8 /* Descriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Descriptor.swift; path = Sources/KakaJSON/Metadata/Descriptor/Descriptor.swift; sourceTree = "<group>"; };
 		9D4EE840FAEC9F5E1B7828250DDE704E /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DA6D6BFE828934ADDFF4DD7F5A8F97D /* Moya.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Moya.modulemap; sourceTree = "<group>"; };
 		9DD9EB3EAF15CE7D68A76C20F0D5EAE8 /* KakaJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KakaJSON.debug.xcconfig; sourceTree = "<group>"; };
 		9E6B1447F0DAA43CD19F4EE2113F1589 /* TupleType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TupleType.swift; path = Sources/KakaJSON/Metadata/Type/TupleType.swift; sourceTree = "<group>"; };
@@ -516,7 +517,7 @@
 		CF856CF6BBE7823909B3E1E37E143A3B /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		D085E632DCA6AA29EF6AA50502752478 /* DecodableExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecodableExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/DecodableExtensions.swift; sourceTree = "<group>"; };
 		D1ED3869543146A1F14ACD05445518BD /* JSONSerialization+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "JSONSerialization+KJ.swift"; path = "Sources/KakaJSON/Extension/JSONSerialization+KJ.swift"; sourceTree = "<group>"; };
-		D2F6D9E1B991E600B84811B5C402304B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D2F6D9E1B991E600B84811B5C402304B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D361524231E0A88BD3ED24D88A6DE388 /* EnumLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumLayout.swift; path = Sources/KakaJSON/Metadata/Layout/EnumLayout.swift; sourceTree = "<group>"; };
 		D41E642770ABEB7B92EC0156605A467A /* DoubleExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoubleExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/DoubleExtensions.swift; sourceTree = "<group>"; };
 		D69AB238A435856B6B593C3AB8AFDB9F /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
@@ -524,13 +525,14 @@
 		DAB3F68C45EAE0F376D747A40D42884C /* FileManagerExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileManagerExtensions.swift; path = Sources/SwifterSwift/Foundation/FileManagerExtensions.swift; sourceTree = "<group>"; };
 		DB76B190CE29BA0158F17B5FA8881C20 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7BE32D6CE81D571E0F4AAC4531AA3F /* MotionComponents-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MotionComponents-Info.plist"; sourceTree = "<group>"; };
+		DF4145C026F2EBD000DD5F9F /* View+mt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+mt.swift"; sourceTree = "<group>"; };
 		DFDE943B02A90964A5718D54CDD10AF4 /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		DFF33DA154C9E69EFF1F328634779485 /* CalendarExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
 		DFFE43CFDC869556637FA71DA0F55202 /* MoyaProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoyaProvider.swift; path = Sources/Moya/MoyaProvider.swift; sourceTree = "<group>"; };
 		E053B7B10ADC452ED3A62CCB54042A22 /* RandomAccessCollectionExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessCollectionExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/RandomAccessCollectionExtensions.swift; sourceTree = "<group>"; };
 		E0C43CA734524CA10175F1F1DA571B56 /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
 		E14E634942DAA1E8F7CDBCB314C95391 /* TypeProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TypeProxy.swift; path = Sources/KakaJSON/Convert/TypeProxy.swift; sourceTree = "<group>"; };
-		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CBF44D73DE4D269FF2B25A00358153 /* CharacterExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/CharacterExtensions.swift; sourceTree = "<group>"; };
 		E75405FF530BD162C35EAE2F60A92865 /* mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = mt.swift; path = MotionComponents/Tools/mt.swift; sourceTree = "<group>"; };
 		E77244CCCE2A8DC06836E9CC62853623 /* TextExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
@@ -567,7 +569,7 @@
 		FBE2D0090BE4A80BE8DAEF729A4FFD81 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		FC40E0076C15EAD5D9246F95FC580A91 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		FD41E8EE6D4268AE207B6605F77A41A1 /* FunctionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FunctionType.swift; path = Sources/KakaJSON/Metadata/Type/FunctionType.swift; sourceTree = "<group>"; };
-		FE25B22FE1E5BA434B8CE6C97A5126E7 /* MotionComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MotionComponents.framework; path = MotionComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE25B22FE1E5BA434B8CE6C97A5126E7 /* MotionComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF30F3B025AC36EEC03E7E7586F53AC3 /* KakaJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KakaJSON-Info.plist"; sourceTree = "<group>"; };
 		FF757B179229CFD67FAEC5BE0865A4A2 /* MTViewModifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MTViewModifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -765,6 +767,7 @@
 				3472FF2DD4E8A3AB677C3FBD58286F7D /* Shadow+mt.swift */,
 				B6DAA5998E525A6162C3AA88A8AD0994 /* Spacer+mt.swift */,
 				AA24487CC12177A1DA4E51A353E4FA27 /* TextField+mt.swift */,
+				DF4145C026F2EBD000DD5F9F /* View+mt.swift */,
 			);
 			name = SwiftUI;
 			path = MotionComponents/Tools/SwiftUI;
@@ -822,7 +825,6 @@
 				506838B9912C1277DCD6FC19BCA54ED9 /* Validation.swift */,
 				927B45BFFA37671EAD9DCF949BF57A7D /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -918,7 +920,6 @@
 				39030466FC41C2A8DF30BDBA19793CB8 /* Core */,
 				53352F1405D8CEFFF908CCA42497B766 /* Support Files */,
 			);
-			name = Moya;
 			path = Moya;
 			sourceTree = "<group>";
 		};
@@ -1064,7 +1065,6 @@
 				03A765B28BCA9142BF2D9A4F70C62285 /* Support Files */,
 				AF5498DEC948A25018CE39726367AE94 /* SwiftStdlib */,
 			);
-			name = SwifterSwift;
 			path = SwifterSwift;
 			sourceTree = "<group>";
 		};
@@ -1121,7 +1121,6 @@
 				4204BEA8B0C82CC7BF6D9D8E58C995AD /* Values.swift */,
 				BEDAB04B163D73372A35DD8ADC4BB17C /* Support Files */,
 			);
-			name = KakaJSON;
 			path = KakaJSON;
 			sourceTree = "<group>";
 		};
@@ -1194,7 +1193,6 @@
 				40ED185AFEEDB13B81A4ABAC41E63798 /* SwiftyJSON.swift */,
 				F05F3D51B2A78EB44CD7401CE4FF2F31 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1736,6 +1734,7 @@
 				6E5E7B7B3CB3652E24DA3C757D168D06 /* URLExtensions.swift in Sources */,
 				7BDBB27762F2DA6D33E1056AC55BF4A3 /* UserDefaultsExtensions.swift in Sources */,
 				0B01CC88AC70933AD3E9AFBFFE7AB170 /* ViewExtensions.swift in Sources */,
+				DF4145C126F2EBD000DD5F9F /* View+mt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,27 +89,25 @@ public extension View {
     }
 }
 
+//MARK: - 首页
 struct HomeView: View {
 
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 0) {
+            VStack(spacing: 0.0) {
                 Spacer.mt.navbar()
-                ForEach(0..<50) { index in
-                    Text("index: \(index)")
-                        .frame(maxWidth: .infinity)
-                        .background(Color.random)
-                }
+                header
+                Divider.mt.defult()
+                
+                main
             }
         }
+//        .overlay(
+//            placeholder
+//                .padding(.top, 100)
+//        )
         .mtNavbar(content: {
-            Image.mt.load(.Euro)
-                .resizable()
-                .font(Font.mt.title3)
-                .foregroundColor(Color.red)
-                .frame(size: .init(width: 33, height: 33))
-            
             Image.mt.load(.Logo)
                 .resizable()
                 .frame(size: .init(width: 33, height: 33))
@@ -122,26 +120,38 @@ struct HomeView: View {
         , trailing: {
             Image.mt.load(.Map_place)
         })
-    
+        
         .mtAttatchTabbarSpacer()
-
+        
     }
     
 }
 
 extension HomeView {
+    var header: some View {
+        ScrollView(.horizontal, showsIndicators: false, content: {
+            HStack(spacing: 20, content: {
+                ForEach(1...100, id: \.self) { count in
+                HomeHeaderItemView()
+                    
+                }
+            })
+            .padding()
+        })
+    }
     var main: some View {
         VStack {
-            navigationBarBackButtonHidden(/*@START_MENU_TOKEN@*/false/*@END_MENU_TOKEN@*/)
+            ForEach(1...10, id: \.self) { count in
+                PostCell()
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 16)
+                Divider.mt.defult()
+            }
         }
         .frame(maxWidth: .infinity)
-        .frame(maxHeight: .infinity)
-        .overlay(
-            mainPlaceholder
-        )
     }
     
-    var mainPlaceholder: some View {
+    var placeholder: some View {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             
@@ -155,7 +165,6 @@ extension HomeView {
                         Color.mt.accent_700.clipShape(Capsule())
                     )
             })
-           
             .mtAnimation()
         }
     }
@@ -171,3 +180,35 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - 圆形边框
+
+struct MTImageBorder: ViewModifier {
+    let color: Color
+    let lineWidth: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                Circle()
+                    .strokeBorder(color, lineWidth: lineWidth)
+            )
+    }
+}
+public extension View {
+    func mtBoderCircle(_ color: Color = .white, lineWidth: CGFloat = 3) -> some View {
+        modifier(MTImageBorder(color: color, lineWidth: lineWidth))
+    }
+}
+

@@ -37,6 +37,8 @@
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
+		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
+		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
@@ -54,6 +56,8 @@
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderItemView.swift; sourceTree = "<group>"; };
+		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,7 @@
 		DF4145B626F1B1C700DD5F9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF4145BB26F2EB2100DD5F9F /* Widgts */,
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
 				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
 				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
@@ -104,6 +109,15 @@
 				5A7EBFF926F20CAD0026D870 /* Setting */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DF4145BB26F2EB2100DD5F9F /* Widgts */ = {
+			isa = PBXGroup;
+			children = (
+				DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */,
+				DF4145BE26F2EB9700DD5F9F /* PostCell.swift */,
+			);
+			path = Widgts;
 			sourceTree = "<group>";
 		};
 		DFE0C0A026E783CE00EDB44F = {
@@ -326,7 +340,9 @@
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
+				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
