@@ -65,7 +65,7 @@ struct SettingView: View {
                 }
                 
             }
-            .listStyle(.insetGrouped)
+            .listStyle(InsetGroupedListStyle())
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("设置"))
             .navigationBarItems( trailing:
