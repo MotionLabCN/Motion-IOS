@@ -24,6 +24,10 @@ struct PostCell: View {
                 team
                 
                 Spacer.mt.mid()
+                
+                CoversView(layout: .one)
+                
+                Spacer.mt.mid()
 
                 Group {
                     Text("5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。")
@@ -31,6 +35,7 @@ struct PostCell: View {
                         + Text("@ElonMusk")
                         .font(.mt.body2, textColor: .mt.accent_700)
                 }
+                .allowsTightening(false)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer.mt.mid()
@@ -45,7 +50,7 @@ struct PostCell: View {
     
     var name: some View {
         HStack(spacing: 2) {
-            Text("姓名")
+            Text("赵翔宇")
                 .font(.mt.body2.mtBlod(), textColor: .black)
             Text("@usernickname")
                 .font(.mt.body2, textColor: .mt.gray_600)
@@ -65,9 +70,7 @@ struct PostCell: View {
     }
 }
 
-
-
-
+//MARK: - toolbar
 extension PostCell {
     struct Toolbar: View {
         var body: some View {
@@ -76,10 +79,10 @@ extension PostCell {
                     
                 }, label: {
                     HStack {
-                        Image.mt.load(.Add)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                        Text("123")
+                        Image.mt.load(.Comment)
+                            .mtSize(12, foregroundColor: .mt.gray_600)
+
+                        Text("12")
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
@@ -91,9 +94,9 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Cached)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                        Text("123")
+                            .mtSize(12, foregroundColor: .blue)
+                            
+                        Text("324")
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
@@ -105,10 +108,9 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Penny)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .foregroundColor(.mt.status_warnning)
-                        Text("123")
+                            .mtSize(12, foregroundColor: .mt.status_warnning)
+                           
+                        Text("77")
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
@@ -118,7 +120,78 @@ extension PostCell {
 }
 
 
+//MARK: - images
+extension PostCell {
+    struct CoversView: View {
+        enum Layout {
+            case one, oneByOne, oneByTwo, twoByTwo
+        }
+        typealias ModelType = Int
+        var list = [ModelType]()
+        var layout: Layout
+        
+        private let spacing: CGFloat = 4
+        private let maxHeight: CGFloat = 400
+        var body: some View {
+            HStack(spacing: spacing) { // 最外层H start
+                switch layout {
+                case .one:
+                    Image.mt.load(.ATM)
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)
+                        .background(Color.random)
+                    
+                case .oneByOne:
+                    Image.mt.load(.ATM)
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)
+                        .background(Color.random)
+                    Image.mt.load(.ATM)
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                case .oneByTwo:
+                    Image.mt.load(.ATM)
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)
+                        .background(Color.random)
+                    VStack(spacing: spacing)  {
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                    }
+                case .twoByTwo:
+                    VStack(spacing: spacing)  {
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                    }
+                    
+                    VStack(spacing: spacing)  {
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                        Image.mt.load(.ATM)
+                            .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                    }
+                }
+            } // 最外层H end
+            
+        }
+    }
+}
 
+
+extension Image {
+    @ViewBuilder
+    func mtSize(_ size: CGFloat, foregroundColor: Color? = nil) -> some View {
+        if let foregroundColor = foregroundColor {
+            resizable()
+                .foregroundColor(foregroundColor)
+                .frame(width: size, height: size)
+        } else {
+            resizable()
+                .frame(width: size, height: size)
+        }
+        
+    }
+}
 
 
 
@@ -145,6 +218,18 @@ struct PostCell_Previews: PreviewProvider {
             
             PostCell.Toolbar()
                 .previewLayout(.sizeThatFits)
+
+            PostCell.CoversView(layout: .one)
+                .previewLayout(.fixed(width: 415, height: 100))
+            
+            PostCell.CoversView(layout: .oneByOne)
+                .previewLayout(.fixed(width: 415, height: 100))
+            
+            PostCell.CoversView(layout: .oneByTwo)
+                .previewLayout(.fixed(width: 415, height: 200))
+            
+            PostCell.CoversView(layout: .twoByTwo)
+                .previewLayout(.fixed(width: 415, height: 200))
 
         }
     }

@@ -19,7 +19,6 @@ public struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModif
         self.trailing = trailing()
     }
     
-    
     public func body(content: Content) -> some View {
         ZStack {
             content
@@ -92,6 +91,7 @@ public extension View {
 //MARK: - 首页
 struct HomeView: View {
 
+    @StateObject var vm = PostVM()
     
     var body: some View {
         ScrollView {

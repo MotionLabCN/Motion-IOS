@@ -51,6 +51,8 @@
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
 		DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */; };
 		DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */; };
+		DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFECAB0D26F30DBD00AB192C /* PostModel.swift */; };
+		DFECAB1026F30DCB00AB192C /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFECAB0F26F30DCB00AB192C /* PostVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFE0C0B526E783CF00EDB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DFECAB0D26F30DBD00AB192C /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		DFECAB0F26F30DCB00AB192C /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 			children = (
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
+				DFECAB0C26F30DA300AB192C /* ViewModels */,
+				DFECAB0B26F30D9D00AB192C /* Models */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
 				DF4145B626F1B1C700DD5F9F /* Views */,
 				DF8298B926F079ED0007DEEA /* NextView.swift */,
@@ -198,6 +204,22 @@
 				DF8298BB26F07A720007DEEA /* AppState.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DFECAB0B26F30D9D00AB192C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFECAB0D26F30DBD00AB192C /* PostModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFECAB0C26F30DA300AB192C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFECAB0F26F30DCB00AB192C /* PostVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FB74B8C00CEB727B553B4E02 /* Frameworks */ = {
@@ -367,7 +389,9 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
+				DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */,
 				5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */,
+				DFECAB1026F30DCB00AB192C /* PostVM.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
 				5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */,
