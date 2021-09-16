@@ -30,7 +30,6 @@ struct TeamProfileView: View {
                         Text("队员")
                             .font(.mt.body3)
                     }
-                    
                     VStack{
                         Text("2.3亿")
                             .font(.mt.body2.mtBlod())
