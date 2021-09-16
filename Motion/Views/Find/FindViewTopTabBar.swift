@@ -29,7 +29,7 @@ struct FindViewTopTabBar: View {
                     HStack(spacing:0){
                         ForEach(findViewTabs.indices,id:\.self) {index in
                             Text("\(findViewTabs[index])")
-                                .font(.mt.body2.mtBlod())
+                                .font(.mt.body1.mtBlod())
                                 .foregroundColor(.mt.gray_900)
                                 .frame(width: itemWidth , alignment: .center)
                                 .padding(.vertical,6)

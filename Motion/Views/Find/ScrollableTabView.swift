@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScrollableTabbar<Content : View> : UIViewRepresentable {
+struct ScrollableTabView<Content : View> : UIViewRepresentable {
     
     var content : Content
     var rect : CGRect
@@ -29,8 +29,11 @@ struct ScrollableTabbar<Content : View> : UIViewRepresentable {
         scrollview.addSubview(extractView())
         return scrollview
     }
+    
     func updateUIView(_ uiView: UIScrollView, context: Context) {
-        
+        if uiView.contentOffset.x != offset{
+            uiView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+        }
     }
     
     func setUpScrollView(){
@@ -47,4 +50,19 @@ struct ScrollableTabbar<Content : View> : UIViewRepresentable {
         controller.view.frame = CGRect(x: 0, y: 0, width: rect.width * CGFloat(tabs.count), height: rect.height)
         return controller.view!
     }
+    
+    func makeCoordinator() -> Coordinator {
+        return ScrollableTabView.Coordinator(partent: self)
+    }
+    
+    class Coordinator : NSObject,UIScrollViewDelegate {
+        var partent : ScrollableTabView
+        init(partent:ScrollableTabView){
+            self.partent = partent
+        }
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            partent.offset = scrollView.contentOffset.x
+        }
+    }
+    
 }

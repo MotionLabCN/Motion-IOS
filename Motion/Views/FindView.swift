@@ -16,7 +16,7 @@ struct FindView: View {
             let rect = pox.frame(in: .global)
             VStack(spacing:0){
                 FindViewTopTabBar(offset: $offset)
-                ScrollableTabbar(tabs: findViewTabs, rect: rect, offset: $offset) {
+                ScrollableTabView(tabs: findViewTabs, rect: rect, offset: $offset) {
                     HStack(spacing:0){
                         Color.random.frame(width: ScreenWidth() , height: ScreenHeight())
                         Color.random.frame(width: ScreenWidth() , height: ScreenHeight())

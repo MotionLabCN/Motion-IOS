@@ -37,7 +37,7 @@
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
-		5ACBA39126F2E69C00A5789E /* ScrollableTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */; };
+		5ACBA39126F2E69C00A5789E /* ScrollableTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39026F2E69C00A5789E /* ScrollableTabView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
 		5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
@@ -58,7 +58,7 @@
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
-		5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTabbar.swift; sourceTree = "<group>"; };
+		5ACBA39026F2E69C00A5789E /* ScrollableTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTabView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewTopTabBar.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		5ACBA38F26F2E66E00A5789E /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				5ACBA39026F2E69C00A5789E /* ScrollableTabbar.swift */,
+				5ACBA39026F2E69C00A5789E /* ScrollableTabView.swift */,
 				5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */,
 			);
 			path = Find;
@@ -369,7 +369,7 @@
 				5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
-				5ACBA39126F2E69C00A5789E /* ScrollableTabbar.swift in Sources */,
+				5ACBA39126F2E69C00A5789E /* ScrollableTabView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
