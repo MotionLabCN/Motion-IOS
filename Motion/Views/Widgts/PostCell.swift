@@ -5,7 +5,7 @@
 //  Created by 梁泽 on 2021/9/16.
 //
 
-import SwiftUI
+import MotionComponents
 
 struct PostCell: View {
     var body: some View {
@@ -19,13 +19,9 @@ struct PostCell: View {
             VStack(spacing: 0.0) {
                 name
                 
-                Spacer.mt.min()
+                Spacer.mt.custom(4)
                 
                 team
-                
-                Spacer.mt.mid()
-                
-                CoversView(layout: .one)
                 
                 Spacer.mt.mid()
 
@@ -35,8 +31,12 @@ struct PostCell: View {
                         + Text("@ElonMusk")
                         .font(.mt.body2, textColor: .mt.accent_700)
                 }
-                .allowsTightening(false)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Spacer.mt.mid()
+                
+                CoversView(layout: .one)
+                    .frame(height: 200)
                 
                 Spacer.mt.mid()
 
@@ -49,7 +49,7 @@ struct PostCell: View {
     }
     
     var name: some View {
-        HStack(spacing: 2) {
+        HStack(spacing: 0) {
             Text("赵翔宇")
                 .font(.mt.body2.mtBlod(), textColor: .black)
             Text("@usernickname")
@@ -60,7 +60,7 @@ struct PostCell: View {
     }
     
     var team: some View {
-        HStack(spacing: 2) {
+        HStack(spacing: 0) {
             Text("武汉大学计算机社团")
                 .font(.mt.caption2, textColor: .black)
             Text("#lsimai.short")
@@ -80,7 +80,7 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Comment)
-                            .mtSize(12, foregroundColor: .mt.gray_600)
+                            .mtSize(18, foregroundColor: .mt.gray_600)
 
                         Text("12")
                             .font(.mt.caption1, textColor: .mt.gray_600)
@@ -94,7 +94,7 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Cached)
-                            .mtSize(12, foregroundColor: .blue)
+                            .mtSize(18, foregroundColor: .blue)
                             
                         Text("324")
                             .font(.mt.caption1, textColor: .mt.gray_600)
@@ -108,7 +108,7 @@ extension PostCell {
                 }, label: {
                     HStack {
                         Image.mt.load(.Penny)
-                            .mtSize(12, foregroundColor: .mt.status_warnning)
+                            .mtSize(18, foregroundColor: .mt.status_warnning)
                            
                         Text("77")
                             .font(.mt.caption1, textColor: .mt.gray_600)
@@ -172,26 +172,13 @@ extension PostCell {
                     }
                 }
             } // 最外层H end
+            .cornerRadius(8)
             
         }
     }
 }
 
 
-extension Image {
-    @ViewBuilder
-    func mtSize(_ size: CGFloat, foregroundColor: Color? = nil) -> some View {
-        if let foregroundColor = foregroundColor {
-            resizable()
-                .foregroundColor(foregroundColor)
-                .frame(width: size, height: size)
-        } else {
-            resizable()
-                .frame(width: size, height: size)
-        }
-        
-    }
-}
 
 
 

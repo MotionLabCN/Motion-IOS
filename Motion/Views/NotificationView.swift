@@ -9,18 +9,11 @@ import MotionComponents
 
 struct NotificationView: View {
     var body: some View {
-        VStack{
-            
-     
-        ScrollView(.vertical, showsIndicators: true) {
-            LazyVStack{
-                ForEach(0 ..< 50) { item in
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                }
-            }
+        ScrollView {
+           NavigationLink("12345", destination: Text("detial"))
+            .buttonStyle(MTButtonStyle(style: .mainDefult(isEnable: true)))
         }
         .mtAttatchTabbarSpacer()
-        }
     }
 }
 

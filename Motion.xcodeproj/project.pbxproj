@@ -43,7 +43,6 @@
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
-		DF4145C326F2F49600DD5F9F /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145C226F2F49600DD5F9F /* MessageView.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
@@ -69,7 +68,6 @@
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderItemView.swift; sourceTree = "<group>"; };
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		DF4145C226F2F49600DD5F9F /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +135,6 @@
 				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
 				5ACBA39226F2EBA600A5789E /* FindView.swift */,
 				5A7EBFF726F1DFDF0026D870 /* TeamView.swift */,
-				DF4145C226F2F49600DD5F9F /* MessageView.swift */,
 				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5ACBA38F26F2E66E00A5789E /* Find */,
@@ -385,7 +382,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF4145C326F2F49600DD5F9F /* MessageView.swift in Sources */,
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,

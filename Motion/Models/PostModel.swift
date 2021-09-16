@@ -9,5 +9,5 @@ import Foundation
 
 struct PostModel {
     var id = UUID().uuidString
-    
+ 
 }

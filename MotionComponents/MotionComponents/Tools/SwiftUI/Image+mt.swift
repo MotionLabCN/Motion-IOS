@@ -114,5 +114,21 @@ public enum MTSocialIcon: String, CaseIterable, MTImageSource {
 //}
 
 
+//MARK: - 扩展
+public extension Image {
+    @ViewBuilder
+    func mtSize(_ size: CGFloat, foregroundColor: Color? = nil) -> some View {
+        if let foregroundColor = foregroundColor {
+            resizable()
+                .foregroundColor(foregroundColor)
+                .frame(width: size, height: size)
+        } else {
+            resizable()
+                .frame(width: size, height: size)
+        }
+        
+    }
+}
+
 
 
