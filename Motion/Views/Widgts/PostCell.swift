@@ -41,7 +41,7 @@ struct PostCell: View {
                 Spacer.mt.mid()
 
                 Toolbar()
-                    .padding(.horizontal, 20)
+
             }
             .frame(maxWidth: .infinity)
         }
@@ -72,6 +72,7 @@ struct PostCell: View {
 
 //MARK: - toolbar
 extension PostCell {
+    
     struct Toolbar: View {
         var body: some View {
             HStack {
@@ -86,9 +87,7 @@ extension PostCell {
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
-                
                 Spacer()
-                
                 Button(action: {
                     
                 }, label: {
@@ -100,9 +99,7 @@ extension PostCell {
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
-                
                 Spacer()
-
                 Button(action: {
                     
                 }, label: {
@@ -114,6 +111,7 @@ extension PostCell {
                             .font(.mt.caption1, textColor: .mt.gray_600)
                     }
                 })
+                Spacer()
             }
         }
     }

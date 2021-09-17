@@ -13,13 +13,14 @@ struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var tabbarObj = AppState.TabbarState()
     @StateObject var router = AppState.TopRouterTable()
-
+    @StateObject var fullscreen = AppState.TopFullScreenPage()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(tabbarObj)
                 .environmentObject(router)
+                .environmentObject(fullscreen)
 
         }
         

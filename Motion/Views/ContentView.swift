@@ -15,6 +15,7 @@ struct ContentView: View {
         
     @EnvironmentObject var tabbarObj: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
+    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
     
     var body: some View {
         NavigationView {
@@ -28,9 +29,13 @@ struct ContentView: View {
                 actionCricleBtn
             }
             .navigationBarHidden(true)
+            .fullScreenCover(isPresented: $fullscreen.show) {
+                switch fullscreen.type {
+                case .profile : ProfileView()
+                }
+            }
         }
     }
-   
 }
 
 //MARK: - body

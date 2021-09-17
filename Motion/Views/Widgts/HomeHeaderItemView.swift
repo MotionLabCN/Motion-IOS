@@ -1,4 +1,4 @@
-//
+
 //  HomeHeaderItemView.swift
 //  Motion
 //
@@ -18,8 +18,8 @@ class HomeHeaderItemVM: ObservableObject {
     }
 }
 struct HomeHeaderItemView: View {
-    @StateObject var vm = HomeHeaderItemVM()
-    
+    //@StateObject var vm = HomeHeaderItemVM()
+    @State var isAnimation = false
     var body: some View {
         VStack(spacing: 3.0) {
             HStack(spacing: 4.0) {
@@ -41,7 +41,7 @@ struct HomeHeaderItemView: View {
                     .font(.mt.body2.mtBlod(), textColor: .white)
                     .padding(.trailing, 16)
             }
-            .background(Color.mt.accent_purple.clipShape(Capsule()))
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing).clipShape(Capsule()))
             .overlay(
                 Image.mt.load(.Logo)
                     .resizable()
@@ -49,7 +49,7 @@ struct HomeHeaderItemView: View {
                     .foregroundColor(.white)
                     .frame(width: 18, height: 18)
                     .background(
-                        Color.mt.accent_purple
+                        LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing)
                             .clipShape(Circle())
                             .mtBoderCircle(lineWidth: 2)
                     )
@@ -63,10 +63,10 @@ struct HomeHeaderItemView: View {
                     
                     Color.mt.accent_purple.opacity(0.3)
                         .clipShape(Capsule())
-                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-                        .opacity(vm.isAnimation ? 0 : 1)
+                        .scaleEffect(isAnimation ? 1.2: 1)
+                        .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
-
+                    
                 }
             )
             .padding(.all, 2)
@@ -77,10 +77,10 @@ struct HomeHeaderItemView: View {
                     
                     Color.mt.accent_purple.opacity(0.1)
                         .clipShape(Capsule())
-                        .scaleEffect(vm.isAnimation ? 1.2: 1)
-                        .opacity(vm.isAnimation ? 0 : 1)
+                        .scaleEffect(isAnimation ? 1.2: 1)
+                        .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
-
+                    
                 }
                 
             )
@@ -88,7 +88,10 @@ struct HomeHeaderItemView: View {
             Text("天天数链研发小队")
                 .font(.mt.caption1, textColor: .mt.gray_800)
         }
-   
+        .onAppear {
+            isAnimation = true
+        }
+        
     }
 }
 
