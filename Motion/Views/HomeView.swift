@@ -55,11 +55,11 @@ extension HomeView {
         })
     }
     var main: some View {
-        VStack {
-            ForEach(1...10, id: \.self) { count in
+        LazyVStack {
+            ForEach(1...119, id: \.self) { count in
                 PostCell()
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 16)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
                 Divider.mt.defult()
             }
         }
@@ -69,7 +69,6 @@ extension HomeView {
     var placeholder: some View {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
-            
             Button(action: {
             }, label: {
                 Text("查找朋友")
