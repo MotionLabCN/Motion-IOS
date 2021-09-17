@@ -42,21 +42,19 @@ struct MeesageListCell : View{
                         Text("刘江博")
                             .font(.mt.body1.mtBlod(),textColor: .black)
                         Text("@jiangBOoo")
-                            .font(.mt.body2,textColor: .black)
+                            .font(.mt.body2,textColor:.mt.gray_600)
                         Spacer()
                         Text("2020/07/04")
-                            .font(.mt.body2,textColor: .black)
+                            .font(.mt.body2,textColor:.mt.gray_600)
                     }
                     Text("向你发送了一张图片")
-                        .font(.mt.body2,textColor: .black)
-                }.padding(.top,4.5 * cell)
-                
-            
+                        .font(.mt.body2,textColor:.mt.gray_600)
+                }
+                .padding(.top,4.5 * cell)
+              
             }
             .padding(.horizontal)
             MT<Divider>.defult()
         }
-    
-      
     }
 }

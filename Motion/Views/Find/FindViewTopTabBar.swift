@@ -9,14 +9,14 @@ import SwiftUI
 import MotionComponents
 
 struct FindViewTopTabBar: View {
-
+    
     @Binding var tag: String
     
     @Namespace var animation
     let items: [String]
-
+    
     var body: some View {
-
+        
         
         let itemWidth = ScreenWidth() / CGFloat(items.count)
         let capsuleSize = CGSize(width: 56, height: 3)
@@ -26,19 +26,12 @@ struct FindViewTopTabBar: View {
                 ZStack{
                     BlurView()
                     Text("\(item)")
-                        .font(.mt.body1.mtBlod())
                         .foregroundColor( tag == item ? .black :  .mt.gray_700)
+                        .addBadge(number: 9, show: true)
+                        .font(.mt.body1.mtBlod())
                         .onTapGesture {withAnimation {tag = item}}
-                    
-                    //右上角通知，需单独提成一个   .mt.notiCircle(number: Int ,show : Bool)
-                        .overlay(   Circle()
-                                        .frame(width: 16,height: 16)
-                                        .foregroundColor(.mt.accent_700)
-                                        .overlay(Text("3").font(.mt.caption2.mtBlod() , textColor: .white))
-                                        .offset(x:8,y:-8)
-                                        .MoveTo(.topTrailing)
-                                        .disabled(true))
-                    //右上角通知，需单独提成一个   .mt.notiCircle(number: Int ,show : Bool)
+                
+
                     
                     if tag == item {
                         VStack{
@@ -105,5 +98,25 @@ extension View{
     func MoveTo( _ edge : moveTo.edge ) -> some View{
         self.modifier(moveTo(WhereMoveTo: edge))
         
+    }
+}
+
+extension View{
+    func addBadge( number : Int , show : Bool) -> some View {
+        self.overlay(
+            Group{
+                if show {
+                    Circle()
+                        .frame(width: 16,height: 16)
+                        .foregroundColor(.mt.accent_700)
+                        .overlay(Text("\(number)").font(.mt.caption2.mtBlod() , textColor: .white))
+                        .offset(x:8,y:-8)
+                        .MoveTo(.topTrailing)
+                        .disabled(false)
+                }else{
+                     EmptyView().disabled(false)
+                   }
+            }
+        )
     }
 }
