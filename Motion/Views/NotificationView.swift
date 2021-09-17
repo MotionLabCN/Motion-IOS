@@ -5,15 +5,31 @@
 //  Created by Liseami on 2021/9/15.
 //
 
+import SwiftUI
 import MotionComponents
 
 struct NotificationView: View {
     var body: some View {
-        ScrollView {
-           NavigationLink("12345", destination: Text("detial"))
-            .buttonStyle(MTButtonStyle(style: .mainDefult(isEnable: true)))
+    
+        GeometryReader { geometry in
+        
+            ZStack {
+                TabView {
+                    Rectangle()
+                        .fill(Color.random)
+                    
+                  
+                    Rectangle()
+                        .fill(Color.random)
+                    Rectangle()
+                        .fill(Color.random)
+                    Rectangle()
+                        .fill(Color.random)
+                }
+                .tabViewStyle(PageTabViewStyle())
+                
+            }
         }
-        .mtAttatchTabbarSpacer()
     }
 }
 
