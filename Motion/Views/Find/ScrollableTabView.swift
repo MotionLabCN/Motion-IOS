@@ -42,6 +42,7 @@ struct ScrollableTabView<Content : View> : UIViewRepresentable {
         scrollview.bounces = false
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
+        scrollview.alwaysBounceVertical = false
    
         
     }

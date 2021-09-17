@@ -11,25 +11,32 @@ import MotionComponents
 struct NotificationView: View {
     var body: some View {
     
-        GeometryReader { geometry in
-        
-            ZStack {
-                TabView {
-                    Rectangle()
-                        .fill(Color.random)
-                    
-                  
-                    Rectangle()
-                        .fill(Color.random)
-                    Rectangle()
-                        .fill(Color.random)
-                    Rectangle()
-                        .fill(Color.random)
-                }
-                .tabViewStyle(PageTabViewStyle())
-                
-            }
+        TabView {
+//            switch item {
+//            case 0 :
+                //推荐
+                RecommendView()
+//            case 1 :
+//                //名人
+                Color.random
+//                    .frame(width: ScreenWidth() , height: ScreenHeight())
+//            case 2 :
+                //天梯
+                Color.random
+//                    .frame(width: ScreenWidth() , height: ScreenHeight())
+//            case 3 :
+                //前沿
+                Color.random
+//                    .frame(width: ScreenWidth() , height: ScreenHeight())
+//            case 4 :
+                //趋势
+                Color.random
+//            default:
+//                EmptyView()
+//                    .frame(width: ScreenWidth() , height: ScreenHeight())
+//            }
         }
+        .tabViewStyle(PageTabViewStyle())
     }
 }
 
