@@ -65,7 +65,7 @@ struct HomeHeaderItemView: View {
                         .clipShape(Capsule())
                         .scaleEffect(isAnimation ? 1.2: 1)
                         .opacity(isAnimation ? 0 : 1)
-                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+                        .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: false))
                     
                 }
             )
@@ -77,9 +77,9 @@ struct HomeHeaderItemView: View {
                     
                     Color.mt.accent_purple.opacity(0.1)
                         .clipShape(Capsule())
-                        .scaleEffect(isAnimation ? 1.2: 1)
+                        .scaleEffect(isAnimation ? 1.3: 1)
                         .opacity(isAnimation ? 0 : 1)
-                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+                        .animation(.easeInOut(duration: 2.4).repeatForever(autoreverses: false))
                     
                 }
                 
