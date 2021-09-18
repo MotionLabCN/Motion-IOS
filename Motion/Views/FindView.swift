@@ -72,9 +72,7 @@ struct FindView: View {
                     .foregroundColor(Color.random)
                     .frame(width: 36, height: 36)
             }
-
        
-            
         }, trailing: {
             Button(
                 action: {},

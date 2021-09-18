@@ -9,34 +9,57 @@ import SwiftUI
 import MotionComponents
 
 struct NotificationView: View {
+    @Namespace var namespace
+    @State var showIndex = 0
     var body: some View {
-    
-        TabView {
-//            switch item {
-//            case 0 :
-                //推荐
-                RecommendView()
-//            case 1 :
-//                //名人
-                Color.random
-//                    .frame(width: ScreenWidth() , height: ScreenHeight())
-//            case 2 :
-                //天梯
-                Color.random
-//                    .frame(width: ScreenWidth() , height: ScreenHeight())
-//            case 3 :
-                //前沿
-                Color.random
-//                    .frame(width: ScreenWidth() , height: ScreenHeight())
-//            case 4 :
-                //趋势
-                Color.random
-//            default:
-//                EmptyView()
-//                    .frame(width: ScreenWidth() , height: ScreenHeight())
-//            }
+        HStack {
+            ZStack {
+                Text("码力")
+                if showIndex == 0 {
+                    Rectangle()
+                        .matchedGeometryEffect(id: "indictor", in: namespace)
+                        .frame(width: 50, height: 1)
+                        .offset( y: 20)
+                }
+            }
+            .onTapGesture(perform: {
+                withAnimation {
+                    showIndex = 0
+
+                }
+            })
+            ZStack {
+                Text("算力")
+                if showIndex == 1 {
+                    Rectangle()
+                        .matchedGeometryEffect(id: "indictor", in: namespace)
+                        .frame(width: 50, height: 1)
+                        .offset( y: 20)
+                }
+            }
+            .onTapGesture(perform: {
+                withAnimation {
+                    showIndex = 1
+
+                }
+            })
+            ZStack {
+                Text("人力")
+                if showIndex == 2 {
+                    Rectangle()
+                        .matchedGeometryEffect(id: "indictor", in: namespace)
+                        .frame(width: 50, height: 1)
+                        .offset( y: 20)
+                }
+            }
+            .onTapGesture(perform: {
+                withAnimation {
+                    showIndex = 2
+
+                }
+            })
+
         }
-        .tabViewStyle(PageTabViewStyle())
     }
 }
 
