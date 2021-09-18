@@ -25,10 +25,9 @@ public struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModif
             
             VStack {
                 ZStack {
-                    BlurView()
+                    Color.white
                         .ignoresSafeArea( edges: .top)
                         .frame(height: NavBarH)
-                                           
                     //leading trailing
                     HStack(spacing: 0, content: {
                         leading

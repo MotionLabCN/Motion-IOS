@@ -15,7 +15,6 @@ struct FindViewTopTabBar: View {
     @Namespace var namespace
     let items: [String]
     var itemWidth: CGFloat { ScreenWidth() / CGFloat(items.count) }
-    
     let capsuleSize = CGSize(width: 56, height: 3)
     
     
@@ -24,7 +23,7 @@ struct FindViewTopTabBar: View {
             ForEach(items, id: \.self) {item in
                 ZStack(alignment: .bottom) {
                     Text("\(item)")
-                        .foregroundColor( tag == item ? .black :  .mt.gray_700)
+                        .foregroundColor( tag == item ? .black :.mt.gray_700)
                         .mtAddBadge(number: 9, isShow: true)
                         .font(.mt.body1.mtBlod())
                         .frame(width: itemWidth)
@@ -34,7 +33,6 @@ struct FindViewTopTabBar: View {
                                 tag = item
                             }
                         }
-                    
                     if tag == item {
                         Capsule()
                             .matchedGeometryEffect(id: "Capsule", in: namespace)
@@ -44,8 +42,9 @@ struct FindViewTopTabBar: View {
                 }
             }
         } // hstack end
+        .overlay(Divider().mt.base, alignment: .bottom)
         .frame(maxHeight: 44)
-        .background(BlurView())
+        .background(Color.white)
         .animation(.default)
         
     }
@@ -60,7 +59,7 @@ struct FindViewTopTabBar: View {
         HStack(spacing:0){
             ForEach(items, id: \.self) {item in
                 ZStack{
-                    BlurView()
+                    Color.white
                     Text("\(item)")
                         .foregroundColor( tag == item ? .black :  .mt.gray_700)
                         .mtAddBadge(number: 9, isShow: true)

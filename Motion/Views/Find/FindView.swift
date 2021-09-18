@@ -40,8 +40,9 @@ struct FindView: View {
                 .foregroundColor(.mt.gray_200)
                 .overlay(HStack{
                     Image.mt.load(.Search)
-                        .frame(width: 18, height: 18)
+                        .frame(width: 16, height: 16)
                     Text("搜索Motion")
+                        .font(.mt.body3 )
                 } .foregroundColor(.mt.gray_500)
                 )
         }, leading: {
