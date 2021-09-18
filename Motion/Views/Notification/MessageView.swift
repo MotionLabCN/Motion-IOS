@@ -33,7 +33,7 @@ struct MessageView_Previews: PreviewProvider {
 struct MeesageListCell : View{
     var body: some View {
         let cell = ScreenWidth() / 375
-        VStack(spacing:12 * cell){
+        VStack(spacing: 12 * cell){
             HStack(alignment:.top){
                 Circle().foregroundColor(Color.random)
                     .frame(width: cell * 52, height: cell * 52)

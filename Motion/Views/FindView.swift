@@ -21,6 +21,7 @@ struct FindView: View {
         VStack(spacing:0){
             //TOP Tabbar
             FindViewTopTabBar(tag: $tag, items: findViewTabs)
+            
                 TabView(selection: $tag, content:{ //tabview start
                     RecommendView().tag(findViewTabs[0])
                     RecommendView().tag(findViewTabs[1])
