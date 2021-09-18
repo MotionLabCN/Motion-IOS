@@ -11,7 +11,6 @@ import MotionComponents
 fileprivate var findViewTabs = ["推荐","名人","天梯","前沿","趋势"]
 struct FindView: View {
     
-
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
     @State var offset : CGFloat = 0.0
     
@@ -30,8 +29,7 @@ struct FindView: View {
                     
                     }) //tabview end
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    .transition(.slide)
-            
+//                    .transition(.slide)
         }
         .navigationBarHidden(true)
         .padding(.top,44)

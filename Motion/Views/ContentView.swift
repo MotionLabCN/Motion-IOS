@@ -143,7 +143,7 @@ struct MTTabbar: View {
                         }
                     }, label: {
                         kind.image
-                            .addBadge(number: 2, show: true)
+                            .mtAddBadge(number: 2, isShow: true)
                             .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())

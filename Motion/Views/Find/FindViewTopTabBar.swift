@@ -12,10 +12,46 @@ struct FindViewTopTabBar: View {
     
     @Binding var tag: String
     
-    @Namespace var animation
+    @Namespace var namespace
     let items: [String]
+    var itemWidth: CGFloat { ScreenWidth() / CGFloat(items.count) }
+    
+    let capsuleSize = CGSize(width: 56, height: 3)
+    
     
     var body: some View {
+        HStack(spacing:0){ //hstack begin
+            ForEach(items, id: \.self) {item in
+                ZStack(alignment: .bottom) {
+                    Text("\(item)")
+                        .foregroundColor( tag == item ? .black :  .mt.gray_700)
+                        .mtAddBadge(number: 9, isShow: true)
+                        .font(.mt.body1.mtBlod())
+                        .frame(width: itemWidth)
+                        .frame(height: 44)
+                        .onTapGesture {
+                            withAnimation {
+                                tag = item
+                            }
+                        }
+                    
+                    if tag == item {
+                        Capsule()
+                            .matchedGeometryEffect(id: "Capsule", in: namespace)
+                            .foregroundColor(.mt.accent_700)
+                            .frame(width: capsuleSize.width ,height: capsuleSize.height, alignment: .center)
+                    }
+                }
+            }
+        } // hstack end
+        .frame(maxHeight: 44)
+        .background(BlurView())
+        .animation(.default)
+        
+    }
+    
+    @ViewBuilder
+    var old_body: some View {
         
         
         let itemWidth = ScreenWidth() / CGFloat(items.count)
@@ -27,21 +63,20 @@ struct FindViewTopTabBar: View {
                     BlurView()
                     Text("\(item)")
                         .foregroundColor( tag == item ? .black :  .mt.gray_700)
-                        .addBadge(number: 9, show: true)
+                        .mtAddBadge(number: 9, isShow: true)
                         .font(.mt.body1.mtBlod())
-                        .onTapGesture {withAnimation {tag = item}}
-                
-
+                        .onTapGesture {
+                            withAnimation {tag = item}
+                        }
                     
                     if tag == item {
                         VStack{
                             Spacer()
                             Capsule()
-                                .matchedGeometryEffect(id: "Capsule", in: animation)
+                                .matchedGeometryEffect(id: "Capsule", in: namespace)
                                 .foregroundColor(.mt.accent_700)
                                 .frame(width: capsuleSize.width ,height: capsuleSize.height, alignment: .center)
                         }
-                        .animation(.easeInOut)
                     }
                     VStack{
                         Spacer()
@@ -57,66 +92,46 @@ struct FindViewTopTabBar: View {
 }
 
 
-
-//MARK: 调整按钮位置至屏幕角落
-public struct moveTo : ViewModifier {
-    enum edge {
-        case centerLeading
-        case centerTrailing
-        case topCenter
-        case bottomCenter
-        case topLeading
-        case topTrailing
-        case bottomLeading
-        case bottomTrailing
-    }
-    var WhereMoveTo : edge
-    
-    public func body(content: Content) -> some View {
-        switch WhereMoveTo {
-        case .centerLeading :
-            HStack(alignment: .center) {content;Spacer()}
-        case .centerTrailing:
-            HStack(alignment: .center) {Spacer();content}
-        case .topCenter:
-            VStack{content;Spacer()}
-        case .bottomCenter:
-            VStack{Spacer();content}
-        case .topLeading:
-            VStack{HStack{content;Spacer()};Spacer()}
-        case .topTrailing:
-            VStack{HStack{Spacer();content};Spacer()}
-        case .bottomLeading:
-            VStack{Spacer();HStack{content;Spacer()}}
-        case .bottomTrailing:
-            VStack{Spacer();HStack{Spacer();content}}
-        }
-    }
-}
-
-extension View{
-    func MoveTo( _ edge : moveTo.edge ) -> some View{
-        self.modifier(moveTo(WhereMoveTo: edge))
-        
-    }
-}
-
-extension View{
-    func addBadge( number : Int , show : Bool) -> some View {
-        self.overlay(
-            Group{
-                if show {
-                    Circle()
-                        .frame(width: 16,height: 16)
-                        .foregroundColor(.mt.accent_700)
-                        .overlay(Text("\(number)").font(.mt.caption2.mtBlod() , textColor: .white))
-                        .offset(x:8,y:-8)
-                        .MoveTo(.topTrailing)
-                        .disabled(false)
-                }else{
-                     EmptyView().disabled(false)
-                   }
-            }
-        )
-    }
-}
+//
+////MARK: 调整按钮位置至屏幕角落
+//public struct MTWhereMoveToViewModifier : ViewModifier {
+//    enum edge {
+//        case centerLeading
+//        case centerTrailing
+//        case topCenter
+//        case bottomCenter
+//        case topLeading
+//        case topTrailing
+//        case bottomLeading
+//        case bottomTrailing
+//    }
+//    var WhereMoveTo : edge
+//    
+//    public func body(content: Content) -> some View {
+//        switch WhereMoveTo {
+//        case .centerLeading :
+//            HStack(alignment: .center) {content;Spacer()}
+//        case .centerTrailing:
+//            HStack(alignment: .center) {Spacer();content}
+//        case .topCenter:
+//            VStack{content;Spacer()}
+//        case .bottomCenter:
+//            VStack{Spacer();content}
+//        case .topLeading:
+//            VStack{HStack{content;Spacer()};Spacer()}
+//        case .topTrailing:
+//            VStack{HStack{Spacer();content};Spacer()}
+//        case .bottomLeading:
+//            VStack{Spacer();HStack{content;Spacer()}}
+//        case .bottomTrailing:
+//            VStack{Spacer();HStack{Spacer();content}}
+//        }
+//    }
+//}
+//
+//extension View{
+//    func MoveTo( _ edge : MTWhereMoveToViewModifier.edge ) -> some View{
+//        modifier(MTWhereMoveToViewModifier(WhereMoveTo: edge))
+//    }
+//}
+//
