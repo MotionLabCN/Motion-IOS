@@ -7,59 +7,50 @@
 
 import SwiftUI
 import MotionComponents
+fileprivate var notificationViewTabs = ["私信","通知","提及","小组"]
 
 struct NotificationView: View {
-    @Namespace var namespace
-    @State var showIndex = 0
+    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    @State var tag  =  notificationViewTabs[0]
+    
     var body: some View {
-        HStack {
-            ZStack {
-                Text("码力")
-                if showIndex == 0 {
-                    Rectangle()
-                        .matchedGeometryEffect(id: "indictor", in: namespace)
-                        .frame(width: 50, height: 1)
-                        .offset( y: 20)
-                }
-            }
-            .onTapGesture(perform: {
-                withAnimation {
-                    showIndex = 0
-
-                }
-            })
-            ZStack {
-                Text("算力")
-                if showIndex == 1 {
-                    Rectangle()
-                        .matchedGeometryEffect(id: "indictor", in: namespace)
-                        .frame(width: 50, height: 1)
-                        .offset( y: 20)
-                }
-            }
-            .onTapGesture(perform: {
-                withAnimation {
-                    showIndex = 1
-
-                }
-            })
-            ZStack {
-                Text("人力")
-                if showIndex == 2 {
-                    Rectangle()
-                        .matchedGeometryEffect(id: "indictor", in: namespace)
-                        .frame(width: 50, height: 1)
-                        .offset( y: 20)
-                }
-            }
-            .onTapGesture(perform: {
-                withAnimation {
-                    showIndex = 2
-
-                }
-            })
-
+        VStack(spacing:0){
+            //TOP Tabbar
+            FindViewTopTabBar(tag: $tag, items: notificationViewTabs)
+                TabView(selection: $tag, content:{ //tabview start
+                    MessageView().tag(notificationViewTabs[0])
+                    MessageView().tag(notificationViewTabs[1])
+                    MessageView().tag(notificationViewTabs[2])
+                    MessageView().tag(notificationViewTabs[3])
+                    }) //tabview end
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .transition(.slide)
+            
         }
+        .navigationBarHidden(true)
+        .padding(.top,44)
+        .navigationBarTitleDisplayMode(.inline)
+        .mtNavbar(content: {
+            Text("新消息")
+                .font(.mt.body1.mtBlod(),textColor: .black)
+        }, leading: {
+            Button {
+                fullscreen.showFullScreen(type: .profile)
+            } label: {
+                Circle()
+                    .foregroundColor(Color.random)
+                    .frame(width: 36, height: 36)
+            }
+        }, trailing: {
+            Button(
+                action: {},
+                label: {
+                    Image
+                        .mt.load(.Setting)
+                        .foregroundColor(.mt.gray_900)
+                }
+            )
+        })
     }
 }
 

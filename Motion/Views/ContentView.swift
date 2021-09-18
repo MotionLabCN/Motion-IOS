@@ -99,10 +99,8 @@ extension ContentView {
         if tabbarObj.isShowTabbar {
             VStack {
                 Spacer(minLength: 0)
-                
                 MTTabbar(selectedKind: $tabbarObj.selectedKind)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
-
             }
         }
     }
@@ -127,7 +125,6 @@ struct MTTabbar: View {
             case .search: return .mt.load(.Search)
             case .team: return .mt.load(.Group)
             case .message: return .mt.load(.Mail)
-                
             }
         }
     }
@@ -146,6 +143,7 @@ struct MTTabbar: View {
                         }
                     }, label: {
                         kind.image
+                            .addBadge(number: 2, show: true)
                             .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())

@@ -137,7 +137,7 @@ extension PostCell {
                     Image.mt.load(.ATM)
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
                         .background(Color.random)
-                    
+
                 case .oneByOne:
                     Image.mt.load(.ATM)
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)

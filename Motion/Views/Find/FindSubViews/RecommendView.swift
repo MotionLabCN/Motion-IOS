@@ -11,12 +11,15 @@ import MotionComponents
 struct RecommendView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            LazyVStack{
-                ForEach(0 ..< 40) { item in
+            LazyVStack {
+                ForEach(1...119, id: \.self) { count in
                     PostCell()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                    Divider.mt.defult()
                 }
             }
-            .padding()
+            .frame(maxWidth: .infinity)
         }
      
     }
