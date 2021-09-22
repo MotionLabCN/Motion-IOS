@@ -13,7 +13,6 @@ import MotionComponents
 struct HomeView: View {
 
     @StateObject var vm = PostVM()
-    
     @State private var isShowPlaceholder = false
     
     var body: some View {
@@ -139,7 +138,7 @@ public extension NavigationLink {
         switch style {
         case .system: self
         case .normal: buttonStyle(MTNavigationLinkButtonStyle())
-        case .rotation3D: buttonStyle(MTNavigationLinkRotation3dButtonStyle())
+        case .rotation3D: buttonStyle(MTNavigationLinkrotation3DButtonStyle())
             
         }
     }

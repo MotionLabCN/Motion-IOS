@@ -1684,8 +1684,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1833,8 +1833,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1208E81DA8B532D0646D627B50290EB6 /* AFError.swift in Sources */,
-				C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */,
 				C1F1DB6A9CBDE584D09BA1613AAD4F9D /* Alamofire.swift in Sources */,
+				C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */,
 				72EC2712926E6D28B52360D9AC41668F /* AlamofireExtended.swift in Sources */,
 				DC627AFC5B585686898B014184AFCABD /* AuthenticationInterceptor.swift in Sources */,
 				ABA85887A41495358C83CE3F3030EDEA /* CachedResponseHandler.swift in Sources */,
@@ -1908,8 +1908,8 @@
 				202D66BB3894AA5D9C951BE732D73591 /* KFImage.swift in Sources */,
 				3730DB5141ACEBA761A584D8E5FB9AFD /* KFImageOptions.swift in Sources */,
 				34EABC6D48B24D7D2CF3FB0507150546 /* KFOptionsSetter.swift in Sources */,
-				E32B34058C03B90683B8822026C05F79 /* Kingfisher-dummy.m in Sources */,
 				03E7A8B02DBB314AAD3CE5730479603D /* Kingfisher.swift in Sources */,
+				E32B34058C03B90683B8822026C05F79 /* Kingfisher-dummy.m in Sources */,
 				607F62D7FF886ECD87DCCA4E9E7C2426 /* KingfisherError.swift in Sources */,
 				94980B372F6F7C6BAF368B041EF37D2D /* KingfisherManager.swift in Sources */,
 				072DC09D770DAEB088FB36B00956EFC9 /* KingfisherOptionsInfo.swift in Sources */,
@@ -2017,10 +2017,10 @@
 				7B36BCFFDEF64AAAE07F59E0624C6EA4 /* Moya+Alamofire.swift in Sources */,
 				ACD4D7D9047F67B705D0AC7737A94919 /* Moya-dummy.m in Sources */,
 				E39E75C87F79D6836AF043365F45A0C8 /* MoyaError.swift in Sources */,
+				4325D9BEEC5A0456AC49E2AF219A124D /* MoyaProvider.swift in Sources */,
 				48636A24E2E09A334BD3AC5EAB2A835E /* MoyaProvider+Combine.swift in Sources */,
 				35C487D0532DDCC2F8C6755A8D9AA798 /* MoyaProvider+Defaults.swift in Sources */,
 				B1801FE91E43433278CB7F106B83C794 /* MoyaProvider+Internal.swift in Sources */,
-				4325D9BEEC5A0456AC49E2AF219A124D /* MoyaProvider.swift in Sources */,
 				625D8A1ACBB9CB686CD03D20D7474A55 /* MoyaPublisher.swift in Sources */,
 				C99F74D05E32E02F322FF53BEFB98D70 /* MultipartFormData.swift in Sources */,
 				D88F4E6816FCF5486EFEFA28596CBD41 /* MultiTarget.swift in Sources */,
@@ -2087,8 +2087,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB719CECD1562424E2E9F5555EE58B5 /* SwiftyJSON-dummy.m in Sources */,
 				DE002FFFB89A5DD1B42AEA1B2D1898A7 /* SwiftyJSON.swift in Sources */,
+				8BB719CECD1562424E2E9F5555EE58B5 /* SwiftyJSON-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

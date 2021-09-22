@@ -47,7 +47,7 @@ struct FindView: View {
                 )
         }, leading: {
             Button {
-                fullscreen.showFullScreen(type: .profile)
+                fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
             } label: {
                 Circle()
                     .foregroundColor(Color.random)

@@ -30,8 +30,10 @@ struct ContentView: View {
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $fullscreen.show) {
-                switch fullscreen.type {
-                case .profile : ProfileView()
+                if let view = fullscreen.view?.view{
+                    view
+                }else{
+                    ProgressView()
                 }
             }
         }
