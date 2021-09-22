@@ -57,11 +57,9 @@ public struct Networking {
 //MARK: - Combine普通请求
 public extension Networking {
     @discardableResult 
-    static func requestPublisher(_ target: TargetType) -> AnyPublisher<Response, MoyaError> {
+    static func publisher(_ target: TargetType) -> AnyPublisher<Response, MoyaError> {
         return defaultProvider.requestPublisher(.init(target))
     }
-    
-    
 }
 
 //MARK: - 普通请求

@@ -10,4 +10,5 @@ import SwiftUI
 public extension GeometryProxy {
     var width: CGFloat { size.width }
     var height: CGFloat { size.height }
+    var min: CGFloat { Swift.min(width, height) }
 }

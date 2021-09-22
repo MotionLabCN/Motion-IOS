@@ -14,6 +14,8 @@ struct HomeView: View {
 
     @StateObject var vm = PostVM()
     
+    @State private var isShowPlaceholder = false
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0.0) {
@@ -23,10 +25,14 @@ struct HomeView: View {
                 main
             }
         }
-//        .overlay(
-//            placeholder
-//                .padding(.top, 100)
-//        )
+        .overlay(
+            Group {
+                if isShowPlaceholder {
+                    placeholder
+                        .padding(.top, 100)
+                }
+            }
+        )
         .mtNavbar(content: {
             Image.mt.load(.Logo)
                 .resizable()
@@ -40,6 +46,7 @@ struct HomeView: View {
             Image.mt.load(.Map_place)
         })
         .mtAttatchTabbarSpacer()
+        
     }
 }
 
@@ -57,10 +64,18 @@ extension HomeView {
     var main: some View {
         LazyVStack {
             ForEach(1...119, id: \.self) { count in
-                PostCell()
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                Divider.mt.defult()
+                NavigationLink {
+                    Text("待完善")
+                } label: {
+                    VStack {
+                        PostCell()
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+
+                        Divider.mt.defult()
+                    }
+                }
+                .mtLinkStyle()
             }
         }
         .frame(maxWidth: .infinity)
@@ -94,4 +109,39 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+
+
+
+//MARK: - 可抽出去
+struct MTNavigationLinkButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
+struct MTNavigationLinkrotation3DButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        let isPressed = configuration.isPressed
+        
+        configuration.label
+            .rotation3DEffect(Angle(degrees: isPressed ? 7 : 0), axis: (x: 0, y: 1, z: 0), anchor: .leading)
+            .animation(.spring())
+    }
+}
+
+public extension NavigationLink {
+    enum MTLinkStyle {
+        case system, normal, rotation3D
+    }
+    
+    @ViewBuilder
+    func mtLinkStyle(_ style: MTLinkStyle = .rotation3D) -> some View {
+        switch style {
+        case .system: self
+        case .normal: buttonStyle(MTNavigationLinkButtonStyle())
+        case .rotation3D: buttonStyle(MTNavigationLinkRotation3dButtonStyle())
+            
+        }
+    }
+}
 

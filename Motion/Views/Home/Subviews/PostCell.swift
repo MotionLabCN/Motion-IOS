@@ -28,9 +28,10 @@ struct PostCell: View {
                 Group {
                     Text("5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。")
                         .font(.mt.body2, textColor: .mt.gray_900)
-                        + Text("@ElonMusk")
+                    + Text("@ElonMusk")
                         .font(.mt.body2, textColor: .mt.accent_700)
                 }
+                .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer.mt.mid()

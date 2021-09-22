@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.4.3)
   - KakaJSON (1.1.2)
+  - Kingfisher (6.3.1)
   - MotionComponents (0.1.0):
     - MotionComponents/Extensions (= 0.1.0)
     - MotionComponents/Networking (= 0.1.0)
@@ -25,12 +26,14 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - Kingfisher
   - MotionComponents (from `./MotionComponents`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - KakaJSON
+    - Kingfisher
     - Moya
     - SwifterSwift
     - SwiftyJSON
@@ -42,11 +45,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MotionComponents: 73f309e42fcb5ecaa5e44153f7cb6fcf4753d232
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: d95ab52031ee2af1c5896692be5acdcff90d1251
+PODFILE CHECKSUM: 46add3ff284e1af8f5b167b2b5c1a2969e3c5c0e
 
 COCOAPODS: 1.10.1

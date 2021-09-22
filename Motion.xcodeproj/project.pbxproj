@@ -42,6 +42,7 @@
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
 		5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */; };
+		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
@@ -69,6 +70,7 @@
 		5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewTopTabBar.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderItemView.swift; sourceTree = "<group>"; };
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -156,14 +158,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DF1111C926F77F6E00ADB99A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF4145BB26F2EB2100DD5F9F /* Subviews */,
+				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		DF4145B626F1B1C700DD5F9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DF4145BB26F2EB2100DD5F9F /* Widgts */,
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
-				DF4145B426F1AD6700DD5F9F /* HomeView.swift */,
 				5A7EBFF726F1DFDF0026D870 /* TeamView.swift */,
 				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
+				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
 				5ACBA38E26F2D44100A5789E /* Team */,
@@ -173,13 +183,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DF4145BB26F2EB2100DD5F9F /* Widgts */ = {
+		DF4145BB26F2EB2100DD5F9F /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
 				DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */,
 				DF4145BE26F2EB9700DD5F9F /* PostCell.swift */,
 			);
-			path = Widgts;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		DFE0C0A026E783CE00EDB44F = {
@@ -229,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8298BB26F07A720007DEEA /* AppState.swift */,
+				DF2A627026F7582E000DAF83 /* UserManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -268,7 +279,7 @@
 				DFE0C0A526E783CE00EDB44F /* Sources */,
 				DFE0C0A626E783CE00EDB44F /* Frameworks */,
 				DFE0C0A726E783CE00EDB44F /* Resources */,
-				0A502A517BE3038939D53BDA /* [CP] Embed Pods Frameworks */,
+				62467D105C5781FF663D1EBB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -332,23 +343,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A502A517BE3038939D53BDA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5BA5CACF63605B238BE17FB4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +363,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62467D105C5781FF663D1EBB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFE0C0C626E784D400EDB44F /* ShellScript */ = {
@@ -430,6 +441,7 @@
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

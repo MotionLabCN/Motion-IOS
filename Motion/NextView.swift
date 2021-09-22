@@ -12,19 +12,12 @@ struct NextView: View {
     @Environment(\.presentationMode) var persentationMode
     
     var body: some View {
-//        VStack {
-            ZStack {
-                List(0..<40) { _ in
-                    Text("12314")
-                    
-                }
+        NavigationView {
+            List(0..<10) { _ in
+                Text("123")
             }
-            .onDisappear(perform: {
-                withAnimation {
-                    uiStateObj.isShowTabbar = true
-                }
-            })
-//        }
+        }
+        
     }
 }
 
