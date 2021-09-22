@@ -19,10 +19,9 @@ struct TeamView: View {
         //排序方式
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
-        
-        
-        
+
         ScrollView(.vertical , showsIndicators:true) {
+            Spacer().frame(height:44)
             // scrollview start
             LazyVGrid(
                 columns:columns,
@@ -57,22 +56,28 @@ struct TeamView: View {
                     }
                 }
         }// scrollview end
-        .navigationBarTitle(Text("小组"))
+        .navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading:               Circle()
-                                .foregroundColor(Color.random)
-                                .frame(width: 36, height: 36)
-                            ,
-                            trailing:
-                                Button(
-                                    action: {self.show = true},
-                                    label: {Image
-                                            .mt.load(.Setting)
-                                            .foregroundColor(.mt.gray_900)
-                                    }
-                                )
-                            
-        )
+        .mtNavbar(content: {
+            Text("小组")
+                .font(.mt.body1.mtBlod(),textColor: .black)
+        }, leading: {
+            Button {
+            } label: {
+                Circle()
+                    .foregroundColor(Color.random)
+                    .frame(width: 36, height: 36)
+            }
+        }, trailing: {
+            Button(
+                action: {},
+                label: {
+                    Image
+                        .mt.load(.Setting)
+                        .foregroundColor(.mt.gray_900)
+                }
+            )
+        })
         .fullScreenCover(isPresented: $show) {
             SettingView()
         }
