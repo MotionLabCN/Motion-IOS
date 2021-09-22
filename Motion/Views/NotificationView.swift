@@ -34,13 +34,7 @@ struct NotificationView: View {
             Text("新消息")
                 .font(.mt.body1.mtBlod(),textColor: .black)
         }, leading: {
-            Button {
-                fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
-            } label: {
-                Circle()
-                    .foregroundColor(Color.random)
-                    .frame(width: 36, height: 36)
-            }
+            LocUserAvatar()
         }, trailing: {
             Button(
                 action: {},

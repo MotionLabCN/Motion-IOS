@@ -9,6 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct RecommendView: View {
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack {

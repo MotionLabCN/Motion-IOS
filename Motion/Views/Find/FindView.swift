@@ -46,13 +46,9 @@ struct FindView: View {
                 } .foregroundColor(.mt.gray_500)
                 )
         }, leading: {
-            Button {
-                fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
-            } label: {
-                Circle()
-                    .foregroundColor(Color.random)
-                    .frame(width: 36, height: 36)
-            }
+           
+                LocUserAvatar()
+          
        
         }, trailing: {
             Button(
@@ -74,4 +70,17 @@ struct FindView_Previews: PreviewProvider {
     }
 }
 
+
+struct LocUserAvatar: View {
+    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    var body: some View {
+        Button {
+            fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
+        } label: {
+        Circle()
+            .foregroundColor(Color.random)
+            .frame(width: 36, height: 36)
+        }
+    }
+}
 

@@ -8,6 +8,7 @@
 import MotionComponents
 
 struct PostCell: View {
+    
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             Circle().fill(Color.random)
@@ -41,7 +42,7 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
 
-                Toolbar()
+                PostToolBar()
 
             }
             .frame(maxWidth: .infinity)
@@ -74,11 +75,10 @@ struct PostCell: View {
 //MARK: - toolbar
 extension PostCell {
     
-    struct Toolbar: View {
+    struct PostToolBar: View {
         var body: some View {
             HStack {
                 Button(action: {
-                    
                 }, label: {
                     HStack {
                         Image.mt.load(.Comment)
@@ -202,7 +202,7 @@ struct PostCell_Previews: PreviewProvider {
                 .padding()
                 .previewLayout(.sizeThatFits)
             
-            PostCell.Toolbar()
+            PostCell.PostToolBar()
                 .previewLayout(.sizeThatFits)
 
             PostCell.CoversView(layout: .one)

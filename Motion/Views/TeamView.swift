@@ -62,12 +62,7 @@ struct TeamView: View {
             Text("小组")
                 .font(.mt.body1.mtBlod(),textColor: .black)
         }, leading: {
-            Button {
-            } label: {
-                Circle()
-                    .foregroundColor(Color.random)
-                    .frame(width: 36, height: 36)
-            }
+            LocUserAvatar()
         }, trailing: {
             Button(
                 action: {},

@@ -20,6 +20,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                
                 routerView
                 
                 main
@@ -27,6 +28,8 @@ struct ContentView: View {
                 tabbar
                 
                 actionCricleBtn
+                
+                
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $fullscreen.show) {
@@ -37,8 +40,25 @@ struct ContentView: View {
                 }
             }
         }
+        .overlay(CustomFullScreenView)
     }
 }
+
+extension ContentView {
+    
+    @ViewBuilder
+    var CustomFullScreenView : some View {
+        ZStack{
+        if fullscreen.showPostDetail {
+            BlurView.init(style: .dark)
+                .ignoresSafeArea()
+                .transition(.opacity)
+            PostDetailView()
+        }
+        }
+    }
+}
+
 
 //MARK: - body
 extension ContentView {

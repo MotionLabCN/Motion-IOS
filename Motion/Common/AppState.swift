@@ -25,14 +25,15 @@ struct AppState {
     
     ///顶层Fullscreen表
     class TopFullScreenPage: ObservableObject {
+        @Published var showPostDetail = false
         @Published var show = false
         @Published var view : FullScreenView?
         func showFullScreen(view : FullScreenView){
-        self.show.toggle()
+            self.view = view
+            self.show.toggle()
         }
     }
 }
-
 public struct FullScreenView {
 var view : AnyView
 }

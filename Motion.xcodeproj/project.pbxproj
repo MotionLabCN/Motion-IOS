@@ -33,6 +33,7 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
+		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
 		5A5842D526F4CDE100311388 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5842D426F4CDE100311388 /* MessageView.swift */; };
 		5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF526F1DE240026D870 /* NotificationView.swift */; };
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
+		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		5A5842D426F4CDE100311388 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		5A7EBFF526F1DE240026D870 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5ACBA38F26F2E66E00A5789E /* Find */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
+				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,
 				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 			);
