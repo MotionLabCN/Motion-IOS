@@ -75,6 +75,7 @@ extension HomeView {
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
+                .mtTapAnimationStyle(.rotation3D)
              
 
     
@@ -95,7 +96,8 @@ extension HomeView {
                         Color.mt.accent_700.clipShape(Capsule())
                     )
             })
-            .mtAnimation()
+            .mtTapAnimationStyle(.overlayOrScale())
+            
         }
     }
     
@@ -111,39 +113,4 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-
-
-
-//MARK: - 可抽出去
-struct MTNavigationLinkButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-    }
-}
-
-struct MTNavigationLinkrotation3DButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        let isPressed = configuration.isPressed
-        
-        configuration.label
-            .rotation3DEffect(Angle(degrees: isPressed ? 7 : 0), axis: (x: 0, y: 1, z: 0), anchor: .leading)
-            .animation(.spring())
-    }
-}
-
-public extension NavigationLink {
-    enum MTLinkStyle {
-        case system, normal, rotation3D
-    }
-    
-    @ViewBuilder
-    func mtLinkStyle(_ style: MTLinkStyle = .rotation3D) -> some View {
-        switch style {
-        case .system: self
-        case .normal: buttonStyle(MTNavigationLinkButtonStyle())
-        case .rotation3D: buttonStyle(MTNavigationLinkrotation3DButtonStyle())
-            
-        }
-    }
-}
 

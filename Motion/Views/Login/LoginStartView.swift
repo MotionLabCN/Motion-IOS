@@ -100,7 +100,7 @@ struct LoginStartView: View {
                         .clipShape(Capsule(style: .continuous))
                 )
         }
-        .mtAnimation()
+        .mtTapAnimationStyle(.overlayOrScale())
     }
     
     @ViewBuilder

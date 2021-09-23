@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NextView: View {
     @EnvironmentObject var uiStateObj: AppState.TabbarState
-    @Environment(\.presentationMode) var persentationMode
     
     @State var isShowToast = false
     

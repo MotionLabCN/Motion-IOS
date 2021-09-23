@@ -66,7 +66,7 @@ public struct MTPushNofi: View {
                     Image.mt.load(.Close)
                         .foregroundColor(.white)
                 })
-                .mtAnimation(isOverlay: true)
+                .mtTapAnimationStyle(.overlayOrScale(isOverlay: true))
             }
         }
         .padding(16)

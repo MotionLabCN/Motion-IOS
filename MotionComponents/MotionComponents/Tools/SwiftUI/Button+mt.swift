@@ -8,47 +8,51 @@
 import SwiftUI
 
 
+public enum MTTapAnimationStyle {
+    // normal 啥反应都没有
+    case system, normal, rotation3D
+    case overlayOrScale(isOverlay: Bool = true, scale: CGFloat = 0.97)
+}
+
+
+//MARK: - 按钮样式类型
+public enum MTButtonStyle {
+    case smallDefult(isEnable: Bool = true), smallStorker(isEnable: Bool = true)
+    case mainDefult(isEnable: Bool = true), mainStorKer(isEnable: Bool = true)
+    case cricleDefult(_ color: Color), cricleMini(_ color: Color = Color.mt.accent_500)
+}
+
 //MARK: - Button扩展
 public extension View {
-    /// 在button外加
-    func mtCustom(_ style: MTButtonStyle.Style) -> some View {
+    /// 在button外加 改样式 + 动画
+    func mtCustom(_ style: MTButtonStyle) -> some View {
         self
-            .buttonStyle(MTButtonStyle(style: style, customBackground: false))
+            .buttonStyle(MTButtonCustomStyle(style: style, customBackground: false))
             .disabled(!style.isEnable)
     }
-    /// button里的Label
-    func mtCustomLabel(_ style: MTButtonStyle.Style, customBackground: Bool = true) -> some View {
+    /// button里的Label 只改样式
+    func mtCustomLabel(_ style: MTButtonStyle, customBackground: Bool = true) -> some View {
         modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
     }
     
-    /// 只做动画
-    func mtAnimation(isOverlay: Bool = true, scale: CGFloat = 0.97) -> some View {
-        self.buttonStyle(MTButtonAnimationStyle(isOverlay: isOverlay, scale: scale))
-    }
-}
-
-
-//MARK: - 自定义ButtonSytle
-extension ButtonStyle {
+    /// 点击动画
     @ViewBuilder
-    func makeOverlay(isPressed: Bool) -> some View {
-        if isPressed {
-            Color.white
-                .clipShape(Capsule())
-                .blur(radius: 0.3)
-                .opacity(0.4)
-        } else {
-            EmptyView()
+    func mtTapAnimationStyle(_ style: MTTapAnimationStyle = .rotation3D) -> some View {
+        switch style {
+        case .system: self
+        case .normal: buttonStyle(MTButtonNormalStyle())
+        case .rotation3D: buttonStyle(MTRotation3DButtonStyle())
+        case let .overlayOrScale(isOverlay, scale):
+            buttonStyle(MTButtonAnimationStyle(isOverlay: isOverlay, scale: scale))
         }
-        
     }
 }
 
 
 
-//MARK: - 自定义Style Modifier
+//MARK: - 样式Style Modifier
 struct MTButtonStyleModifier: ViewModifier {
-    let style: MTButtonStyle.Style
+    let style: MTButtonStyle
     let customBackground: Bool
     
     func body(content: Content) -> some View {
@@ -81,37 +85,42 @@ struct MTButtonStyleModifier: ViewModifier {
     }
 }
 
-//struct MTButtonAnimationViewModifier: ViewModifier {
-//    let isPressed: Bool
-//    let scale: CGFloat
-//    let isOverlay: Bool
-//
-//    func body(content: Content) -> some View {
-//        if isPressed {
-//            content
-//                .overlay(makeOverlay(isPressed: isPressed))
-//                .scaleEffect(isPressed ? scale : 1)
-//        } else {
-//            content
-//        }
-//    }
-//
-//    @ViewBuilder
-//    func makeOverlay(isPressed: Bool) -> some View {
-//        if isPressed {
-//            Color.white
-//                .clipShape(Capsule())
-//                .blur(radius: 0.3)
-//                .opacity(0.4)
-//        } else {
-//            EmptyView()
-//        }
-//
-//    }
-//}
 
 
-//MARK: - 自定义Style
+//MARK: - 自定义ButtonSytle
+extension ButtonStyle {
+    @ViewBuilder
+    func makeOverlay(isPressed: Bool) -> some View {
+        if isPressed {
+            Color.white
+                .clipShape(Capsule())
+                .blur(radius: 0.3)
+                .opacity(0.4)
+        } else {
+            EmptyView()
+        }
+        
+    }
+}
+
+/// 无样式
+struct MTButtonNormalStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+/// 3D动画
+struct MTRotation3DButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        let isPressed = configuration.isPressed
+        
+        configuration.label
+            .rotation3DEffect(Angle(degrees: isPressed ? 7 : 0), axis: (x: -1, y: 0, z: 0), anchor: .leading)
+            .animation(.spring())
+    }
+}
+
+/// 可选isOverlay scale
 struct MTButtonAnimationStyle: ButtonStyle  {
     let isOverlay: Bool
     let scale: CGFloat
@@ -130,18 +139,12 @@ struct MTButtonAnimationStyle: ButtonStyle  {
     }
     
 }
-
-
-
-public struct MTButtonStyle: ButtonStyle  {
-    public let style: Style
-    public let customBackground: Bool
-    init(style: MTButtonStyle.Style, customBackground: Bool) {
-        self.style = style
-        self.customBackground = customBackground
-    }
-    
-    public func makeBody(configuration: Configuration) -> some View {
+// 特殊 使
+struct MTButtonCustomStyle: ButtonStyle  {
+    let style: MTButtonStyle
+    let customBackground: Bool
+   
+    func makeBody(configuration: Configuration) -> some View {
         let isPressed = configuration.isPressed
         let scale: CGFloat = 0.97
         
@@ -155,31 +158,8 @@ public struct MTButtonStyle: ButtonStyle  {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//MARK: - 按钮类型
-extension MTButtonStyle {
-    public enum Style {
-        case smallDefult(isEnable: Bool = true), smallStorker(isEnable: Bool = true)
-        case mainDefult(isEnable: Bool = true), mainStorKer(isEnable: Bool = true)
-        case cricleDefult(_ color: Color), cricleMini(_ color: Color = Color.mt.accent_500)
-    }
-}
-
-
-extension MTButtonStyle.Style: Identifiable {
+//MARK: - 按钮类型扩展
+extension MTButtonStyle: Identifiable {
     public var id: Int {
         switch self {
         case let .smallDefult(isEnable): return 10 + (isEnable ? 0 : 1)

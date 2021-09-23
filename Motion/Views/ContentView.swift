@@ -183,7 +183,7 @@ struct MTTabbar: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())
                     })
-                    .mtAnimation(isOverlay: false, scale: 0.7)
+                        .mtTapAnimationStyle(.overlayOrScale(isOverlay: true, scale: 0.7))
                 }
             })
         }
