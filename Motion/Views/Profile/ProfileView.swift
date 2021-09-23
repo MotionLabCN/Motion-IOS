@@ -12,7 +12,6 @@ struct ProfileView: View {
     
     @Environment(\.presentationMode) var persentationMode
     
-    
     var body: some View {
         
         NavigationView{
@@ -23,16 +22,27 @@ struct ProfileView: View {
                     
                     toolBtns
                     
-                    Spacer()
+                Spacer.mt.max()
+             
+                    logo
+              
+              
             }
             .navigationBarItems( trailing:   closeBtn)
             .navigationBarTitleDisplayMode(.inline)
-            .padding(.horizontal)
+            
         }
         
         
     }
-   
+    var logo : some View{
+        VStack{
+            Image.mt.load(.Logo)
+                .foregroundColor(.mt.gray_300)
+            Text("于2021年6月23日加入Motion")
+                .font(.mt.caption1,textColor: .mt.gray_400)
+        }
+    }
     var closeBtn : some View{
         Button(action: {
             self.persentationMode.wrappedValue.dismiss()
@@ -103,7 +113,9 @@ struct ProfileListRow: View {
             Spacer()
         }
         .padding()
-        .overlay( Capsule(style: .continuous).strokeBorder().foregroundColor(.mt.gray_200))
-       
+        .background(Color.white)
+        .clipShape(Capsule(style: .continuous))
+        .overlay( Capsule(style: .continuous).strokeBorder().foregroundColor(.mt.gray_100))
+        .padding(.horizontal)
     }
 }
