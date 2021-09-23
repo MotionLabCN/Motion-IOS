@@ -25,25 +25,65 @@ struct NextView: View {
                 Text("123")
             }
         }
-        .fullScreenCover(isPresented: $isShowToast, onDismiss: {
+//        .mtFullScreenCover($isShow)
+        .fullScreenCover(isPresented: $isShowToast) {
             
-        }, content: {
-            EmptyView()
-        })
+        } content: {
+            VStack {
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 100, height: 100)
+                    .overlay(
+                        Text("123")
+                            .overlay(
+                                Text("444")
+                                    .background(BackgroundCleanerView())
+                            )
+//                            .background(BackgroundCleanerView())
+                    )
+
+                Spacer()
+
+            }
+        }
+
       
         
     }
+}
+
+
+struct BackgroundCleanerView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 struct MTFullScreenCoverViewModifier: ViewModifier {
     @Binding var isPresented: Bool
     
     func body(content: Content) -> some View {
-        ZStack {
+       
+        ZStack(alignment: .bottom) {
+//            rootView
             content
-            
             Rectangle()
-                .frame(height: 100)
+                .fill(Color.gray)
+                
+            VStack {
+                Image(systemName: "chevron.up")
+                    .padding(.top)
+                Text("Sing up")
+                 
+//                Spacer()
+            }
+//                .frame(height: 100)
         }
     }
 
@@ -54,7 +94,7 @@ public extension View {
 //
 //    public func fullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View
     func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
-        modifier(MTFullScreenViewModifier(isPresented: isPresented))
+        modifier(MTFullScreenCoverViewModifier(isPresented: isPresented))
     }
 }
 

@@ -8,6 +8,7 @@
 @_exported import SwiftUI
 @_exported import Combine
 
+
 @main
 struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -15,7 +16,6 @@ struct MotionApp: App {
     @StateObject var router = AppState.TopRouterTable()
     @StateObject var fullscreen = AppState.TopFullScreenPage()
     @StateObject var userManager = UserManager.shared
-//    @Environment(\.userManager) var userManager
 
     var body: some Scene {
         WindowGroup {
@@ -24,8 +24,6 @@ struct MotionApp: App {
                 .environmentObject(router)
                 .environmentObject(fullscreen)
                 .environmentObject(userManager)
-
-
         }
         
     }
