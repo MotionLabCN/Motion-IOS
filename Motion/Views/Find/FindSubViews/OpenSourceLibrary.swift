@@ -28,13 +28,13 @@ struct OpenSourceLibrary: View {
                 Divider()
             }
         } header: {
-            HStack {
-                Text("新星")
-                    .font(.mt.title2.mtBlod(),textColor: .black)
-                Spacer()
-            }.padding(.horizontal)
+            Text("新星")
+                .font(.mt.title2.mtBlod(),textColor: .black)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
         }
     }
+    
     var classic : some View{
         Section {
             ScrollView(.horizontal, showsIndicators: false) {

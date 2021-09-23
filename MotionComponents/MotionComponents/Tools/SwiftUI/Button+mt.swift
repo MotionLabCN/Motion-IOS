@@ -136,7 +136,7 @@ struct MTButtonAnimationStyle: ButtonStyle  {
 public struct MTButtonStyle: ButtonStyle  {
     public let style: Style
     public let customBackground: Bool
-    public init(style: MTButtonStyle.Style, customBackground: Bool) {
+    init(style: MTButtonStyle.Style, customBackground: Bool) {
         self.style = style
         self.customBackground = customBackground
     }

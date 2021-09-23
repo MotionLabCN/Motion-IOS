@@ -59,19 +59,25 @@ struct LibraryDetail: View {
                 Button {
                 } label: {
                     Image.mt.load(.Link)
-                }.buttonStyle(MTButtonStyle(style: .mainDefult(isEnable: false)))
+                }
+                .mtCustom(.mainDefult(isEnable: false))
+                
                 Button {
                 } label: {
                     Image.mt.load(.Github)
-                }.buttonStyle(MTButtonStyle(style: .mainDefult(isEnable: false)))
+                }
+                .mtCustom(.mainDefult(isEnable: false))
+
+                
                 Button {
                 } label: {
                     HStack(spacing:0){
                         Text("用过/准备用")
                         Image.mt.load(.Arrow_right)
                     }
-                }.buttonStyle(MTButtonStyle(style: .mainDefult(isEnable: true)))
-                    .frame(width: ScreenWidth() / 2)
+                }
+                .mtCustom(.mainDefult())
+                .frame(width: ScreenWidth() / 2)
             }
             
             Spacer()

@@ -15,7 +15,8 @@ struct HomeView: View {
     @StateObject var vm = PostVM()
     
     @State private var isShowPlaceholder = true
-    
+    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+
     var body: some View {
         
         

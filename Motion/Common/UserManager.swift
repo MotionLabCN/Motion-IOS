@@ -55,9 +55,14 @@ class UserManager: ObservableObject {
             user = u
         }
     }
+    
     /// 修改用户昵称 并触发 Publisher 示例
     func changeNickName(_ name: String)  {
         user.nickName = name
+    }
+    
+    func changeId(_ id: String) {
+        user.id = id
     }
     
     func logout() {

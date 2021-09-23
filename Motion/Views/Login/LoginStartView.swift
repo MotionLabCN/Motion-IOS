@@ -12,7 +12,8 @@ import AVKit
 struct LoginStartView: View {
     @State var playerStatus: MTVideoPlayerStatus?
     @State var isShowTermsOfService = false
-    
+    @EnvironmentObject var userManager: UserManager
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -89,7 +90,9 @@ struct LoginStartView: View {
     var startBtn: some View {
         let start = Color.mt.accent_purple
         let end = Color(hex: "887AFF")
-        return NavigationLink(destination: Text("待完善")) {
+        return Button {
+            userManager.changeId("123")
+        } label: {
             Text("开始")
                 .mtCustomLabel(.mainDefult())
                 .background(
