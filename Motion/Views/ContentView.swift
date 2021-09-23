@@ -21,6 +21,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                
                 routerView
                 
                 main
@@ -28,11 +29,14 @@ struct ContentView: View {
                 tabbar
                 
                 actionCricleBtn
+                
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $fullscreen.show) {
-                switch fullscreen.type {
-                case .profile : ProfileView()
+                if let view = fullscreen.view?.view{
+                    view
+                }else{
+                    ProgressView()
                 }
             }
         }
@@ -45,6 +49,24 @@ struct ContentView: View {
         )
     }
 }
+
+extension ContentView {
+    
+    @ViewBuilder
+    var CustomFullScreenView : some View {
+        ZStack{
+        if fullscreen.showCustom {
+            BlurView.init(style: .systemMaterialDark)
+                .ignoresSafeArea()
+                .transition(.opacity)
+            if let view = fullscreen.customView?.view {
+                view
+            }else{ProgressView()}
+        }
+        }
+    }
+}
+
 
 //MARK: - body
 extension ContentView {
@@ -228,3 +250,5 @@ struct ContentView_Previews: PreviewProvider {
             .previewDevice("iPhone 12")
     }
 }
+
+

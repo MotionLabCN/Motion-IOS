@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MotionComponents
 
 
 class HomeHeaderItemVM: ObservableObject {
@@ -25,15 +26,11 @@ struct HomeHeaderItemView: View {
             HStack(spacing: 4.0) {
                 HStack(spacing: 0.0) {
                     Group {
-                        Circle()
-                            .fill(Color.red)
-                            .mtFrame(width: 44, height: 44)
-                            .mtBoderCircle()
-                        Circle()
-                            .fill(Color.random)
-                            .mtFrame(width: 44, height: 44)
-                            .mtBoderCircle()
-                            .padding(.leading, -20)
+                        MTUserAvatar(frame : 44) {}
+                        .mtBoderCircle()
+                        MTUserAvatar(frame : 44) {}
+                        .mtBoderCircle()
+                        .padding(.leading, -20)
                     }
                     .padding(.all, 2)
                 }
@@ -41,7 +38,8 @@ struct HomeHeaderItemView: View {
                     .font(.mt.body2.mtBlod(), textColor: .white)
                     .padding(.trailing, 16)
             }
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing).clipShape(Capsule()))
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing)
+                            .clipShape(Capsule(style: .continuous)))
             .overlay(
                 Image.mt.load(.Logo)
                     .resizable()
@@ -50,7 +48,7 @@ struct HomeHeaderItemView: View {
                     .frame(width: 18, height: 18)
                     .background(
                         LinearGradient(gradient: Gradient(colors: [Color(hex: "860CF2"), Color(hex: "887AFF")]), startPoint: .bottom, endPoint: .topTrailing)
-                            .clipShape(Circle())
+                            .clipShape(Capsule(style: .continuous))
                             .mtBoderCircle(lineWidth: 2)
                     )
                     .offset(x: -2, y: -1.0)
@@ -59,10 +57,10 @@ struct HomeHeaderItemView: View {
             .background(
                 ZStack {
                     Color.mt.accent_purple.opacity(0.3)
-                        .clipShape(Capsule())
+                        .clipShape(Capsule(style: .continuous))
                     
                     Color.mt.accent_purple.opacity(0.3)
-                        .clipShape(Capsule())
+                        .clipShape(Capsule(style: .continuous))
                         .scaleEffect(isAnimation ? 1.2: 1)
                         .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: false))
@@ -73,10 +71,10 @@ struct HomeHeaderItemView: View {
             .background(
                 ZStack {
                     Color.mt.accent_purple.opacity(0.1)
-                        .clipShape(Capsule())
+                        .clipShape(Capsule(style: .continuous))
                     
                     Color.mt.accent_purple.opacity(0.1)
-                        .clipShape(Capsule())
+                        .clipShape(Capsule(style: .continuous))
                         .scaleEffect(isAnimation ? 1.3: 1)
                         .opacity(isAnimation ? 0 : 1)
                         .animation(.easeInOut(duration: 2.4).repeatForever(autoreverses: false))

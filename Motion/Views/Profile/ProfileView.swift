@@ -17,57 +17,71 @@ struct ProfileView: View {
         
         NavigationView{
             ScrollView(.vertical, showsIndicators: false) {
-                VStack{
-                    HStack{
-                        Button(action: {
-                            self.persentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image.mt.load(.Close_circle)
-                        })
-                        Spacer()
-                        Image.mt.load(.Setting)
-                    }
-                    VStack(spacing:8){
-                        let cell =  ScreenWidth() / 375
-                        Circle()
-                            .frame(width: cell * 82, height: cell * 82)
-                        VStack(spacing:0){
-                            Text("赵翔宇")
-                                .font(.mt.body1.mtBlod(),textColor: .black)
-                            Text("@liseami")
-                                .font(.mt.body3,textColor: .mt.gray_600)
-                        }
-                        HStack{
-                            HStack{
-                                Text("2394")
-                                    .font(.mt.body1.mtBlod(),textColor: .black)
-                                Text("连接")
-                                    .font(.mt.body3,textColor: .mt.gray_900)
-                            }
-                            HStack{
-                                Text("204")
-                                    .font(.mt.body2.mtBlod(),textColor: .black)
-                                Text("被连接")
-                                    .font(.mt.body3,textColor: .mt.gray_900)
-                            }
-                        }
-                    }
+                    userInfo
+                  
                     Spacer.mt.max()
                     
-                    VStack(spacing:24){
-                        ForEach(0 ..< 5) { item in
-                            ProfileListRow(text: "我的主页")
-                        }
-                    }
+                    toolBtns
                     
                     Spacer()
-                }
             }
+            .navigationBarItems( trailing:   closeBtn)
+            .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
-            .navigationBarHidden(true)
         }
         
         
+    }
+   
+    var closeBtn : some View{
+        Button(action: {
+            self.persentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image.mt.load(.Close)
+         .foregroundColor(.mt.gray_900)
+        })
+    }
+    var toolBtns : some View {
+        VStack(spacing:24){
+            
+            ProfileListRow(icon: Image.mt.load(.Person), text: "查看个人主页")
+            ProfileListRow(icon: Image.mt.load(.Github), text: "链接Github")
+            ProfileListRow(icon: Image.mt.load(.Apps), text: "储存空间")
+            ProfileListRow(icon: Image.mt.load(.Logo), text: "元宇宙硬币")
+            
+            NavigationLink(destination: {
+                SettingView()
+            }, label: {
+            ProfileListRow(icon: Image.mt.load(.Setting), text: "设置")})
+                
+        }
+    }
+    var userInfo : some View {
+        VStack(spacing:8){
+            
+            MTLocUserAvatar( frame: 82)
+            
+            VStack(spacing:0){
+                Text("赵翔宇")
+                    .font(.mt.body1.mtBlod(),textColor: .black)
+                Text("@liseami")
+                    .font(.mt.body3,textColor: .mt.gray_600)
+            }
+            HStack{
+                HStack{
+                    Text("2394")
+                        .font(.mt.body1.mtBlod(),textColor: .black)
+                    Text("连接")
+                        .font(.mt.body3,textColor: .mt.gray_900)
+                }
+                HStack{
+                    Text("204")
+                        .font(.mt.body2.mtBlod(),textColor: .black)
+                    Text("被连接")
+                        .font(.mt.body3,textColor: .mt.gray_900)
+                }
+            }
+        }
     }
 }
 
@@ -78,14 +92,18 @@ struct ProfileView_Previews: PreviewProvider {
 }
 
 struct ProfileListRow: View {
+    var icon : Image
     var text : String
     var body: some View {
         HStack{
-            Image.mt.load(.Person)
+            icon
+                .foregroundColor(.mt.gray_600)
             Text(text)
-                .font(.mt.body2,textColor: .mt.gray_900)
+                .font(.mt.body1,textColor: .black)
             Spacer()
-        }.padding(.all,16)
-            .overlay(RoundedRectangle(cornerRadius: 12).stroke().foregroundColor(.mt.gray_200))
+        }
+        .padding()
+        .overlay( Capsule(style: .continuous).strokeBorder().foregroundColor(.mt.gray_200))
+       
     }
 }

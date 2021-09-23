@@ -7,6 +7,7 @@
 
 import Combine
 import Dispatch
+import SwiftUI
 
 
 struct AppState {
@@ -24,15 +25,16 @@ struct AppState {
     
     ///顶层Fullscreen表
     class TopFullScreenPage: ObservableObject {
-        @Published var show = false
-        @Published var type : FullScreenType  = .profile
-        enum FullScreenType {
-            case profile
+        @Published var showCustom = false
+        @Published var customView : FullScreenView?
+        func showCustomFullScreen(view : FullScreenView){
+            self.customView = view
+            self.showCustom.toggle()
         }
-        func showFullScreen(type : FullScreenType){
-            DispatchQueue.main.async {
-                self.type = type
-            }
+        @Published var show = false
+        @Published var view : FullScreenView?
+        func showFullScreen(view : FullScreenView){
+            self.view = view
             self.show.toggle()
         }
     }

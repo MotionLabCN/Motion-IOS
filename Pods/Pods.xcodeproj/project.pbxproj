@@ -1231,6 +1231,7 @@
 				31588087B547F0211C48FE96AF027338 /* TextField+mt.swift */,
 				D8DA7EA984F0D7F6A342DAA89B2A291B /* Toast+mt.swift */,
 				5FB97D6890DDC79BA151DBBD29188D3A /* View+mt.swift */,
+				5A53376D26FC0B5600949087 /* AnyTransition+mt.swift */,
 			);
 			name = SwiftUI;
 			path = MotionComponents/Tools/SwiftUI;
@@ -2258,8 +2259,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -2431,8 +2432,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1208E81DA8B532D0646D627B50290EB6 /* AFError.swift in Sources */,
-				C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */,
 				C1F1DB6A9CBDE584D09BA1613AAD4F9D /* Alamofire.swift in Sources */,
+				C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */,
 				72EC2712926E6D28B52360D9AC41668F /* AlamofireExtended.swift in Sources */,
 				DC627AFC5B585686898B014184AFCABD /* AuthenticationInterceptor.swift in Sources */,
 				ABA85887A41495358C83CE3F3030EDEA /* CachedResponseHandler.swift in Sources */,
@@ -2586,8 +2587,8 @@
 				202D66BB3894AA5D9C951BE732D73591 /* KFImage.swift in Sources */,
 				3730DB5141ACEBA761A584D8E5FB9AFD /* KFImageOptions.swift in Sources */,
 				34EABC6D48B24D7D2CF3FB0507150546 /* KFOptionsSetter.swift in Sources */,
-				E32B34058C03B90683B8822026C05F79 /* Kingfisher-dummy.m in Sources */,
 				03E7A8B02DBB314AAD3CE5730479603D /* Kingfisher.swift in Sources */,
+				E32B34058C03B90683B8822026C05F79 /* Kingfisher-dummy.m in Sources */,
 				607F62D7FF886ECD87DCCA4E9E7C2426 /* KingfisherError.swift in Sources */,
 				94980B372F6F7C6BAF368B041EF37D2D /* KingfisherManager.swift in Sources */,
 				072DC09D770DAEB088FB36B00956EFC9 /* KingfisherOptionsInfo.swift in Sources */,
@@ -2652,6 +2653,7 @@
 				01D2B187A6289DB968FCD7298D554D4B /* NetworkLoggerPlugin.swift in Sources */,
 				1B4CE1DA874DB1D6326417DA68C652C2 /* NSAttributedStringExtensions.swift in Sources */,
 				CAB07E2733140E5DE905D9AECFD10AD3 /* OptionalExtensions.swift in Sources */,
+				5A53376E26FC0B5600949087 /* AnyTransition+mt.swift in Sources */,
 				B35E202B351BCC1FF1333D8DFE0FBEE3 /* ProgressView+mt.swift in Sources */,
 				35451B623051E62CE0742F09D79F7330 /* Response+Extension.swift in Sources */,
 				C2B1F4B4B753749306036A81788CAE97 /* ResponsePlugin.swift in Sources */,

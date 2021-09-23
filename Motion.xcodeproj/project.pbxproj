@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -33,12 +33,15 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
+		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
+		5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53377426FC116600949087 /* MTLocUserAvatar.swift */; };
 		5A5842D526F4CDE100311388 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5842D426F4CDE100311388 /* MessageView.swift */; };
 		5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF526F1DE240026D870 /* NotificationView.swift */; };
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
 		5AC2146426F3767800D4457C /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146326F3767800D4457C /* RecommendView.swift */; };
 		5AC2146726F3787300D4457C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146626F3787300D4457C /* ProfileView.swift */; };
+		5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57E826FC11B8001BACDA /* SettingBtn.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
 		5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */; };
@@ -63,12 +66,15 @@
 
 /* Begin PBXFileReference section */
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
+		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		5A53377426FC116600949087 /* MTLocUserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLocUserAvatar.swift; sourceTree = "<group>"; };
 		5A5842D426F4CDE100311388 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		5A7EBFF526F1DE240026D870 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5AC2146326F3767800D4457C /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		5AC2146626F3787300D4457C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5ACB57E826FC11B8001BACDA /* SettingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBtn.swift; sourceTree = "<group>"; };
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewTopTabBar.swift; sourceTree = "<group>"; };
@@ -107,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A53377326FC114F00949087 /* PublicViews */ = {
+			isa = PBXGroup;
+			children = (
+				5A53377426FC116600949087 /* MTLocUserAvatar.swift */,
+				5ACB57E826FC11B8001BACDA /* SettingBtn.swift */,
+			);
+			path = PublicViews;
+			sourceTree = "<group>";
+		};
 		5A5842D226F4CDBF00311388 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +202,10 @@
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
 				5ACBA38E26F2D44100A5789E /* Team */,
+				5A53377326FC114F00949087 /* PublicViews */,
 				5ACBA38F26F2E66E00A5789E /* Find */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
+				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,7 +356,7 @@
 				};
 			};
 			buildConfigurationList = DFE0C0A426E783CE00EDB44F /* Build configuration list for PBXProject "Motion" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -473,7 +490,10 @@
 				DF4FD4AF26FC1C5F00A7AFD2 /* LoginStartView.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
+				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,
 				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
+				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

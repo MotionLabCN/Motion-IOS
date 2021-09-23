@@ -10,7 +10,7 @@ import MotionComponents
 fileprivate var notificationViewTabs = ["私信","通知","提及","小组"]
 
 struct NotificationView: View {
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    @EnvironmentObject var fullscreen : AppState.TopFullScreenPage
     @State var tag  =  notificationViewTabs[0]
     
     var body: some View {
@@ -34,22 +34,9 @@ struct NotificationView: View {
             Text("新消息")
                 .font(.mt.body1.mtBlod(),textColor: .black)
         }, leading: {
-            Button {
-                fullscreen.showFullScreen(type: .profile)
-            } label: {
-                Circle()
-                    .foregroundColor(Color.random)
-                    .frame(width: 36, height: 36)
-            }
+            MTLocUserAvatar()
         }, trailing: {
-            Button(
-                action: {},
-                label: {
-                    Image
-                        .mt.load(.Setting)
-                        .foregroundColor(.mt.gray_900)
-                }
-            )
+            SettingBtn()
         })
     }
 }

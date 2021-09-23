@@ -17,6 +17,8 @@ struct HomeView: View {
     @State private var isShowPlaceholder = true
     
     var body: some View {
+        
+        
         ScrollView {
             LazyVStack(spacing: 0.0) {
                 Spacer.mt.navbar()
@@ -26,7 +28,7 @@ struct HomeView: View {
             }
         }
         .overlay(
-            Group {
+            ZStack {
                 if isShowPlaceholder {
                     placeholder
                         .padding(.top, 100)
@@ -38,9 +40,7 @@ struct HomeView: View {
                 .resizable()
                 .frame(size: .init(width: 33, height: 33))
         }, leading: {
-            Circle()
-                .fill(Color.black)
-                .frame(size: .init(width: 33, height: 33))
+            MTLocUserAvatar()
         }
         , trailing: {
             Image.mt.load(.Map_place)
@@ -64,18 +64,19 @@ extension HomeView {
     var main: some View {
         LazyVStack {
             ForEach(1...119, id: \.self) { count in
-                NavigationLink {
-                    Text("待完善")
-                } label: {
-                    VStack {
-                        PostCell()
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-
-                        Divider.mt.defult()
+                
+                Button(action: {
+                    withAnimation(.easeInOut) {
+                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
                     }
+                }){
+                    PostCell()
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                 }
-                .mtLinkStyle()
+             
+
+    
             }
         }
         .frame(maxWidth: .infinity)

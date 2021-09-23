@@ -46,23 +46,12 @@ struct FindView: View {
                 } .foregroundColor(.mt.gray_500)
                 )
         }, leading: {
-            Button {
-                fullscreen.showFullScreen(type: .profile)
-            } label: {
-                Circle()
-                    .foregroundColor(Color.random)
-                    .frame(width: 36, height: 36)
-            }
+           
+                MTLocUserAvatar()
+          
        
         }, trailing: {
-            Button(
-                action: {},
-                label: {
-                    Image
-                        .mt.load(.Setting)
-                        .foregroundColor(.mt.gray_900)
-                }
-            )
+            SettingBtn()
         })
     }
 }
@@ -73,5 +62,4 @@ struct FindView_Previews: PreviewProvider {
         FindView()
     }
 }
-
 

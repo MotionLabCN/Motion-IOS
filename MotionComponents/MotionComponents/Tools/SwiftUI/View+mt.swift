@@ -34,8 +34,8 @@ struct MTImageBorder: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(
-                Circle()
-                    .strokeBorder(color, lineWidth: lineWidth)
+                Capsule(style: .continuous)
+                .strokeBorder(color, lineWidth: lineWidth)
             )
     }
 }
