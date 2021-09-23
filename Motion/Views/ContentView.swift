@@ -29,7 +29,6 @@ struct ContentView: View {
                 
                 actionCricleBtn
                 
-                
             }
             .navigationBarHidden(true)
             .fullScreenCover(isPresented: $fullscreen.show) {
@@ -49,11 +48,13 @@ extension ContentView {
     @ViewBuilder
     var CustomFullScreenView : some View {
         ZStack{
-        if fullscreen.showPostDetail {
-            BlurView.init(style: .dark)
+        if fullscreen.showCustom {
+            BlurView.init(style: .systemMaterialDark)
                 .ignoresSafeArea()
                 .transition(.opacity)
-            PostDetailView()
+            if let view = fullscreen.customView?.view {
+                view
+            }else{ProgressView()}
         }
         }
     }
@@ -237,3 +238,5 @@ struct ContentView_Previews: PreviewProvider {
             .previewDevice("iPhone 12")
     }
 }
+
+

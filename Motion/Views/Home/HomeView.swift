@@ -67,7 +67,7 @@ extension HomeView {
                 
                 Button(action: {
                     withAnimation(.easeInOut) {
-                        fullscreen.showPostDetail.toggle()
+                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
                     }
                 }){
                     PostCell()

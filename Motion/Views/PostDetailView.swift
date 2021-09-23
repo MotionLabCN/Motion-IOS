@@ -11,11 +11,9 @@ import MotionComponents
 struct PostDetailView: View {
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
     
-    
-    
-    
-    
+  
     var body: some View {
+        
         ZStack{
             imageTabview
             
@@ -25,14 +23,9 @@ struct PostDetailView: View {
             
             bottomInfoBar
         }
-        .transition(.move(edge: .bottom))
-        
+        .transition(.move(edge: .bottom).animation(.linear))
     }
-    
-    
-    
-    
-    
+  
     
     
     
@@ -52,16 +45,21 @@ struct PostDetailView: View {
         return result
     }
     
+    
     var imageTabview : some View {
+        
         TabView {
             ForEach(0..<4){index in
-                postImage
+                postImage.tag(index)
             }
-        }.tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(maxWidth : .infinity,maxHeight : .infinity)
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(maxWidth : .infinity,maxHeight : .infinity)
     }
     
+    
     var postImage : some View {
+        
         GeometryReader { proxy in
             ZStack{
                 VStack{
@@ -70,13 +68,11 @@ struct PostDetailView: View {
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 24))
                         .frame(minWidth: ScreenWidth(),maxHeight: (ScreenHeight() - SafeBottomArea() - StatusBarH() - 68),alignment: .center)
-//                        .overlay(Color.random)
-                    
                     Spacer()
                 }
             }
             .rotation3DEffect(getAngle(proxy: proxy),
-                              axis: (x: 0, y: 1, z: 0), anchor: proxy.frame(in: .global).minX > 0 ? .leading : .trailing,
+                              axis: (x: 0, y: 0.5, z: 0), anchor: proxy.frame(in: .global).minX > 0 ? .leading : .trailing,
                               perspective: 2.5)
         }
     }
@@ -132,7 +128,7 @@ struct PostDetailView: View {
                     .foregroundColor(.white)
                 Button(action: {
                     withAnimation(.easeInOut){
-                        fullscreen.showPostDetail.toggle()
+                        fullscreen.showCustom.toggle()
                     }
                 }){
                     Image.mt.load(.Close)
