@@ -72,7 +72,7 @@ struct TeamProfileView: View {
                 Button {} label: {Text("充能")}
                 Spacer()
             }
-            .mtCustom(.smallDefult(isEnable: true))
+            .mtButtonStyle(.smallDefult(isEnable: true))
             
             Spacer()
         }

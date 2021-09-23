@@ -12,7 +12,7 @@ struct NextView: View {
     
     @State var isShowToast = false
     
-    @State var isShow = false
+    @State var isShow = true
     var body: some View {
         NavigationView {
             Button {
@@ -25,26 +25,36 @@ struct NextView: View {
                 Text("123")
             }
         }
-//        .mtFullScreen($isShow)
-        
+        .fullScreenCover(isPresented: $isShowToast, onDismiss: {
+            
+        }, content: {
+            EmptyView()
+        })
+      
         
     }
 }
 
-struct MTFullScreenViewModifier: ViewModifier {
-    @Binding var isShow: Bool
+struct MTFullScreenCoverViewModifier: ViewModifier {
+    @Binding var isPresented: Bool
     
     func body(content: Content) -> some View {
-        Group {
+        ZStack {
+            content
             
+            Rectangle()
+                .frame(height: 100)
         }
     }
 
 }
 
 public extension View {
-    func mtFullScreen(_ isShow: Binding<Bool>) -> some View {
-        modifier(MTFullScreenViewModifier(isShow: isShow))
+//    public func fullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View
+//
+//    public func fullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View
+    func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
+        modifier(MTFullScreenViewModifier(isPresented: isPresented))
     }
 }
 

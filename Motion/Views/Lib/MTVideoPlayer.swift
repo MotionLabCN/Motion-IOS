@@ -16,8 +16,9 @@ public struct MTVideoPlayer: UIViewControllerRepresentable {
     
     @Binding var status: MTVideoPlayerStatus?
 
-    public init(_ item: AVPlayerItem, status: Binding<MTVideoPlayerStatus?>) {
-        player =  AVQueuePlayer()
+    public init(_ item: AVPlayerItem, player: AVQueuePlayer, status: Binding<MTVideoPlayerStatus?>) {
+//        player =  AVQueuePlayer()
+        self.player = player
         playerLooper = AVPlayerLooper(player: player, templateItem: item)
         player.play()
         _status = status
@@ -28,7 +29,7 @@ public struct MTVideoPlayer: UIViewControllerRepresentable {
         
         vc.showsPlaybackControls = false
         vc.videoGravity = .resizeAspectFill
-        vc.player = player
+//        vc.player = player
         return vc
     }
     

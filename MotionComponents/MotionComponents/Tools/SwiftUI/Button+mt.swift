@@ -25,19 +25,20 @@ public enum MTButtonStyle {
 //MARK: - Button扩展
 public extension View {
     /// 在button外加 改样式 + 动画
-    func mtCustom(_ style: MTButtonStyle) -> some View {
+    func mtButtonStyle(_ style: MTButtonStyle) -> some View {
         self
             .buttonStyle(MTButtonCustomStyle(style: style, customBackground: false))
             .disabled(!style.isEnable)
     }
+    
     /// button里的Label 只改样式
-    func mtCustomLabel(_ style: MTButtonStyle, customBackground: Bool = true) -> some View {
+    func mtButtonLabelStyle(_ style: MTButtonStyle, customBackground: Bool = true) -> some View {
         modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
     }
     
     /// 点击动画
     @ViewBuilder
-    func mtTapAnimationStyle(_ style: MTTapAnimationStyle = .rotation3D) -> some View {
+    func mtTapAnimation(style: MTTapAnimationStyle = .rotation3D) -> some View {
         switch style {
         case .system: self
         case .normal: buttonStyle(MTButtonNormalStyle())

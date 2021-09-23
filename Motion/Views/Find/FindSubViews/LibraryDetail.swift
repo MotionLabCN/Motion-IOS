@@ -60,13 +60,13 @@ struct LibraryDetail: View {
                 } label: {
                     Image.mt.load(.Link)
                 }
-                .mtCustom(.mainDefult(isEnable: false))
+                .mtButtonStyle(.mainDefult(isEnable: false))
                 
                 Button {
                 } label: {
                     Image.mt.load(.Github)
                 }
-                .mtCustom(.mainDefult(isEnable: false))
+                .mtButtonStyle(.mainDefult(isEnable: false))
 
                 
                 Button {
@@ -76,7 +76,7 @@ struct LibraryDetail: View {
                         Image.mt.load(.Arrow_right)
                     }
                 }
-                .mtCustom(.mainDefult())
+                .mtButtonStyle(.mainDefult())
                 .frame(width: ScreenWidth() / 2)
             }
             

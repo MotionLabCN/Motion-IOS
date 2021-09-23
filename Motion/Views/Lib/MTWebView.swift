@@ -18,15 +18,12 @@ struct MTWebView: View {
     var body: some View {
         VStack(spacing: 0.0) {
             ProgressView(value: webvm.estimatedProgress, total: 1)
-                .mtProgressLine(height: webvm.estimatedProgress < 1 ? 3 : 0)
-                .opacity(webvm.estimatedProgress < 1 ? 1 : 0)
+                .mtProgressLine(height: webvm.estimatedProgress < 0.8 ? 3 : 0)
+                .opacity(webvm.estimatedProgress < 0.8 ? 1 : 0)
                 .animation(.default.delay(0.2))
             
             MTWebViewRepresentable(webView: webvm.webView)
                 .ignoresSafeArea(edges: .bottom)
-                .onChange(of: webvm.estimatedProgress) { newValue in
-                    print("webview加载了 \(newValue)")
-                }
         }
         .navigationBarTitle(webvm.title ?? "loading...")
         .navigationBarTitleDisplayMode(.inline)

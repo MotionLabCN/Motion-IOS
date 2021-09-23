@@ -39,7 +39,16 @@ struct ContentView: View {
                     ProgressView()
                 }
             }
+            
         }
+        .overlay(
+            ZStack {
+                if fullscreen.showCustom {
+                    BlurView(style: .dark)
+                    fullscreen.customView
+                }
+            }
+        )
         .overlay(
             Group {
                 if !userManager.hasLogin {
@@ -59,7 +68,7 @@ extension ContentView {
             BlurView.init(style: .systemMaterialDark)
                 .ignoresSafeArea()
                 .transition(.opacity)
-            if let view = fullscreen.customView?.view {
+            if let view = fullscreen.customView {
                 view
             }else{ProgressView()}
         }
@@ -100,7 +109,7 @@ extension ContentView {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)
                 }
-                .mtCustom(.cricleDefult(.mt.accent_700))
+                .mtButtonStyle(.cricleDefult(.mt.accent_700))
                     .offset(y : -TabbarHeight - 16 )
             }
         }
@@ -183,7 +192,8 @@ struct MTTabbar: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())
                     })
-                        .mtTapAnimationStyle(.overlayOrScale(isOverlay: true, scale: 0.7))
+                        .mtTapAnimation(style: .overlayOrScale(isOverlay: true, scale: 0.7))
+
                 }
             })
         }

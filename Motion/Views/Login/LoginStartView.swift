@@ -13,7 +13,8 @@ struct LoginStartView: View {
     @State var playerStatus: MTVideoPlayerStatus?
     @State var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
-
+    var player = AVQueuePlayer()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -75,7 +76,7 @@ struct LoginStartView: View {
                             "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
                             .colored(with: .white)
                             .font(with: .mt.body3)
-                            .applying(attributes: [.foregroundColor: UIColor.mt.accent_purple], toRangesMatching: "中国移动认证服务条款》")
+                            .applying(attributes: [.font: UIFont.mt.body3.mtBlod()], toRangesMatching: "《中国移动认证服务条款》")
                             .onTap(subString: "《中国移动认证服务条款》") { (full, sub) in
                     isShowTermsOfService.toggle()
                 })
@@ -94,20 +95,28 @@ struct LoginStartView: View {
             userManager.changeId("123")
         } label: {
             Text("开始")
-                .mtCustomLabel(.mainDefult())
+                .mtButtonLabelStyle(.mainDefult())
                 .background(
                     RadialGradient(colors: [end, start], center: .topTrailing, startRadius: -5, endRadius: 100)
                         .clipShape(Capsule(style: .continuous))
                 )
         }
-        .mtTapAnimationStyle(.overlayOrScale())
+        .mtTapAnimation(style: .overlayOrScale())
     }
     
     @ViewBuilder
     var mp4: some View {
         if let url = Bundle.main.url(forResource: "startVedio", withExtension: "mp4") {
-            MTVideoPlayer(AVPlayerItem(url: url), status: $playerStatus)
+            MTVideoPlayer(AVPlayerItem(url: url), player: player, status: $playerStatus)
                 .ignoresSafeArea(edges: .all)
+                .onAppear {
+                    print("mp4 appear")
+                    player.play()
+                }
+                .onDisappear {
+                    print("mp4 disappear")
+                    player.pause()
+                }
         }
     }
     

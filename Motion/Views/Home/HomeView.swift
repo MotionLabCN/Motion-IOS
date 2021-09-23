@@ -25,17 +25,15 @@ struct HomeView: View {
                 Spacer.mt.navbar()
                 header
                 Divider.mt.defult()
-                main
-            }
-        }
-        .overlay(
-            ZStack {
+                
                 if isShowPlaceholder {
                     placeholder
-                        .padding(.top, 100)
+                        .padding(.top, 150)
+                } else {
+                    main
                 }
             }
-        )
+        }
         .mtNavbar(content: {
             Image.mt.load(.Logo)
                 .resizable()
@@ -62,20 +60,24 @@ extension HomeView {
             .padding()
         })
     }
+    
     var main: some View {
         LazyVStack {
             ForEach(1...119, id: \.self) { count in
                 
                 Button(action: {
                     withAnimation(.easeInOut) {
-                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
+//                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
+                        fullscreen.showCustomFullScreen {
+                            PostDetailView()
+                        }
                     }
                 }){
                     PostCell()
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
-                .mtTapAnimationStyle(.rotation3D)
+                .mtTapAnimation(style: .rotation3D)
              
 
     
@@ -88,15 +90,16 @@ extension HomeView {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
+                isShowPlaceholder.toggle()
             }, label: {
                 Text("查找朋友")
-                    .mtCustomLabel(.mainDefult())
+                    .mtButtonLabelStyle(.mainDefult())
                     .frame(width: 125)
                     .background(
                         Color.mt.accent_700.clipShape(Capsule())
                     )
             })
-            .mtTapAnimationStyle(.overlayOrScale())
+                .mtTapAnimation(style: .overlayOrScale())
             
         }
     }
