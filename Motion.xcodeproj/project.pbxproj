@@ -41,7 +41,10 @@
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
 		5AC2146426F3767800D4457C /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146326F3767800D4457C /* RecommendView.swift */; };
 		5AC2146726F3787300D4457C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146626F3787300D4457C /* ProfileView.swift */; };
+		5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */; };
 		5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57E826FC11B8001BACDA /* SettingBtn.swift */; };
+		5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57EA26FC2AC1001BACDA /* PostEditor.swift */; };
+		5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
 		5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */; };
@@ -70,7 +73,10 @@
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5AC2146326F3767800D4457C /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		5AC2146626F3787300D4457C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetail.swift; sourceTree = "<group>"; };
 		5ACB57E826FC11B8001BACDA /* SettingBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBtn.swift; sourceTree = "<group>"; };
+		5ACB57EA26FC2AC1001BACDA /* PostEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditor.swift; sourceTree = "<group>"; };
+		5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLibrary.swift; sourceTree = "<group>"; };
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewTopTabBar.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 			children = (
 				5A53377426FC116600949087 /* MTLocUserAvatar.swift */,
 				5ACB57E826FC11B8001BACDA /* SettingBtn.swift */,
+				5ACB57EA26FC2AC1001BACDA /* PostEditor.swift */,
 			);
 			path = PublicViews;
 			sourceTree = "<group>";
@@ -134,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				5AC2146326F3767800D4457C /* RecommendView.swift */,
+				5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */,
+				5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */,
 			);
 			path = FindSubViews;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
 				DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */,
 				5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */,
+				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
 				DFECAB1026F30DCB00AB192C /* PostVM.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
@@ -456,6 +466,7 @@
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
+				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
@@ -463,6 +474,7 @@
 				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
 				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
+				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

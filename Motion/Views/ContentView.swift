@@ -88,6 +88,7 @@ extension ContentView {
             HStack{
                 Spacer()
                 Button {
+                    fullscreen.showFullScreen(view: FullScreenView(view: AnyView(PostEditor())))
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)

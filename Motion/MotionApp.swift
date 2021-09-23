@@ -22,9 +22,6 @@ struct MotionApp: App {
                 .environmentObject(tabbarObj)
                 .environmentObject(router)
                 .environmentObject(fullscreen)
-
-
-
         }
         
     }

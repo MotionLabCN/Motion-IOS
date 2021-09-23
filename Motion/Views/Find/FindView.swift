@@ -22,7 +22,7 @@ struct FindView: View {
             FindViewTopTabBar(tag: $tag, items: findViewTabs)
             
                 TabView(selection: $tag, content:{ //tabview start
-                    RecommendView().tag(findViewTabs[0])
+                    OpenSourceLibrary().tag(findViewTabs[0])
                     RecommendView().tag(findViewTabs[1])
                     RecommendView().tag(findViewTabs[2])
                     RecommendView().tag(findViewTabs[3])
