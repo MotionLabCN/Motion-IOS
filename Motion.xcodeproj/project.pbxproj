@@ -33,6 +33,9 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
+		5A40BA6E26FCB1740011D3B0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BA6D26FCB1740011D3B0 /* LottieView.swift */; };
+		5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */; };
+		5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA7026FCB1970011D3B0 /* money-falling.json */; };
 		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
 		5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53377426FC116600949087 /* MTLocUserAvatar.swift */; };
 		5A5842D526F4CDE100311388 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5842D426F4CDE100311388 /* MessageView.swift */; };
@@ -72,6 +75,9 @@
 
 /* Begin PBXFileReference section */
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
+		5A40BA6D26FCB1740011D3B0 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moneyIcon.json; sourceTree = "<group>"; };
+		5A40BA7026FCB1970011D3B0 /* money-falling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "money-falling.json"; sourceTree = "<group>"; };
 		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		5A53377426FC116600949087 /* MTLocUserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLocUserAvatar.swift; sourceTree = "<group>"; };
 		5A5842D426F4CDE100311388 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -125,6 +131,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A40BA6C26FCB1610011D3B0 /* LottieViews */ = {
+			isa = PBXGroup;
+			children = (
+				5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */,
+				5A40BA7026FCB1970011D3B0 /* money-falling.json */,
+				5A40BA6D26FCB1740011D3B0 /* LottieView.swift */,
+			);
+			path = LottieViews;
+			sourceTree = "<group>";
+		};
 		5A53377326FC114F00949087 /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +237,7 @@
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5A53377326FC114F00949087 /* PublicViews */,
 				5ACBA38F26F2E66E00A5789E /* Find */,
+				5A40BA6C26FCB1610011D3B0 /* LottieViews */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
 				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
@@ -398,8 +415,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */,
 				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
+				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
 				DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +526,7 @@
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
+				5A40BA6E26FCB1740011D3B0 /* LottieView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,

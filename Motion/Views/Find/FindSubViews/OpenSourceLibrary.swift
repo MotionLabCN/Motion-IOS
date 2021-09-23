@@ -38,7 +38,7 @@ struct OpenSourceLibrary: View {
     }
     
     
-   
+    
     
     var newStar : some View {
         Section {
@@ -124,30 +124,54 @@ struct LibraryListCell: View {
 }
 
 struct MoneyNotiView: View {
+    @State var showLottie : Bool = true
     var body: some View {
-        HStack(alignment: .top, spacing: 16){
-            Text("💸")
-                .padding()
-                .background(Color.mt.gray_100)
-                .clipShape(Capsule(style: .continuous))
-            VStack(alignment: .leading,spacing:8){
-                Text("尝试盈利！")
-                    .font(.mt.body1.mtBlod(),textColor: .black)
-                Text("你在Motion中的盈利的三种方式，现已开放测试。")
-                    .font(.mt.body2,textColor: .mt.gray_600)
-                    .lineSpacing(8)
+        Button {
+            ()
+        } label: {
+            HStack(alignment: .top, spacing: 16){
+                Color.mt.gray_100
+                    .frame(width: 56, height: 56)
+                    .clipShape(Capsule(style: .continuous))
+                    .overlay(LottieView(lottieFliesName: "moneyIcon", loopMode:.repeat(2)).padding(.all,3))
+                
+                VStack(alignment: .leading,spacing:8){
+                    Text("尝试盈利！")
+                        .font(.mt.body1.mtBlod(),textColor: .black)
+                    Text("你在Motion中的盈利的三种方式，现已开放测试。")
+                        .font(.mt.body2,textColor: .mt.gray_600)
+                        .lineSpacing(8)
+                }
+                Spacer()
+                VStack{
+                    Image.mt.load(.Chevron_right_On)
+                        .foregroundColor(.mt.gray_400)
+                }
             }
-            Spacer()
-            VStack{
-                Image.mt.load(.Chevron_right_On)
-                    .foregroundColor(.mt.gray_400)
-            }
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
+            .shadow(type: MTShadow.shadowLow)
+            .padding()
+            .overlay(
+                Group{
+                    if showLottie{
+                        LottieView(lottieFliesName: "money-falling", loopMode: .loop)
+                            .transition(.opacity)
+                    }
+                }
+            )
+            
         }
-        .padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(type: MTShadow.shadowMid)
-        .padding()
-        .transition(.move(edge: .top).animation(.spring()))
+        .transition(.fly.animation(.spring()))
+        .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation{
+                    showLottie = false
+                }
+            }
+        })
+        
+        
     }
 }

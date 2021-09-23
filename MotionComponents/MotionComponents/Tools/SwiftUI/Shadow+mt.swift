@@ -22,7 +22,7 @@ public enum MTShadow: String, Identifiable, CaseIterable {
     
     var config: Config {
         switch self {
-        case .shadowLow: return .init(color: .black.opacity(0.08), radius: 16, x: 0, y: 3)
+        case .shadowLow: return .init(color: .black.opacity(0.08), radius: 24, x: 0, y: 3)
         case .shadowMid: return .init(color: .black.opacity(0.16), radius: 24, x: 0, y: 6)
         case .shadowHigh: return .init(color: .black.opacity(0.24), radius: 32, x: 0, y: 9)
         }

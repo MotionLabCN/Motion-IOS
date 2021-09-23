@@ -9,6 +9,7 @@ import SwiftUI
 import MotionComponents
 
 fileprivate var findViewTabs = ["推荐","宝库","天梯","盈利","服务"]
+
 struct FindView: View {
     
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
