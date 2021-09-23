@@ -34,6 +34,11 @@ public extension MT where Base == Image {
     static func load(_ source: MTNavigationIcon) -> Image { source.value }
     static func load(_ source: MTSocialIcon) -> Image { source.value }
 //    static func load(_ source: MTToggleIcon) -> Image { source.value }
+    
+    static var backImage: Image {
+        Image.mt.load(.Chevron_left_On)
+            .renderingMode(.original)
+    }
 }
 
 

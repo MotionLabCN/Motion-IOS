@@ -61,6 +61,10 @@ public extension String {
         return (self as NSString).range(of: text)
     }
     
+    func rangeAll() -> NSRange {
+        return rangeOf(self)
+    }
+    
     func boundingWidth(with font: UIFont) -> CGFloat {
         let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: font.lineHeight)
         let preferredRect = (self as NSString).boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: font], context: nil)
@@ -73,12 +77,7 @@ public extension String {
         return preferredRect.size
     }
     
-    func buildInsert(before: String, after: String, attributes: [NSAttributedString.Key : Any]) -> NSMutableAttributedString {
-        let text = "\(before)\(self)\(after)"
-        let attri =  NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor : UIColor.clear])
-        attri.addAttributes(attributes, range: text.rangeOf(self))
-        return attri
-    }
+ 
     
     var toDouble: Double { self.double() ?? 0 }
 }

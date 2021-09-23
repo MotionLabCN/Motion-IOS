@@ -14,7 +14,8 @@ struct MotionApp: App {
     @StateObject var tabbarObj = AppState.TabbarState()
     @StateObject var router = AppState.TopRouterTable()
     @StateObject var fullscreen = AppState.TopFullScreenPage()
-    @Environment(\.userManager) var userManager
+    @StateObject var userManager = UserManager.shared
+//    @Environment(\.userManager) var userManager
 
     var body: some Scene {
         WindowGroup {
@@ -22,7 +23,7 @@ struct MotionApp: App {
                 .environmentObject(tabbarObj)
                 .environmentObject(router)
                 .environmentObject(fullscreen)
-
+                .environmentObject(userManager)
 
 
         }
@@ -30,9 +31,9 @@ struct MotionApp: App {
     }
     
     init() {
-        let u = userManager
+//        let u = userManager
         print("")
-//        UserManager.test()
+        UserManager.test()
     }
 }
 

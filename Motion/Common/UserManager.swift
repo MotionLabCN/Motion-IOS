@@ -13,12 +13,15 @@ import SwiftUI
  */
 
 //MARK: - 用户模型
+struct User: Convertible {
+    
+    var nickName = ""
+    var id = ""
+}
+
+//MARK: - 用户管理
 private let UserDiskCacheFileName = "currentUser"
 class UserManager: ObservableObject {
-    struct User: Convertible {
-        
-        var nickName = ""
-    }
     /* 在App环境下通过
      .environmentObject(UserManager.shared) 注入
      或
@@ -44,6 +47,9 @@ class UserManager: ObservableObject {
         }
     }
     
+    var hasLogin: Bool { user.id.count > 0 }
+
+    
     func save(userJson: [String: Any]?) { //网络请求后
         if let u = userJson?.kj.model(User.self)  {
             user = u
@@ -51,9 +57,7 @@ class UserManager: ObservableObject {
     }
     /// 修改用户昵称 并触发 Publisher 示例
     func changeNickName(_ name: String)  {
-        var tmp = user
-        tmp.nickName = name
-        user = tmp
+        user.nickName = name
     }
     
     func logout() {

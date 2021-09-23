@@ -61,4 +61,43 @@ public enum MTColor: String, CaseIterable, Identifiable {
     
     public var value: SwiftUI.Color { Color(rawValue) }
     
+    public var uicolor: UIColor { UIColor(named: rawValue)! }
+    
+}
+
+
+
+extension UIColor: MTCompatible {
+   
+}
+
+public extension MT where Base == UIColor {
+    static var accent_purple = MTColor.accent_purple.uicolor
+    static var accent_900 = MTColor.accent_900.uicolor
+    static var accent_800 = MTColor.accent_800.uicolor
+    static var accent_700 = MTColor.accent_700.uicolor
+    static var accent_600 = MTColor.accent_600.uicolor
+    static var accent_500 = MTColor.accent_500.uicolor
+    static var accent_400 = MTColor.accent_400.uicolor
+    static var accent_300 = MTColor.accent_300.uicolor
+    static var accent_200 = MTColor.accent_200.uicolor
+    static var accent_100 = MTColor.accent_100.uicolor
+    static var accent_050 = MTColor.accent_050.uicolor
+    static var gray_900 = MTColor.gray_900.uicolor
+    static var gray_800 = MTColor.gray_800.uicolor
+    static var gray_700 = MTColor.gray_700.uicolor
+    static var gray_600 = MTColor.gray_600.uicolor
+    static var gray_500 = MTColor.gray_500.uicolor
+    static var gray_400 = MTColor.gray_400.uicolor
+    static var gray_300 = MTColor.gray_300.uicolor
+    static var gray_200 = MTColor.gray_200.uicolor
+    static var gray_100 = MTColor.gray_100.uicolor
+    static var gray_050 = MTColor.gray_050.uicolor
+    static var status_danger = MTColor.status_danger.uicolor
+    static var status_warnning = MTColor.status_warnning.uicolor
+    static var status_sucess = MTColor.status_sucess.uicolor
+    static var status_play = MTColor.status_play.uicolor
+    static var opacity_100 = MTColor.opacity_100.uicolor
+    static var opacity_80 = MTColor.opacity_80.uicolor
+    static var opacity_60 = MTColor.opacity_60.uicolor
 }

@@ -46,8 +46,12 @@
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
+		DF4FD4AD26FC156600A7AFD2 /* MTRichText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FD4AC26FC156600A7AFD2 /* MTRichText.swift */; };
+		DF4FD4AF26FC1C5F00A7AFD2 /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
+		DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DF95F20F26FB15A700081A7D /* startVedio.mp4 */; };
+		DF95F21326FB222200081A7D /* MTWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF95F21226FB222200081A7D /* MTWebView.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
 		DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AE26E783CE00EDB44F /* ContentView.swift */; };
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
@@ -74,8 +78,12 @@
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderItemView.swift; sourceTree = "<group>"; };
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		DF4FD4AC26FC156600A7AFD2 /* MTRichText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTRichText.swift; sourceTree = "<group>"; };
+		DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DF95F20F26FB15A700081A7D /* startVedio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startVedio.mp4; sourceTree = "<group>"; };
+		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionApp.swift; sourceTree = "<group>"; };
 		DFE0C0AE26E783CE00EDB44F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -173,6 +181,8 @@
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
 				5A7EBFF726F1DFDF0026D870 /* TeamView.swift */,
 				5A7EBFF526F1DE240026D870 /* NotificationView.swift */,
+				DF95F21126FB220900081A7D /* Lib */,
+				DF95F20A26FAF77100081A7D /* Login */,
 				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
@@ -192,9 +202,27 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		DF95F20A26FAF77100081A7D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DF95F21126FB220900081A7D /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				DF95F21226FB222200081A7D /* MTWebView.swift */,
+				DF4FD4AC26FC156600A7AFD2 /* MTRichText.swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
 		DFE0C0A026E783CE00EDB44F = {
 			isa = PBXGroup;
 			children = (
+				DF95F20F26FB15A700081A7D /* startVedio.mp4 */,
 				DFE0C0AB26E783CE00EDB44F /* Motion */,
 				DFE0C0AA26E783CE00EDB44F /* Products */,
 				C964F152E958CB1785F74CA1 /* Pods */,
@@ -335,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
 				DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */,
 			);
@@ -426,9 +455,11 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
+				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
 				DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */,
 				5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */,
+				DF4FD4AD26FC156600A7AFD2 /* MTRichText.swift in Sources */,
 				DFECAB1026F30DCB00AB192C /* PostVM.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
@@ -439,6 +470,7 @@
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
+				DF4FD4AF26FC1C5F00A7AFD2 /* LoginStartView.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
 				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
@@ -573,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = G6M8HGC8FF;
+				DEVELOPMENT_TEAM = SM6579H77G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -596,7 +628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = G6M8HGC8FF;
+				DEVELOPMENT_TEAM = SM6579H77G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

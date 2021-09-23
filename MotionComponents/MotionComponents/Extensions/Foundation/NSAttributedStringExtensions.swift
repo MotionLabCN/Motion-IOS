@@ -26,6 +26,15 @@ public extension NSAttributedString {
         copy.addAttributes([.font: font], range: range)
         return copy
     }
+    
+    func range(of: String) -> NSRange {
+        let range = (string as NSString).range(of: of)
+        return range
+    }
+    
+    func rangeAll() -> NSRange {
+        range(of: string)
+    }
 }
 
 #endif

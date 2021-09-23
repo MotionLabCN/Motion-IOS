@@ -14,7 +14,7 @@ struct HomeView: View {
 
     @StateObject var vm = PostVM()
     
-    @State private var isShowPlaceholder = false
+    @State private var isShowPlaceholder = true
     
     var body: some View {
         ScrollView {
@@ -87,11 +87,11 @@ extension HomeView {
             Button(action: {
             }, label: {
                 Text("查找朋友")
-                    .modifier(MTButtonStyleModifier(style: .mainDefult(isEnable: true), customBackground: true))
+                    .mtCustomLabel(.mainDefult())
                     .frame(width: 125)
                     .background(
                         Color.mt.accent_700.clipShape(Capsule())
-              )
+                    )
             })
             .mtAnimation()
         }
@@ -139,7 +139,7 @@ public extension NavigationLink {
         switch style {
         case .system: self
         case .normal: buttonStyle(MTNavigationLinkButtonStyle())
-        case .rotation3D: buttonStyle(MTNavigationLinkRotation3dButtonStyle())
+        case .rotation3D: buttonStyle(MTNavigationLinkrotation3DButtonStyle())
             
         }
     }

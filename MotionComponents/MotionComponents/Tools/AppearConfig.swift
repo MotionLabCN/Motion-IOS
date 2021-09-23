@@ -23,11 +23,12 @@ public struct AppearConfig {
 }
 
 // 隐藏返回按钮默认的文字
-extension UINavigationController {
+extension UINavigationController: UIGestureRecognizerDelegate {
     // Remove back button text
     open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.interactivePopGestureRecognizer?.delegate = self
     }
 
 }

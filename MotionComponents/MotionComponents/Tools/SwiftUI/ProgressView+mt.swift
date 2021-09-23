@@ -24,15 +24,15 @@ public extension ProgressView {
         }
     }
     
-    func mtProgressLine() -> some View {
-        self.progressViewStyle(MTProgressLineStyle())
+    func mtProgressLine(height: CGFloat = 4, fillColor: Color = .white) -> some View {
+        self.progressViewStyle(MTProgressLineStyle(height: height, fillColor: fillColor))
     }
 }
 
 //MARK: - 线
 struct MTProgressLineStyle: ProgressViewStyle {
-    let height: CGFloat = 4
-    let fillColor: Color = .white
+    let height: CGFloat
+    let fillColor: Color
     func makeBody(configuration: Configuration) -> some View {
         Capsule()
             .fill(fillColor)

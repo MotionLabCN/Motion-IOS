@@ -70,10 +70,9 @@ struct TeamProfileView: View {
                 Button {} label: {Text("关注")}
                 Button {} label: {Text("申请加入")}
                 Button {} label: {Text("充能")}
-                .buttonStyle(MTButtonStyle(style:.smallDefult(isEnable: true)))
                 Spacer()
             }
-            .buttonStyle( MTButtonStyle(style: .smallStorker(isEnable: true)))
+            .mtCustom(.smallDefult(isEnable: true))
             
             Spacer()
         }

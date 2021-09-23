@@ -7,4 +7,6 @@ target 'Motion' do
 
   pod 'MotionComponents', :path => './MotionComponents'
   pod 'Kingfisher'
+  pod 'BSText'
+  pod 'YYText'
 end

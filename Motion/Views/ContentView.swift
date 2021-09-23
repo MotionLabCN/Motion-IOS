@@ -16,6 +16,7 @@ struct ContentView: View {
     @EnvironmentObject var tabbarObj: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    @EnvironmentObject var userManager: UserManager
     
     var body: some View {
         NavigationView {
@@ -35,6 +36,13 @@ struct ContentView: View {
                 }
             }
         }
+        .overlay(
+            Group {
+                if !userManager.hasLogin {
+                    LoginStartView()
+                }
+            }
+        )
     }
 }
 
@@ -65,10 +73,12 @@ extension ContentView {
             HStack{
                 Spacer()
                 Button {
+                    fullscreen.show.toggle()
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)
-                }.custom(.cricleDefult(.mt.accent_700))
+                }
+                .mtCustom(.cricleDefult(.mt.accent_700))
                     .offset(y : -TabbarHeight - 16 )
             }
         }
@@ -90,8 +100,11 @@ extension ContentView {
                     NotificationView()
                 }
             }
-           
         }
+        
+        
+        
+        
     }
     
     @ViewBuilder

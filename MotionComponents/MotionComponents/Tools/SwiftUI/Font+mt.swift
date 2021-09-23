@@ -21,7 +21,6 @@ extension Font: MTCompatible {
 
 
 public extension MT where Base == Font {
-    /// 优先使用 load()
     static var largeTitle = MTFont.largeTitle.value
     static var title1 = MTFont.title1.value
     static var title2 = MTFont.title2.value
@@ -54,6 +53,8 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
     
     public var value: Font { Font.system(size: rawValue, weight: .regular, design: .monospaced) }
     
+    public var uifont: UIFont { UIFont.monospacedSystemFont(ofSize: rawValue, weight: .regular) }
+    
     public var text: String {
         switch self {
         case .largeTitle: return "largeTitle"
@@ -69,3 +70,25 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
     }
 }
 
+
+
+//MARK: - UIFont
+extension UIFont: MTCompatible {
+    public func mtBlod() -> UIFont {
+//        self.weight(.black)
+        UIFont.monospacedSystemFont(ofSize: pointSize, weight: .black)
+    }
+}
+
+
+public extension MT where Base == UIFont {
+    static var largeTitle = MTFont.largeTitle.uifont
+    static var title1 = MTFont.title1.uifont
+    static var title2 = MTFont.title2.uifont
+    static var title3 = MTFont.title3.uifont
+    static var body1 = MTFont.body1.uifont
+    static var body2 = MTFont.body2.uifont
+    static var body3 = MTFont.body3.uifont
+    static var caption1 = MTFont.caption1.uifont
+    static var caption2 = MTFont.caption2.uifont
+}

@@ -10,17 +10,21 @@ import SwiftUI
 
 //MARK: - Button扩展
 public extension View {
-    func custom(_ style: MTButtonStyle.Style) -> some View {
+    /// 在button外加
+    func mtCustom(_ style: MTButtonStyle.Style) -> some View {
         self
-            .buttonStyle(MTButtonStyle(style: style))
+            .buttonStyle(MTButtonStyle(style: style, customBackground: false))
             .disabled(!style.isEnable)
     }
-
+    /// button里的Label
+    func mtCustomLabel(_ style: MTButtonStyle.Style, customBackground: Bool = true) -> some View {
+        modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
+    }
+    
+    /// 只做动画
     func mtAnimation(isOverlay: Bool = true, scale: CGFloat = 0.97) -> some View {
         self.buttonStyle(MTButtonAnimationStyle(isOverlay: isOverlay, scale: scale))
     }
-    
-  
 }
 
 
@@ -36,23 +40,18 @@ extension ButtonStyle {
         } else {
             EmptyView()
         }
-       
+        
     }
 }
 
 
 
 //MARK: - 自定义Style Modifier
-public struct MTButtonStyleModifier: ViewModifier {
+struct MTButtonStyleModifier: ViewModifier {
     let style: MTButtonStyle.Style
     let customBackground: Bool
     
-    public init(style: MTButtonStyle.Style, customBackground: Bool = false) {
-        self.style = style
-        self.customBackground = customBackground
-    }
-    
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         if customBackground {
             beforeBackGroundView(content: content)
         } else {
@@ -82,8 +81,38 @@ public struct MTButtonStyleModifier: ViewModifier {
     }
 }
 
+//struct MTButtonAnimationViewModifier: ViewModifier {
+//    let isPressed: Bool
+//    let scale: CGFloat
+//    let isOverlay: Bool
+//
+//    func body(content: Content) -> some View {
+//        if isPressed {
+//            content
+//                .overlay(makeOverlay(isPressed: isPressed))
+//                .scaleEffect(isPressed ? scale : 1)
+//        } else {
+//            content
+//        }
+//    }
+//
+//    @ViewBuilder
+//    func makeOverlay(isPressed: Bool) -> some View {
+//        if isPressed {
+//            Color.white
+//                .clipShape(Capsule())
+//                .blur(radius: 0.3)
+//                .opacity(0.4)
+//        } else {
+//            EmptyView()
+//        }
+//
+//    }
+//}
+
+
 //MARK: - 自定义Style
-public struct MTButtonAnimationStyle: ButtonStyle  {
+struct MTButtonAnimationStyle: ButtonStyle  {
     let isOverlay: Bool
     let scale: CGFloat
     
@@ -102,6 +131,45 @@ public struct MTButtonAnimationStyle: ButtonStyle  {
     
 }
 
+
+
+public struct MTButtonStyle: ButtonStyle  {
+    public let style: Style
+    public let customBackground: Bool
+    public init(style: MTButtonStyle.Style, customBackground: Bool) {
+        self.style = style
+        self.customBackground = customBackground
+    }
+    
+    public func makeBody(configuration: Configuration) -> some View {
+        let isPressed = configuration.isPressed
+        let scale: CGFloat = 0.97
+        
+        configuration.label
+            .modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
+            .overlay(makeOverlay(isPressed: isPressed))
+            .scaleEffect(isPressed ? scale : 1)
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - 按钮类型
 extension MTButtonStyle {
     public enum Style {
         case smallDefult(isEnable: Bool = true), smallStorker(isEnable: Bool = true)
@@ -110,26 +178,6 @@ extension MTButtonStyle {
     }
 }
 
-public struct MTButtonStyle: ButtonStyle  {
-    public let style: Style
-    
-    public init(style: MTButtonStyle.Style) {
-        self.style = style
-    }
-    
-    public func makeBody(configuration: Configuration) -> some View {
-        let isPressed = configuration.isPressed
-        let scale: CGFloat = 0.97
-        
-        configuration.label
-            .modifier(MTButtonStyleModifier(style: style))
-            
-            
-            .overlay(makeOverlay(isPressed: isPressed))
-            .scaleEffect(isPressed ? scale : 1)            
-    }
-
-}
 
 extension MTButtonStyle.Style: Identifiable {
     public var id: Int {
@@ -163,7 +211,7 @@ extension MTButtonStyle.Style: Identifiable {
             return (tint: .mt.gray_200, text: .mt.gray_600)
         }
     }
-
+    
     public var textFont: Font {
         switch self {
         case .smallDefult, .smallStorker: return .mt.body3.mtBlod()
@@ -187,15 +235,15 @@ extension MTButtonStyle.Style: Identifiable {
         case .cricleDefult, .cricleMini: return true
         }
     }
-
+    
     @ViewBuilder
     public func backgroundShape() -> some View {
         switch self {
         case .smallDefult, .mainDefult:
-            Capsule()
+            Capsule(style: .continuous)
                 .foregroundColor(colors.tint)
         case .smallStorker, .mainStorKer:
-            Capsule()
+            Capsule(style: .continuous)
                 .stroke(colors.tint)
         case let .cricleDefult(color): Circle().fill(color)
         case let .cricleMini(color): Circle().fill(color)
