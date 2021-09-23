@@ -34,16 +34,9 @@ struct NotificationView: View {
             Text("新消息")
                 .font(.mt.body1.mtBlod(),textColor: .black)
         }, leading: {
-            LocUserAvatar()
+            MTLocUserAvatar()
         }, trailing: {
-            Button(
-                action: {},
-                label: {
-                    Image
-                        .mt.load(.Setting)
-                        .foregroundColor(.mt.gray_900)
-                }
-            )
+            SettingBtn()
         })
     }
 }

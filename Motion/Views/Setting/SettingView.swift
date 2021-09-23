@@ -15,69 +15,77 @@ struct SettingView: View {
         NavigationView{
             List{
                 //个人资料
-                Section {
-                    Button(action: {
-                    }){
-                        HStack{
-                            //用户头像
-                            Circle().frame(width: 64, height: 64).foregroundColor(Color.random)
-                            //用户名称
-                            VStack(alignment: .leading, spacing: 4)  {
-                                Text("userdatacenter.username")
-                                    .multilineTextAlignment(.leading)
-                                    .font(.mt.body2.mtBlod())
-                                    .foregroundColor(.mt.gray_900)
-                                //用户昵称
-                                Text("@" + "(userdatacenter.userNickname)")
-                                    .kerning(1)
-                                    .lineLimit(1)
-                                    .font(.mt.body3)
-                                    .foregroundColor(.mt.gray_600)
-                                Spacer()
-                        }
-                                Spacer()
-                                Image.mt.load(.Error).foregroundColor(.mt.gray_500)
-                    }
-                    .padding(.vertical,8)
-                }
-                }
+                locUserInfo
                 
-                Label {Text("发现页管理")} icon: {Image.mt.load(.Exchange ).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("队伍")} icon: {Image.mt.load(.Group).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("通知")} icon: {Image.mt.load(.Menu ).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("安全")} icon: {Image.mt.load(.Savings_bag ).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("关于")} icon: {Image.mt.load(.Close ).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("SDK声明")} icon: {Image.mt.load(.Person).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                Label {Text("鸣谢")} icon: {Image.mt.load(.Person).foregroundColor(.mt.gray_600)}
-                .padding(.vertical,8)
-                
-              
-                
-                //关于Sporip
-                Section {
-                    LableRow(linkurl: "https://apps.apple.com/al/app/%E7%94%B5%E6%B5%81Sporip/id1552862011", text: "AppStore评分")
-                    LableRow(linkurl: "https://apps.apple.com/cn/app/id1528460698", text: "微信公众号")
-                }
-                
+                setting
+        
+                aboutUs
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("设置"))
-            .navigationBarItems( trailing:
-                Button(action: {
-                self.persentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text("完成").font(.mt.body2.mtBlod()).foregroundColor(.mt.gray_600)
-            })
-          )
+            .navigationBarItems( trailing:completeBtn)
         }
-     
+        
+    }
+    
+    var completeBtn : some View {
+        Button(action: {
+        self.persentationMode.wrappedValue.dismiss()
+    }, label: {
+        Text("完成").font(.mt.body2.mtBlod()).foregroundColor(.mt.gray_600)
+    })
+    }
+    
+    var aboutUs : some View{
+        //关于Sporip
+        Section {
+            Link(destination: URL(string: "https://apps.apple.com/al/app/%E7%94%B5%E6%B5%81Sporip/id1552862011")!, label: {
+                LableRow( text: "AppStore评分", icon: Image.mt.load(.Link))})
+            Link(destination: URL(string: "https://apps.apple.com/cn/app/id1528460698")!, label: {
+                LableRow( text: "微信公众号", icon: Image.mt.load(.Link))})
+        }
+    }
+    var setting : some View {
+        Section {
+        LableRow( text: "发现页管理", icon: Image.mt.load(.Search))
+        LableRow( text: "小队", icon: Image.mt.load(.Group))
+        LableRow( text: "通知", icon: Image.mt.load(.Notifications_outline))
+        LableRow( text: "安全", icon: Image.mt.load(.Savings_bag))
+        LableRow( text: "关于", icon: Image.mt.load(.Apps))
+        LableRow( text: "SDK声明", icon: Image.mt.load(.Chat))
+        LableRow( text: "鸣谢", icon: Image.mt.load(.Penny))
+        }
+    }
+    
+    var locUserInfo : some View {
+        Section {
+            Button(action: {
+            }){
+                HStack{
+                    //用户头像
+                    MTLocUserAvatar(frame: 64)
+                    //用户名称
+                    VStack(alignment: .leading, spacing: 4)  {
+                        
+                        Text("梁泽")
+                            .font(.mt.body1.mtBlod(),textColor :.mt.gray_900)
+                            .multilineTextAlignment(.leading)
+                        //用户昵称
+                        Text("@" + "liangze")
+                            .font(.mt.body3,textColor: .mt.gray_600)
+                        Spacer()
+
+                }
+                    .padding(.top,6)
+                    .lineLimit(1)
+                    Spacer()
+                        Image.mt.load(.Create).foregroundColor(.mt.gray_500)
+                        .padding()
+            }
+            .padding(.vertical,8)
+        }
+        }
     }
 }
 
@@ -88,21 +96,27 @@ struct SettingView_Previews: PreviewProvider {
 }
 
 struct LableRow: View {
-    var linkurl : String
-    var text : String
 
+    var text : String
+    var icon : Image
     
     var body: some View {
-        Link(destination: URL(string: linkurl)!, label: {
-            HStack {
-                Text(text)
-                    .font(.mt.body2.mtBlod())
-                    .foregroundColor(.mt.gray_900)
-                Spacer()
-                Image.mt.load(.Link).foregroundColor(.mt.accent_700)
+    
+        HStack (spacing:16){
+                icon
+                    .foregroundColor(.mt.accent_800)
                     .disabled(true)
+                Text(text)
+                    .font(.mt.body2)
+                    .foregroundColor(.mt.gray_800)
+                Spacer()
+            
+            Image.mt.load(.Chevron_right_Off)
+                .foregroundColor(.mt.gray_300)
+                .disabled(true)
+            
             }
-            .padding(.trailing)
-        })
+            .padding(.vertical,8)
+        
     }
 }

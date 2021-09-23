@@ -47,18 +47,11 @@ struct FindView: View {
                 )
         }, leading: {
            
-                LocUserAvatar()
+                MTLocUserAvatar()
           
        
         }, trailing: {
-            Button(
-                action: {},
-                label: {
-                    Image
-                        .mt.load(.Setting)
-                        .foregroundColor(.mt.gray_900)
-                }
-            )
+            SettingBtn()
         })
     }
 }
@@ -67,20 +60,6 @@ struct FindView: View {
 struct FindView_Previews: PreviewProvider {
     static var previews: some View {
         FindView()
-    }
-}
-
-
-struct LocUserAvatar: View {
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
-    var body: some View {
-        Button {
-            fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
-        } label: {
-        Circle()
-            .foregroundColor(Color.random)
-            .frame(width: 36, height: 36)
-        }
     }
 }
 

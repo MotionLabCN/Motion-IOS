@@ -11,12 +11,7 @@ struct PostCell: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            Circle().fill(Color.random)
-                .frame(size: .init(width: 52, height: 52))
-                .background(Color.random)
-                .clipShape(Circle())
-
-            
+            MTUserAvatar(frame : 52) {}
             VStack(spacing: 0.0) {
                 name
                 

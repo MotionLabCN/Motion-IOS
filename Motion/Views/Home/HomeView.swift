@@ -40,7 +40,7 @@ struct HomeView: View {
                 .resizable()
                 .frame(size: .init(width: 33, height: 33))
         }, leading: {
-            LocUserAvatar()
+            MTLocUserAvatar()
         }
         , trailing: {
             Image.mt.load(.Map_place)

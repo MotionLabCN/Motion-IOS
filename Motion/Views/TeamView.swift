@@ -62,16 +62,9 @@ struct TeamView: View {
             Text("小组")
                 .font(.mt.body1.mtBlod(),textColor: .black)
         }, leading: {
-            LocUserAvatar()
+            MTLocUserAvatar()
         }, trailing: {
-            Button(
-                action: {},
-                label: {
-                    Image
-                        .mt.load(.Setting)
-                        .foregroundColor(.mt.gray_900)
-                }
-            )
+            SettingBtn()
         })
         .fullScreenCover(isPresented: $show) {
             SettingView()
