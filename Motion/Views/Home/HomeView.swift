@@ -11,12 +11,12 @@ import MotionComponents
 
 //MARK: - 首页
 struct HomeView: View {
-
+    
     @StateObject var vm = PostVM()
     
     @State private var isShowPlaceholder = true
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
-    @State private var isShowFull = false
+
 
     
     var body: some View {
@@ -27,7 +27,6 @@ struct HomeView: View {
                 Spacer.mt.navbar()
                 header
                 Divider.mt.defult()
-                
                 if isShowPlaceholder {
                     placeholder
                         .padding(.top, 150)
@@ -43,7 +42,7 @@ struct HomeView: View {
         }, leading: {
             MTLocUserAvatar()
         }
-        , trailing: {
+                  , trailing: {
             Image.mt.load(.Map_place)
         })
         .mtAttatchTabbarSpacer()
@@ -81,7 +80,7 @@ extension HomeView {
                     HomeHeaderItemView()
                 }
             })
-            .padding()
+                .padding()
         })
     }
     
@@ -91,7 +90,7 @@ extension HomeView {
                 
                 Button(action: {
                     withAnimation(.easeInOut) {
-//                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
+                        //                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
                         fullscreen.showCustomFullScreen {
                             PostDetailView()
                         }
@@ -102,9 +101,9 @@ extension HomeView {
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
-             
-
-    
+                
+                
+                
             }
         }
         .frame(maxWidth: .infinity)

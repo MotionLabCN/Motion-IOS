@@ -24,7 +24,7 @@ struct FindViewTopTabBar: View {
                 ZStack(alignment: .bottom) {
                     Text("\(item)")
                         .foregroundColor( tag == item ? .black :.mt.gray_700)
-                        .mtAddBadge(number: 9, isShow: true)
+//                        .mtAddBadge(number: 9, isShow: true)
                         .font(.mt.body1.mtBlod())
                         .frame(width: itemWidth)
                         .frame(height: 44)

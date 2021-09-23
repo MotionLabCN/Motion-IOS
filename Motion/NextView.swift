@@ -84,6 +84,7 @@ struct MTSheetViewModifier: ViewModifier {
             }
 //                .frame(height: 100)
         }
+        
     }
 
 }
@@ -93,7 +94,7 @@ public extension View {
 //
 //    public func fullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View
 //    func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
-//        modifier(MTFullScreenCoverViewModifier(isPresented: isPresented))
+
 //    }
 }
 
