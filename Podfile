@@ -5,8 +5,7 @@ target 'Motion' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'MotionComponents', :path => './MotionComponents'
-  pod 'Kingfisher'
-  pod 'BSText'
-  pod 'YYText'
+   pod 'MotionComponents', :path => './MotionComponents'
+   pod 'Kingfisher'
+   pod 'YYText'
 end
