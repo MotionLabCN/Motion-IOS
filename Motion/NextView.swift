@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NextView: View {
     @EnvironmentObject var uiStateObj: AppState.TabbarState
-    
+    @Environment(\.presentationMode) var  presentationMode
     @State var isShowToast = false
     
     @State var isShow = true
@@ -25,47 +25,47 @@ struct NextView: View {
                 Text("123")
             }
         }
-//        .mtFullScreenCover($isShow)
-        .fullScreenCover(isPresented: $isShowToast) {
+        .sheet(isPresented: $isShowToast) {
             
         } content: {
-            VStack {
-                Circle()
-                    .fill(Color.red)
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        Text("123")
-                            .overlay(
-                                Text("444")
-                                    .background(BackgroundCleanerView())
-                            )
-//                            .background(BackgroundCleanerView())
-                    )
-
-                Spacer()
-
-            }
+            Text("123")
         }
 
-      
+
+//        .fullScreenCover(isPresented: $isShowToast) {
+//
+//        } content: {
+//            VStack {
+//                BackgroundCleanerView()
+//                    .frame(size: .zero)
+//
+//                Circle()
+//                    .fill(Color.red)
+//                    .frame(width: 100, height: 100)
+//                    .overlay(
+//                        Text("123")
+//                            .overlay(
+//                                Text("444")
+////                                    .background(BackgroundCleanerView())
+//                            )
+////                            .background(BackgroundCleanerView())
+//                    )
+//                    .onTapGesture {
+//                        isShowToast.toggle()
+//                    }
+//
+//                Spacer()
+//
+//            }
+//        }
         
     }
 }
 
 
-struct BackgroundCleanerView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            view.superview?.superview?.backgroundColor = .clear
-        }
-        return view
-    }
 
-    func updateUIView(_ uiView: UIView, context: Context) {}
-}
 
-struct MTFullScreenCoverViewModifier: ViewModifier {
+struct MTSheetViewModifier: ViewModifier {
     @Binding var isPresented: Bool
     
     func body(content: Content) -> some View {
@@ -80,7 +80,6 @@ struct MTFullScreenCoverViewModifier: ViewModifier {
                 Image(systemName: "chevron.up")
                     .padding(.top)
                 Text("Sing up")
-                 
 //                Spacer()
             }
 //                .frame(height: 100)
@@ -93,9 +92,9 @@ public extension View {
 //    public func fullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View
 //
 //    public func fullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View
-    func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
-        modifier(MTFullScreenCoverViewModifier(isPresented: isPresented))
-    }
+//    func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
+//        modifier(MTFullScreenCoverViewModifier(isPresented: isPresented))
+//    }
 }
 
 
@@ -119,4 +118,19 @@ struct NextView_Previews: PreviewProvider {
         NextView()
             .environmentObject(AppState.TabbarState())
     }
+}
+
+
+struct BackgroundCleanerView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            //superview = BackgroundCleanerView
+            //superview = UIHostingView
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }

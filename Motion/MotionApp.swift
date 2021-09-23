@@ -19,7 +19,8 @@ struct MotionApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            NextView()
                 .environmentObject(tabbarObj)
                 .environmentObject(router)
                 .environmentObject(fullscreen)
