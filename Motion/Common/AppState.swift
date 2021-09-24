@@ -22,20 +22,5 @@ struct AppState {
         @Published var messageDetail = false
 
     }
-    
-    ///顶层Fullscreen表
-    class TopFullScreenPage: ObservableObject {
-        @Published var showCustom = false
-        private(set) var customView = AnyView(EmptyView())
-        func showCustomFullScreen<Content: View>(@ViewBuilder content: () -> Content){
-            self.customView = AnyView(content())
-            self.showCustom.toggle()
-        }
-        @Published var show = false
-        @Published var view : FullScreenView?
-        func showFullScreen(view : FullScreenView){
-            self.view = view
-            self.show.toggle()
-        }
-    }
+
 }

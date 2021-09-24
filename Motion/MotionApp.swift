@@ -14,7 +14,7 @@ struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var tabbarObj = AppState.TabbarState()
     @StateObject var router = AppState.TopRouterTable()
-    @StateObject var fullscreen = AppState.TopFullScreenPage()
+    
     @StateObject var userManager = UserManager.shared
     @StateObject var sheetManager = MTSheetManager.shared
 
@@ -24,7 +24,6 @@ struct MotionApp: App {
 //            NextView()
                 .environmentObject(tabbarObj)
                 .environmentObject(router)
-                .environmentObject(fullscreen)
                 .environmentObject(userManager)
                 .environmentObject(sheetManager)
 

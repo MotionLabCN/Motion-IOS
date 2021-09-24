@@ -15,8 +15,9 @@ struct HomeView: View {
     @StateObject var vm = PostVM()
     
     @State private var isShowPlaceholder = true
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+
     @State var isShowmtsheet = false
+
 
 
     
@@ -33,6 +34,7 @@ struct HomeView: View {
                         .padding(.top, 150)
                 } else {
                     main
+                    
                 }
             }
         }
@@ -70,24 +72,22 @@ extension HomeView {
             ForEach(1...119, id: \.self) { count in
                 
                 Button(action: {
-                    withAnimation(.easeInOut) {
-                        //                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
-                        fullscreen.showCustomFullScreen {
-                            PostDetailView()
-                        }
-                    }
+                        isShowmtsheet = true
                 }){
                     PostCell()
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
-                
-                
+              
                 
             }
         }
         .frame(maxWidth: .infinity)
+        .mtFullScreenCover(isPresented: $isShowmtsheet) {
+            PostDetailView()
+        }
+        
     }
     
     

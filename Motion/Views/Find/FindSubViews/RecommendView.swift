@@ -10,6 +10,7 @@ import MotionComponents
 
 struct RecommendView: View {
     @State var showMoney : Bool = false
+    @State var showDetail : Bool = false
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
@@ -20,9 +21,15 @@ struct RecommendView: View {
                 }
                 
                 ForEach(1...119, id: \.self) { count in
-                    PostCell()
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
+                    Button {
+                        showDetail.toggle()
+                    } label: {
+                        PostCell()
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                    }
+
+                   
                     Divider.mt.defult()
                 }
             }
@@ -39,6 +46,10 @@ struct RecommendView: View {
         }
         .onDisappear {
             self.showMoney = false
+        }
+        .mtFullScreenCover(isPresented: $showDetail) {
+            BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
+            PostDetailView()
         }
         
      

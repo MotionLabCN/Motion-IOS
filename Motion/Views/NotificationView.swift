@@ -10,7 +10,7 @@ import MotionComponents
 fileprivate var notificationViewTabs = ["私信","通知","提及","小组"]
 
 struct NotificationView: View {
-    @EnvironmentObject var fullscreen : AppState.TopFullScreenPage
+    
     @State var tag  =  notificationViewTabs[0]
     
     var body: some View {

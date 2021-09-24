@@ -8,11 +8,11 @@
 import SwiftUI
 import MotionComponents
 
-fileprivate var findViewTabs = ["推荐","宝库","天梯","盈利","服务"]
+fileprivate var findViewTabs = ["推荐","宝库","天梯","公司","服务"]
 
 struct FindView: View {
     
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    
     @State var offset : CGFloat = 0.0
     
     @State var tag  =  findViewTabs[0]
