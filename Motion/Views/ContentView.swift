@@ -15,7 +15,7 @@ struct ContentView: View {
         
     @EnvironmentObject var tabbarObj: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    
     @EnvironmentObject var userManager: UserManager
     @EnvironmentObject var sheetManager: MTSheetManager
 
@@ -33,23 +33,8 @@ struct ContentView: View {
                 
             }
             .navigationBarHidden(true)
-            .fullScreenCover(isPresented: $fullscreen.show) {
-                if let view = fullscreen.view?.view{
-                    view
-                }else{
-                    ProgressView()
-                }
-            }
             
         }
-        .overlay(
-            ZStack {
-                if fullscreen.showCustom {
-                    BlurView(style: .dark)
-                    fullscreen.customView
-                }
-            }
-        )
         .overlay(
             Group {
                 if !userManager.hasLogin {
@@ -69,22 +54,6 @@ struct ContentView: View {
     }
 }
 
-extension ContentView {
-    
-    @ViewBuilder
-    var CustomFullScreenView : some View {
-        ZStack{
-        if fullscreen.showCustom {
-            BlurView.init(style: .systemMaterialDark)
-                .ignoresSafeArea()
-                .transition(.opacity)
-            if let view = fullscreen.customView {
-                view
-            }else{ProgressView()}
-        }
-        }
-    }
-}
 
 
 //MARK: - body
@@ -114,7 +83,7 @@ extension ContentView {
             HStack{
                 Spacer()
                 Button {
-                    fullscreen.showFullScreen(view: FullScreenView(view: AnyView(PostEditor())))
+            
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)
@@ -197,13 +166,12 @@ struct MTTabbar: View {
                         }
                     }, label: {
                         kind.image
-                            .mtAddBadge(number: 2, isShow: true)
+//                            .mtAddBadge(number: 2, isShow: true)
                             .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())
                     })
                         .mtTapAnimation(style: .overlayOrScale(isOverlay: true, scale: 0.7))
-
                 }
             })
         }

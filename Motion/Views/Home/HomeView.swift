@@ -15,8 +15,9 @@ struct HomeView: View {
     @StateObject var vm = PostVM()
     
     @State private var isShowPlaceholder = true
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+
     @State var isShowmtsheet = false
+
 
 
     
@@ -71,10 +72,7 @@ extension HomeView {
                 
                 Button(action: {
                     withAnimation(.easeInOut) {
-                        //                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
-                        fullscreen.showCustomFullScreen {
-                            PostDetailView()
-                        }
+                        
                     }
                 }){
                     PostCell()

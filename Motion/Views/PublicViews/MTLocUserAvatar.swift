@@ -9,11 +9,11 @@ import SwiftUI
 
 
 struct MTLocUserAvatar: View {
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    
     var frame : CGFloat = 36
     var body: some View {
         Button {
-            fullscreen.showFullScreen(view: FullScreenView(view: AnyView(ProfileView())))
+         
         } label: {
         Image("touxiang")
                 .resizable()

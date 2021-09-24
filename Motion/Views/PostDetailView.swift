@@ -9,7 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct PostDetailView: View {
-    @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    
     
   
     var body: some View {
@@ -128,7 +128,7 @@ struct PostDetailView: View {
                     .foregroundColor(.white)
                 Button(action: {
                     withAnimation(.easeInOut){
-                        fullscreen.showCustom.toggle()
+                        
                     }
                 }){
                     Image.mt.load(.Close)
