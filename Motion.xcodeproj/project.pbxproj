@@ -202,9 +202,9 @@
 		5ACBA38F26F2E66E00A5789E /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				5AC2146226F3766A00D4457C /* FindSubViews */,
 				5ACBA39226F2EBA600A5789E /* FindView.swift */,
 				5ACBA39426F2EDE800A5789E /* FindViewTopTabBar.swift */,
+				5AC2146226F3766A00D4457C /* FindSubViews */,
 			);
 			path = Find;
 			sourceTree = "<group>";
