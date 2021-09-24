@@ -27,7 +27,7 @@ struct FindView: View {
                     OpenSourceLibrary().tag(findViewTabs[1])
                     Ladder().tag(findViewTabs[2])
                     RecommendView().tag(findViewTabs[3])
-                    RecommendView().tag(findViewTabs[4])
+                    OfficialBusiness().tag(findViewTabs[4])
                     
                     }) //tabview end
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

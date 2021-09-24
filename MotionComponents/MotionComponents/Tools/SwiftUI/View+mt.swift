@@ -23,6 +23,11 @@ public extension View {
     func mtAddBadge( number : Int , isShow : Bool, size: CGSize = .init(width: 16, height: 16), offset: CGSize = .init(width: 8, height: -8)) -> some View {
         modifier(MTAddBadgeViewModifier(number: number, isShow: isShow, size: size, offset: offset))
     }
+    
+    ///
+    func mtCardStyle(insets: EdgeInsets = .init(horizontal: 16, vertical: 16)) -> some View {
+        modifier(MTCardStyleViewModifier(insets: insets))
+    }
 }
 
 
@@ -67,4 +72,16 @@ struct MTAddBadgeViewModifier: ViewModifier {
 
 
 
+//MARK: - 添加角标
+struct MTCardStyleViewModifier :ViewModifier {
+    let insets: EdgeInsets
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(insets)
+            .background(Color.white)
+            .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
+            .shadow(type: .shadowLow)
+    }
+}
 
