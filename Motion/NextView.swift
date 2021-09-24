@@ -63,31 +63,6 @@ struct NextView: View {
 }
 
 
-
-
-struct MTSheetViewModifier: ViewModifier {
-    @Binding var isPresented: Bool
-    
-    func body(content: Content) -> some View {
-       
-        ZStack(alignment: .bottom) {
-//            rootView
-            content
-            Rectangle()
-                .fill(Color.gray)
-                
-            VStack {
-                Image(systemName: "chevron.up")
-                    .padding(.top)
-                Text("Sing up")
-//                Spacer()
-            }
-//                .frame(height: 100)
-        }
-    }
-
-}
-
 public extension View {
 //    public func fullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View
 //
@@ -121,16 +96,16 @@ struct NextView_Previews: PreviewProvider {
 }
 
 
-struct BackgroundCleanerView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            //superview = BackgroundCleanerView
-            //superview = UIHostingView
-            view.superview?.superview?.backgroundColor = .clear
-        }
-        return view
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
-}
+//struct BackgroundCleanerView: UIViewRepresentable {
+//    func makeUIView(context: Context) -> UIView {
+//        let view = UIView()
+//        DispatchQueue.main.async {
+//            //superview = BackgroundCleanerView
+//            //superview = UIHostingView
+//            view.superview?.superview?.backgroundColor = .clear
+//        }
+//        return view
+//    }
+//
+//    func updateUIView(_ uiView: UIView, context: Context) {}
+//}
