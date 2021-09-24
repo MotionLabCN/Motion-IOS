@@ -9,4 +9,6 @@ target 'Motion' do
    pod 'Kingfisher'
    pod 'YYText'
    pod 'lottie-ios'
+   pod 'ActiveLabel'
+
 end

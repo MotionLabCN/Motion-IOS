@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MotionComponents
 
 struct NextView: View {
     @Environment(\.presentationMode) var  presentationMode
@@ -29,47 +30,9 @@ struct NextView: View {
         } content: {
             Text("123")
         }
-
-
-//        .fullScreenCover(isPresented: $isShowToast) {
-//
-//        } content: {
-//            VStack {
-//                BackgroundCleanerView()
-//                    .frame(size: .zero)
-//
-//                Circle()
-//                    .fill(Color.red)
-//                    .frame(width: 100, height: 100)
-//                    .overlay(
-//                        Text("123")
-//                            .overlay(
-//                                Text("444")
-////                                    .background(BackgroundCleanerView())
-//                            )
-////                            .background(BackgroundCleanerView())
-//                    )
-//                    .onTapGesture {
-//                        isShowToast.toggle()
-//                    }
-//
-//                Spacer()
-//
-//            }
-//        }
-        
     }
 }
 
-
-public extension View {
-//    public func fullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View
-//
-//    public func fullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View
-//    func mtFullScreenCover(_ isPresented: Binding<Bool>) -> some View {
-
-//    }
-}
 
 
 
@@ -88,22 +51,52 @@ public extension View {
 
 
 struct NextView_Previews: PreviewProvider {
+    
+    
+    
     static var previews: some View {
-        NextView()
+        MTActiveLabelTestView()
+    }
+}
+
+struct MTActiveLabelTestView: View {
+    var body: some View {
+        ScrollView {
+            VStack {
+                Text("123")
+                
+                let customType = ActiveType.custom(pattern: "\\sare\\b") //Looks for "are"
+                let customType2 = ActiveType.custom(pattern: "\\sit\\b") //Looks for "it"
+                let customType3 = ActiveType.custom(pattern: "\\ssupports\\b") //Looks for "supports"
+                
+                let configure: ConfigureLinkAttribute = { (type, attributes, isSelected)  in
+                    var atts = attributes
+                    switch type {
+                    case .custom:
+//                    case customType3:
+                        atts[NSAttributedString.Key.font] = isSelected ? UIFont.boldSystemFont(ofSize: 16) : UIFont.boldSystemFont(ofSize: 14)
+                        atts[NSAttributedString.Key.foregroundColor] = UIColor.orange
+                    default: break
+                    }
+                    
+                    return atts
+                }
+                let text = "This is a post with #multiple #hashtags and a @userhandle. Links are also supported like" +
+                " this one: http://optonaut.co. Now it also supports custom patterns -> are\n\n" +
+                "Let's trim a long link: \nhttps://twitter.com/twicket_app/status/649678392372121601"
+                MTActiveLabel(preferredMaxLayoutWidth: ScreenWidth() - 16, text: text, urlMaximumLength: 30, lineSpacing: 10, textColor: .black) { type, text in
+                    print("hanler \(type)  \(text)")
+                }
+                MTActiveLabel(preferredMaxLayoutWidth: ScreenWidth() - 16, text: text , customTypes: [customType, customType2, customType3],
+                              configureLinkAttribute: configure
+                )
+                Text("456")
+            }
+            .padding()
+        }
     }
 }
 
 
-//struct BackgroundCleanerView: UIViewRepresentable {
-//    func makeUIView(context: Context) -> UIView {
-//        let view = UIView()
-//        DispatchQueue.main.async {
-//            //superview = BackgroundCleanerView
-//            //superview = UIHostingView
-//            view.superview?.superview?.backgroundColor = .clear
-//        }
-//        return view
-//    }
-//
-//    func updateUIView(_ uiView: UIView, context: Context) {}
-//}
+
+

@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (1.1.0)
   - Alamofire (5.4.3)
   - KakaJSON (1.1.2)
   - Kingfisher (6.3.1)
@@ -28,6 +29,7 @@ PODS:
   - YYText (1.0.7)
 
 DEPENDENCIES:
+  - ActiveLabel
   - Kingfisher
   - lottie-ios
   - MotionComponents (from `./MotionComponents`)
@@ -35,6 +37,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActiveLabel
     - Alamofire
     - KakaJSON
     - Kingfisher
@@ -49,6 +52,7 @@ EXTERNAL SOURCES:
     :path: "./MotionComponents"
 
 SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b53056c4aec648e3c78a80b1b13eb72d9b33c959
+PODFILE CHECKSUM: b6e0becfd82609c2293636efbbc02dfca9a73b5a
 
 COCOAPODS: 1.11.2
