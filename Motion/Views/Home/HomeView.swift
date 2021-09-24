@@ -11,12 +11,12 @@ import MotionComponents
 
 //MARK: - 首页
 struct HomeView: View {
-
+    
     @StateObject var vm = PostVM()
     
     @State private var isShowPlaceholder = true
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
-    @State private var isShowFull = false
+
 
     
     var body: some View {
@@ -27,7 +27,6 @@ struct HomeView: View {
                 Spacer.mt.navbar()
                 header
                 Divider.mt.defult()
-                
                 if isShowPlaceholder {
                     placeholder
                         .padding(.top, 150)
@@ -43,31 +42,11 @@ struct HomeView: View {
         }, leading: {
             MTLocUserAvatar()
         }
-        , trailing: {
+                  , trailing: {
             Image.mt.load(.Map_place)
         })
         .mtAttatchTabbarSpacer()
        
-        .fullScreenCover(isPresented: $isShowFull) {
-            
-        } content: {
-            VStack {
-                Circle()
-                    .fill(Color.red)
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        Text("123")
-                            .overlay(
-                                Text("444")
-                                    .background(BackgroundCleanerView())
-                            )
-//                            .background(BackgroundCleanerView())
-                    )
-
-                Spacer()
-
-            }
-        }
 
         
     }
@@ -81,7 +60,7 @@ extension HomeView {
                     HomeHeaderItemView()
                 }
             })
-            .padding()
+                .padding()
         })
     }
     
@@ -91,7 +70,7 @@ extension HomeView {
                 
                 Button(action: {
                     withAnimation(.easeInOut) {
-//                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
+                        //                        fullscreen.showCustomFullScreen(view: FullScreenView(view: AnyView( PostDetailView())))
                         fullscreen.showCustomFullScreen {
                             PostDetailView()
                         }
@@ -102,9 +81,9 @@ extension HomeView {
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
-             
-
-    
+                
+                
+                
             }
         }
         .frame(maxWidth: .infinity)
@@ -115,7 +94,7 @@ extension HomeView {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
 //                isShowPlaceholder.toggle()
-                isShowFull.toggle()
+
             }, label: {
                 Text("查找朋友")
                     .mtButtonLabelStyle(.mainDefult())

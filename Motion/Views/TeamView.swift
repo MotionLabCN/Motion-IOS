@@ -19,7 +19,7 @@ struct TeamView: View {
         //排序方式
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
-
+        
         ScrollView(.vertical , showsIndicators:true) {
             Spacer().frame(height:44)
             // scrollview start
@@ -31,7 +31,7 @@ struct TeamView: View {
                     
                     //我的小组
                     Section(header:
-                HStack {Text("我的小组")
+                                HStack {Text("我的小组")
                             .font(.mt.title3.mtBlod())
                         Spacer()}.padding(.init(horizontal: 16, vertical: 8))
                             
@@ -41,7 +41,7 @@ struct TeamView: View {
                     }
                     //活跃小组
                     Section(header:
-                    HStack {
+                                HStack {
                         Text("活跃小组")
                             .font(.mt.title3.mtBlod())
                         Spacer()
@@ -49,10 +49,11 @@ struct TeamView: View {
                             .font(.mt.body1)
                             .foregroundColor(.mt.accent_700)
                     }.padding(.init(horizontal: 16, vertical: 8))
-                                
+                            
                     ){
                         ForEach(0 ..< 100) { item in
-                            TeamCard(width: cardWidth)}
+                            TeamCard(width: cardWidth)
+                        }
                     }
                 }
         }// scrollview end
@@ -69,7 +70,7 @@ struct TeamView: View {
         .fullScreenCover(isPresented: $show) {
             SettingView()
         }
-
+        
         
     }
 }

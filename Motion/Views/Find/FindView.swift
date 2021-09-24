@@ -8,7 +8,8 @@
 import SwiftUI
 import MotionComponents
 
-fileprivate var findViewTabs = ["推荐","名人","天梯","前沿","趋势"]
+fileprivate var findViewTabs = ["推荐","宝库","天梯","盈利","服务"]
+
 struct FindView: View {
     
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
@@ -22,9 +23,9 @@ struct FindView: View {
             FindViewTopTabBar(tag: $tag, items: findViewTabs)
             
                 TabView(selection: $tag, content:{ //tabview start
-                    OpenSourceLibrary().tag(findViewTabs[0])
-                    RecommendView().tag(findViewTabs[1])
-                    RecommendView().tag(findViewTabs[2])
+                    RecommendView().tag(findViewTabs[0])
+                    OpenSourceLibrary().tag(findViewTabs[1])
+                    Ladder().tag(findViewTabs[2])
                     RecommendView().tag(findViewTabs[3])
                     RecommendView().tag(findViewTabs[4])
                     

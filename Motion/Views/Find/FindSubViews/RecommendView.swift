@@ -9,10 +9,16 @@ import SwiftUI
 import MotionComponents
 
 struct RecommendView: View {
-
+    @State var showMoney : Bool = false
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack {
+                
+                if showMoney {
+                    MoneyNotiView()
+                }
+                
                 ForEach(1...119, id: \.self) { count in
                     PostCell()
                         .padding(.horizontal)
@@ -22,6 +28,19 @@ struct RecommendView: View {
             }
             .frame(maxWidth: .infinity)
         }
+        
+        //Money💰💰💰💰💰💰
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                withAnimation {
+                    self.showMoney = true
+                }
+            }
+        }
+        .onDisappear {
+            self.showMoney = false
+        }
+        
      
     }
 }
