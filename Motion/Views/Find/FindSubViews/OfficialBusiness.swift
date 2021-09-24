@@ -9,25 +9,20 @@ import SwiftUI
 import MotionComponents
 
 let businessTabbarStr = ["计算/存储","技术/方案","技能/人员"]
+
 struct OfficialBusiness: View {
     @State var tabindex : String = "计算/存储"
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true, content: {
-            
             VStack(alignment: .center, spacing: 24){
-                
                 chainDisk
-                
                 tMarket
-                
                 interview
-        
             }
             .padding(.vertical,24)
             .padding(.bottom,100)
         })
-         
     }
     
     var interview : some View {
@@ -35,9 +30,9 @@ struct OfficialBusiness: View {
         VStack(alignment: .center, spacing: 32){
            
                 HStack {
-                    Text("技术面试服务开创者")
+                    Text("技术方案落地顾问")
                         .font(.mt.title3.mtBlod(),textColor: .black)
-                    Text("/ 大牛帮面")
+                    Text("/ 实战老兵")
                         .font(.mt.caption2,textColor: .black)
                     Spacer()
                     VStack{
@@ -48,14 +43,14 @@ struct OfficialBusiness: View {
              
 
             HStack {
-                VStack(alignment: .leading){
+                VStack(alignment: .center){
                     Text("223,249")
                         .font(.mt.title3.mtBlod(),textColor: .mt.gray_900)
-                    Text("累计帮面超过")
+                    Text("累计咨询超过")
                         .font(.mt.body3,textColor: .mt.gray_600)
                 }
                 Spacer()
-                Text("找人帮面")
+                Text("技术落地")
                     .font(.mt.body1.mtBlod(),textColor: .white)
                     .padding(.init(horizontal: 16, vertical: 8))
                     .background(Color.mt.gray_900)

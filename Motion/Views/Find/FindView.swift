@@ -12,23 +12,19 @@ fileprivate var findViewTabs = ["推荐","宝库","天梯","公司","服务"]
 
 struct FindView: View {
     
-    
     @State var offset : CGFloat = 0.0
-    
     @State var tag  =  findViewTabs[0]
 
     var body: some View {
         VStack(spacing:0){
             //TOP Tabbar
             FindViewTopTabBar(tag: $tag, items: findViewTabs)
-            
                 TabView(selection: $tag, content:{ //tabview start
                     RecommendView().tag(findViewTabs[0])
                     OpenSourceLibrary().tag(findViewTabs[1])
                     Ladder().tag(findViewTabs[2])
                     RecommendView().tag(findViewTabs[3])
                     OfficialBusiness().tag(findViewTabs[4])
-                    
                     }) //tabview end
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 //                    .transition(.slide)
@@ -47,10 +43,7 @@ struct FindView: View {
                 } .foregroundColor(.mt.gray_500)
                 )
         }, leading: {
-           
-                MTLocUserAvatar()
-          
-       
+            MTLocUserAvatar()
         }, trailing: {
             SettingBtn()
         })
