@@ -16,6 +16,7 @@ struct HomeView: View {
     
     @State private var isShowPlaceholder = true
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
+    @State var isShowmtsheet = false
 
 
     
@@ -89,12 +90,14 @@ extension HomeView {
         .frame(maxWidth: .infinity)
     }
     
+    
     var placeholder: some View {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
 //                isShowPlaceholder.toggle()
-
+                isShowmtsheet.toggle()
+               
             }, label: {
                 Text("查找朋友")
                     .mtButtonLabelStyle(.mainDefult())
@@ -105,6 +108,15 @@ extension HomeView {
             })
                 .mtTapAnimation(style: .overlayOrScale())
             
+        }
+        .onAppear {
+            MTSheetManager.shared.showContent($isShowmtsheet) {
+                Text("123")
+                Image.mt.load(.ATM)
+                    .onTapGesture {
+                        isShowmtsheet.toggle()
+                    }
+            }
         }
     }
     

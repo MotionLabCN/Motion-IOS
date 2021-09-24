@@ -17,7 +17,8 @@ struct ContentView: View {
     @EnvironmentObject var router: AppState.TopRouterTable
     @EnvironmentObject var fullscreen: AppState.TopFullScreenPage
     @EnvironmentObject var userManager: UserManager
-    
+    @EnvironmentObject var sheetManager: MTSheetManager
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -56,6 +57,15 @@ struct ContentView: View {
                 }
             }
         )
+        .overlay(
+            Group {
+                ForEach(sheetManager.items) { model in
+                    model.sheetView()
+                }
+            }
+        )
+        
+        
     }
 }
 

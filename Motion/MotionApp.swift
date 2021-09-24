@@ -16,6 +16,7 @@ struct MotionApp: App {
     @StateObject var router = AppState.TopRouterTable()
     @StateObject var fullscreen = AppState.TopFullScreenPage()
     @StateObject var userManager = UserManager.shared
+    @StateObject var sheetManager = MTSheetManager.shared
 
     var body: some Scene {
         WindowGroup {
@@ -25,6 +26,8 @@ struct MotionApp: App {
                 .environmentObject(router)
                 .environmentObject(fullscreen)
                 .environmentObject(userManager)
+                .environmentObject(sheetManager)
+
         }
         
     }
