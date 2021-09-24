@@ -10,7 +10,9 @@ import MotionComponents
 
 struct PostDetailView: View {
     
-    
+    @Environment(\.presentationMode) var persentationMode
+ 
+        
   
     var body: some View {
         
@@ -127,9 +129,7 @@ struct PostDetailView: View {
                 Image.mt.load(.More_horiz)
                     .foregroundColor(.white)
                 Button(action: {
-                    withAnimation(.easeInOut){
-                        
-                    }
+                  persentationMode.wrappedValue.dismiss()
                 }){
                     Image.mt.load(.Close)
                         .foregroundColor(.white)

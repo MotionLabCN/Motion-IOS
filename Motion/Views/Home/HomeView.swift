@@ -34,6 +34,7 @@ struct HomeView: View {
                         .padding(.top, 150)
                 } else {
                     main
+                    
                 }
             }
         }
@@ -71,21 +72,22 @@ extension HomeView {
             ForEach(1...119, id: \.self) { count in
                 
                 Button(action: {
-                    withAnimation(.easeInOut) {
-                        
-                    }
+                        isShowmtsheet = true
                 }){
                     PostCell()
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
-                
-                
+              
                 
             }
         }
         .frame(maxWidth: .infinity)
+        .mtFullScreenCover(isPresented: $isShowmtsheet) {
+            PostDetailView()
+        }
+        
     }
     
     
