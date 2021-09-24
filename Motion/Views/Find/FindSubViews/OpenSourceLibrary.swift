@@ -133,7 +133,7 @@ struct MoneyNotiView: View {
                 Color.mt.gray_100
                     .frame(width: 56, height: 56)
                     .clipShape(Capsule(style: .continuous))
-                    .overlay(LottieView(lottieFliesName: "moneyIcon", loopMode:.repeat(2)).padding(.all,3))
+                    .overlay(MTLottieView(lottieFliesName: "moneyIcon", loopMode:.repeat(2)).padding(.all,3))
                 
                 VStack(alignment: .leading,spacing:8){
                     Text("尝试盈利！")
@@ -156,7 +156,7 @@ struct MoneyNotiView: View {
             .overlay(
                 Group{
                     if showLottie{
-                        LottieView(lottieFliesName: "money-falling", loopMode: .loop)
+                        MTLottieView(lottieFliesName: "money-falling", loopMode: .loop)
                             .transition(.opacity)
                     }
                 }

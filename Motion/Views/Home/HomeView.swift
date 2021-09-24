@@ -109,6 +109,20 @@ extension HomeView {
                 .mtTapAnimation(style: .overlayOrScale())
             
         }
+    
+//        .mtFullScreenCover(isPresented: $isShowmtsheet) {
+//
+//        } content: {
+//            VStack {
+//                Spacer()
+//
+//                Text("123")
+//                    .frame(width: ScreenWidth(), height: 300)
+//                    .background(Color.red)
+//
+//            }
+//        }
+
         .onAppear {
             MTSheetManager.shared.showContent($isShowmtsheet) {
                 Text("123")
@@ -118,6 +132,7 @@ extension HomeView {
                     }
             }
         }
+        
     }
     
 }

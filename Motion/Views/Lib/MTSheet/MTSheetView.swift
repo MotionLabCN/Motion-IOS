@@ -32,18 +32,38 @@ struct MTSheetView<MTContent: View>: View  {
 
 
 
-
-
-
-
-
-
-struct BackgroundCleanerView: UIViewRepresentable {
-    static func mtView() -> some View {
-        BackgroundCleanerView()
-            .frame(size: .zero)
+public extension View {
+    func mtFullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss) {
+            ZStack {
+                MTBackgroundCleanerView()
+                content()
+            }
+        }
     }
     
+    func mtFullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View {
+        fullScreenCover(item: item, onDismiss: onDismiss) { model in
+            ZStack {
+                MTBackgroundCleanerView()
+                content(model)
+            }
+        }
+    }
+
+}
+
+
+
+private struct MTBackgroundCleanerView: View {
+    var body: some View {
+        MTBackgroundCleanerViewRepresentable()
+            .frame(size: .zero)
+    }
+}
+
+private struct MTBackgroundCleanerViewRepresentable: UIViewRepresentable {
+ 
     func makeUIView(context: Context) -> UIView {
         let view = UIView()
         DispatchQueue.main.async {

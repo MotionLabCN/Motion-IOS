@@ -8,7 +8,7 @@
 import SwiftUI
 import Lottie
 
-struct LottieView: UIViewRepresentable {
+struct MTLottieView: UIViewRepresentable {
     
     //声明文件名作为Lottie变量以便于重复使用
     var lottieFliesName : String
@@ -20,8 +20,9 @@ struct LottieView: UIViewRepresentable {
     
     //装载洛丽塔动画
     // ——————————————————————————————————————————————————————————————————————————
+
     func makeUIView(context:
-                        UIViewRepresentableContext<LottieView>) -> UIView {
+                        UIViewRepresentableContext<MTLottieView>) -> UIView {
         
         let view = UIView(frame: .zero)
         
@@ -42,6 +43,6 @@ struct LottieView: UIViewRepresentable {
         return view
     }
     //    —————————————————————————————————————————————————————————————————————
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<MTLottieView>) {
     }
 }

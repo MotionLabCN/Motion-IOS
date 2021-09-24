@@ -33,7 +33,7 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
-		5A40BA6E26FCB1740011D3B0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BA6D26FCB1740011D3B0 /* LottieView.swift */; };
+		5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */; };
 		5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */; };
 		5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA7026FCB1970011D3B0 /* money-falling.json */; };
 		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
@@ -78,7 +78,7 @@
 
 /* Begin PBXFileReference section */
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
-		5A40BA6D26FCB1740011D3B0 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTLottieView.swift; sourceTree = "<group>"; };
 		5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moneyIcon.json; sourceTree = "<group>"; };
 		5A40BA7026FCB1970011D3B0 /* money-falling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "money-falling.json"; sourceTree = "<group>"; };
 		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			children = (
 				5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */,
 				5A40BA7026FCB1970011D3B0 /* money-falling.json */,
-				5A40BA6D26FCB1740011D3B0 /* LottieView.swift */,
+				5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */,
 			);
 			path = LottieViews;
 			sourceTree = "<group>";
@@ -546,7 +546,7 @@
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
-				5A40BA6E26FCB1740011D3B0 /* LottieView.swift in Sources */,
+				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
