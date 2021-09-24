@@ -31,6 +31,9 @@ public extension View {
 
 
 public struct MTBackgroundCleanerView: View {
+    public init() {
+        
+    }
     public var body: some View {
         MTBackgroundCleanerViewRepresentable()
             .frame(size: .zero)
@@ -44,7 +47,11 @@ private struct MTBackgroundCleanerViewRepresentable: UIViewRepresentable {
         DispatchQueue.main.async {
             //superview = BackgroundCleanerView
             //superview = UIHostingView
-            view.superview?.superview?.backgroundColor = .clear
+            let superView = view.superview?.superview
+            superView?.backgroundColor = .clear
+            superView?.layer.shadowColor = UIColor.clear.cgColor
+            superView?.layer.shadowRadius = 0
+            superView?.layer.shadowOpacity = 0
         }
         return view
     }

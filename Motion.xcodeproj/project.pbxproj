@@ -56,7 +56,6 @@
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
 		DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528426FD710B00993FA5 /* MTSheetManager.swift */; };
-		DF39528826FD710B00993FA5 /* MTSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528526FD710B00993FA5 /* MTSheetView.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
@@ -103,7 +102,6 @@
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetViewModifier.swift; sourceTree = "<group>"; };
 		DF39528426FD710B00993FA5 /* MTSheetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetManager.swift; sourceTree = "<group>"; };
-		DF39528526FD710B00993FA5 /* MTSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetView.swift; sourceTree = "<group>"; };
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderItemView.swift; sourceTree = "<group>"; };
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			children = (
 				DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */,
 				DF39528426FD710B00993FA5 /* MTSheetManager.swift */,
-				DF39528526FD710B00993FA5 /* MTSheetView.swift */,
 			);
 			path = MTSheet;
 			sourceTree = "<group>";
@@ -530,7 +527,6 @@
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
-				DF39528826FD710B00993FA5 /* MTSheetView.swift in Sources */,
 				DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */,
 				5ACBA39526F2EDE800A5789E /* FindViewTopTabBar.swift in Sources */,
 				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
@@ -689,7 +685,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = 6UB6WM6VQR;
+				DEVELOPMENT_TEAM = SM6579H77G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -712,7 +708,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = 6UB6WM6VQR;
+				DEVELOPMENT_TEAM = SM6579H77G;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

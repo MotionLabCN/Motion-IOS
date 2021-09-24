@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NextView: View {
-    @EnvironmentObject var uiStateObj: AppState.TabbarState
     @Environment(\.presentationMode) var  presentationMode
     @State var isShowToast = false
     
@@ -91,7 +90,6 @@ public extension View {
 struct NextView_Previews: PreviewProvider {
     static var previews: some View {
         NextView()
-            .environmentObject(AppState.TabbarState())
     }
 }
 

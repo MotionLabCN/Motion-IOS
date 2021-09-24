@@ -50,6 +50,47 @@ struct HomeView: View {
         })
         .mtAttatchTabbarSpacer()
        
+//        .onAppear {
+//            MTSheetManager.shared.showContent($isShowmtsheet) {
+//                VStack {
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//
+//                    Button {
+//                        isShowmtsheet = false
+//                    } label: {
+//                        Text("关闭")
+//                    }
+//                }
+//            }
+//        }
+        .onDisappear(perform: {
+            print("home onDisappear")
+
+        })
+        
+        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
+                VStack {
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+
+                    Button {
+                        isShowmtsheet = false
+                    } label: {
+                        Text("关闭")
+                    }
+                }
+        }
 
         
     }
@@ -84,9 +125,6 @@ extension HomeView {
             }
         }
         .frame(maxWidth: .infinity)
-        .mtFullScreenCover(isPresented: $isShowmtsheet) {
-            PostDetailView()
-        }
         
     }
     
@@ -123,15 +161,7 @@ extension HomeView {
 //            }
 //        }
 
-        .onAppear {
-            MTSheetManager.shared.showContent($isShowmtsheet) {
-                Text("123")
-                Image.mt.load(.ATM)
-                    .onTapGesture {
-                        isShowmtsheet.toggle()
-                    }
-            }
-        }
+       
         
     }
     

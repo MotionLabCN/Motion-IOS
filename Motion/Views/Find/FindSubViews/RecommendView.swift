@@ -38,6 +38,7 @@ struct RecommendView: View {
         
         //Money💰💰💰💰💰💰
         .onAppear {
+            print("Recommend onAppear")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 withAnimation {
                     self.showMoney = true
@@ -45,6 +46,8 @@ struct RecommendView: View {
             }
         }
         .onDisappear {
+            print("Recommend onDisappear")
+
             self.showMoney = false
         }
         .mtFullScreenCover(isPresented: $showDetail) {

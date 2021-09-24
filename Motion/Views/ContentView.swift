@@ -13,23 +13,22 @@ struct ContentView: View {
         UITabBar.appearance().isHidden = true
     }
         
-    @EnvironmentObject var tabbarObj: AppState.TabbarState
+    @EnvironmentObject var tabbarState: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
     
     @EnvironmentObject var userManager: UserManager
-    @EnvironmentObject var sheetManager: MTSheetManager
 
     var body: some View {
         NavigationView {
             ZStack {
-                
                 routerView
-                
+                                
                 main
-               
+                
                 tabbar
                 
                 actionCricleBtn
+                    .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
                 
             }
             .navigationBarHidden(true)
@@ -39,13 +38,6 @@ struct ContentView: View {
             Group {
                 if !userManager.hasLogin {
                     LoginStartView()
-                }
-            }
-        )
-        .overlay(
-            Group {
-                ForEach(sheetManager.items) { model in
-                    model.sheetView()
                 }
             }
         )
@@ -83,7 +75,7 @@ extension ContentView {
             HStack{
                 Spacer()
                 Button {
-            
+                    
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)
@@ -98,7 +90,7 @@ extension ContentView {
     var main: some View {
         NavigationView {
             Group {
-                switch tabbarObj.selectedKind {
+                switch tabbarState.selectedKind {
                 case .home:
                     HomeView()
                         .navigationBarHidden(true)
@@ -119,10 +111,10 @@ extension ContentView {
     
     @ViewBuilder
     var tabbar: some View {
-        if tabbarObj.isShowTabbar {
+        if tabbarState.isShowTabbar {
             VStack {
                 Spacer(minLength: 0)
-                MTTabbar(selectedKind: $tabbarObj.selectedKind)
+                MTTabbar(selectedKind: $tabbarState.selectedKind)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
             }
         }

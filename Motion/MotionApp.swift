@@ -12,20 +12,17 @@
 @main
 struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var tabbarObj = AppState.TabbarState()
+    @StateObject var tabbarState = AppState.TabbarState.shared
     @StateObject var router = AppState.TopRouterTable()
     
     @StateObject var userManager = UserManager.shared
-    @StateObject var sheetManager = MTSheetManager.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            NextView()
-                .environmentObject(tabbarObj)
+                .environmentObject(tabbarState)
                 .environmentObject(router)
                 .environmentObject(userManager)
-                .environmentObject(sheetManager)
 
         }
         

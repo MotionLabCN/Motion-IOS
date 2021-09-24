@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-class MTSheetManager: ObservableObject {
+private class MTSheetManager: ObservableObject {
     @Published var items = [MTSheetModel]()
     static let shared = MTSheetManager()
     
@@ -31,34 +31,56 @@ class MTSheetManager: ObservableObject {
     
     /// 根据isPresented来显示 配置一次
     @discardableResult
-    func showContent<Content: View>(_ isPresented: Binding<Bool>, @ViewBuilder content: () -> Content) -> MTSheetModel {
-        let item = MTSheetModel(isPresented: isPresented, content: AnyView(content()))
+    func showContent<Content: View>(_ isPresented: Binding<Bool>, isCanDrag: Bool = false, @ViewBuilder content: () -> Content) -> MTSheetModel {
+        let item = MTSheetModel(isPresented: isPresented, isCanDrag: isCanDrag, content: AnyView(content()))
         items.append(item)
         return item
     }
+}
+
+
+
+
+private struct MTSheetModel: Identifiable {
+    let id = UUID()
+    @Binding fileprivate var isPresented: Bool
+    let isCanDrag: Bool
+    fileprivate var content: AnyView
     
-//    private func showContent<Content: View, Item: Identifiable>(item: Binding<Item?>, @ViewBuilder content: (Item?) -> Content) {
-//        var resultContent = AnyView(EmptyView())
-//        if let i = item.wrappedValue {
-//            resultContent = AnyView(content(i))
+//    func sheetView() -> some View {
+//        MTSheetView(isPresented: $isPresented, isCanDrag: isCanDrag) {
+//            content
 //        }
-//        let item = MTSheetModel(isPresented: .constant(false), content: resultContent)
-//        items.append(item)
+//        
 //    }
 }
 
 
+//struct MTSheetView<MTContent: View>: View  {
+//    @Binding var isPresented: Bool
+//    let isCanDrag: Bool
+//    @ViewBuilder let content: MTContent
+//
+//    var body: some View {
+//        if isCanDrag {
+//            Rectangle()
+//                .fill(Color.clear)
+//                .modifier(
+//                    MTSheetDragViewModifier(isPresented: $isPresented, onDismiss: nil, mtContent: {
+//                        content
+//                    })
+//                )
+//        } else {
+//            Rectangle()
+//                .fill(Color.clear)
+//                .modifier(
+//                    MTSheetNoramlViewModifier(isPresented: $isPresented, onDismiss: nil, mtContent: {
+//                        content
+//                    })
+//                )
+//        }
+//
+//    }
+//
+//}
 
-
-struct MTSheetModel: Identifiable {
-    let id = UUID()
-    @Binding fileprivate var isPresented: Bool
-    fileprivate var content: AnyView
-    
-    func sheetView() -> some View {
-        MTSheetView(isPresented: $isPresented) {
-            content
-        }
-        
-    }
-}
