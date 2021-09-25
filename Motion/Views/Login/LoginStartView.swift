@@ -75,8 +75,7 @@ struct LoginStartView: View {
                 let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
                 let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
                 MTRichText(preferredMaxLayoutWidth: tipTextW, text: text)
-                    .textColor(.white)
-                    .textFont(.mt.body3)
+                    .textColor(.white, font: .mt.body3)
                     .customTypes([customType1])
                     .configureLinkAttribute { type, attri, _ in
                         var mattri = attri

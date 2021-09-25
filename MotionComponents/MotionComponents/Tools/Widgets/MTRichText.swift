@@ -45,6 +45,12 @@ public extension MTRichText {
         config.textColor = color
         return self
     }
+    
+    func textColor(_ color: SwiftUI.Color, font: UIFont) -> Self {
+        config.textColor = color
+        config.textFont = font
+        return self
+    }
 
     func hashtagColor(_ color: SwiftUI.Color) -> Self {
         config.hashtagColor = color
@@ -126,7 +132,7 @@ fileprivate class MTActiveLabelConfig: ObservableObject {
     var mentionColor: SwiftUI.Color = .mt.accent_900
     var URLColor: SwiftUI.Color = .blue
     var urlMaximumLength: Int = 30
-    var backgroundColor: UIColor?
+    var backgroundColor: UIColor = .clear
     var enabledTypes: [ActiveType] = [.mention, .hashtag, .url]
     var customTypes: [ActiveType] = []
     var customColor: [ActiveType: SwiftUI.Color] = [:]
