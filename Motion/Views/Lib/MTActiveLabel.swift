@@ -274,7 +274,6 @@ struct MTActiveTestView: View {
         "Let's trim a long link: \nhttps://twitter.com/twicket_app/status/649678392372121601"
     
     var body: some View {
-        print("需要重绘")
         return VStack {
             Button("change text") {
                 if text == "中国有嘻哈" {
