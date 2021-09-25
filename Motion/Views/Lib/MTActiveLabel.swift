@@ -6,50 +6,126 @@
 //
 
 import SwiftUI
+import MotionComponents
 @_exported import ActiveLabel
-
 
 struct MTActiveLabel: View {
     let preferredMaxLayoutWidth: CGFloat
     let text: String
-    var urlMaximumLength: Int? = 10
-    var lineSpacing: CGFloat = 2
-    
-    var textColor: Color = .mt.gray_700
-    var hashtagColor: Color = .mt.accent_900
-    var mentionColor: Color = .mt.accent_purple
-    var URLColor: Color = .red
-    
-    var customTypes: [ActiveType] = []
-    var configureLinkAttribute: ConfigureLinkAttribute? = nil
-    var tapHandler: ((ActiveType, String) -> ())?
-    
+    // 私有属性
     @State private var textHeight: CGFloat = 0
+    private var config = MTActiveLabelConfig()
+    
+    init(preferredMaxLayoutWidth: CGFloat, text: String) {
+        self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        self.text = text
+    }
     
     var body: some View {
-        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, customTypes: customTypes, urlMaximumLength: urlMaximumLength, lineSpacing: lineSpacing, textColor: textColor, hashtagColor: hashtagColor, mentionColor: mentionColor, URLColor: URLColor, configureLinkAttribute: configureLinkAttribute, textHeight: $textHeight, tapHandler: tapHandler)
+        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, config: config, textHeight: $textHeight)
             .frame(height: textHeight)
     }
 }
 
 
-//typealias ConfigureLinkAttribute = (ActiveType, [NSAttributedString.Key : Any], Bool) -> ([NSAttributedString.Key : Any])
-struct MTActiveLabel_Previews: PreviewProvider {
-    static var previews: some View {
-        let customType = ActiveType.custom(pattern: "《哈哈》")
-        let config: ConfigureLinkAttribute = { type, attributes, _ in
-            var atts = attributes
-            switch type {
-            case customType:
-                atts[.font] = UIFont.systemFont(ofSize: 30)
-            default:
-                break
-            }
-            return atts
-        }
-        MTActiveLabel(preferredMaxLayoutWidth: 400, text: "中国《哈哈》有嘻哈", customTypes: [customType], configureLinkAttribute: config)
-            .previewLayout(.fixed(width: 400, height: 100))
+//MARK: - 扩展
+extension MTActiveLabel {
+    func textFont(_ font: UIFont) -> Self {
+        config.textFont = font
+        return self
     }
+
+    func textColor(_ color: Color) -> Self {
+        config.textColor = color
+        return self
+    }
+
+    func hashtagColor(_ color: Color) -> Self {
+        config.hashtagColor = color
+        return self
+    }
+
+    func mentionColor(_ color: Color) -> Self {
+        config.mentionColor = color
+        return self
+    }
+
+    func URLColor(_ color: Color) -> Self {
+        config.URLColor = color
+        return self
+    }
+
+    func urlMaximumLength(_ length: Int) -> Self {
+        config.urlMaximumLength = length
+        return self
+    }
+
+    func lineSpacing(_ lineSpacing: CGFloat) -> Self {
+        config.lineSpacing = lineSpacing
+        return self
+    }
+    
+    func customTypes(_ types: [ActiveType]) -> Self {
+        config.customTypes = types
+        return self
+    }
+    
+    func customTypeColor(_ customColor: [ActiveType: Color]) -> Self {
+        config.customColor = customColor
+        return self
+    }
+    
+    func configureLinkAttribute(_ attri: @escaping ConfigureLinkAttribute) -> Self {
+        config.configureLinkAttribute = attri
+        return self
+    }
+    
+    
+    //MARK: - 事件
+    func onMentionTap(_ handler: @escaping ((String) -> Void)) -> Self {
+        config.mentionTapHandler = handler
+        return self
+    }
+
+    func onHashtagTap(_ handler: @escaping ((String) -> Void)) -> Self {
+        config.hashtagTapHandler = handler
+        return self
+    }
+
+    func onURLTap(_ handler: @escaping ((URL) -> Void)) -> Self {
+        config.urlTapHandler = handler
+        return self
+    }
+
+    func onCustomTap(for type: ActiveType, handler: @escaping (String) -> ()) -> Self {
+        config.customTapHandlers = [type: handler]
+        return self
+    }
+
+
+
+}
+
+
+fileprivate class MTActiveLabelConfig {
+    var textFont: UIFont = .mt.body1
+    var numberOfLines: Int = 0
+    var lineSpacing: CGFloat = 20
+    var textColor: Color = .gray
+    var hashtagColor: Color = .blue
+    var mentionColor: Color = .mt.accent_900
+    var URLColor: Color = .blue
+    var urlMaximumLength: Int = 30
+    var backgroundColor = UIColor.yellow
+    var enabledTypes: [ActiveType] = [.mention, .hashtag, .url]
+    var customTypes: [ActiveType] = []
+    var customColor: [ActiveType: Color] = [:]
+    var configureLinkAttribute: ConfigureLinkAttribute?
+    
+    var mentionTapHandler: ((String) -> ())?
+    var hashtagTapHandler: ((String) -> ())?
+    var urlTapHandler: ((URL) -> ())?
+    var customTapHandlers: [ActiveType : ((String) -> ())] = [:]
 }
 
 
@@ -57,61 +133,49 @@ struct MTActiveLabel_Previews: PreviewProvider {
 fileprivate struct MTActiveLabelRepresentable: UIViewRepresentable {
     let preferredMaxLayoutWidth: CGFloat
     let text: String
-    let customTypes: [ActiveType]
-    let urlMaximumLength: Int?
-    let lineSpacing: CGFloat
-    
-    let textColor: Color
-    let hashtagColor: Color
-    let mentionColor: Color
-    let URLColor: Color
-    
-    var configureLinkAttribute: ConfigureLinkAttribute?
+    let config: MTActiveLabelConfig
     @Binding var textHeight: CGFloat
+    private let label = ActiveLabel()
 
-    var tapHandler: ((ActiveType, String) -> ())?
-
- 
     func makeUIView(context: Context) -> ActiveLabel {
-        let label = ActiveLabel()
-        label.font = UIFont.systemFont(ofSize: 50)
-        for customType in customTypes {
+        return label
+    }
+    
+    func updateUIView(_ label: ActiveLabel, context: Context) {
+        label.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+        label.enabledTypes = config.enabledTypes
+        for customType in config.customTypes {
             label.enabledTypes.append(customType)
         }
         
-        label.urlMaximumLength = urlMaximumLength
-        label.preferredMaxLayoutWidth = preferredMaxLayoutWidth
-
-        label.customize { label in
+        label.customize {  label in
             label.text = text
-            label.numberOfLines = 0
-            label.lineSpacing = lineSpacing
+            label.font = config.textFont
+            label.numberOfLines = config.numberOfLines
+            label.lineSpacing = config.lineSpacing
             
-            label.textColor = UIColor(textColor)
-            label.hashtagColor = UIColor(hashtagColor)
-            label.mentionColor = UIColor(mentionColor)
-            label.URLColor = UIColor(URLColor)
-//            label.URLSelectedColor = UIColor(red: 82.0/255, green: 190.0/255, blue: 41.0/255, alpha: 1)
+            label.textColor = config.textColor.uicolor
+            label.hashtagColor = config.hashtagColor.uicolor
+            label.mentionColor = config.mentionColor.uicolor
+            label.URLColor = config.URLColor.uicolor
             
-            label.configureLinkAttribute = configureLinkAttribute
+            label.urlMaximumLength = config.urlMaximumLength
+            label.backgroundColor = config.backgroundColor
+            
+            label.customColor = Dictionary(uniqueKeysWithValues: config.customColor.map({ ($0.key, $0.value.uicolor)} ))
+            label.configureLinkAttribute = config.configureLinkAttribute
 
-            label.handleMentionTap {
-                tapHandler?(.mention, $0)
+            if let handler = config.mentionTapHandler {
+                label.handleMentionTap(handler)
             }
-            label.handleHashtagTap {
-                tapHandler?(.hashtag, $0)
+            if let handler = config.hashtagTapHandler {
+                label.handleHashtagTap(handler)
             }
-            label.handleURLTap({
-                tapHandler?(.url, $0.absoluteString)
-            })
-
-            
-           
-
-            for customType in customTypes {
-                label.handleCustomTap(for: customType) { text in
-                    tapHandler?(customType, text)
-                }
+            if let handler = config.urlTapHandler {
+                label.handleURLTap(handler)
+            }
+            for (key, value) in config.customTapHandlers {
+                label.handleCustomTap(for: key, handler: value)
             }
         }
         
@@ -119,11 +183,139 @@ fileprivate struct MTActiveLabelRepresentable: UIViewRepresentable {
         DispatchQueue.main.async {
             textHeight = size.height
         }
-        return label
     }
     
-    func updateUIView(_ label: ActiveLabel, context: Context) {
+}
+
+
+//extension MTActiveLabelRepresentable {
+//    func textFont(_ font: UIFont) -> Self {
+//        config.textFont = font
+//        return self
+//    }
+//
+//    func textColor(_ color: Color) -> Self {
+//        config.textColor = color
+//        return self
+//    }
+//
+//    func hashtagColor(_ color: Color) -> Self {
+//        config.hashtagColor = color
+//        return self
+//    }
+//
+//    func mentionColor(_ color: Color) -> Self {
+//        config.mentionColor = color
+//        return self
+//    }
+//
+//    func URLColor(_ color: Color) -> Self {
+//        config.URLColor = color
+//        return self
+//    }
+//
+//    func urlMaximumLength(_ length: Int) -> Self {
+//        config.urlMaximumLength = length
+//        return self
+//    }
+//
+//    func lineSpacing(_ lineSpacing: CGFloat) -> Self {
+//        config.lineSpacing = lineSpacing
+//        return self
+//    }
+//
+//    func customTypes(_ types: [ActiveType]) -> Self {
+//        config.customTypes = types
+//        return self
+//    }
+//
+//    func customTypeColor(_ customColor: [ActiveType: Color]) -> Self {
+//        config.customColor = customColor
+//        return self
+//    }
+//
+//    func configureLinkAttribute(_ attri: @escaping ConfigureLinkAttribute) -> Self {
+//        config.configureLinkAttribute = attri
+//        return self
+//    }
+//
+//
+//    //MARK: - 事件
+//    func onMentionTap(_ handler: @escaping ((String) -> Void)) -> Self {
+//        config.mentionTapHandler = handler
+//        return self
+//    }
+//
+//    func onHashtagTap(_ handler: @escaping ((String) -> Void)) -> Self {
+//        config.hashtagTapHandler = handler
+//        return self
+//    }
+//
+//    func onURLTap(_ handler: @escaping ((URL) -> Void)) -> Self {
+//        config.urlTapHandler = handler
+//        return self
+//    }
+//
+//    func onCustomTap(for type: ActiveType, handler: @escaping (String) -> ()) -> Self {
+//        config.customTapHandlers = [type: handler]
+//        return self
+//    }
+//
+//
+//
+//}
+
+
+//MARK: - 用法
+struct MTActiveTestView: View {
+    let customType1 = ActiveType.custom(pattern: "are")
+    @State var text = "This is a post with #multiple #hashtags and a @userhandle. Links are also supported like" +
+    " this one: http://optonaut.co. Now it also supports custom patterns -> are\n\n" +
+        "Let's trim a long link: \nhttps://twitter.com/twicket_app/status/649678392372121601"
+    
+    var body: some View {
+        print("需要重绘")
+        return VStack {
+            Button("change text") {
+                if text == "中国有嘻哈" {
+                    text = "This is a post with #multiple #hashtags and a @userhandle. Links are also supported like" +
+                    " this one: http://optonaut.co. Now it also supports custom patterns -> are\n\n" +
+                        "Let's trim a long link: \nhttps://twitter.com/twicket_app/status/649678392372121601"
+                } else {
+                    text = "中国有嘻哈"
+                }
+                
+            }
+            MTActiveLabel(preferredMaxLayoutWidth: 320, text: text)
+                .textFont(.systemFont(ofSize: 25))
+                .urlMaximumLength(12)
+                .lineSpacing(1)
+                .customTypeColor([customType1 : .red])
+                .customTypes([customType1])
+                .configureLinkAttribute({ t, attri, _ in
+                    var att = attri
+                    switch t {
+                    case customType1:
+                        att[.font] = UIFont.systemFont(ofSize: 50, weight: .black)
+                    default:
+                        att[.font] = UIFont.systemFont(ofSize: 25)
+                    }
+                    return att
+                })
+                .onMentionTap({ mention in
+                    print("点mention \(mention)")
+                })
+                .onCustomTap(for: customType1, handler: { test in
+                    print("click custom")
+                })
+            .frame(width: 320)
+        }
         
     }
 }
 
+struct MTActiveLabel_Previews: PreviewProvider {
+    static var previews: some View {
+        MTActiveTestView()
+    }
+}

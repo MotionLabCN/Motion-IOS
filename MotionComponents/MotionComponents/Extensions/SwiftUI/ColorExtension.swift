@@ -27,4 +27,6 @@ public extension Color {
         let blue = Double(arc4random()%256)/255.0
         return Color(.sRGB, red: red, green: green, blue: blue, opacity: 1)
     }
+    
+    var uicolor: UIColor { UIColor(self) }
 }
