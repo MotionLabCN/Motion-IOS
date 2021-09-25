@@ -15,8 +15,9 @@ struct ContentView: View {
         
     @EnvironmentObject var tabbarState: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
-    
     @EnvironmentObject var userManager: UserManager
+    
+    
 
     var body: some View {
         NavigationView {
