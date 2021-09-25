@@ -69,12 +69,12 @@ struct LoginStartView: View {
                         .contentShape(Rectangle())
                 }
                 //                .mtAnimation(isOverlay: false)
-                
+             
                 // 减去 容器padding - 图片大小 - stack间隙
                 let tipTextW: CGFloat = ScreenWidth() - 38 * 2 - 16 - 16
                 let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
                 let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
-                MTRichText(preferredMaxLayoutWidth: tipTextW, text: text)
+                MTRichText(text)
                     .textColor(.white, font: .mt.body3)
                     .customTypes([customType1])
                     .configureLinkAttribute { type, attri, _ in
@@ -91,14 +91,18 @@ struct LoginStartView: View {
                         print("click \(customType1) text: \(text)")
                         isShowTermsOfService.toggle()
                     }
-                                
+                    .frame(width: tipTextW)
+                    
 
             }
             .padding(.leading, -16)
             
+
             Spacer.mt.mid()
         }
         .padding(.horizontal, 38)
+        
+
     }
     
     var startBtn: some View {

@@ -14,24 +14,53 @@ fileprivate class MTActiveLabelViewModel: ObservableObject {
     @Published var textHeight: CGFloat = 0
 }
 
-public struct MTRichText: View {
-    let preferredMaxLayoutWidth: CGFloat
-    let text: String
 
+
+public struct MTRichText: View {
+    let text: String
     private var config = MTActiveLabelConfig()
     @StateObject private var vm = MTActiveLabelViewModel()
     
-    private var otherH: CGFloat = 0
-    public init(preferredMaxLayoutWidth: CGFloat, text: String) {
-        self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+    public init(_ text: String) {
         self.text = text
     }
-    
     public var body: some View {
-        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, config: config, vm: vm)
-            .frame(height: vm.textHeight)
+        GeometryReader { proxy in
+            MTActiveLabelRepresentable(preferredMaxLayoutWidth: proxy.width, text: text, config: config, vm: vm)
+        }
+        .frame(height: vm.textHeight)
     }
 }
+
+
+//public struct MTRichTextPreferenceKey: PreferenceKey {
+//    public static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+//        let r = nextValue()
+//        print("")
+//        value = r
+//
+//    }
+//
+//    public static var defaultValue: CGFloat = 0
+//}
+//public struct MTRichText_old: View {
+//    let preferredMaxLayoutWidth: CGFloat
+//    let text: String
+//
+//    private var config = MTActiveLabelConfig()
+//    @StateObject private var vm = MTActiveLabelViewModel()
+//
+//    public init(preferredMaxLayoutWidth: CGFloat, text: String) {
+//        self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+//        self.text = text
+//    }
+//
+//    public var body: some View {
+//        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, config: config, vm: vm)
+//            .frame(height: vm.textHeight)
+//            .preference(key: MTRichTextPreferenceKey.self, value: vm.textHeight)
+//    }
+//}
 
 
 //MARK: - 扩展
@@ -127,9 +156,9 @@ fileprivate class MTActiveLabelConfig: ObservableObject {
     var textFont: UIFont = .mt.body2
     var numberOfLines: Int = 0
     var lineSpacing: CGFloat = 10
-    var textColor: SwiftUI.Color = .gray
+    var textColor: SwiftUI.Color = .mt.gray_900
     var hashtagColor: SwiftUI.Color = .blue
-    var mentionColor: SwiftUI.Color = .mt.accent_900
+    var mentionColor: SwiftUI.Color = .mt.accent_700
     var URLColor: SwiftUI.Color = .blue
     var urlMaximumLength: Int = 30
     var backgroundColor: UIColor = .clear
@@ -310,7 +339,7 @@ struct MTActiveTestView: View {
                     text = "中国有嘻哈"
                 }
             }
-            MTRichText(preferredMaxLayoutWidth: 320, text: text)
+            MTRichText(text)
                 .textFont(.systemFont(ofSize: 25))
                 .urlMaximumLength(12)
                 .lineSpacing(1)
@@ -332,7 +361,7 @@ struct MTActiveTestView: View {
                 .onCustomTap(for: customType1, handler: { test in
                     print("click custom")
                 })
-            .frame(width: 320)
+                .frame(width: 320)
         }
         
     }
