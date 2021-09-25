@@ -10,22 +10,30 @@ import MotionComponents
 import AVKit
 
 struct LoginStartView: View {
-    @State var playerStatus: MTVideoPlayerStatus?
     @State var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
-    var player = AVQueuePlayer()
+    var player = AVPlayer()
+    
+    @State private var isPlay: Bool = true
+    @State private var playTime: CMTime = .zero
+    @State private var mp4Start = false
     
     var body: some View {
         NavigationView {
             ZStack {
                 mp4
-                ////                placeholder
+                
                 logo
                 Text("线上协同元宇宙，与队伍实现伟大创造的地方。")
                     .font(.mt.title1.mtBlod(), textColor: .white)
                     .padding(.horizontal, 25)
                 
                 bottomTool
+                
+                if mp4Start == false {
+                    placeholder
+                }
+
             }
             .navigationBarHidden(true)
         }
@@ -69,7 +77,7 @@ struct LoginStartView: View {
                         .contentShape(Rectangle())
                 }
                 //                .mtAnimation(isOverlay: false)
-             
+                
                 // 减去 容器padding - 图片大小 - stack间隙
                 let tipTextW: CGFloat = ScreenWidth() - 38 * 2 - 16 - 16
                 let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
@@ -92,17 +100,17 @@ struct LoginStartView: View {
                         isShowTermsOfService.toggle()
                     }
                     .frame(width: tipTextW)
-                    
-
+                
+                
             }
             .padding(.leading, -16)
             
-
+            
             Spacer.mt.mid()
         }
         .padding(.horizontal, 38)
         
-
+        
     }
     
     var startBtn: some View {
@@ -124,28 +132,47 @@ struct LoginStartView: View {
     @ViewBuilder
     var mp4: some View {
         if let url = Bundle.main.url(forResource: "startVedio", withExtension: "mp4") {
-            MTVideoPlayer(AVPlayerItem(url: url), player: player, status: $playerStatus)
+            MTVideoPlayer(url: url, play: $isPlay, time: $playTime)
+                .autoReplay(true)
+                .onBufferChanged { progress in
+                    // Network loading buffer progress changed
+                }
+                .onPlayToEndTime {
+                    // Play to the end time.
+                    print("onPlayToEndTime")
+                }
+                .onReplay {
+                    print("onReplay")
+                }
+                .onStateChanged { state in
+                    switch state {
+                    case .loading:
+                        print(" Loading...")
+                    case .playing(let totalDuration):
+                        withAnimation {
+                            mp4Start = true
+                        }
+                        print(" playing... \(totalDuration)")
+                    case .paused(let playProgress, let bufferProgress):
+                        print(" Paused... \(playProgress)")
+                    case .error(let error):
+                        print(" error... \(error)")
+                    }
+                }
                 .ignoresSafeArea(edges: .all)
                 .onAppear {
-                    print("mp4 appear")
-                    player.play()
+                    isPlay = true
                 }
                 .onDisappear {
-                    print("mp4 disappear")
-                    player.pause()
+                    isPlay = false
                 }
         }
     }
     
     @ViewBuilder
     var placeholder: some View {
-        switch playerStatus {
-        case .ready:
-            EmptyView()
-        default:
-            Color.random
-                .ignoresSafeArea( edges: .all)
-        }
+        Color.random.opacity(0.6)
+            .ignoresSafeArea( edges: .all)
     }
 }
 

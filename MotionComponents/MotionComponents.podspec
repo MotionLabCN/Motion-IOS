@@ -70,6 +70,7 @@ Pod::Spec.new do |s|
     
     ss.dependency "MotionComponents/Extensions"
     ss.dependency "ActiveLabel"
+    ss.dependency "GSPlayer"
   end
   
 end
