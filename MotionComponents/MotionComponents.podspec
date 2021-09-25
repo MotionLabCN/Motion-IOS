@@ -69,6 +69,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'MotionComponents/Tools/**/*.swift'
     
     ss.dependency "MotionComponents/Extensions"
+    ss.dependency "ActiveLabel"
   end
   
 end

@@ -1,56 +1,62 @@
+
 //
-//  MTActiveLabel.swift
-//  Motion
+//  MTRichText.swift
+//  MotionComponents
 //
-//  Created by 梁泽 on 2021/9/24.
+//  Created by 梁泽 on 2021/9/25.
 //
 
 import SwiftUI
-import MotionComponents
 @_exported import ActiveLabel
 
-struct MTActiveLabel: View {
+/// 桥接高度
+fileprivate class MTActiveLabelViewModel: ObservableObject {
+    @Published var textHeight: CGFloat = 0
+}
+
+public struct MTRichText: View {
     let preferredMaxLayoutWidth: CGFloat
     let text: String
-    // 私有属性
-    @State private var textHeight: CGFloat = 0
+
     private var config = MTActiveLabelConfig()
+    @StateObject private var vm = MTActiveLabelViewModel()
     
-    init(preferredMaxLayoutWidth: CGFloat, text: String) {
+    private var otherH: CGFloat = 0
+    public init(preferredMaxLayoutWidth: CGFloat, text: String) {
         self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
         self.text = text
     }
     
-    var body: some View {
-        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, config: config, textHeight: $textHeight)
-            .frame(height: textHeight)
+    public var body: some View {
+        MTActiveLabelRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, text: text, config: config, vm: vm)
+            .frame(height: vm.textHeight)
     }
 }
 
 
 //MARK: - 扩展
-extension MTActiveLabel {
+public extension MTRichText {
     func textFont(_ font: UIFont) -> Self {
         config.textFont = font
         return self
     }
 
-    func textColor(_ color: Color) -> Self {
+    func textColor(_ color: SwiftUI.Color) -> Self {
         config.textColor = color
         return self
     }
 
-    func hashtagColor(_ color: Color) -> Self {
+    func hashtagColor(_ color: SwiftUI.Color) -> Self {
         config.hashtagColor = color
         return self
     }
 
-    func mentionColor(_ color: Color) -> Self {
+    func mentionColor(_ color: SwiftUI.Color) -> Self {
         config.mentionColor = color
         return self
     }
 
-    func URLColor(_ color: Color) -> Self {
+    func URLColor(_ color: SwiftUI.Color) -> Self {
         config.URLColor = color
         return self
     }
@@ -70,7 +76,7 @@ extension MTActiveLabel {
         return self
     }
     
-    func customTypeColor(_ customColor: [ActiveType: Color]) -> Self {
+    func customTypeColor(_ customColor: [ActiveType: SwiftUI.Color]) -> Self {
         config.customColor = customColor
         return self
     }
@@ -103,29 +109,35 @@ extension MTActiveLabel {
     }
 
 
+    func updateForState(_ isUpdate: Bool) -> Self {
+        config.needUpdateForState = isUpdate
+        return self
+    }
 
 }
 
 
-fileprivate class MTActiveLabelConfig {
-    var textFont: UIFont = .mt.body1
+fileprivate class MTActiveLabelConfig: ObservableObject {
+    var textFont: UIFont = .mt.body2
     var numberOfLines: Int = 0
-    var lineSpacing: CGFloat = 20
-    var textColor: Color = .gray
-    var hashtagColor: Color = .blue
-    var mentionColor: Color = .mt.accent_900
-    var URLColor: Color = .blue
+    var lineSpacing: CGFloat = 10
+    var textColor: SwiftUI.Color = .gray
+    var hashtagColor: SwiftUI.Color = .blue
+    var mentionColor: SwiftUI.Color = .mt.accent_900
+    var URLColor: SwiftUI.Color = .blue
     var urlMaximumLength: Int = 30
-    var backgroundColor = UIColor.yellow
+    var backgroundColor: UIColor?
     var enabledTypes: [ActiveType] = [.mention, .hashtag, .url]
     var customTypes: [ActiveType] = []
-    var customColor: [ActiveType: Color] = [:]
+    var customColor: [ActiveType: SwiftUI.Color] = [:]
     var configureLinkAttribute: ConfigureLinkAttribute?
     
     var mentionTapHandler: ((String) -> ())?
     var hashtagTapHandler: ((String) -> ())?
     var urlTapHandler: ((URL) -> ())?
     var customTapHandlers: [ActiveType : ((String) -> ())] = [:]
+    
+    var needUpdateForState = false
 }
 
 
@@ -134,15 +146,25 @@ fileprivate struct MTActiveLabelRepresentable: UIViewRepresentable {
     let preferredMaxLayoutWidth: CGFloat
     let text: String
     let config: MTActiveLabelConfig
-    @Binding var textHeight: CGFloat
+    let vm: MTActiveLabelViewModel
     private let label = ActiveLabel()
 
     func makeUIView(context: Context) -> ActiveLabel {
+        if !config.needUpdateForState {
+            p_update()
+        }
         return label
     }
     
     func updateUIView(_ label: ActiveLabel, context: Context) {
+        if config.needUpdateForState {
+            p_update()
+        }
+    }
+    
+    private func p_update() {
         label.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+
         label.enabledTypes = config.enabledTypes
         for customType in config.customTypes {
             label.enabledTypes.append(customType)
@@ -180,9 +202,7 @@ fileprivate struct MTActiveLabelRepresentable: UIViewRepresentable {
         }
         
         let size = label.intrinsicContentSize
-        DispatchQueue.main.async {
-            textHeight = size.height
-        }
+        vm.textHeight = size.height
     }
     
 }
@@ -283,9 +303,8 @@ struct MTActiveTestView: View {
                 } else {
                     text = "中国有嘻哈"
                 }
-                
             }
-            MTActiveLabel(preferredMaxLayoutWidth: 320, text: text)
+            MTRichText(preferredMaxLayoutWidth: 320, text: text)
                 .textFont(.systemFont(ofSize: 25))
                 .urlMaximumLength(12)
                 .lineSpacing(1)
@@ -318,3 +337,144 @@ struct MTActiveLabel_Previews: PreviewProvider {
         MTActiveTestView()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - YYLable版
+//
+//  MTRichText.swift
+//  Motion
+//
+//  Created by 梁泽 on 2021/9/23.
+//
+
+//import SwiftUI
+//import YYText
+//import MotionComponents
+//
+////MARK: - 富文本
+//struct MTRichText: View {
+//    private let preferredMaxLayoutWidth: CGFloat
+//    private let textHeigth: CGFloat
+//    private var text: NSAttributedString
+//
+//    init(preferredMaxLayoutWidth: CGFloat, text: NSAttributedString) {
+//        self.text = text
+//        self.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+//
+//        let textSize = CGSize(width: preferredMaxLayoutWidth, height: 100)
+//        let container = YYTextContainer(size: textSize)
+//        let layout = YYTextLayout(container: container, text: text)
+//        textHeigth = layout?.textBoundingSize.height ?? 0
+//    }
+//
+//    var body: some View {
+//        MTRichTextRepresentable(preferredMaxLayoutWidth: preferredMaxLayoutWidth, attributedString: text)
+//            .frame(height: textHeigth)
+//    }
+//}
+//
+////MARK: - 桥接
+//fileprivate struct MTRichTextRepresentable: UIViewRepresentable {
+//    let preferredMaxLayoutWidth: CGFloat
+//    let attributedString: NSAttributedString
+//
+//    func makeUIView(context: Context) -> YYLabel {
+//        let lb = YYLabel()
+//        lb.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+//        lb.numberOfLines = 0
+//        lb.attributedText = attributedString
+//        return lb
+//    }
+//
+//    func updateUIView(_ lb: YYLabel, context: Context) {
+//
+//    }
+//}
+//
+//
+////MARK: - 为MTRichText扩展的
+//public extension NSAttributedString {
+//    func onTap(rang: NSRange, tapAction: @escaping (NSAttributedString, NSAttributedString) -> Void) -> NSAttributedString {
+//        let mut = NSMutableAttributedString(attributedString: self)
+//        mut.yy_setTextHighlight(rang, color: nil, backgroundColor: nil) { _, text, rang, _ in
+//            tapAction(text, text.attributedSubstring(from: rang))
+//        }
+//        return mut
+//    }
+//
+//    func onTap(subString: String, tapAction: @escaping (NSAttributedString, NSAttributedString) -> Void) -> NSAttributedString {
+//        return onTap(rang: range(of: subString), tapAction: tapAction)
+//    }
+//
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//struct MTRichText_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MTRichText(preferredMaxLayoutWidth: ScreenWidth() - 76, text: "同意《中国移动认证服务条款》,以及Motion的用户协议，隐私条款和其他声明。"
+//                    .colored(with: .mt.accent_purple)
+//                    .font(with: .systemFont(ofSize: 20))
+//                    .applying(attributes: [.foregroundColor: UIColor.mt.accent_900], toRangesMatching: "Motion")
+//        )
+//    }
+//}

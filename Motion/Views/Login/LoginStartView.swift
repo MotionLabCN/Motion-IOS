@@ -72,14 +72,28 @@ struct LoginStartView: View {
                 
                 // 减去 容器padding - 图片大小 - stack间隙
                 let tipTextW: CGFloat = ScreenWidth() - 38 * 2 - 16 - 16
-                MTRichText(preferredMaxLayoutWidth: tipTextW, text:
-                            "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
-                            .colored(with: .white)
-                            .font(with: .mt.body3)
-                            .applying(attributes: [.font: UIFont.mt.body3.mtBlod()], toRangesMatching: "《中国移动认证服务条款》")
-                            .onTap(subString: "《中国移动认证服务条款》") { (full, sub) in
-                    isShowTermsOfService.toggle()
-                })
+                let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
+                let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
+                MTRichText(preferredMaxLayoutWidth: tipTextW, text: text)
+                    .textColor(.white)
+                    .textFont(.mt.body3)
+                    .customTypes([customType1])
+                    .configureLinkAttribute { type, attri, _ in
+                        var mattri = attri
+                        switch type {
+                        case .custom:
+                            mattri[.font] = UIFont.mt.body3.mtBlod()
+                            mattri[.foregroundColor] = UIColor.white
+                        default:  break
+                        }
+                        return mattri
+                    }
+                    .onCustomTap(for: customType1) { text in
+                        print("click \(customType1) text: \(text)")
+                        isShowTermsOfService.toggle()
+                    }
+                                
+
             }
             .padding(.leading, -16)
             

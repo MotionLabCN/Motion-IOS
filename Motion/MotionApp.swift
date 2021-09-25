@@ -19,8 +19,8 @@ struct MotionApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-           MTActiveTestView()
+            ContentView()
+//            MTActiveTestView()
                 .environmentObject(tabbarState)
                 .environmentObject(router)
                 .environmentObject(userManager)
@@ -32,7 +32,7 @@ struct MotionApp: App {
     init() {
 //        let u = userManager
         print("")
-//        UserManager.test()
+        UserManager.test()
     }
 }
 

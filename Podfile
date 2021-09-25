@@ -7,8 +7,5 @@ target 'Motion' do
 
    pod 'MotionComponents', :path => './MotionComponents'
    pod 'Kingfisher'
-   pod 'YYText'
    pod 'lottie-ios'
-   pod 'ActiveLabel'
-
 end
