@@ -14,6 +14,10 @@ public extension View {
         frame(width: width, height: height, alignment: alignment)
     }
     
+    func mtFrame(square: CGFloat, alignment: Alignment = .center) -> some View {
+        frame(width: square, height: square, alignment: alignment)
+    }
+    
     /// 加圆边框
     func mtBoderCircle(_ color: Color = .white, lineWidth: CGFloat = 3) -> some View {
         modifier(MTImageBorder(color: color, lineWidth: lineWidth))
@@ -27,6 +31,15 @@ public extension View {
     ///
     func mtCardStyle(insets: EdgeInsets = .init(horizontal: 16, vertical: 16)) -> some View {
         modifier(MTCardStyleViewModifier(insets: insets))
+    }
+    
+    /// 给背景上一个可关联的NavigationLink
+    func mtBackgroundNavigationLink<Destination>(isActive: Binding<Bool>, @ViewBuilder destination: (() -> Destination) ) -> some View  where Destination: View {
+        background(
+            NavigationLink(isActive: isActive, destination: destination, label: {
+                EmptyView()
+            })
+        )
     }
 }
 

@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/GSPlayer/GSPlayer.framework
+${BUILT_PRODUCTS_DIR}/Introspect/Introspect.framework
 ${BUILT_PRODUCTS_DIR}/KakaJSON/KakaJSON.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework

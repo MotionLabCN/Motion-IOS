@@ -20,6 +20,7 @@ public enum MTButtonStyle {
     case smallDefult(isEnable: Bool = true), smallStorker(isEnable: Bool = true)
     case mainDefult(isEnable: Bool = true), mainStorKer(isEnable: Bool = true)
     case cricleDefult(_ color: Color), cricleMini(_ color: Color = Color.mt.accent_500)
+    case mainGradient
 }
 
 //MARK: - Button扩展
@@ -73,7 +74,7 @@ struct MTButtonStyleModifier: ViewModifier {
                 .foregroundColor(style.colors.text)
                 .font(style.textFont)
                 .padding(.init(horizontal: 32, vertical: 12))
-        case  .mainDefult, .mainStorKer:
+        case  .mainDefult, .mainStorKer, .mainGradient:
             content
                 .foregroundColor(style.colors.text)
                 .font(style.textFont)
@@ -94,7 +95,7 @@ extension ButtonStyle {
     func makeOverlay(isPressed: Bool) -> some View {
         if isPressed {
             Color.white
-                .clipShape(Capsule())
+                .clipShape(Capsule(style: .continuous))
                 .blur(radius: 0.3)
                 .opacity(0.4)
         } else {
@@ -169,6 +170,7 @@ extension MTButtonStyle: Identifiable {
         case let .mainStorKer(isEnable): return 40 + (isEnable ? 0 : 1)
         case .cricleDefult(let color):  return 50 + color.hashValue
         case .cricleMini(let color): return 60 + color.hashValue
+        case .mainGradient: return 70
         }
     }
     
@@ -178,6 +180,7 @@ extension MTButtonStyle: Identifiable {
         case let .smallStorker(isEnable), let .mainStorKer(isEnable): return isEnable ? "Storker" : "StorkerUnable"
         case .cricleDefult: return "Defult"
         case .cricleMini: return "Unable"
+        case .mainGradient: return "gradient"
         }
     }
     
@@ -190,23 +193,24 @@ extension MTButtonStyle: Identifiable {
             return isEnable ? (tint: .mt.gray_200, text: .mt.gray_900) :  (tint: .mt.gray_200, text: .mt.gray_400)
         case .cricleDefult, .cricleMini:
             return (tint: .mt.gray_200, text: .mt.gray_600)
+        case .mainGradient:
+            return (tint: .white, text: .white)
         }
     }
     
     public var textFont: Font {
         switch self {
         case .smallDefult, .smallStorker: return .mt.body3.mtBlod()
-        case .mainDefult, .mainStorKer: return .mt.body1.mtBlod()
+        case .mainDefult, .mainStorKer, .mainGradient: return .mt.body1.mtBlod()
         case .cricleDefult, .cricleMini: return .mt.body3.mtBlod()
         }
     }
     
     public var size: CGSize {
         switch self {
-        case .smallDefult, .smallStorker: return .init(width: 91, height: 37)
-        case .mainDefult, .mainStorKer:  return .init(width: .infinity, height: 57.0)
         case .cricleDefult: return .init(width: 56, height: 56)
         case .cricleMini: return .init(width: 32, height: 32)
+        default: return .zero //不用
         }
     }
     
@@ -214,6 +218,7 @@ extension MTButtonStyle: Identifiable {
         switch self {
         case  let .smallDefult(isEnable), let .smallStorker(isEnable), let .mainDefult(isEnable), let .mainStorKer(isEnable): return isEnable
         case .cricleDefult, .cricleMini: return true
+        case .mainGradient :  return true
         }
     }
     
@@ -228,6 +233,9 @@ extension MTButtonStyle: Identifiable {
                 .stroke(colors.tint)
         case let .cricleDefult(color): Circle().fill(color)
         case let .cricleMini(color): Circle().fill(color)
+        case .mainGradient:
+            RadialGradient(colors: [.mt.accent_purple_weak, .mt.accent_purple], center: .topTrailing, startRadius: -5, endRadius: 100)
+                .clipShape(Capsule(style: .continuous))
         }
     }
 }

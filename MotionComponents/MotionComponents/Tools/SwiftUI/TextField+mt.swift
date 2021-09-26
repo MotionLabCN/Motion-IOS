@@ -54,6 +54,7 @@ public struct MTTextFieldStyle: TextFieldStyle {
                     .font(.mt.body2)
                     .foregroundColor(.black)
                     .accentColor(.mt.accent_800)
+                    .frame(minHeight: 24)
                 
                 if config.isShowLoading {
                     ProgressView()

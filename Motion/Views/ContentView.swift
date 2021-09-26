@@ -20,31 +20,27 @@ struct ContentView: View {
     
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                routerView
-                                
-                main
-                
-                tabbar
-                
-                actionCricleBtn
-                    .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
-                
-            }
-            .navigationBarHidden(true)
-            
-        }
-        .overlay(
-            Group {
-                if !userManager.hasLogin {
-                    LoginStartView()
+        if userManager.hasLogin {
+            NavigationView {
+                ZStack {
+                    routerView
+                    
+                    main
+                    
+                    tabbar
+                    
+                    actionCricleBtn
+                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
                 }
+                .navigationBarHidden(true)
             }
-        )
-        
-        
+        } else {
+            LoginStartView()
+                .transition(.move(edge: .leading))
+        }
+       
     }
+    
 }
 
 

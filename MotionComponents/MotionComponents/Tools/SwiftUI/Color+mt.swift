@@ -17,6 +17,7 @@ extension SwiftUI.Color: MTCompatible {
 public extension MT where Base == SwiftUI.Color {
     // Accent
     static var accent_purple = MTColor.accent_purple.value
+    static var accent_purple_weak = MTColor.accent_purple_weak.value
     static var accent_900 = MTColor.accent_900.value
     static var accent_800 = MTColor.accent_800.value
     static var accent_700 = MTColor.accent_700.value
@@ -52,7 +53,7 @@ public extension MT where Base == SwiftUI.Color {
 //MARK: - Color
 public enum MTColor: String, CaseIterable, Identifiable {
     public var id: String { rawValue }
-    case accent_purple, accent_900, accent_800, accent_700, accent_600, accent_500, accent_400, accent_300, accent_200, accent_100, accent_050
+    case accent_purple, accent_purple_weak, accent_900, accent_800, accent_700, accent_600, accent_500, accent_400, accent_300, accent_200, accent_100, accent_050
     case gray_900, gray_800, gray_700, gray_600, gray_500, gray_400, gray_300, gray_200, gray_100, gray_050
     // Staus
     case status_danger, status_warnning, status_sucess, status_play
@@ -73,6 +74,7 @@ extension UIColor: MTCompatible {
 
 public extension MT where Base == UIColor {
     static var accent_purple = MTColor.accent_purple.uicolor
+    static var accent_purple_weak = MTColor.accent_purple_weak.uicolor
     static var accent_900 = MTColor.accent_900.uicolor
     static var accent_800 = MTColor.accent_800.uicolor
     static var accent_700 = MTColor.accent_700.uicolor

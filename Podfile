@@ -8,4 +8,6 @@ target 'Motion' do
    pod 'MotionComponents', :path => './MotionComponents'
    pod 'Kingfisher'
    pod 'lottie-ios'
+   pod 'Introspect'
+
 end

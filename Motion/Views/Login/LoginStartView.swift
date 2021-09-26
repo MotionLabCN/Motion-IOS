@@ -16,7 +16,11 @@ struct LoginStartView: View {
     
     @State private var isPlay: Bool = true
     @State private var playTime: CMTime = .zero
-    @State private var mp4Start = false
+    @State private var mp4Start = true
+    
+    @State private var isShowLoginSheet = false
+    @State private var isPhoneLoginActive = false
+    
     
     var body: some View {
         NavigationView {
@@ -33,9 +37,10 @@ struct LoginStartView: View {
                 if mp4Start == false {
                     placeholder
                 }
-
+                
             }
             .navigationBarHidden(true)
+            .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
         }
     }
     
@@ -84,6 +89,7 @@ struct LoginStartView: View {
                 let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
                 MTRichText(text)
                     .textColor(.white, font: .mt.body3)
+                    .lineSpacing(2)
                     .customTypes([customType1])
                     .configureLinkAttribute { type, attri, _ in
                         var mattri = attri
@@ -99,34 +105,24 @@ struct LoginStartView: View {
                         print("click \(customType1) text: \(text)")
                         isShowTermsOfService.toggle()
                     }
-                    .frame(width: tipTextW)
                 
                 
             }
+//            .frame(width: ScreenWidth() - 32 -)
             .padding(.leading, -16)
             
             
             Spacer.mt.mid()
         }
-        .padding(.horizontal, 38)
-        
-        
+        .frame(width: ScreenWidth() - 76)
     }
     
     var startBtn: some View {
-        let start = Color.mt.accent_purple
-        let end = Color(hex: "887AFF")
-        return Button {
-            userManager.changeId("123")
-        } label: {
-            Text("开始")
-                .mtButtonLabelStyle(.mainDefult())
-                .background(
-                    RadialGradient(colors: [end, start], center: .topTrailing, startRadius: -5, endRadius: 100)
-                        .clipShape(Capsule(style: .continuous))
-                )
+        Button("开始") {
+            isShowLoginSheet = true
         }
-        .mtTapAnimation(style: .overlayOrScale())
+        .mtButtonStyle(.mainGradient)
+
     }
     
     @ViewBuilder
@@ -134,16 +130,6 @@ struct LoginStartView: View {
         if let url = Bundle.main.url(forResource: "startVedio", withExtension: "mp4") {
             MTVideoPlayer(url: url, play: $isPlay, time: $playTime)
                 .autoReplay(true)
-                .onBufferChanged { progress in
-                    // Network loading buffer progress changed
-                }
-                .onPlayToEndTime {
-                    // Play to the end time.
-                    print("onPlayToEndTime")
-                }
-                .onReplay {
-                    print("onReplay")
-                }
                 .onStateChanged { state in
                     switch state {
                     case .loading:
@@ -153,10 +139,10 @@ struct LoginStartView: View {
                             mp4Start = true
                         }
                         print(" playing... \(totalDuration)")
-                    case .paused(let playProgress, let bufferProgress):
-                        print(" Paused... \(playProgress)")
-                    case .error(let error):
-                        print(" error... \(error)")
+                    case .paused:
+                        print("Paused... ")
+                    case .error:
+                        print(" error...")
                     }
                 }
                 .ignoresSafeArea(edges: .all)
@@ -174,18 +160,107 @@ struct LoginStartView: View {
         Color.random.opacity(0.6)
             .ignoresSafeArea( edges: .all)
     }
+    
+    /// sheet弹出框框
+    func loginMethodSheetContent() -> some View {
+        VStack(spacing: 16.0) {
+            VStack(spacing: 4.0) {
+                Text("152 **** 3458")
+                    .font(.mt.title2.mtBlod(), textColor: .black)
+                Text("中国移动提供认证服务")
+                    .font(.mt.body3.mtBlod(), textColor: .mt.gray_600)
+            }
+            
+
+            Button("本机号码一键登录", action: {
+                isShowLoginSheet = false
+                isPhoneLoginActive = true
+            })
+            .mtButtonStyle(.mainGradient)
+            .mtBackgroundNavigationLink(isActive: $isPhoneLoginActive, destination: {
+                LoginInputPhoneView()
+            })
+            
+            
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Image.mt.load(.Github)
+                    Text("使用GitHub登录")
+                }
+            })
+            .mtButtonStyle(.mainStorKer())
+            
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Image.mt.load(.Github)
+                    Text("使用Apple登录")
+                }
+            })
+            .mtButtonStyle(.mainStorKer())
+            
+            //
+            HStack {
+                let line = Capsule()
+                    .foregroundColor(.mt.gray_200)
+                    .frame(height: 1)
+                line
+                Text("或")
+                line
+            }
+            
+            NavigationLink("其他手机号码登录", destination: {
+                LoginInputPhoneView()
+            })
+            .mtButtonStyle(.mainStorKer())
+        }
+        .padding(.horizontal, 38)
+        .padding(.vertical, 32)
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct LoginStartView_Previews: PreviewProvider {
     static var previews: some View {
-        let result = LoginStartView()
+        NavigationView {
+            let result = LoginStartView()
+            
+    //        result.bottomTool
+    //            .previewLayout(.fixed(width: ScreenWidth(), height: 200))
+    //            .background(Color.gray)
+            
+            result
+        }
         
-        result.bottomTool
-            .previewLayout(.fixed(width: ScreenWidth(), height: 200))
-            .background(Color.gray)
-        
-        result
-            .background(Color.gray)
         
         
     }

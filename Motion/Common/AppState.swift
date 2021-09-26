@@ -37,7 +37,7 @@ struct AppState {
         
         func hanlderSheetShow(_ isShowSheet: Bool) {
             showTabbar(!isShowSheet, animationed: true)
-//            showActionCricleBtn(!isShowSheet)
+            showActionCricleBtn(!isShowSheet)
         }
         
     }

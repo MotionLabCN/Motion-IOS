@@ -30,6 +30,26 @@ public extension View {
 }
 
 
+fileprivate struct MTSheetIndictorModifiler: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(width: 43, height: 4)
+            .foregroundColor(Color.mt.gray_400)
+    }
+}
+
+fileprivate struct MTSheetBackgroundModifiler: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(
+                Color.white
+                    .cornerRadius(12, corners: [.topLeft, .topRight])
+                    .ignoresSafeArea(edges: .bottom)
+                    .shadow(type: .shadowLow)
+            )
+    }
+}
+
 fileprivate struct MTSheetNoramlViewModifier<MTContent>: ViewModifier where MTContent: View {
     @Binding var isPresented: Bool
     let onDismiss: (() -> Void)?
@@ -41,35 +61,31 @@ fileprivate struct MTSheetNoramlViewModifier<MTContent>: ViewModifier where MTCo
                 ZStack {
                     if isPresented {
                         Rectangle()
-                            .foregroundColor(isPresented ? Color.black.opacity(0.5) : Color.clear)
+                            .foregroundColor(isPresented ? Color.black.opacity(0.3) : Color.clear)
                             .ignoresSafeArea(edges: .all)
                             .onTapGesture {
                                 isPresented = false
                             }
                         
-                        VStack {
+                        VStack(spacing: 9.0) {
                             Spacer()
                             Capsule()
-                                .frame(width: 80, height: 10)
-                                .foregroundColor(Color.red)
-                            
+                                .modifier(MTSheetIndictorModifiler())
+                                
                             VStack {
                                 mtContent
                             }
                             .frame(maxWidth: .infinity)
-                            .background(
-                                Color.red
-                                    .cornerRadius(30, corners: [.topLeft, .topRight])
-                                    .ignoresSafeArea(edges: .bottom)
-                            )
+                            .modifier(MTSheetBackgroundModifiler())
                         }
                         
                         .transition(.move(edge: .bottom))
                         .animation(.default)
-                        
                         .onDisappear {
+                            AppState.TabbarState.shared.hanlderSheetShow(false)
                             onDismiss?()
                         }
+                        
                     }
                 }
                    
@@ -109,20 +125,13 @@ fileprivate struct MTSheetDragViewModifier<MTContent>: ViewModifier where MTCont
                         
                         VStack {
                             Capsule()
-                                .frame(width: 80, height: 10)
-                                .foregroundColor(Color.red)
+                                .modifier(MTSheetIndictorModifiler())
                             
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color.red)
-                                    .cornerRadius(30, corners: [.topLeft, .topRight])
-                                    .ignoresSafeArea(edges: .bottom)
-                                
-                                VStack {
-                                    mtContent
-                                }
-                                .frame(maxHeight: .infinity, alignment: .top)
+                            VStack {
+                                mtContent
                             }
+                            .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .top)
+                            .modifier(MTSheetBackgroundModifiler())
                         }
                         
                         .offset(y: startingOffsetY)
@@ -198,6 +207,54 @@ fileprivate struct MTSheetDragViewModifier<MTContent>: ViewModifier where MTCont
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//MARK: - 预览
+struct MTSheet_preView: PreviewProvider {
+    static var previews: some View {
+        Group {
+            Rectangle()
+                .fill(Color.white)
+                .mtSheet(isPresented: .constant(true)) {
+                    ScrollView {
+                        VStack {
+                            ForEach(0..<100) {_ in
+                                Text("123")
+                                Text("123")
+                            }
+                        }
+                    }
+            }
+            
+            Rectangle()
+                .fill(Color.white)
+                .mtSheet(isPresented: .constant(true), isCanDrag: true) {
+                    ScrollView {
+                        VStack {
+                            ForEach(0..<100) {_ in
+                                Text("123")
+                                    .frame(maxWidth: .infinity)
+                                Text("123")
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                    }
+                    
+            }
+        }
+    }
+}
 
 
 
