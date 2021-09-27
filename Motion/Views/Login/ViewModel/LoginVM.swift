@@ -34,7 +34,7 @@ class LoginVM: ObservableObject {
     @Published var isPhoneInvalidate: Bool = true
     
     /// 验证码
-    @Published var code = "" {
+    @Published var code = "2222" {
         didSet {
             if code.count > Constant.codeMaxNum && oldValue.count <= Constant.codeMaxNum {
                 HapticManager.shared.notification(type: .error)
@@ -45,15 +45,18 @@ class LoginVM: ObservableObject {
                     code = oldValue
                 }
             }
-
-            isCodeInvalidate = code.count < Constant.codeMaxNum
         }
     }
-    @Published var isCodeInvalidate: Bool = true
+    
+    /// 基础资料
+    @Published var userName = "梁泽"
+    
+    
+    
 
     var phoneTextField: UITextField?
     var codeTextField: UITextField?
-
+    var baseInfoTextField: UITextField?
     
     
     init() {

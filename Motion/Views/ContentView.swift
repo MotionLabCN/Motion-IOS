@@ -24,13 +24,13 @@ struct ContentView: View {
             if userManager.hasLogin {
                 ZStack {
                     routerView
-                    
+
                     main
-                    
+
                     tabbar
-                    
+
                     actionCricleBtn
-                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
+                        
                 }
                 .navigationBarHidden(true)
             } else {
@@ -101,6 +101,8 @@ extension ContentView {
             }
         }
         .padding(.horizontal,16)
+        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     var main: some View {
@@ -133,6 +135,7 @@ extension ContentView {
                 MTTabbar(selectedKind: $tabbarState.selectedKind)
                     .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
 }

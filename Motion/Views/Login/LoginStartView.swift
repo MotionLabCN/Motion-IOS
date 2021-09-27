@@ -10,6 +10,10 @@ import MotionComponents
 import AVKit
 
 
+
+
+
+
 struct LoginStartView: View {
     @State var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
@@ -20,7 +24,7 @@ struct LoginStartView: View {
     @State private var mp4Start = true
     
     @State private var isShowLoginSheet = false
-    @State private var isPhoneLoginActive = false
+    @State private var isPhoneLoginActive = true
     
     var body: some View {
 //        NavigationView {
@@ -60,10 +64,7 @@ struct LoginStartView: View {
     
     var logo: some View {
         VStack {
-            Image.mt.load(.Logo)
-                .resizable()
-                .frame(width: 44, height: 44)
-                .foregroundColor(.white)
+            MTLogoView(color: .white)
             
             Spacer()
         }
@@ -146,17 +147,13 @@ struct LoginStartView: View {
                 .autoReplay(true)
                 .onStateChanged { state in
                     switch state {
-                    case .loading:
-                        print(" Loading...")
-                    case .playing(let totalDuration):
+                    case .loading: break
+                    case .playing:
                         withAnimation {
                             mp4Start = true
                         }
-                        print(" playing... \(totalDuration)")
-                    case .paused:
-                        print("Paused... ")
-                    case .error:
-                        print(" error...")
+                    case .paused: break
+                    case .error: break
                     }
                 }
                 .ignoresSafeArea(edges: .all)

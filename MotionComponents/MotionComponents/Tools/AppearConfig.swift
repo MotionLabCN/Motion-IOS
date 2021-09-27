@@ -8,7 +8,11 @@
 import Foundation
 
 
-public struct AppearConfig {
+public class AppearConfig {
+    public static let shared = AppearConfig()
+    
+    public var disableGestureBack = false
+    
     public static func config() {
         /// 设置返回按钮图片 fix 导航栏返回键
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "Chevron_left_On")?.withRenderingMode(.alwaysOriginal)
@@ -32,7 +36,13 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     }
 
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return viewControllers.count > 1
+        let vc = viewControllers.last
+        let backIsHidde = vc?.navigationItem.hidesBackButton
+        if backIsHidde == true || AppearConfig.shared.disableGestureBack {
+            return false
+        } else {
+            return viewControllers.count > 1
+        }
     }
 }
 

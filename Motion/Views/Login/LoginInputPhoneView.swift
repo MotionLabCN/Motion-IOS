@@ -22,7 +22,9 @@ struct LoginInputPhoneView: View {
                 .mtTextFieldStyle($vm.phone, config: textFieldConfig)
                 .keyboardType(.numberPad)
                 .introspectTextField { textField in
-                    vm.phoneTextField = textField
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak textField] in
+                        textField?.becomeFirstResponder()
+                    }
                 }
                             
             Spacer()
@@ -30,31 +32,13 @@ struct LoginInputPhoneView: View {
             rightBtn
         }
         .padding(.horizontal, 36)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Image.mt.load(.Logo)
-                    .resizable()
-                    .foregroundColor(.mt.accent_purple)
-                    .mtFrame(square: 44)
-            }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.58) {
-                vm.phoneTextField?.becomeFirstResponder()
-            }
-        }
-//        .onDisappear {
-//            MTHelper.closeKeyboard()
-//        }
-        
+        .mtNavBarLogo()        
     }
     
-    @State var isPresentedLoginCode = false
     var rightBtn: some View {
         NavigationLink {
             LoginValidateCodeView()
                 .environmentObject(vm)
-//            isPresentedLoginCode.toggle()
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
@@ -64,10 +48,7 @@ struct LoginInputPhoneView: View {
         .padding(.bottom, 16)
         .opacity(vm.isPhoneInvalidate ? 0.6 : 1)
         .disabled(vm.isPhoneInvalidate)
-//        .fullScreenCover(isPresented: $isPresentedLoginCode, content: {
-//            LoginValidateCodeView()
-//                .environmentObject(vm)
-//        })
+      
     }
     
 }
