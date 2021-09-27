@@ -45,7 +45,7 @@ fileprivate struct MTSheetBackgroundModifiler: ViewModifier {
                 Color.white
                     .cornerRadius(12, corners: [.topLeft, .topRight])
                     .ignoresSafeArea(edges: .bottom)
-                    .shadow(type: .shadowLow)
+                    .mtShadow(type: .shadowLow)
             )
     }
 }

@@ -75,7 +75,7 @@ public struct MTPushNofi: View {
         )
         .frame(width: ScreenWidth() - 32)
         .cornerRadius(12)
-        .shadow(type: .shadowMid)
+        .mtShadow(type: .shadowMid)
     }
 }
 

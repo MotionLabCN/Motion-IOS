@@ -66,6 +66,7 @@
 		DF95F21326FB222200081A7D /* MTWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF95F21226FB222200081A7D /* MTWebView.swift */; };
 		DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796D27003B5D00202D07 /* LoginVM.swift */; };
 		DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */; };
+		DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
 		DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AE26E783CE00EDB44F /* ContentView.swift */; };
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFA3796D27003B5D00202D07 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPhoneView.swift; sourceTree = "<group>"; };
+		DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidateCodeView.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionApp.swift; sourceTree = "<group>"; };
 		DFE0C0AE26E783CE00EDB44F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				DFA3796C27003B4F00202D07 /* ViewModel */,
 				DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */,
 				DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */,
+				DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
+				DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,

@@ -7,11 +7,75 @@
 
 import Combine
 import UIKit
+import MotionComponents
 
 class LoginVM: ObservableObject {
-    @Published var phone = ""
+    struct Constant {
+        static let phoneMaxNum = 11
+        static let codeMaxNum = 4
+    }
     
-    var uiTextField: UITextField?
+//    private var cancellableSet = Set<Combine.AnyCancellable>()
+    /// 手机号
+    @Published var phone = "15271327766" {
+        didSet {
+            if phone.count > Constant.phoneMaxNum && oldValue.count <= Constant.phoneMaxNum {
+                HapticManager.shared.notification(type: .error)
+                phone = oldValue
+            } else {
+                if !phone.isDigits, oldValue.isDigits {
+                    HapticManager.shared.notification(type: .error)
+                    phone = oldValue
+                }
+            }
+        }
+    }
+    
+    @Published var isPhoneInvalidate: Bool = true
+    
+    /// 验证码
+    @Published var code = "" {
+        didSet {
+            if code.count > Constant.codeMaxNum && oldValue.count <= Constant.codeMaxNum {
+                HapticManager.shared.notification(type: .error)
+                code = oldValue
+            } else {
+                if !code.isDigits, code.isDigits {
+                    HapticManager.shared.notification(type: .error)
+                    code = oldValue
+                }
+            }
+
+            isCodeInvalidate = code.count < Constant.codeMaxNum
+        }
+    }
+    @Published var isCodeInvalidate: Bool = true
+
+    var phoneTextField: UITextField?
+    var codeTextField: UITextField?
 
     
+    
+    init() {
+        $phone
+            .map({ $0.count < Constant.phoneMaxNum } )
+            .assign(to: &$isPhoneInvalidate)
+    }
+}
+
+
+
+class TextBindingManager: ObservableObject {
+    @Published var text = "" {
+        didSet {
+            if text.count > characterLimit && oldValue.count <= characterLimit {
+                text = oldValue
+            }
+        }
+    }
+    let characterLimit: Int
+
+    init(limit: Int = 5){
+        characterLimit = limit
+    }
 }

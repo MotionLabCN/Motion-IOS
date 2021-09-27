@@ -151,7 +151,7 @@ struct MoneyNotiView: View {
             .padding()
             .background(Color.white)
             .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
-            .shadow(type: MTShadow.shadowLow)
+            .mtShadow(type: MTShadow.shadowLow)
             .padding()
             .overlay(
                 Group{

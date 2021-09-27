@@ -11,30 +11,23 @@ import Introspect
 
 struct LoginInputPhoneView: View {
     @StateObject var vm = LoginVM()
-    @EnvironmentObject var userManager: UserManager
-
     var textFieldConfig = MTTextFieldStyle.Config()
-    
     
     var body: some View {
         VStack(alignment: .center, spacing: 26.0) {
             Text("输入手机号码")
                 .font(.mt.title2.mtBlod(), textColor: .black)
             
-            
             TextField("手机号码", text: $vm.phone)
                 .mtTextFieldStyle($vm.phone, config: textFieldConfig)
                 .keyboardType(.numberPad)
                 .introspectTextField { textField in
-                    vm.uiTextField = textField
+                    vm.phoneTextField = textField
                 }
                             
             Spacer()
             
             rightBtn
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .padding(.bottom, 16)
-
         }
         .padding(.horizontal, 36)
         .toolbar {
@@ -47,24 +40,34 @@ struct LoginInputPhoneView: View {
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.58) {
-                vm.uiTextField?.becomeFirstResponder()
+                vm.phoneTextField?.becomeFirstResponder()
             }
         }
-        
+//        .onDisappear {
+//            MTHelper.closeKeyboard()
+//        }
         
     }
     
+    @State var isPresentedLoginCode = false
     var rightBtn: some View {
-        Button {
-            withAnimation {
-                userManager.changeId("123")
-            }
+        NavigationLink {
+            LoginValidateCodeView()
+                .environmentObject(vm)
+//            isPresentedLoginCode.toggle()
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
         }
         .mtButtonStyle(.cricleDefult(.black))
-
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .padding(.bottom, 16)
+        .opacity(vm.isPhoneInvalidate ? 0.6 : 1)
+        .disabled(vm.isPhoneInvalidate)
+//        .fullScreenCover(isPresented: $isPresentedLoginCode, content: {
+//            LoginValidateCodeView()
+//                .environmentObject(vm)
+//        })
     }
     
 }

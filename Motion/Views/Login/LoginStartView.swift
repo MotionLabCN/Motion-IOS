@@ -9,6 +9,7 @@ import SwiftUI
 import MotionComponents
 import AVKit
 
+
 struct LoginStartView: View {
     @State var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
@@ -21,10 +22,11 @@ struct LoginStartView: View {
     @State private var isShowLoginSheet = false
     @State private var isPhoneLoginActive = false
     
-    
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ZStack {
+                rotuerView
+                
                 mp4
                 
                 logo
@@ -37,11 +39,23 @@ struct LoginStartView: View {
                 if mp4Start == false {
                     placeholder
                 }
-                
+     
+            
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
             .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
+            
+//        }
+    }
+    
+    var rotuerView: some View {
+        NavigationLink(isActive: $isPhoneLoginActive) {
+            LoginInputPhoneView()
+        } label: {
+            EmptyView()
         }
+
     }
     
     var logo: some View {
@@ -163,7 +177,7 @@ struct LoginStartView: View {
     
     /// sheet弹出框框
     func loginMethodSheetContent() -> some View {
-        VStack(spacing: 16.0) {
+         VStack(spacing: 16.0) {
             VStack(spacing: 4.0) {
                 Text("152 **** 3458")
                     .font(.mt.title2.mtBlod(), textColor: .black)
@@ -174,12 +188,8 @@ struct LoginStartView: View {
 
             Button("本机号码一键登录", action: {
                 isShowLoginSheet = false
-                isPhoneLoginActive = true
             })
             .mtButtonStyle(.mainGradient)
-            .mtBackgroundNavigationLink(isActive: $isPhoneLoginActive, destination: {
-                LoginInputPhoneView()
-            })
             
             
             Button(action: {
@@ -212,9 +222,10 @@ struct LoginStartView: View {
                 line
             }
             
-            NavigationLink("其他手机号码登录", destination: {
-                LoginInputPhoneView()
-            })
+            Button("其他手机号码登录")  {
+                isShowLoginSheet = false
+                isPhoneLoginActive = true
+            }
             .mtButtonStyle(.mainStorKer())
         }
         .padding(.horizontal, 38)

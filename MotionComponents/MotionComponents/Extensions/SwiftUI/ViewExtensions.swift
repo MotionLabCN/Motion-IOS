@@ -23,7 +23,6 @@ public extension View {
         modifier(HideRowSeparatorModifier(background: background))
     }
     
-  
 }
 
 

@@ -31,7 +31,7 @@ public enum MTShadow: String, Identifiable, CaseIterable {
 }
 
 extension View {
-    public func shadow(type: MTShadow) -> some View {
+    public func mtShadow(type: MTShadow) -> some View {
         let config = type.config
         return self.shadow(color: config.color, radius: config.radius, x: config.x, y: config.y)
     }

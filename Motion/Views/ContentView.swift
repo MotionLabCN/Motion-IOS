@@ -20,8 +20,8 @@ struct ContentView: View {
     
 
     var body: some View {
-        if userManager.hasLogin {
-            NavigationView {
+        NavigationView {
+            if userManager.hasLogin {
                 ZStack {
                     routerView
                     
@@ -33,11 +33,30 @@ struct ContentView: View {
                         .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
                 }
                 .navigationBarHidden(true)
+            } else {
+                LoginStartView()
+                    .transition(.move(edge: .leading))
             }
-        } else {
-            LoginStartView()
-                .transition(.move(edge: .leading))
         }
+//        if userManager.hasLogin {
+//            NavigationView {
+//                ZStack {
+//                    routerView
+//
+//                    main
+//
+//                    tabbar
+//
+//                    actionCricleBtn
+//                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
+//                }
+//                .navigationBarHidden(true)
+//            }
+//        } else {
+//            LoginStartView()
+//                .transition(.move(edge: .leading))
+////                .animation(.easeInOut(duration: 5))
+//        }
        
     }
     
@@ -72,7 +91,7 @@ extension ContentView {
             HStack{
                 Spacer()
                 Button {
-                    
+                    userManager.logout()
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)

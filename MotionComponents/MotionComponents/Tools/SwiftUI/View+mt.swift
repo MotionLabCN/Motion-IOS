@@ -94,7 +94,7 @@ struct MTCardStyleViewModifier :ViewModifier {
             .padding(insets)
             .background(Color.white)
             .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
-            .shadow(type: .shadowLow)
+            .mtShadow(type: .shadowLow)
     }
 }
 
