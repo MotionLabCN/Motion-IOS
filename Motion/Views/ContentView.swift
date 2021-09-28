@@ -64,8 +64,11 @@ struct ContentView: View {
         }else{
             
             //登陆
-            LoginStartView()
-                .transition(.move(edge: .leading))
+            NavigationView {
+                LoginStartView()
+                    .transition(.move(edge: .leading))
+            }
+            
         }
         
         //        if userManager.hasLogin {
