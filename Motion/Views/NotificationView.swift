@@ -16,7 +16,7 @@ struct NotificationView: View {
     var body: some View {
         VStack(spacing:0){
             //TOP Tabbar
-            FindViewTopTabBar(tag: $tag, items: notificationViewTabs)
+            
                 TabView(selection: $tag, content:{ //tabview start
                     MessageView().tag(notificationViewTabs[0])
                     MessageView().tag(notificationViewTabs[1])

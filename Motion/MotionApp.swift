@@ -14,9 +14,9 @@ struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var tabbarState = AppState.TabbarState.shared
     @StateObject var router = AppState.TopRouterTable()
-    
     @StateObject var userManager = UserManager.shared
-
+    
+    @StateObject var findViewPageindex = AppState.FindViewState()
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -24,6 +24,7 @@ struct MotionApp: App {
                 .environmentObject(tabbarState)
                 .environmentObject(router)
                 .environmentObject(userManager)
+                .environmentObject(findViewPageindex)
 
         }
         
