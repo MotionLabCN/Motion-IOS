@@ -47,7 +47,11 @@ struct AppState {
     class TopRouterTable: ObservableObject {
         @Published var linkurl = false
         @Published var messageDetail = false
+    }
 
+    
+    class FindViewState : ObservableObject {
+        @Published var pageIndex : Int = 0
     }
 
 }

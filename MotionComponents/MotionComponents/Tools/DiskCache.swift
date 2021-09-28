@@ -10,6 +10,7 @@ import KakaJSON
 
 
 public extension Convertible {
+    
     func cacheOnDisk(fileName: String, folder: String = "MotionCacheFiles", for directory: FileManager.SearchPathDirectory = .cachesDirectory) {
         let file = Self.self.fileURL(forFolder: folder, for: directory, fileName: fileName)
         write(self, to: file)

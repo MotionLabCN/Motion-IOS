@@ -12,52 +12,83 @@ struct ContentView: View {
     init() {
         UITabBar.appearance().isHidden = true
     }
-        
+    
     @EnvironmentObject var tabbarState: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
     @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject var findViewState: AppState.FindViewState
     
-    
-
-    var body: some View {
-        NavigationView {
-            if userManager.hasLogin {
-                ZStack {
-                    routerView
-
-                    main
-
-                    tabbar
-
-                    actionCricleBtn
-                        
-                }
-                .navigationBarHidden(true)
-            } else {
-                LoginStartView()
-                    .transition(.move(edge: .leading))
-            }
+    @GestureState var move : CGSize = .zero
+    @State var isShowLeadingMenu : Bool = false
+    func getOffset() -> CGFloat {
+        let SW = ScreenWidth()
+        if !isShowLeadingMenu {
+            return -0.4 * SW + move.width
+        }else{
+            return 0.4 * SW + move.width
         }
-//        if userManager.hasLogin {
-//            NavigationView {
-//                ZStack {
-//                    routerView
-//
-//                    main
-//
-//                    tabbar
-//
-//                    actionCricleBtn
-//                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
-//                }
-//                .navigationBarHidden(true)
-//            }
-//        } else {
-//            LoginStartView()
-//                .transition(.move(edge: .leading))
-////                .animation(.easeInOut(duration: 5))
-//        }
-       
+    }
+    
+    var body: some View {
+        
+        //手势
+        let gesture = DragGesture(minimumDistance: findViewState.pageIndex == 0 ? 2 : 40,coordinateSpace: .global)
+            .updating($move, body: { value,out, transition in
+                let width = value.translation.width
+                if isShowLeadingMenu {
+                    if width < 0{
+                        out = value.translation}}
+                if !isShowLeadingMenu{if width > 0 {
+                    out = value.translation
+                }}})
+            .onEnded({ value in
+                let SW = ScreenWidth()
+                if value.translation.width > SW * 0.2 {
+                    isShowLeadingMenu = true}
+                if value.translation.width < -SW * 0.2 {
+                    isShowLeadingMenu = false}})
+        
+        
+        if !userManager.hasLogin {
+            
+            //主页
+            HStack(spacing:0){
+                Color.random.frame(width: ScreenWidth() * 0.8)
+                    .ignoresSafeArea()
+                mainViews
+            }
+            .animation(.linear(duration: 0.2))
+            .frame(width: ScreenWidth() * 1.8)
+            .offset(x: getOffset())
+            .highPriorityGesture(  gesture )
+            
+        }else{
+            
+            //登陆
+            LoginStartView()
+                .transition(.move(edge: .leading))
+        }
+        
+        //        if userManager.hasLogin {
+        //            NavigationView {
+        //                ZStack {
+        //                    routerView
+        //
+        //                    main
+        //
+        //                    tabbar
+        //
+        //                    actionCricleBtn
+        //                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
+        //                }
+        //                .navigationBarHidden(true)
+        //            }
+        //        } else {
+        //            LoginStartView()
+        //                .transition(.move(edge: .leading))
+        ////                .animation(.easeInOut(duration: 5))
+        //        }
+        
     }
     
 }
@@ -66,6 +97,31 @@ struct ContentView: View {
 
 //MARK: - body
 extension ContentView {
+    
+    var mainViews : some View {
+        GeometryReader { pox in
+            let progress = pox.frame(in: .global).minX / ScreenWidth() * 0.8
+            NavigationView {
+                ZStack {
+                    routerView
+                    
+                    main
+                    
+                    tabbar
+                    
+                    actionCricleBtn
+                    
+                    Color.black.opacity(progress * 0.3)
+                        .disabled(isShowLeadingMenu)
+                        .ignoresSafeArea()
+                        .onTapGesture {isShowLeadingMenu.toggle()}
+                }
+                .navigationBarHidden(true)
+            }
+        }.frame(width: ScreenWidth())
+        
+    }
+    
     var routerView: some View {
         Group {
             NavigationLink(
@@ -97,7 +153,7 @@ extension ContentView {
                         .foregroundColor(.white)
                 }
                 .mtButtonStyle(.cricleDefult(.mt.accent_700))
-                    .offset(y : -TabbarHeight - 16 )
+                .offset(y : -TabbarHeight - 16 )
             }
         }
         .padding(.horizontal,16)
@@ -106,6 +162,7 @@ extension ContentView {
     }
     
     var main: some View {
+        
         NavigationView {
             Group {
                 switch tabbarState.selectedKind {
@@ -177,7 +234,7 @@ struct MTTabbar: View {
                         }
                     }, label: {
                         kind.image
-//                            .mtAddBadge(number: 2, isShow: true)
+                        //                            .mtAddBadge(number: 2, isShow: true)
                             .foregroundColor(selectedKind == kind ? .mt.accent_700 : .mt.gray_800)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .contentShape(Rectangle())
@@ -191,7 +248,7 @@ struct MTTabbar: View {
             Color.white
                 .ignoresSafeArea(edges: .bottom)
         )
-
+        
     }
     
 }
@@ -246,6 +303,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(AppState.TabbarState())
             .environmentObject(AppState.TopRouterTable())
+            .environmentObject(UserManager())
             .previewDevice("iPhone 12")
     }
 }
