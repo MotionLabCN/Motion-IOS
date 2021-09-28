@@ -31,12 +31,12 @@ struct LoginBaseInfoView: View {
         }
         .padding(.horizontal, 36)
         .navigationBarItems(leading: EmptyView(), trailing:
-            Button(action: {
-                // 调接口
-                UserManager.shared.changeId("123")
+            NavigationLink(destination: {
+                LoginCreateTeamView()
+                    .environmentObject(vm)
             }, label: {
                 Text("跳过")
-                    .font(.mt.body2.mtBlod(), textColor: .mt.gray_600)
+                .font(.mt.body2.mtBlod(), textColor: .mt.gray_600)
             })
         )
         .mtNavBarLogo()
@@ -48,7 +48,8 @@ struct LoginBaseInfoView: View {
 
     var rightBtn: some View {
         NavigationLink {
-           
+            LoginCreateTeamView()
+                .environmentObject(vm)
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
@@ -65,5 +66,7 @@ struct LoginBaseInfoView: View {
 struct LoginBaseInfoView_Previews: PreviewProvider {
     static var previews: some View {
         LoginBaseInfoView()
+            .environmentObject(LoginVM())
+
     }
 }

@@ -60,9 +60,11 @@ struct MTButtonStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
         if customBackground {
             beforeBackGroundView(content: content)
+                .contentShape(Capsule(style: .continuous))
         } else {
             beforeBackGroundView(content: content)
                 .background(style.backgroundShape())
+                .contentShape(Capsule(style: .continuous))
         }
     }
     

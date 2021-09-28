@@ -24,7 +24,7 @@ struct LoginStartView: View {
     @State private var mp4Start = true
     
     @State private var isShowLoginSheet = false
-    @State private var isPhoneLoginActive = true
+    @State private var isPhoneLoginActive = false
     
     var body: some View {
 //        NavigationView {
@@ -190,7 +190,9 @@ struct LoginStartView: View {
             
             
             Button(action: {
-                
+                ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { response in
+                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
+                })
             }, label: {
                 HStack {
                     Image.mt.load(.Github)
@@ -200,7 +202,9 @@ struct LoginStartView: View {
             .mtButtonStyle(.mainStorKer())
             
             Button(action: {
-                
+                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
+                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
+                })
             }, label: {
                 HStack {
                     Image.mt.load(.Github)

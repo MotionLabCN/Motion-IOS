@@ -46,8 +46,8 @@ struct LoginInputPhoneView: View {
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.bottom, 16)
-        .opacity(vm.isPhoneInvalidate ? 0.6 : 1)
-        .disabled(vm.isPhoneInvalidate)
+        .opacity(vm.phone.count < LoginVM.Constant.phoneMaxNum ? 0.6 : 1)
+        .disabled(vm.phone.count < LoginVM.Constant.phoneMaxNum)
       
     }
     

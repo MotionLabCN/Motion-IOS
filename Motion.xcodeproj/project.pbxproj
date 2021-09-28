@@ -69,6 +69,7 @@
 		DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */; };
 		DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB93270184EF009698B6 /* MTLogoView.swift */; };
 		DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */; };
+		DFDFDB9A2701903F009698B6 /* LoginCreateTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB992701903F009698B6 /* LoginCreateTeamView.swift */; };
 		DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */; };
 		DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0AE26E783CE00EDB44F /* ContentView.swift */; };
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidateCodeView.swift; sourceTree = "<group>"; };
 		DFDFDB93270184EF009698B6 /* MTLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLogoView.swift; sourceTree = "<group>"; };
 		DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseInfoView.swift; sourceTree = "<group>"; };
+		DFDFDB992701903F009698B6 /* LoginCreateTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCreateTeamView.swift; sourceTree = "<group>"; };
 		DFE0C0A926E783CE00EDB44F /* Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Motion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionApp.swift; sourceTree = "<group>"; };
 		DFE0C0AE26E783CE00EDB44F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */,
 				DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */,
 				DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */,
+				DFDFDB992701903F009698B6 /* LoginCreateTeamView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				5A8F6DA126FC7FBF007E9101 /* OfficialBusiness.swift in Sources */,
 				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,
 				DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */,
+				DFDFDB9A2701903F009698B6 /* LoginCreateTeamView.swift in Sources */,
 				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
@@ -721,7 +725,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sup.tiquantool.Motion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -744,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sup.tiquantool.Motion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

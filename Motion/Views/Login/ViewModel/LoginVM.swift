@@ -30,9 +30,7 @@ class LoginVM: ObservableObject {
             }
         }
     }
-    
-    @Published var isPhoneInvalidate: Bool = true
-    
+        
     /// 验证码
     @Published var code = "2222" {
         didSet {
@@ -51,34 +49,42 @@ class LoginVM: ObservableObject {
     /// 基础资料
     @Published var userName = "梁泽"
     
+    @Published var teamList: [TeamModel] = [
+        .init(text: "远程协作", isSelected: true),
+        .init(text: "社团、班级、小组"),
+        .init(text: "品牌客户群"),
+        .init(text: "运动、兴趣组"),
+        .init(text: "自定义创建"),
+    ]
     
-    
-
-    var phoneTextField: UITextField?
-    var codeTextField: UITextField?
-    var baseInfoTextField: UITextField?
-    
-    
-    init() {
-        $phone
-            .map({ $0.count < Constant.phoneMaxNum } )
-            .assign(to: &$isPhoneInvalidate)
+    func choose(_ team: TeamModel) {
+        if let index = teamList.firstIndex(where: { $0 == team }) {
+            teamList = teamList.map({
+                var tmp = $0
+                tmp.isSelected = false
+                return tmp
+            })
+          
+            teamList[index].isSelected = true
+        }
     }
+//    init() {
+//        $phone
+//            .map({ $0.count < Constant.phoneMaxNum } )
+//            .assign(to: &$isPhoneInvalidate)
+//    }
 }
 
 
-
-class TextBindingManager: ObservableObject {
-    @Published var text = "" {
-        didSet {
-            if text.count > characterLimit && oldValue.count <= characterLimit {
-                text = oldValue
-            }
+extension LoginVM {
+    struct TeamModel: Identifiable, Equatable {
+        var id: UUID = UUID()
+        
+        var text: String
+        var isSelected: Bool = false
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.text == rhs.text
         }
-    }
-    let characterLimit: Int
-
-    init(limit: Int = 5){
-        characterLimit = limit
     }
 }

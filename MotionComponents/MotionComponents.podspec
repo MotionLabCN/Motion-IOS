@@ -67,10 +67,14 @@ Pod::Spec.new do |s|
   
   s.subspec 'Tools' do |ss|
     ss.source_files = 'MotionComponents/Tools/**/*.swift'
-    
+#    ss.resources = 'MotionComponents/Tools/GitHubAuth/Auth.bundle'
+#    ss.resources = 'MotionComponents/Tools/GitHubAuth/GoogleService-Info.plist'
+
     ss.dependency "MotionComponents/Extensions"
     ss.dependency "ActiveLabel"
     ss.dependency "GSPlayer"
+#    ss.dependency "Firebase/Auth"
+    ss.dependency "KeychainAccess"
   end
   
 end
