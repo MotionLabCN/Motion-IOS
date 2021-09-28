@@ -49,8 +49,7 @@ struct ContentView: View {
                     isShowLeadingMenu = false}})
         
         
-        if !userManager.hasLogin {
-            
+        if userManager.hasLogin {
             //主页
             HStack(spacing:0){
                 Color.random.frame(width: ScreenWidth() * 0.8)
