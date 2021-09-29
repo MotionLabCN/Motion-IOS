@@ -52,8 +52,7 @@ struct ContentView: View {
         if !userManager.hasLogin {
             //主页
             HStack(spacing:0){
-                Color.random.frame(width: ScreenWidth() * 0.8)
-                    .ignoresSafeArea()
+                LeftMenuView()
                 mainViews
             }
             .animation(.linear(duration: 0.2))
