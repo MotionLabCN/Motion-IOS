@@ -29,6 +29,7 @@ struct RecommendView: View {
                             .padding(.horizontal)
                             .padding(.vertical, 8)
                     }
+                    .mtTapAnimation(style: .normal)
                     
 
                    

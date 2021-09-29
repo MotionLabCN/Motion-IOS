@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-public var findViewTabs = ["推荐","宝库","天梯","公司","服务"]
+public var findViewTabs = ["码力","开源","热门","天梯","公司"]
 
 struct FindView: View {
     
@@ -50,56 +50,24 @@ struct FindView: View {
                 }
             }
         
-        VStack(spacing:0){
-            
-            
-            //TOP Tabbar
-
-            
-            HStack(spacing:0){
-                ForEach(0 ..< pageNumbers) { index in
-                        Text(findViewTabs[index])
-                        .font(.mt.body1.mtBlod(),textColor: findView.pageIndex  == index ? .black : .mt.gray_700)
-                            .frame(width: ScreenWidth() / CGFloat(findViewTabs.count) )
-                            .frame(width: ScreenWidth() / CGFloat(pageNumbers), height: 44,alignment: .center)
-                            .onTapGesture {
-                                withAnimation {
-                                    findView.pageIndex  = index
-                                }
-                        }
-                }
-            }
-            .frame(width: ScreenWidth())
-            .overlay(
-                ZStack {
-                    Divider()
-                    Capsule(style: .continuous)
-                        .frame(width: ScreenWidth() / CGFloat(pageNumbers) - 24, height: 3)
-                        .offset(x: -getOffset() / 5)
-                        .foregroundColor(Color.mt.accent_800)
-                    .animation(.spring())
-                }
-                , alignment: .bottom)
         
-            
-            HStack(spacing:0){
-                RecommendView()
-                OpenSourceLibrary()
-                Ladder()
-                RecommendView()
-                OfficialBusiness()
+            VStack(spacing:0){
+                
+                //TOP Tabbar
+
+                topTabbar
+                
+               //findViews
+                
+                findViews
+                    .offset(x:getOffset())
+                    .highPriorityGesture(gesture)
+                
             }
-            .animation(.linear(duration: 0.2))
-            .frame(width: CGFloat(pageNumbers) * ScreenWidth())
-            .offset(x:getOffset())
-            .highPriorityGesture(gesture)
-    
-            
-            
-        }
+        
+        .frame(width: ScreenWidth())
         .navigationBarHidden(true)
         .padding(.top,44)
-        .navigationBarTitleDisplayMode(.inline)
         .mtNavbar(content: {
             Capsule().frame(width: 255, height: 32)
                 .foregroundColor(.mt.gray_200)
@@ -115,9 +83,54 @@ struct FindView: View {
         }, trailing: {
             SettingBtn()
         })
+        .navigationBarTitleDisplayMode(.inline)
+     
         
     }
     
+    @ViewBuilder
+    var findViews : some View {
+        HStack(spacing:0){
+            CodepowerView()
+            OpenSourceLibrary()
+            RecommendView()
+            Ladder()
+            RecommendView()
+//            OfficialBusiness()
+        }
+        .animation(.linear(duration: 0.2))
+        .frame(width: CGFloat(pageNumbers) * ScreenWidth())
+     
+    }
+    
+    @ViewBuilder
+    var topTabbar : some View {
+        
+        HStack(spacing:0){
+            ForEach(0 ..< pageNumbers) { index in
+                    Text(findViewTabs[index])
+                    .font(.mt.body1.mtBlod(),textColor: findView.pageIndex  == index ? .black : .mt.gray_700)
+                        .frame(width: ScreenWidth() / CGFloat(findViewTabs.count) )
+                        .frame(width: ScreenWidth() / CGFloat(pageNumbers), height: 44,alignment: .center)
+                        .onTapGesture {
+                            withAnimation {
+                                findView.pageIndex  = index
+                            }
+                    }
+            }
+        }
+        .frame(width: ScreenWidth())
+        .overlay(
+            ZStack {
+                Divider()
+                Capsule(style: .continuous)
+                    .frame(width: ScreenWidth() / CGFloat(pageNumbers) - 24, height: 3)
+                    .offset(x: -getOffset() / 5)
+                    .foregroundColor(Color.mt.accent_800)
+                .animation(.spring())
+            }
+            , alignment: .bottom)
+    }
  
     
 }
@@ -128,4 +141,3 @@ struct FindView_Previews: PreviewProvider {
         FindView()
     }
 }
-

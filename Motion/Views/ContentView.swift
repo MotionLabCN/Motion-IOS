@@ -49,7 +49,7 @@ struct ContentView: View {
                     isShowLeadingMenu = false}})
         
         
-        if userManager.hasLogin {
+        if !userManager.hasLogin {
             //主页
             HStack(spacing:0){
                 Color.random.frame(width: ScreenWidth() * 0.8)
@@ -111,7 +111,9 @@ extension ContentView {
                     
                     tabbar
                     
-                    actionCricleBtn
+                    if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
+                        actionCricleBtn
+                    }
                     
                     Color.black.opacity(progress * 0.3)
                         .disabled(isShowLeadingMenu)
@@ -173,10 +175,10 @@ extension ContentView {
                         .navigationBarHidden(true)
                 case .search:
                     FindView()
+                case .storage:
+                    StorageView()
                 case .team:
                     TeamView()
-                case .message:
-                    NotificationView()
                 }
             }
         }
@@ -210,14 +212,14 @@ extension ContentView {
 struct MTTabbar: View {
     enum Kind: String, CaseIterable, Identifiable {
         var id: String { rawValue }
-        case home, search, team, message
+        case home, search, storage, team
         
         var image: Image {
             switch self {
             case .home: return .mt.load(.Home)
             case .search: return .mt.load(.Search)
+            case .storage: return .mt.load(.Pie_chart)
             case .team: return .mt.load(.Group)
-            case .message: return .mt.load(.Mail)
             }
         }
     }
