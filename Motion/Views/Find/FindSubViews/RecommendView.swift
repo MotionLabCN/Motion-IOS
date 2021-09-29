@@ -24,10 +24,12 @@ struct RecommendView: View {
                     Button {
                         showDetail.toggle()
                     } label: {
+                        
                         PostCell()
                             .padding(.horizontal)
                             .padding(.vertical, 8)
                     }
+                    
 
                    
                     Divider.mt.defult()
