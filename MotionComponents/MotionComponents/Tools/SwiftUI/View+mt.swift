@@ -41,6 +41,16 @@ public extension View {
             })
         )
     }
+    
+    /// 视图中心点 覆盖progressView
+    func mtTopProgress(_ isShow: Bool, usingBackgorund: Bool = false, text: String? = nil) -> some View {
+        modifier(MTViewTopProgressViewModifier(isShow: isShow, text: text, usingBackgorund: usingBackgorund))
+    }
+    
+    /// 视图占位加载
+    func mtPlaceholderProgress(_ isPlaceholder: Bool, progressColor: Color = .black) -> some View {
+        modifier(MTPlaceholderProgressViewModifier(isPlaceholder: isPlaceholder, progressColor: progressColor))
+    }
 }
 
 

@@ -31,11 +31,11 @@ struct MotionApp: App {
     }
     
     init() {
-//        let u = userManager
         print("")
-        UserManager.test()
+        UserManager.shared.logout()
     }
 }
+
 
 
 

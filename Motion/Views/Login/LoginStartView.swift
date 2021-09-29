@@ -49,7 +49,7 @@ struct LoginStartView: View {
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
             .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
-            
+            .mtTopProgress(true)
 //        }
     }
     
@@ -185,6 +185,7 @@ struct LoginStartView: View {
 
             Button("本机号码一键登录", action: {
                 isShowLoginSheet = false
+                LoginVM().loginIn()
             })
             .mtButtonStyle(.mainGradient)
             

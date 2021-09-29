@@ -76,12 +76,12 @@ public extension Networking {
     
     @discardableResult
     static func requestObject<T: Convertible>(_ target: TargetType, modeType: T.Type, atKeyPath keyPath: String? = "data", completion: @escaping (MoyaResult, T?) -> Void ) -> Moya.Cancellable {
-        return defaultProvider.requestObject(.init(target), modeType: modeType, completion: completion)
+        return defaultProvider.requestObject(.init(target), modeType: modeType, atKeyPath: keyPath, completion: completion)
     }
     
     @discardableResult
     static func requestArray<T: Convertible>(_ target: TargetType, modeType: T.Type, atKeyPath keyPath: String?  = "data", completion: @escaping (MoyaResult, [T]?) -> Void ) -> Moya.Cancellable {
-        return defaultProvider.requestArray(.init(target), modeType: modeType, completion: completion)
+        return defaultProvider.requestArray(.init(target), modeType: modeType, atKeyPath: keyPath, completion: completion)
     }
     
 }

@@ -37,15 +37,6 @@ public enum PlatformResponse {
 }
 
 public struct AuthResponse {
-//    var displayName: String? = nil
-//    var photoURL: String?  = nil
-//    var email: String?  = nil
-//    var refreshToken: String?  = nil
-//    var accessToken: String? = nil
-//    var gitHubCode = ""
-//
-//    var appleUserid: String? = nil
-//    var appleIdentityToken: String? = nil
     var platform: Platform
     var response: PlatformResponse
     

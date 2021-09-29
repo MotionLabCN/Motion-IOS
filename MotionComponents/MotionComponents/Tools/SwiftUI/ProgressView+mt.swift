@@ -71,3 +71,42 @@ public enum MTProgressViewStyle: Int {
 
 
 
+
+//MARK: - 扩展
+struct MTViewTopProgressViewModifier: ViewModifier {
+    let isShow: Bool
+    let text: String?
+    let usingBackgorund: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                ZStack {
+                    if usingBackgorund {
+                        Color.black.opacity(0.3)
+                            .ignoresSafeArea(edges: .all)
+                    }
+                    
+                    ProgressView().mt(style: .mid, withText: text)
+                }
+            )
+    }
+}
+
+struct MTPlaceholderProgressViewModifier: ViewModifier {
+    let isPlaceholder: Bool
+    let progressColor: Color
+    
+    func body(content: Content) -> some View {
+        if isPlaceholder {
+            ProgressView().mt(style: .mini)
+                .progressViewStyle(CircularProgressViewStyle(tint: progressColor))
+        } else {
+            content
+        }
+            
+    }
+}
+
+
+

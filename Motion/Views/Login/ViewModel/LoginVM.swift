@@ -73,6 +73,17 @@ class LoginVM: ObservableObject {
 //            .map({ $0.count < Constant.phoneMaxNum } )
 //            .assign(to: &$isPhoneInvalidate)
 //    }
+    
+    
+    func loginIn() {
+        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
+        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
+            var user = model
+            user?.token = r.dataJson?["token"].string
+            UserManager.shared.loginSuccess(model)
+        }
+       
+    }
 }
 
 
@@ -88,3 +99,6 @@ extension LoginVM {
         }
     }
 }
+
+
+

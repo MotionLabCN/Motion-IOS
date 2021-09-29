@@ -10,7 +10,12 @@ import Foundation
 import AuthenticationServices
 import SafariServices
 
+
+
 public class ThirdAuth: NSObject {
+    enum Github {
+        case lianze, zhuyiLocal, motion
+    }
     public static let shared = ThirdAuth()
 //    private let provider = OAuthProvider(providerID: "github.com") //firebase
     private var asSession: ASWebAuthenticationSession?
@@ -19,38 +24,53 @@ public class ThirdAuth: NSObject {
     
     private(set) var clientId: String = ""
     private(set) var clientSecret: String = ""
-    private(set) var scopes: [String] = ["usering", "dear"]
-    // https://lightapp-1c3d5.firebaseapp.com/__/auth/handler?code=cc271c07a7fe27fc24e6 回调给这个code
-    private(set) var callbackURLScheme: String? = nil
-    private(set) var keychain = true
+    private(set) var scopes: [String] = ["user", "admin:org", "repo"]
+//    [
+//        "user", "repo_deployment", "repo", "delete_repo", "notifications", "admin:org",
+//        "admin:repo_hook", "gist","write:discussion", "write:packages", "read:packages",
+//        "delete:packages", "admin:gpg_key", "workflow"
+//    ]
+    private(set) var callbackURLScheme: String? = "motion.native"
     
-    private var accessToken: String = ""
+    override init() {
+        super.init()
+        let git = Github.zhuyiLocal
+        switch git {
+        case .lianze:
+            configure(clientId: "9e8ee5130e06ce054096", clientSecret: "446b32b8b22103ff2a58b71577df9a88c11f3906")
+        case .zhuyiLocal:
+            configure(clientId: "b058a7554fe97d6f5315", clientSecret: "39647efd32fdf8e08efa76e8f6994b3dbddf2ddd")
+        case .motion:
+            configure(clientId: "9e8ee5130e06ce054096", clientSecret: "446b32b8b22103ff2a58b71577df9a88c11f3906")
+        }
+    }
     
     var githubSingInUrl: URL {
+        assert(clientId.count > 0, "请检查clientId, 调用configure")
         var components = URLComponents(string: "https://github.com/login/oauth/authorize")
         var queryItems = [URLQueryItem]()
         queryItems.append(URLQueryItem(name: "client_id", value: clientId))
         queryItems.append(URLQueryItem(name: "scope", value: scopes.joined(separator: ",")))
-        
+        queryItems.append(URLQueryItem(name: "state", value: "STATE"))
+
         components?.queryItems = queryItems
         let url = components?.url
         print("========== githubSingInUrl \(url!)")
         return  url!
     }
     
-    public var isSignedIn: Bool {
-        return !accessToken.isEmpty
-    }
-    
-    
-    public func configure(clientId: String = "abbcb9055e3df2b50fba", clientSecret: String = "5350a68af492aaef42730d710a8e83362659d3de", scopes: [String] = [], callbackURLScheme: String? = "motion.tntlinking.com", keychain: Bool = true) {
+    public func configure(clientId: String,
+                          clientSecret: String,
+                          scopes: [String]? = nil,
+                          callbackURLScheme: String? = nil) {
         self.clientId = clientId
         self.clientSecret = clientSecret
-        self.scopes = scopes
-        self.callbackURLScheme = callbackURLScheme
-        
-        self.keychain = keychain
-        
+        if let scopes = scopes {
+            self.scopes = scopes
+        }
+        if let callbackURLScheme = callbackURLScheme  {
+            self.callbackURLScheme = callbackURLScheme
+        }
     }
     
     
@@ -102,9 +122,9 @@ public class ThirdAuth: NSObject {
         let request = provider.createRequest()
         //        request.requestedScopes = [.fullName, .email]
         
-        let passwordRequest = ASAuthorizationPasswordProvider().createRequest()
+//        let passwordRequest = ASAuthorizationPasswordProvider().createRequest()
         
-        let controller = ASAuthorizationController(authorizationRequests: [request, passwordRequest])
+        let controller = ASAuthorizationController(authorizationRequests: [request])
         
         controller.delegate = self
         controller.presentationContextProvider = self
@@ -134,7 +154,7 @@ extension ThirdAuth: ASAuthorizationControllerDelegate {
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appCredentials = authorization.credential as? ASAuthorizationAppleIDCredential {
             //客户端至少要把苹果接口返回的identityToken, authorizationCode, userID这三个参数传给服务器，用于验证本次登录的有效性。
-            let userId = appCredentials.user  // "000215.ee0bef64a0ad440fa234a98683278967.0225"
+            let userId = appCredentials.user  
             var identityToken = ""
             if let data = appCredentials.identityToken {
                 identityToken = String(data: data, encoding: .utf8) ?? ""
@@ -151,11 +171,23 @@ extension ThirdAuth: ASAuthorizationControllerDelegate {
     // Error in authorization
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         let er =  error as? ASAuthorizationError
+        let nser = error as? NSError
         switch er?.code {
         case .canceled:
             print("用户取消")
+        case .invalidResponse:
+            print("invalidResponse")
+        case .notHandled:
+            print("notHandled")
+        case .failed:
+            print("failed")
         default:
-            print("错误")
+            switch er?.code.rawValue {
+            case -7001:
+                print("没开")
+            default:
+                print("错误")
+            }
         }
         appleSignInCompletion?(nil)
     }
@@ -165,8 +197,11 @@ extension ThirdAuth: ASAuthorizationControllerDelegate {
 //MARK: - AuthenticationServices GitHub
 private extension ThirdAuth {
     func asAuth(completion: @escaping AuthCompletion) {
+        let cliend_id = clientId
+        let client_secret = clientSecret
         asSession = ASWebAuthenticationSession(url: githubSingInUrl, callbackURLScheme: callbackURLScheme, completionHandler: { url, error in
             if let responseURL = url?.absoluteString {
+                //motionnative://?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjg5MzU2M30.V7-t-NaeVQbXh_Vt1OeG9u8dUgbjOurJ13DgP77P43k
                 let components = responseURL.components(separatedBy: "#")
                 for item in components {
                     if item.contains("code") {
@@ -179,6 +214,9 @@ private extension ThirdAuth {
                                     print("身份验证 code 码: \(code)")
                                     let result = AuthResponse(platform: .git(method: .asAuth), response: .git(.init(gitHubCode: code)))
                                     completion(result)
+//                                    Networking.request(GithubApi.access_token(p: .init(client_id: cliend_id, client_secret: client_secret, code: code))) { result in
+//                                        print("")
+//                                    }
                                     return
                                 }
                             }

@@ -48,7 +48,6 @@ extension AuthWkWebVC: WKNavigationDelegate {
          https://lightapp-1c3d5.firebaseapp.com/__/auth/handler?code=ad493ea06585c4565907
          
          3.拿到code 去获取token 文档： https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
-         
          */
         decisionHandler(.allow)
     }

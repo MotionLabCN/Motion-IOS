@@ -74,6 +74,9 @@
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
 		DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */; };
 		DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */; };
+		DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */; };
+		DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */; };
+		DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */; };
 		DFECAB0E26F30DBD00AB192C /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFECAB0D26F30DBD00AB192C /* PostModel.swift */; };
 		DFECAB1026F30DCB00AB192C /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFECAB0F26F30DCB00AB192C /* PostVM.swift */; };
 /* End PBXBuildFile section */
@@ -125,6 +128,9 @@
 		DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFE0C0B526E783CF00EDB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfig.swift; sourceTree = "<group>"; };
+		DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTTargetType.swift; sourceTree = "<group>"; };
+		DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		DFECAB0D26F30DBD00AB192C /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		DFECAB0F26F30DCB00AB192C /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -334,9 +340,10 @@
 			children = (
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
+				DFE0C0BB26E7848400EDB44F /* Common */,
+				DFEB1D2B2704506600B7C1DB /* Apis */,
 				DFECAB0C26F30DA300AB192C /* ViewModels */,
 				DFECAB0B26F30D9D00AB192C /* Models */,
-				DFE0C0BB26E7848400EDB44F /* Common */,
 				DF4145B626F1B1C700DD5F9F /* Views */,
 				DF8298B926F079ED0007DEEA /* NextView.swift */,
 				DFE0C0B026E783CF00EDB44F /* Assets.xcassets */,
@@ -359,8 +366,18 @@
 			children = (
 				DF8298BB26F07A720007DEEA /* AppState.swift */,
 				DF2A627026F7582E000DAF83 /* UserManager.swift */,
+				DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DFEB1D2B2704506600B7C1DB /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */,
+				DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */,
+			);
+			path = Apis;
 			sourceTree = "<group>";
 		};
 		DFECAB0B26F30D9D00AB192C /* Models */ = {
@@ -564,6 +581,7 @@
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
+				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
 				DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
@@ -583,6 +601,8 @@
 				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
+				DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */,
+				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

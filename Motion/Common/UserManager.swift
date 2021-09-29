@@ -13,11 +13,30 @@ import SwiftUI
  */
 
 //MARK: - 用户模型
-struct User: Convertible {
+struct UserInfo: Convertible {
+    var id = "" //: 64,
+    var username = "" //: "15271327766",
+    var password = "" //: "3e35ebb1ad8758547da307705b75d343",
+    var nickName = "" //: null,
+    var realName = "" //: null,
+    var mobile = "" //: "15271327766",
+    var registerDate = "" //: "2021-09-29T07:50:47.000+0000",
+    var email = "" //: null,
+    var registerChannel = "" //: null,
+    var registerOs = "" //: null,
+    var unionMemberId = "" //: null,
+    var avatarUrl = "" //: null,
+    var status = "" //: 1,
+    var tcc = "" //: 0,
+    var metaCoin = "" //: 5000,
+    var linkNum = "" //: 0,
+    var byLinkNum = "" //: 0,
+    var description = "" //: null,
+    var lastActiveTime = "" //: "2021-09-29T07:50:47.000+0000"
     
-    var nickName = ""
-    var id = ""
+    var token: String?
 }
+
 
 //MARK: - 用户管理
 private let UserDiskCacheFileName = "currentUser"
@@ -35,13 +54,13 @@ class UserManager: ObservableObject {
         let directory = FileManager.default.createFolder(folderName: "MotionCacheFiles")
         print("模型缓存目录: \(directory)")
         #endif
-        if let u = User.getForDisk(fileName: UserDiskCacheFileName) {
+        if let u = UserInfo.getForDisk(fileName: UserDiskCacheFileName) {
             user = u
-        }
+        }        
     }
 //    @AppStorage("token") var token = "" 示例
     
-    @Published private(set) var user = User() {
+    @Published private(set) var user = UserInfo() {
         didSet {
             user.cacheOnDisk(fileName: UserDiskCacheFileName) // 磁盘缓存
         }
@@ -50,10 +69,8 @@ class UserManager: ObservableObject {
     var hasLogin: Bool { user.id.count > 0 }
 
     
-    func save(userJson: [String: Any]?) { //网络请求后
-        if let u = userJson?.kj.model(User.self)  {
-            user = u
-        }
+    func loginSuccess(_ user: UserInfo?) { //网络请求后
+        self.user = user ?? .init()
     }
     
     /// 修改用户昵称 并触发 Publisher 示例
@@ -66,7 +83,7 @@ class UserManager: ObservableObject {
     }
     
     func logout() {
-        user = User()
+        user = UserInfo()
     }
     
 }
@@ -131,7 +148,7 @@ extension UserManager {
     }
     
     static func testSave() {
-        UserManager.shared.save(userJson: ["nickName" :"liangze"])
+//        UserManager.shared.save(userJson: ["nickName" :"liangze"])
     }
     
     static func testChangeNickName() {

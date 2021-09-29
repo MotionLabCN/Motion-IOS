@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-
+public typealias HTTPRequestMethod = Moya.Method
 public protocol CustomTargetType: TargetType {
     var parameters: [String: Any]? { get }
     var parameterEncoding: ParameterEncoding { get }
@@ -18,7 +18,7 @@ public protocol CustomTargetType: TargetType {
 public extension CustomTargetType {
     var baseURL: URL { URL(string: "https://fm.douban.com/")! }
 
-    var method: Moya.Method {
+    var method: HTTPRequestMethod {
         return .get
     }
 

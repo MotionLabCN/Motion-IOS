@@ -7,22 +7,40 @@
 
 import Foundation
 import Moya
-
+import KakaJSON
 enum GithubApi: CustomTargetType {
-    var baseURL: URL { URL(string: "https://fm.douban.com/")! }
+    struct GetAccessTokenParameters: Convertible {
+        var client_id: String = ""
+        var client_secret: String = ""
+        var code: String = ""
+    }
+    case access_token(p: GetAccessTokenParameters)
+    
+    var baseURL: URL { URL(string: "https://github.com")! }
 
     var method: Moya.Method {
-        return .get
+        switch self {
+        case .access_token: return .post
+        }
     }
 
     var path: String {
-        ""
+        switch self {
+        case .access_token: return "login/oauth/access_token"
+        }
     }
     
-    var parameters: [String: Any]? { nil }
+    var parameters: [String: Any]? {
+        switch self {
+        case let .access_token(p): return p.kj.JSONObject()
+        }
+    }
     
 
     var headers: [String: String]? {
-        return nil
+        return [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
     }
 }
