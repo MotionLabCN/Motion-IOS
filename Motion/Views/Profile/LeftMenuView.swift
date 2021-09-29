@@ -8,14 +8,14 @@
 import SwiftUI
 import MotionComponents
 
-struct ProfileView: View {
+struct LeftMenuView: View {
     
     @Environment(\.presentationMode) var persentationMode
     
     var body: some View {
         
-        NavigationView{
-            ScrollView(.vertical, showsIndicators: false) {
+        
+        VStack(alignment: .center, spacing: 12) {
                     userInfo
                   
                     Spacer.mt.max()
@@ -25,13 +25,10 @@ struct ProfileView: View {
                 Spacer.mt.max()
              
                     logo
-              
-              
+                
             }
-            .navigationBarItems( trailing:   closeBtn)
-            .navigationBarTitleDisplayMode(.inline)
-            
-        }
+        .frame(width: ScreenWidth() * 0.8,alignment: .leading)
+        .ignoresSafeArea()
         
         
     }
@@ -42,6 +39,7 @@ struct ProfileView: View {
             Text("于2021年6月23日加入Motion")
                 .font(.mt.caption1,textColor: .mt.gray_400)
         }
+        .padding(.horizontal)
     }
     var closeBtn : some View{
         Button(action: {
@@ -52,9 +50,12 @@ struct ProfileView: View {
         })
     }
     var toolBtns : some View {
-        VStack(spacing:24){
+        VStack(alignment: .leading, spacing:24){
             
-            ProfileListRow(icon: Image.mt.load(.Person), text: "查看个人主页")
+            
+                ProfileListRow(icon: Image.mt.load(.Person), text: "查看个人主页")
+            
+            
             ProfileListRow(icon: Image.mt.load(.Github), text: "链接Github")
             ProfileListRow(icon: Image.mt.load(.Apps), text: "储存空间")
             ProfileListRow(icon: Image.mt.load(.Logo), text: "元宇宙硬币")
@@ -65,17 +66,19 @@ struct ProfileView: View {
             ProfileListRow(icon: Image.mt.load(.Setting), text: "设置")})
                 
         }
+       
     }
     var userInfo : some View {
-        VStack(spacing:8){
+        VStack(alignment:.center, spacing:8){
             
             MTLocUserAvatar( frame: 82)
             
-            VStack(spacing:0){
+            VStack(alignment:.center, spacing:0){
                 Text("赵翔宇")
                     .font(.mt.body1.mtBlod(),textColor: .black)
                 Text("@liseami")
                     .font(.mt.body3,textColor: .mt.gray_600)
+                    
             }
             HStack{
                 HStack{
@@ -95,9 +98,9 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct LeftMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        LeftMenuView()
     }
 }
 

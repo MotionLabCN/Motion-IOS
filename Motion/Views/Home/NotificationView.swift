@@ -16,7 +16,6 @@ struct NotificationView: View {
     var body: some View {
         VStack(spacing:0){
             //TOP Tabbar
-            
                 TabView(selection: $tag, content:{ //tabview start
                     MessageView().tag(notificationViewTabs[0])
                     MessageView().tag(notificationViewTabs[1])
@@ -25,19 +24,10 @@ struct NotificationView: View {
                     }) //tabview end
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .transition(.slide)
-            
         }
-        .navigationBarHidden(true)
         .padding(.top,44)
         .navigationBarTitleDisplayMode(.inline)
-        .mtNavbar(content: {
-            Text("新消息")
-                .font(.mt.body1.mtBlod(),textColor: .black)
-        }, leading: {
-            MTLocUserAvatar()
-        }, trailing: {
-            SettingBtn()
-        })
+        .navigationBarItems( trailing:     SettingBtn())
     }
 }
 

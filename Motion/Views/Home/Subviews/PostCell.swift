@@ -38,6 +38,7 @@ struct PostCell: View {
             .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity)
+
     }
     
     var name: some View {

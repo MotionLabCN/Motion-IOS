@@ -46,29 +46,14 @@ struct HomeView: View {
             MTLocUserAvatar()
         }
                   , trailing: {
-            Image.mt.load(.Map_place)
+            NavigationLink {
+                NotificationView()
+            } label: {
+                Image.mt.load(.Mail)
+             .foregroundColor(.mt.gray_800)
+            }
         })
         .mtAttatchTabbarSpacer()
-       
-//        .onAppear {
-//            MTSheetManager.shared.showContent($isShowmtsheet) {
-//                VStack {
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//
-//                    Button {
-//                        isShowmtsheet = false
-//                    } label: {
-//                        Text("关闭")
-//                    }
-//                }
-//            }
-//        }
         .onDisappear(perform: {
             print("home onDisappear")
 

@@ -34,7 +34,7 @@ struct LoginStartView: View {
                 mp4
                 
                 logo
-                Text("线上协同元宇宙，与队伍实现伟大创造的地方。")
+                Text("全球技术方案、计算设备、技术实践者，通过Motion互相连接。")
                     .font(.mt.title1.mtBlod(), textColor: .white)
                     .padding(.horizontal, 25)
                 
