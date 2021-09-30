@@ -205,8 +205,10 @@ struct LoginStartView: View {
                         toastText = "Github登录失败"
                         return
                     }
+                    // 掉接口
+                    //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE
                     userManager.loginSusscessSaveToken(result.token, channel: .github)
-                    let req = LoginApi.PhoneLoginParameters.init(mobile: "15271327766", smsCode: "888888")
+                    
                     
                 })
             }, label: {
