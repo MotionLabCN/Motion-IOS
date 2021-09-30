@@ -10,7 +10,18 @@ import Foundation
 
 
 struct ProjectConfig {
-
+    static let env: Environment = .local
+    
+    enum Environment {
+    case local, test
+    }
+    
+    static var baseUrl: String {
+        switch env {
+        case .local: return "http://192.168.0.224:8085"
+        case .test: return "http://192.168.0.224:8085"
+        }
+    }
     
 
 }
