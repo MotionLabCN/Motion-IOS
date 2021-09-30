@@ -17,6 +17,7 @@ struct MotionApp: App {
     @StateObject var userManager = UserManager.shared
     
     @StateObject var findViewPageindex = AppState.FindViewState()
+
     var body: some Scene {
         WindowGroup {
             ContentView()

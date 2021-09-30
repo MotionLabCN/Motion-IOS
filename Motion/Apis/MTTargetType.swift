@@ -14,7 +14,7 @@ protocol MTTargetType: CustomTargetType {
 }
 
 extension MTTargetType {
-    var baseURL: URL { URL(string: "http://192.168.0.224:8085")! }
+    var baseURL: URL { URL(string: ProjectConfig.baseUrl)! }
 
     var headers: [String: String]? {
         var headers = [
