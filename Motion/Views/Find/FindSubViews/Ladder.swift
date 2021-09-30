@@ -103,9 +103,9 @@ struct LadderListCell: View {
                     .frame(maxWidth:.infinity,alignment: .leading)
                 }
                 HStack(spacing:-12){
-                    MTUserAvatar(frame: 44) {}
-                    MTUserAvatar(frame: 44) {}
-                    MTUserAvatar(frame: 44) {}
+                    MTAvatar(frame: 44) {}
+                    MTAvatar(frame: 44) {}
+                    MTAvatar(frame: 44) {}
                 }
                 HStack{
                     Image.mt.load(.Logo)

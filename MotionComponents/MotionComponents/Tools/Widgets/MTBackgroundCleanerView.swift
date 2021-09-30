@@ -7,28 +7,6 @@
 
 import SwiftUI
 
-public extension View {
-    func mtFullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
-        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss) {
-            ZStack {
-                MTBackgroundCleanerView()
-                content()
-            }
-        }
-    }
-    
-    func mtFullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View {
-        fullScreenCover(item: item, onDismiss: onDismiss) { model in
-            ZStack {
-                MTBackgroundCleanerView()
-                content(model)
-            }
-        }
-    }
-
-}
-
-
 
 public struct MTBackgroundCleanerView: View {
     public init() {

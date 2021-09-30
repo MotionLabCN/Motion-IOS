@@ -40,15 +40,12 @@ extension MTPushNofi {
 //@available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct MTPushNofi: View {
     let text: String
-    let isCancellable: Bool
     let style: MTPushNofi.PushNofiType
-    
     let didClickClose: Block_T?
     
-    public init(text: String, style: MTPushNofi.PushNofiType = .defult, isCancellable: Bool = false, didClickClose: Block_T? = nil) {
+    public init(text: String, style: MTPushNofi.PushNofiType = .defult, didClickClose: Block_T? = nil) {
         self.text = text
         self.style = style
-        self.isCancellable = isCancellable
         self.didClickClose = didClickClose
     }
     
@@ -57,7 +54,7 @@ public struct MTPushNofi: View {
             Text(text)
                 .font(.mt.body1, textColor: .white)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            if isCancellable {
+            if didClickClose != nil {
                 Spacer()
                 
                 Button(action: {

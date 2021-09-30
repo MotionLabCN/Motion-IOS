@@ -72,18 +72,57 @@ public struct MTAttachTextModifier: ViewModifier {
 }
 
 
-//MARK: - 按钮点击变小效果
-//public struct MTScalePressedButtonStyle: ButtonStyle {
-//    let scale: CGFloat
-//    public init(scale: CGFloat = 0.8) {
-//        self.scale = scale
-//    }
-//    
-//    public func makeBody(configuration: Configuration) -> some View {
-//        let isPressed = configuration.isPressed
-//        
-//        configuration.label
-//            .scaleEffect(isPressed ? scale : 1)
-//            .animation(.spring())
-//    }
-//}
+//MARK: - 圆形边框
+struct MTImageBorder: ViewModifier {
+    let color: Color
+    let lineWidth: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                Capsule(style: .continuous)
+                    .stroke(lineWidth: 3)
+                    .foregroundColor(color)
+            )
+    }
+}
+
+
+//MARK: - 添加角标
+struct MTAddBadgeViewModifier: ViewModifier {
+    let number: Int
+    let isShow: Bool
+    let size: CGSize
+    let offset: CGSize
+    
+    func body(content: Content) -> some View {
+        if isShow {
+            content
+                .overlay(
+                    Circle()
+                        .frame(size: size)
+                        .foregroundColor(.mt.accent_700)
+                        .overlay(Text("\(number)").font(.mt.caption2.mtBlod() , textColor: .white))
+                        .offset(offset)
+                        .disabled(false)
+                    , alignment: .topTrailing)
+        } else {
+            content
+        }
+    }
+}
+
+
+
+//MARK: - 添加角标
+struct MTCardStyleViewModifier :ViewModifier {
+    let insets: EdgeInsets
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(insets)
+            .background(Color.white)
+            .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
+            .mtShadow(type: .shadowLow)
+    }
+}
+

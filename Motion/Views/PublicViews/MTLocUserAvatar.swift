@@ -6,41 +6,59 @@
 //
 
 import SwiftUI
+import Kingfisher
 
-
-struct MTLocUserAvatar: View {
-    
-    var frame : CGFloat = 36
-    var body: some View {
-        Button {
-         
-        } label: {
-        Image("touxiang")
-                .resizable()
-                .scaledToFill()
-            .frame(width: frame, height: frame)
-            .clipShape(Capsule(style: .continuous))
-        }
-    }
+extension String: Resource {
+    public var cacheKey: String { return "absoluteString" }
+    public var downloadURL: URL { return URL(string: self)! }
 }
 
-struct MTUserAvatar: View {
-    
-    var frame : CGFloat = 36
+
+struct MTAvatar: View {
+    var frame : CGFloat
+    var urlString: String?
     var action : () -> Void
     
+    init(frame: CGFloat = 36, urlString: String? = nil, action: @escaping () -> Void) {
+        self.frame = frame
+        self.urlString = urlString
+        self.action = action
+    }
+    
     var body: some View {
         Button {
-          action()
+            action()
         } label: {
-        Image("touxiang")
+            KFImage(urlString?.url)
+//                .placeholder {
+//                    Capsule(style: .continuous)
+//                        .foregroundColor(.mt.gray_300)
+//                        .overlay(
+//                            Image.mt.load(.Person)
+//                                .foregroundColor(.black)
+//                        )
+//                }
                 .resizable()
                 .scaledToFill()
-            .frame(width: frame, height: frame)
-            .clipShape(Capsule(style: .continuous))
+                .mtFrame(square: frame)
+                .clipShape(Capsule(style: .continuous))
         }
     }
 }
+
+struct MTLocUserAvatar: View {
+    @State var isPresented = false
+    var frame : CGFloat = 36
+
+            
+    var body: some View {
+        MTAvatar(frame: frame, urlString: "https://avatars.githubusercontent.com/u/14833970?v=4") {
+            
+        }
+
+    }
+}
+
 
 
 

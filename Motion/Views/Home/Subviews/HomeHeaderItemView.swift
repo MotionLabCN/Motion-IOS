@@ -26,9 +26,9 @@ struct HomeHeaderItemView: View {
             HStack(spacing: 4.0) {
                 HStack(spacing: 0.0) {
                     Group {
-                        MTUserAvatar(frame : 44) {}
+                        MTAvatar(frame : 44) {}
                         .mtBoderCircle()
-                        MTUserAvatar(frame : 44) {}
+                        MTAvatar(frame : 44) {}
                         .mtBoderCircle()
                         .padding(.leading, -20)
                     }

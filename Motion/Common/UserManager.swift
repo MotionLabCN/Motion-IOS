@@ -34,7 +34,6 @@ struct UserInfo: Convertible {
     var description = "" //: null,
     var lastActiveTime = "" //: "2021-09-29T07:50:47.000+0000"
     
-    var token: String?
 }
 
 
@@ -58,18 +57,26 @@ class UserManager: ObservableObject {
             user = u
         }        
     }
-//    @AppStorage("token") var token = "" 示例
     
+    @AppStorage("token") private(set) var token: String = ""
+    @AppStorage("channel") private(set)  var channel = ""
     @Published private(set) var user = UserInfo() {
         didSet {
             user.cacheOnDisk(fileName: UserDiskCacheFileName) // 磁盘缓存
         }
     }
     
-    var hasLogin: Bool { user.id.count > 0 }
+    var hasLogin: Bool {
+        false
+//        user.id.count > 0
+    }
 
+    func loginSusscessSaveToken(_ token: String, channel: ChannelType) {
+        self.token = token
+        self.channel = channel.rawValue
+    }
     
-    func loginSuccess(_ user: UserInfo?) { //网络请求后
+    func loginSuccessSaveUser(_ user: UserInfo?) { //网络请求后
         self.user = user ?? .init()
     }
     
@@ -77,12 +84,10 @@ class UserManager: ObservableObject {
     func changeNickName(_ name: String)  {
         user.nickName = name
     }
-    
-    func changeId(_ id: String) {
-        user.id = id
-    }
-    
+        
     func logout() {
+        token = ""
+        channel = ""
         user = UserInfo()
     }
     
@@ -90,6 +95,12 @@ class UserManager: ObservableObject {
 
 
 
+extension UserManager {
+    //1.一键手机登陆 2.github 3.apple 4.wechat 5.手机验证码
+    enum ChannelType: String {
+        case 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
+    }
+}
 
 
 

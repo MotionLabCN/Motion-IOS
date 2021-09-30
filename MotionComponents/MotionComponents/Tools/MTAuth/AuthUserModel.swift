@@ -19,17 +19,18 @@ public enum Platform {
 
 public enum PlatformResponse {
     public struct Github {
-        var displayName: String? = nil
-        var photoURL: String?  = nil
-        var email: String?  = nil
-        var refreshToken: String?  = nil
-        var accessToken: String? = nil
-        var gitHubCode = ""
+//        var displayName: String? = nil
+//        var photoURL: String?  = nil
+//        var email: String?  = nil
+//        var refreshToken: String?  = nil
+//        var accessToken: String? = nil
+//        var gitHubCode = ""
+        public var token = ""
     }
     
     public struct Apple {
-        let appleUserid: String
-        let appleIdentityToken: String
+        public let appleUserid: String
+        public let appleIdentityToken: String
     }
     
     case git(_ response: Github)
@@ -37,7 +38,7 @@ public enum PlatformResponse {
 }
 
 public struct AuthResponse {
-    var platform: Platform
-    var response: PlatformResponse
+    public var platform: Platform
+    public var response: PlatformResponse
     
 }

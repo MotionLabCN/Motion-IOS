@@ -52,37 +52,3 @@ public struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModif
         }
     }
 }
-
-public extension View {
-    func mtNavbar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        modifier(MTNavbarViewModifier(content: content, leading: {
-            EmptyView()
-        }, trailing: {
-            EmptyView()
-        }))
-    }
-    
-    func mtNavbar<Content: View, L: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L) -> some View {
-        modifier(MTNavbarViewModifier(content: content, leading: {
-            leading()
-        }, trailing: {
-            EmptyView()
-        }))
-    }
-
-    func mtNavbar<Content: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder trailing: () -> Content) -> some View {
-        modifier(MTNavbarViewModifier(content: content, leading: {
-            EmptyView()
-        }, trailing: {
-            trailing()
-        }))
-    }
-
-    func mtNavbar<Content: View, L: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L, @ViewBuilder trailing: () -> R) -> some View {
-        modifier(MTNavbarViewModifier(content: content, leading: {
-            leading()
-        }, trailing: {
-            trailing()
-        }))
-    }
-}

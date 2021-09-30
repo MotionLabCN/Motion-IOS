@@ -23,34 +23,6 @@ public enum MTButtonStyle {
     case mainGradient
 }
 
-//MARK: - Button扩展
-public extension View {
-    /// 在button外加 改样式 + 动画
-    func mtButtonStyle(_ style: MTButtonStyle) -> some View {
-        self
-            .buttonStyle(MTButtonCustomStyle(style: style, customBackground: false))
-            .disabled(!style.isEnable)
-    }
-    
-    /// button里的Label 只改样式
-    func mtButtonLabelStyle(_ style: MTButtonStyle, customBackground: Bool = true) -> some View {
-        modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
-    }
-    
-    /// 点击动画
-    @ViewBuilder
-    func mtTapAnimation(style: MTTapAnimationStyle = .rotation3D) -> some View {
-        switch style {
-        case .system: self
-        case .normal: buttonStyle(MTButtonNormalStyle())
-        case .rotation3D: buttonStyle(MTRotation3DButtonStyle())
-        case let .overlayOrScale(isOverlay, scale):
-            buttonStyle(MTButtonAnimationStyle(isOverlay: isOverlay, scale: scale))
-        }
-    }
-}
-
-
 
 //MARK: - 样式Style Modifier
 struct MTButtonStyleModifier: ViewModifier {

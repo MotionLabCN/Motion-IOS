@@ -13,7 +13,7 @@ struct PostCell: View {
     @State private var textHeight: CGFloat = 0
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            MTUserAvatar(frame : 52) {}
+            MTAvatar(frame : 52) {}
             VStack(spacing: 0.0) {
                 name
                 

@@ -95,11 +95,9 @@ struct PostDetailView: View {
         VStack{
             Spacer()
             HStack{
-                Image("touxiang")
-                    .resizable()
-                    .frame(width: 36, height: 36)
-                    .clipShape(Capsule(style: .continuous))
-                    .foregroundColor(Color.random)
+                MTAvatar(frame: 36, urlString: nil) {
+                    
+                }
                 VStack(alignment: .leading,spacing:4){
                     Text("小梁同学")
                         .font(.mt.body2.mtBlod(),textColor: .white)

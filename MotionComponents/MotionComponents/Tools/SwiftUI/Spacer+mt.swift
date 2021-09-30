@@ -52,14 +52,3 @@ public enum MTSpaceing: CGFloat, CaseIterable, Identifiable {
         }
     }
 }
-
-
-
-public extension View {
-    func mtAttatchTabbarSpacer() -> some View {
-        VStack(spacing: 0) {
-            self
-            Spacer.mt.tabbar()
-        }
-    }
-}

@@ -197,32 +197,13 @@ extension ThirdAuth: ASAuthorizationControllerDelegate {
 //MARK: - AuthenticationServices GitHub
 private extension ThirdAuth {
     func asAuth(completion: @escaping AuthCompletion) {
-        let cliend_id = clientId
-        let client_secret = clientSecret
         asSession = ASWebAuthenticationSession(url: githubSingInUrl, callbackURLScheme: callbackURLScheme, completionHandler: { url, error in
             if let responseURL = url?.absoluteString {
                 //motionnative://?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjg5MzU2M30.V7-t-NaeVQbXh_Vt1OeG9u8dUgbjOurJ13DgP77P43k
-                let components = responseURL.components(separatedBy: "#")
-                for item in components {
-                    if item.contains("code") {
-                        let tokens = item.components(separatedBy: "&")
-                        for token in tokens {
-                            if token.contains("code") {
-                                let idTokenInfo = token.components(separatedBy: "=")
-                                if idTokenInfo.count > 1 {
-                                    let code = idTokenInfo[1]
-                                    print("身份验证 code 码: \(code)")
-                                    let result = AuthResponse(platform: .git(method: .asAuth), response: .git(.init(gitHubCode: code)))
-                                    completion(result)
-//                                    Networking.request(GithubApi.access_token(p: .init(client_id: cliend_id, client_secret: client_secret, code: code))) { result in
-//                                        print("")
-//                                    }
-                                    return
-                                }
-                            }
-                        }
-                    }
-                }
+                let token = responseURL.components(separatedBy: "token=").last
+                let result = AuthResponse(platform: .git(method: .asAuth), response: .git(.init(token: token ?? "")))
+                completion(result)
+                return
             }
             
             completion(nil)

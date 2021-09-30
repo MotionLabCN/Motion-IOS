@@ -134,13 +134,21 @@ struct MTToastViewModifier<MTContent: View>: ViewModifier {
 
 
 
-public extension View {
-    func mtToast(isPresented: Binding<Bool>, text: String, style: MTPushNofi.PushNofiType = .defult, dismissTime:  MTToast.DismissTime = .auto(duration: 3), postion: MTToast.Postion = .bottom(offsetY: 0), isCancellable: Bool = false, didClickClose: Block_T? = nil) -> some View {
-        modifier(
-            MTToastViewModifier(isPresented: isPresented, dismissTime: dismissTime, postion: postion, content: {
-                MTPushNofi(text: text, style: style, isCancellable: isCancellable, didClickClose: didClickClose)
-            })
-        )
+public struct MTToastConfig {
+    public var isPresented: Binding<Bool>
+    public var text: String
+    public var style: MTPushNofi.PushNofiType
+    public var dismissTime:  MTToast.DismissTime
+    public var postion: MTToast.Postion
+    public var didClickClose: Block_T?
+    
+    public init(isPresented: Binding<Bool>, text: String, style: MTPushNofi.PushNofiType = .defult, dismissTime:  MTToast.DismissTime = .auto(duration: 3), postion: MTToast.Postion = .bottom(offsetY: 0), didClickClose: Block_T? = nil) {
+        self.isPresented = isPresented
+        self.text = text
+        self.style = style
+        self.dismissTime = dismissTime
+        self.postion = postion
+        self.didClickClose = didClickClose
     }
 }
 

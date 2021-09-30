@@ -419,7 +419,7 @@
 		DD8D792486A6C81510134ECE9BD43CAA /* VideoCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E659A2B90D6E5E54DBB0C9A21A96E27 /* VideoCacheHandler.swift */; };
 		DE05924421F7CB823B4766BC14DBF066 /* Vectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F71F7DBE150322B18E083924684F4D /* Vectors.swift */; };
 		DE4607625926C5B769341885B3C488B6 /* AVPlayerItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B8B3B159D2F1FF17A1523AE5C4EA67 /* AVPlayerItem+Extensions.swift */; };
-		DE4CC37A82528F6CC0775A36E2A9BC23 /* FullScreenCover+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C368335B427480EA65E967A2EB698173 /* FullScreenCover+mt.swift */; };
+		DE4CC37A82528F6CC0775A36E2A9BC23 /* MTBackgroundCleanerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C368335B427480EA65E967A2EB698173 /* MTBackgroundCleanerView.swift */; };
 		DF20FA3D69BC752B01D65651AF876198 /* GradientStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415F7BD2D819D790CF62067FAC5B1ED2 /* GradientStroke.swift */; };
 		DF68971DE59F34756BBCA32F1D0BE5A3 /* Spacer+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0E71022E3A795182B593242181F32 /* Spacer+mt.swift */; };
 		DFE30AB9EA4F8027EB1EF690D9D8FF48 /* ProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC55BAA9876957F731E7EB0E4AAC46A /* ProtocolType.swift */; };
@@ -1054,7 +1054,7 @@
 		C1FCDE7EAAB3FF6F2EE0E974EDF64DBA /* Transform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transform.swift; path = "lottie-swift/src/Private/Model/Objects/Transform.swift"; sourceTree = "<group>"; };
 		C238E5E33CF7DB02638672F822E05E22 /* ForeignClassType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForeignClassType.swift; path = Sources/KakaJSON/Metadata/Type/ForeignClassType.swift; sourceTree = "<group>"; };
 		C30FF05C0C605EBC9F795244F394FEF9 /* MotionComponents.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MotionComponents.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C368335B427480EA65E967A2EB698173 /* FullScreenCover+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "FullScreenCover+mt.swift"; sourceTree = "<group>"; };
+		C368335B427480EA65E967A2EB698173 /* MTBackgroundCleanerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MTBackgroundCleanerView.swift; sourceTree = "<group>"; };
 		C388B7E19A07FCDBDD032B9AB1082E5E /* NSPredicateExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSPredicateExtensions.swift; path = Sources/SwifterSwift/Foundation/NSPredicateExtensions.swift; sourceTree = "<group>"; };
 		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FDD17F9DF39D5604BFF9B96321F68C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
@@ -1775,7 +1775,6 @@
 				55A875BA3DE182C8823F195174589C93 /* Color+mt.swift */,
 				4AE4E1520D19ED0DB0750EA1459AA80D /* Divider+mt.swift */,
 				740A870C8459A5D090FC88CE2F00798A /* Font+mt.swift */,
-				C368335B427480EA65E967A2EB698173 /* FullScreenCover+mt.swift */,
 				79E3FD024D5C35AC5139E20FAC4FF2F4 /* Image+mt.swift */,
 				F18B4CAAE3EE6594C427102FFF5E5954 /* Navbar+mt.swift */,
 				F2A9BFF4760E9BF95E6B4017295D82C1 /* ProgressView+mt.swift */,
@@ -1784,6 +1783,7 @@
 				1F62B4EA8E1DF4046574DCFDCA63BE62 /* TextField+mt.swift */,
 				4CE717C9345E98E0EFE0B6F42A9EB87C /* Toast+mt.swift */,
 				CF4342C0FF343582B6643C67546401BB /* View+mt.swift */,
+				B7BEEA7FF998FF0031EDF62912E819C7 /* MTViewModifiers.swift */,
 			);
 			name = SwiftUI;
 			path = MotionComponents/Tools/SwiftUI;
@@ -1835,11 +1835,11 @@
 		955660BF5B381A98FD2999F94F8325EC /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				C368335B427480EA65E967A2EB698173 /* MTBackgroundCleanerView.swift */,
 				71EF7102873C16073911BD29E734A2E2 /* MTDescriptionView.swift */,
 				840818AE12BDBB39EDE5670150D340AE /* MTPushNofi.swift */,
 				DED29CE512336C756D3A4BDCF4652319 /* MTRichText.swift */,
 				0DF980A2F44C58F383E877567E730E87 /* MTVideoPlayer.swift */,
-				B7BEEA7FF998FF0031EDF62912E819C7 /* MTViewModifiers.swift */,
 				8A6C3B64DDCCADD78E7CB14380F51262 /* MTWarningNofi.swift */,
 			);
 			name = Widgets;
@@ -2816,7 +2816,7 @@
 				667FE2ED74F44BB92FDE8B77808CB727 /* ExtensionsComponent.swift in Sources */,
 				BF110B6A0E29AF193896E579AFA75702 /* FileManagerExtensions.swift in Sources */,
 				070466B32BC60EF92FF39DABDCBF0180 /* Font+mt.swift in Sources */,
-				DE4CC37A82528F6CC0775A36E2A9BC23 /* FullScreenCover+mt.swift in Sources */,
+				DE4CC37A82528F6CC0775A36E2A9BC23 /* MTBackgroundCleanerView.swift in Sources */,
 				7F9FBC6153B0446D480F8DB46C102760 /* GeometryProxyExtensions.swift in Sources */,
 				5177BA5EFBE3125D308B8EB648CEC3B2 /* GithubApi.swift in Sources */,
 				8DF4242435160BC906CC5904B234858B /* GlobalParameter.swift in Sources */,

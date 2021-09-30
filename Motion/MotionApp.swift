@@ -32,7 +32,7 @@ struct MotionApp: App {
     
     init() {
         print("")
-        UserManager.shared.logout()
+//        UserManager.shared.logout()
     }
 }
 

@@ -26,6 +26,10 @@ struct LoginStartView: View {
     @State private var isShowLoginSheet = false
     @State private var isPhoneLoginActive = false
     
+    @State private var isShowToast = false
+    @State private var toastText = ""
+    @State private var toastStyle = MTPushNofi.PushNofiType.danger
+    
     var body: some View {
 //        NavigationView {
             ZStack {
@@ -49,7 +53,9 @@ struct LoginStartView: View {
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
             .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
-            .mtTopProgress(true)
+            .mtTopProgress(true)//网络加载
+            .mtToast(isPresented: $isShowToast, text: toastText, style: toastStyle)
+            
 //        }
     }
     
@@ -135,6 +141,8 @@ struct LoginStartView: View {
     var startBtn: some View {
         Button("开始") {
             isShowLoginSheet = true
+            isShowToast = true
+            toastText = "start "
         }
         .mtButtonStyle(.mainGradient)
 
@@ -192,7 +200,14 @@ struct LoginStartView: View {
             
             Button(action: {
                 ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { response in
-                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
+                    guard case let .git(result) = response?.response else {
+                        isShowToast = true
+                        toastText = "Github登录失败"
+                        return
+                    }
+                    userManager.loginSusscessSaveToken(result.token, channel: .github)
+                    let req = LoginApi.PhoneLoginParameters.init(mobile: "15271327766", smsCode: "888888")
+                    
                 })
             }, label: {
                 HStack {
@@ -203,6 +218,9 @@ struct LoginStartView: View {
             .mtButtonStyle(.mainStorKer())
             
             Button(action: {
+                toastStyle = .warning
+                isShowToast = true
+                toastText = "click pinggu"
                 ThirdAuth.shared.signIn(platform: .apple, completion: { response in
                     print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
                 })

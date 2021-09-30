@@ -56,7 +56,7 @@ struct LoginCreateTeamView: View {
 
     var rightBtn: some View {
         Button {
-            userManager.changeId("123")
+//            userManager.changeId("123")
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)

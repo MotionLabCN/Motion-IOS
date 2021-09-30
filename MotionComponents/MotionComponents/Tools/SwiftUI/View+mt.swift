@@ -51,60 +51,122 @@ public extension View {
     func mtPlaceholderProgress(_ isPlaceholder: Bool, progressColor: Color = .black) -> some View {
         modifier(MTPlaceholderProgressViewModifier(isPlaceholder: isPlaceholder, progressColor: progressColor))
     }
-}
-
-
-
-//MARK: - 圆形边框
-struct MTImageBorder: ViewModifier {
-    let color: Color
-    let lineWidth: CGFloat
-    func body(content: Content) -> some View {
-        content
-            .overlay(
-                Capsule(style: .continuous)
-                .strokeBorder(color, lineWidth: lineWidth)
-            )
-    }
-}
-
-
-//MARK: - 添加角标
-struct MTAddBadgeViewModifier: ViewModifier {
-    let number: Int
-    let isShow: Bool
-    let size: CGSize
-    let offset: CGSize
     
-    func body(content: Content) -> some View {
-        if isShow {
-            content
-                .overlay(
-                    Circle()
-                        .frame(size: size)
-                        .foregroundColor(.mt.accent_700)
-                        .overlay(Text("\(number)").font(.mt.caption2.mtBlod() , textColor: .white))
-                        .offset(offset)
-                        .disabled(false)
-                    , alignment: .topTrailing)
-        } else {
-            content
+    /// toast MTPushNofi
+    func mtToast(isPresented: Binding<Bool>, text: String, style: MTPushNofi.PushNofiType = .defult, dismissTime:  MTToast.DismissTime = .auto(duration: 3), postion: MTToast.Postion = .bottom(offsetY: 0), didClickClose: Block_T? = nil) -> some View {
+        modifier(
+            MTToastViewModifier(isPresented: isPresented, dismissTime: dismissTime, postion: postion, content: {
+                MTPushNofi(text: text, style: style, didClickClose: didClickClose)
+            })
+        )
+    }
+    
+    /// toast MTPushNofi using config
+    func mtToast(config: MTToastConfig) -> some View  {
+        modifier(
+            MTToastViewModifier(isPresented: config.isPresented, dismissTime: config.dismissTime, postion: config.postion, content: {
+                MTPushNofi(text: config.text, style: config.style, didClickClose: config.didClickClose)
+            })
+        )
+    }
+    
+    /// 适配底部Tabbar
+    func mtAttatchTabbarSpacer() -> some View {
+        VStack(spacing: 0) {
+            self
+            Spacer.mt.tabbar()
+        }
+    }
+    
+    /// 给View加阴影
+    @ViewBuilder
+    func mtShadow(type: MTShadow) -> some View {
+        let config = type.config
+        shadow(color: config.color, radius: config.radius, x: config.x, y: config.y)
+    }
+    
+    /// 去了背景色的full screeen cover
+    func mtFullScreenCover<Content>(isPresented: Binding<Bool>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+        fullScreenCover(isPresented: isPresented, onDismiss: onDismiss) {
+            ZStack {
+                MTBackgroundCleanerView()
+                content()
+            }
+        }
+    }
+    
+    /// 去了背景色的full screeen cover
+    func mtFullScreenCover<Item, Content>(item: Binding<Item?>, onDismiss: (() -> Void)? = nil, @ViewBuilder content: @escaping (Item) -> Content) -> some View where Item : Identifiable, Content : View {
+        fullScreenCover(item: item, onDismiss: onDismiss) { model in
+            ZStack {
+                MTBackgroundCleanerView()
+                content(model)
+            }
+        }
+    }
+    
+}
+
+
+//MARK: - Button和NavgiationLink用
+public extension View {
+    /// 在button or NavgiationLink外加 改样式 + 动画
+    func mtButtonStyle(_ style: MTButtonStyle) -> some View {
+        self
+            .buttonStyle(MTButtonCustomStyle(style: style, customBackground: false))
+            .disabled(!style.isEnable)
+    }
+    
+    /// button or NavgiationLink里的Label 只改样式
+    func mtButtonLabelStyle(_ style: MTButtonStyle, customBackground: Bool = true) -> some View {
+        modifier(MTButtonStyleModifier(style: style, customBackground: customBackground))
+    }
+    
+    /// button or NavgiationLink点击动画
+    @ViewBuilder
+    func mtTapAnimation(style: MTTapAnimationStyle = .rotation3D) -> some View {
+        switch style {
+        case .system: self
+        case .normal: buttonStyle(MTButtonNormalStyle())
+        case .rotation3D: buttonStyle(MTRotation3DButtonStyle())
+        case let .overlayOrScale(isOverlay, scale):
+            buttonStyle(MTButtonAnimationStyle(isOverlay: isOverlay, scale: scale))
         }
     }
 }
 
 
-
-//MARK: - 添加角标
-struct MTCardStyleViewModifier :ViewModifier {
-    let insets: EdgeInsets
+//MARK: - 导航栏
+public extension View {
+    func mtNavbar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        modifier(MTNavbarViewModifier(content: content, leading: {
+            EmptyView()
+        }, trailing: {
+            EmptyView()
+        }))
+    }
     
-    func body(content: Content) -> some View {
-        content
-            .padding(insets)
-            .background(Color.white)
-            .clipShape(RoundedRectangle.init(cornerSize: CGSize(width: 18, height: 24), style: .continuous))
-            .mtShadow(type: .shadowLow)
+    func mtNavbar<Content: View, L: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L) -> some View {
+        modifier(MTNavbarViewModifier(content: content, leading: {
+            leading()
+        }, trailing: {
+            EmptyView()
+        }))
+    }
+
+    func mtNavbar<Content: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder trailing: () -> Content) -> some View {
+        modifier(MTNavbarViewModifier(content: content, leading: {
+            EmptyView()
+        }, trailing: {
+            trailing()
+        }))
+    }
+
+    func mtNavbar<Content: View, L: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L, @ViewBuilder trailing: () -> R) -> some View {
+        modifier(MTNavbarViewModifier(content: content, leading: {
+            leading()
+        }, trailing: {
+            trailing()
+        }))
     }
 }
-
