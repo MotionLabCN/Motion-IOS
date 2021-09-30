@@ -14,12 +14,15 @@ enum LoginApi: MTTargetType {
     var path: String {
         switch self {
         case .loginIn: return "auth/login"
-        case .github: return ""
+        case .github: return "/member/info"
         }
     }
     
     var method: HTTPRequestMethod {
-        return .post
+        switch self {
+        case .loginIn: return .post
+        case .github: return .get
+        }
     }
     
     var parameters: [String : Any]? {

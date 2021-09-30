@@ -84,8 +84,14 @@ class LoginVM: ObservableObject {
         }
     }
     
-  
-    
+    func loginInWithGithub() {
+        let target = LoginApi.github
+        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data") { r, model in
+            let token = r.dataJson?["token"].string ?? ""
+            UserManager.shared.loginSusscessSaveToken(token, channel: .github)
+            UserManager.shared.loginSuccessSaveUser(model)
+        }
+    }
 }
 
 
@@ -101,6 +107,5 @@ extension LoginVM {
         }
     }
 }
-
 
 

@@ -198,7 +198,13 @@ struct LoginStartView: View {
             .mtButtonStyle(.mainGradient)
             
             
+             
             Button(action: {
+//                let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE"
+//                userManager.loginSusscessSaveToken(token, channel: .github)
+//                // 调用接口信息
+//                LoginVM().loginInWithGithub()
+                
                 ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { response in
                     guard case let .git(result) = response?.response else {
                         isShowToast = true
@@ -208,8 +214,10 @@ struct LoginStartView: View {
                     // 掉接口
                     //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE
                     userManager.loginSusscessSaveToken(result.token, channel: .github)
-                    
-                    
+                    // 调用接口信息
+                    LoginVM().loginInWithGithub()
+                    isShowLoginSheet = false
+
                 })
             }, label: {
                 HStack {
@@ -254,6 +262,10 @@ struct LoginStartView: View {
         .padding(.vertical, 32)
     }
     
+    func login() {
+        
+        
+    }
 }
 
 
