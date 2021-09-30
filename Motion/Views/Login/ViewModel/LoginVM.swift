@@ -68,11 +68,7 @@ class LoginVM: ObservableObject {
             teamList[index].isSelected = true
         }
     }
-//    init() {
-//        $phone
-//            .map({ $0.count < Constant.phoneMaxNum } )
-//            .assign(to: &$isPhoneInvalidate)
-//    }
+
     
     
     func loginIn() {
