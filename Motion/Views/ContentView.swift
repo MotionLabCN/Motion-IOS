@@ -20,6 +20,7 @@ struct ContentView: View {
     
     @GestureState var move : CGSize = .zero
     @State var isShowLeadingMenu : Bool = false
+    
     func getOffset() -> CGFloat {
         let SW = ScreenWidth()
         if !isShowLeadingMenu {
