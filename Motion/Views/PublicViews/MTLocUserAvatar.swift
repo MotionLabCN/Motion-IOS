@@ -8,11 +8,6 @@
 import SwiftUI
 import Kingfisher
 
-extension String: Resource {
-    public var cacheKey: String { return "absoluteString" }
-    public var downloadURL: URL { return URL(string: self)! }
-}
-
 
 struct MTAvatar: View {
     var frame : CGFloat
@@ -52,7 +47,7 @@ struct MTLocUserAvatar: View {
 
             
     var body: some View {
-        MTAvatar(frame: frame, urlString: "https://avatars.githubusercontent.com/u/14833970?v=4") {
+        MTAvatar(frame: frame, urlString: UserManager.shared.user.avatarUrl) {
             
         }
 

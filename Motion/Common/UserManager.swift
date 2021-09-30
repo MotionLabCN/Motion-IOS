@@ -67,8 +67,8 @@ class UserManager: ObservableObject {
     }
     
     var hasLogin: Bool {
-        false
-//        user.id.count > 0
+//        false
+        user.id.count > 0
     }
 
     func loginSusscessSaveToken(_ token: String, channel: ChannelType) {

@@ -82,9 +82,7 @@ class LoginVM: ObservableObject {
     
     func loginInWithGithub() {
         let target = LoginApi.github
-        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data") { r, model in
-            let token = r.dataJson?["token"].string ?? ""
-            UserManager.shared.loginSusscessSaveToken(token, channel: .github)
+        Networking.requestObject(target, modeType: UserInfo.self) { r, model in
             UserManager.shared.loginSuccessSaveUser(model)
         }
     }
