@@ -20,35 +20,64 @@ public struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModif
     }
     
     public func body(content: Content) -> some View {
-        ZStack {
-            content
-            
-            VStack {
-                ZStack {
-                    Color.white
-                        .ignoresSafeArea( edges: .top)
-                        .frame(height: NavBarH)
-                    //leading trailing
-                    HStack(spacing: 0, content: {
-                        leading
-                        Spacer()
-                        trailing
-                    })
-                    .frame(maxWidth: .infinity)
-                    .frame(height: NavBarH)
-                    .padding(.horizontal, 16)
-
-                    // titleView
-                    HStack(spacing: 0, content: {
-                        mtContent
-                    })
-                    .frame(maxWidth: .infinity)
-                    .frame(height: NavBarH)
-                }
+        VStack(spacing: 0) {
+            ZStack {
+                Color.random
+                    .ignoresSafeArea( edges: .top)
                 
-                Spacer(minLength: 0)
+                //leading trailing
+                HStack(spacing: 0, content: {
+                    leading
+                    Spacer()
+                    trailing
+                })
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 16)
+
+                // titleView
+                HStack(spacing: 0, content: {
+                    mtContent
+                })
             }
+            .frame(maxWidth: .infinity)
+            .frame(height: NavBarH)
             
+            content
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+
+        
+        
+//        ZStack {
+//            content
+//
+//            VStack {
+//                ZStack {
+//                    Color.white
+//                        .ignoresSafeArea( edges: .top)
+//                        .frame(height: NavBarH)
+//                    //leading trailing
+//                    HStack(spacing: 0, content: {
+//                        leading
+//                        Spacer()
+//                        trailing
+//                    })
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: NavBarH)
+//                    .padding(.horizontal, 16)
+//
+//                    // titleView
+//                    HStack(spacing: 0, content: {
+//                        mtContent
+//                    })
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: NavBarH)
+//                }
+//
+//                Spacer(minLength: 0)
+//            }
+//
+//        }
     }
 }

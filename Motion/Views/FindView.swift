@@ -64,10 +64,7 @@ struct FindView: View {
                     .highPriorityGesture(gesture)
                 
             }
-        
         .frame(width: ScreenWidth())
-        .navigationBarHidden(true)
-        .padding(.top,44)
         .mtNavbar(content: {
             Capsule().frame(width: 255, height: 32)
                 .foregroundColor(.mt.gray_200)

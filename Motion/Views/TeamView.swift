@@ -21,7 +21,7 @@ struct TeamView: View {
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
         
         ScrollView(.vertical , showsIndicators:true) {
-            Spacer().frame(height:44)
+//            Spacer().frame(height:44)
             // scrollview start
             LazyVGrid(
                 columns:columns,
@@ -57,8 +57,6 @@ struct TeamView: View {
                     }
                 }
         }// scrollview end
-        .navigationBarHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
         .mtNavbar(content: {
             Text("小组")
                 .font(.mt.body1.mtBlod(),textColor: .black)

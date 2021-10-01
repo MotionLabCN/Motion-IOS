@@ -172,7 +172,6 @@ extension ContentView {
                 switch tabbarState.selectedKind {
                 case .home:
                     HomeView()
-                        .navigationBarHidden(true)
                 case .search:
                     FindView()
                 case .storage:

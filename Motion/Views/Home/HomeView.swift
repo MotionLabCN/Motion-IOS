@@ -26,7 +26,6 @@ struct HomeView: View {
         
         ScrollView {
             LazyVStack(spacing: 0.0) {
-                Spacer.mt.navbar()
                 header
                 Divider.mt.defult()
                 if isShowPlaceholder {

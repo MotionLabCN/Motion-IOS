@@ -136,7 +136,9 @@ public class ThirdAuth: NSObject {
 
 extension ThirdAuth: ASWebAuthenticationPresentationContextProviding {
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        ASPresentationAnchor()
+        let r =  ASPresentationAnchor()
+        r.tintColor = .red
+        return r
         //        UIViewController.top
         
     }
