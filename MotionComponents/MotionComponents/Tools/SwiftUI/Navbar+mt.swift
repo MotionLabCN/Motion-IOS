@@ -8,42 +8,44 @@
 import SwiftUI
 
 
-public struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
-    let mtContent: MTContent
-    var leading: L
-    var trailing: R
+struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
+    @ViewBuilder let content: MTContent
+    @ViewBuilder let leading: L
+    @ViewBuilder let trailing: R
     
-    public init(@ViewBuilder content: () -> MTContent, @ViewBuilder leading: () -> L, @ViewBuilder trailing: () -> R) {
-        self.mtContent = content()
-        self.leading = leading()
-        self.trailing = trailing()
-    }
+    let isShowNavbar: Bool
+
     
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         VStack(spacing: 0) {
             ZStack {
-                Color.random
-                    .ignoresSafeArea( edges: .top)
-                
-                //leading trailing
-                HStack(spacing: 0, content: {
-                    leading
-                    Spacer()
-                    trailing
-                })
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 16)
+                if isShowNavbar {
+                    Group {
+                        //leading trailing
+                        HStack(spacing: 0, content: {
+                            leading
+                            Spacer()
+                            trailing
+                        })
+                        .padding(.horizontal, 16)
 
-                // titleView
-                HStack(spacing: 0, content: {
-                    mtContent
-                })
+                        // titleView
+                        HStack(spacing: 0, content: {
+                            self.content
+                        })
+                    }
+                    .frame(height: 44)
+                }
             }
+            .frame(minHeight: 0.1)
             .frame(maxWidth: .infinity)
-            .frame(height: NavBarH)
+            .background(Color.random.ignoresSafeArea( edges: .all))
             
+            Spacer(minLength: 0)
             content
+            Spacer(minLength: 0)
         }
+        
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
 

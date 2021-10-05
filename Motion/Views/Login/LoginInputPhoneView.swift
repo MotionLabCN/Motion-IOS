@@ -13,18 +13,26 @@ struct LoginInputPhoneView: View {
     @StateObject var vm = LoginVM()
     var textFieldConfig = MTTextFieldStyle.Config()
     
+    @State var textFieldText = ""
     var body: some View {
         VStack(alignment: .center, spacing: 26.0) {
             Text("输入手机号码")
                 .font(.mt.title2.mtBlod(), textColor: .black)
             
-            TextField("手机号码", text: $vm.phone)
-                .mtTextFieldStyle($vm.phone, config: textFieldConfig)
+            TextField("手机号码", text: $textFieldText)
+                .mtTextFieldStyle($textFieldText, config: textFieldConfig)
                 .keyboardType(.numberPad)
                 .introspectTextField { textField in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak textField] in
                         textField?.becomeFirstResponder()
                     }
+                }
+                .onChange(of: textFieldText) { newValue in
+                    vm.phone = newValue
+                    textFieldText = vm.phone
+                }
+                .onAppear {
+                    textFieldText = vm.phone
                 }
                             
             Spacer()

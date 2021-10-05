@@ -70,6 +70,9 @@ class LoginVM: ObservableObject {
     }
 
     
+    func debugLoginIn() {
+        UserManager.shared.loginSuccessSaveUser(.init(id: "假的"))
+    }
     
     func loginIn() {
         let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))

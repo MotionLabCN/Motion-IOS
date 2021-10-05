@@ -67,8 +67,7 @@ class UserManager: ObservableObject {
     }
     
     var hasLogin: Bool {
-        true
-//        user.id.count > 0
+        user.id.count > 0
     }
 
     func loginSusscessSaveToken(_ token: String, channel: ChannelType) {
@@ -77,7 +76,9 @@ class UserManager: ObservableObject {
     }
     
     func loginSuccessSaveUser(_ user: UserInfo?) { //网络请求后
-        self.user = user ?? .init()
+        withAnimation(.easeInOut(duration: 1)) {
+            self.user = user ?? .init()
+        }
     }
     
     /// 修改用户昵称 并触发 Publisher 示例
@@ -88,7 +89,9 @@ class UserManager: ObservableObject {
     func logout() {
         token = ""
         channel = ""
-        user = UserInfo()
+        withAnimation(.easeInOut(duration: 1)) {
+            user = UserInfo()
+        }
     }
     
 }

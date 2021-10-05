@@ -193,7 +193,7 @@ struct LoginStartView: View {
 
             Button("本机号码一键登录", action: {
                 isShowLoginSheet = false
-                LoginVM().loginIn()
+                LoginVM().debugLoginIn()
             })
             .mtButtonStyle(.mainGradient)
             

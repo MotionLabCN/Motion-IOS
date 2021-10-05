@@ -138,35 +138,35 @@ public extension View {
 
 //MARK: - 导航栏
 public extension View {
-    func mtNavbar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+    func mtNavbar<Content: View>(isShowNavbar: Bool = true, @ViewBuilder content: () -> Content) -> some View {
         modifier(MTNavbarViewModifier(content: content, leading: {
             EmptyView()
         }, trailing: {
             EmptyView()
-        }))
+        }, isShowNavbar: isShowNavbar))
     }
     
-    func mtNavbar<Content: View, L: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L) -> some View {
+    func mtNavbar<Content: View, L: View>(isShowNavbar: Bool = true, @ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L) -> some View {
         modifier(MTNavbarViewModifier(content: content, leading: {
             leading()
         }, trailing: {
             EmptyView()
-        }))
+        }, isShowNavbar: isShowNavbar))
     }
 
-    func mtNavbar<Content: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder trailing: () -> Content) -> some View {
+    func mtNavbar<Content: View, R: View>(isShowNavbar: Bool = true, @ViewBuilder content: () -> Content, @ViewBuilder trailing: () -> Content) -> some View {
         modifier(MTNavbarViewModifier(content: content, leading: {
             EmptyView()
         }, trailing: {
             trailing()
-        }))
+        }, isShowNavbar: isShowNavbar))
     }
 
-    func mtNavbar<Content: View, L: View, R: View>(@ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L, @ViewBuilder trailing: () -> R) -> some View {
+    func mtNavbar<Content: View, L: View, R: View>(isShowNavbar: Bool = true, @ViewBuilder content: () -> Content, @ViewBuilder leading: () -> L, @ViewBuilder trailing: () -> R) -> some View {
         modifier(MTNavbarViewModifier(content: content, leading: {
             leading()
         }, trailing: {
             trailing()
-        }))
+        }, isShowNavbar: isShowNavbar))
     }
 }
