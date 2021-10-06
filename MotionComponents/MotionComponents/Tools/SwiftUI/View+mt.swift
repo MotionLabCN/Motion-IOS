@@ -105,6 +105,11 @@ public extension View {
         }
     }
     
+    /// 在scorllView上 子元素上使用 可以获取offsetY
+    func onScrollViewOffsetChanged(action: @escaping (CGFloat) -> Void) -> some View {
+        modifier(MTScrollViewOffsetViewModifier(action: action))
+    }
+    
 }
 
 
