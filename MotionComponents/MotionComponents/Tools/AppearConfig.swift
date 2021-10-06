@@ -14,6 +14,7 @@ public class AppearConfig {
     public var disableGestureBack = false
     
     public static func config() {
+        UITabBar.appearance().isHidden = true
         /// 设置返回按钮图片 fix 导航栏返回键
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "Chevron_left_On")?.withRenderingMode(.alwaysOriginal)
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "Chevron_left_On")?.withRenderingMode(.alwaysOriginal)

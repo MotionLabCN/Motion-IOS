@@ -45,6 +45,8 @@ struct AppState {
     
     ///顶层router表
     class TopRouterTable: ObservableObject {
+        static let shared = TopRouterTable()
+
         @Published var linkurl = false
         @Published var messageDetail = false
     }

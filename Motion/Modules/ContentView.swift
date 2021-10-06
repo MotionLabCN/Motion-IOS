@@ -9,10 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct ContentView: View {
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-    
+ 
     @EnvironmentObject var tabbarState: AppState.TabbarState
     @EnvironmentObject var router: AppState.TopRouterTable
     @EnvironmentObject var userManager: UserManager
@@ -126,21 +123,13 @@ extension ContentView {
     }
     
     var routerView: some View {
-        Group {
-            NavigationLink(
-                destination: Text("待完善"),
-                isActive: $router.linkurl,
-                label: {
-                    EmptyView()
-                })
-            
-            NavigationLink(
-                destination: Text("顶级导航后"),
-                isActive: $router.messageDetail,
-                label: {
-                    EmptyView()
-                })
-        }
+        Color.white.frame(size: .zero)
+            .mtRegisterRouter(isActive: $router.linkurl) {
+                Text("待完善")
+            }
+            .mtRegisterRouter(isActive: $router.messageDetail) {
+                Text("顶级导航后")
+            }
     }
     
     

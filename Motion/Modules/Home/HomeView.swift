@@ -12,7 +12,7 @@ import MotionComponents
 //MARK: - 首页
 struct HomeView: View {
     
-    @StateObject var vm = PostVM()
+    @StateObject var vm = HomeVM()
     
     @State private var isShowPlaceholder = true
 
