@@ -19,6 +19,9 @@ struct HomeView: View {
     @State var isShowmtsheet = false
 
 
+    init() {
+        print("HomeView init")
+    }
 
     
     var body: some View {
