@@ -34,11 +34,13 @@ public enum MTTabKind: CaseIterable {
 public struct MTTabView<Content: View>: View {
     
     @Binding var selection: MTTabKind
+    var isShowTabbar: Bool
     let content: Content
     @State private var tabs: [MTTabKind] = []
     
-    public init(selection: Binding<MTTabKind>, @ViewBuilder content: () -> Content) {
+    public init(selection: Binding<MTTabKind>, isShowTabbar: Bool = true, @ViewBuilder content: () -> Content) {
         self._selection = selection
+        self.isShowTabbar = isShowTabbar
         self.content = content()
     }
     
@@ -50,7 +52,10 @@ public struct MTTabView<Content: View>: View {
             }
             Spacer(minLength: 0)
             // tabbar
-            MTTabBar(tabs: tabs, selection: $selection)
+            if isShowTabbar {
+                MTTabBar(tabs: tabs, selection: $selection)
+                    .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .opacity))
+            }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .onPreferenceChange(MTTabBarItemsPreferenceKey.self) { value in

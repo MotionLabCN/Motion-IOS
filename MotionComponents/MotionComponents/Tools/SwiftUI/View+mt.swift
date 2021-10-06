@@ -33,8 +33,8 @@ public extension View {
         modifier(MTCardStyleViewModifier(insets: insets))
     }
     
-    /// 给背景上一个可关联的NavigationLink
-    func mtBackgroundNavigationLink<Destination>(isActive: Binding<Bool>, @ViewBuilder destination: (() -> Destination) ) -> some View  where Destination: View {
+    /// 给注册路由表
+    func mtRegisterRouter<Destination>(isActive: Binding<Bool>, @ViewBuilder destination: (() -> Destination) ) -> some View  where Destination: View {
         background(
             NavigationLink(isActive: isActive, destination: destination, label: {
                 EmptyView()
