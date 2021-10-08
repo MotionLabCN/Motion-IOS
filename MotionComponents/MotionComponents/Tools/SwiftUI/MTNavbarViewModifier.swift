@@ -17,40 +17,25 @@ struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
 
     
     func body(content: Content) -> some View {
-        VStack(spacing: 0) {
-            ZStack {
-                if isShowNavbar {
-                    Group {
-                        //leading trailing
-                        HStack(spacing: 0, content: {
-                            leading
-                            Spacer()
-                            trailing
-                        })
-                        .padding(.horizontal, 16)
-
-                        // titleView
-                        HStack(spacing: 0, content: {
-                            self.content
-                        })
-                    }
-                    .frame(height: 44)
-                }
-            }
-            .frame(minHeight: 0.1)
-            .frame(maxWidth: .infinity)
-            .background(Color.random.ignoresSafeArea( edges: .all))
-            
-            Spacer(minLength: 0)
+        if #available(iOS 15.0, *) {
             content
-            Spacer(minLength: 0)
+                .safeAreaInset(edge: .top) {
+                   navbar
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+        } else {
+            VStack(spacing: 0) {
+                navbar
+                
+                Spacer(minLength: 0)
+                content
+                Spacer(minLength: 0)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         }
-        
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarHidden(true)
-
-        
-        
+            
 //        ZStack {
 //            content
 //
@@ -81,5 +66,33 @@ struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
 //            }
 //
 //        }
+    }
+    
+    var navbar: some View {
+        ZStack {
+            if isShowNavbar {
+                Group {
+                    //leading trailing
+                    HStack(spacing: 0, content: {
+                        leading
+                        Spacer()
+                        trailing
+                    })
+                        .padding(.horizontal, 16)
+                    
+                    // titleView
+                    HStack(spacing: 0, content: {
+                        self.content
+                    })
+                }
+                .frame(height: 44)
+            }
+        }
+        .frame(minHeight: 0.1)
+        .frame(maxWidth: .infinity)
+        .background(
+            BlurView(style: .systemMaterialLight)
+                .ignoresSafeArea( edges: .top)
+        )
     }
 }

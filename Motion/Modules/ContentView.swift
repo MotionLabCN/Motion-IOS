@@ -56,7 +56,7 @@ struct ContentView: View {
                 LeftMenuView()
                 mainViews
             }
-            .animation(.linear(duration: 0.2))
+            .mtAnimation(.linear(duration: 0.2))
             .frame(width: ScreenWidth() * 1.8)
             .offset(x: getOffset())
             .highPriorityGesture(  gesture )
@@ -159,17 +159,22 @@ extension ContentView {
     var main: some View {
         
         NavigationView {
-            Group {
-                switch tabbarState.selectedKind {
-                case .home:
-                    HomeView()
-                case .search:
+            ZStack {
+                HomeView()
+                    .opacity(tabbarState.selectedKind == .home ? 1: 0)
+                
+                if tabbarState.selectedKind == .search {
                     FindView()
-                case .storage:
+                }
+                
+                if tabbarState.selectedKind == .storage {
                     StorageView()
-                case .team:
+                }
+                
+                if tabbarState.selectedKind == .team {
                     TeamView()
                 }
+                
             }
         }
         

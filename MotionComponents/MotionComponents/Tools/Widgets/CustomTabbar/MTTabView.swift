@@ -45,21 +45,35 @@ public struct MTTabView<Content: View>: View {
     }
     
     public var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 0)
-            ZStack {
-                content
+        if #available(iOS 15.0, *) {
+            content
+                .safeAreaInset(edge: .bottom) {
+                    if isShowTabbar {
+                        MTTabBar(tabs: tabs, selection: $selection)
+                            .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .opacity))
+                    }
+                }
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                .onPreferenceChange(MTTabBarItemsPreferenceKey.self) { value in
+                    tabs = value
+                }
+        } else {
+            VStack(spacing: 0) {
+                Spacer(minLength: 0)
+                ZStack {
+                    content
+                }
+                Spacer(minLength: 0)
+                // tabbar
+                if isShowTabbar {
+                    MTTabBar(tabs: tabs, selection: $selection)
+                        .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .opacity))
+                }
             }
-            Spacer(minLength: 0)
-            // tabbar
-            if isShowTabbar {
-                MTTabBar(tabs: tabs, selection: $selection)
-                    .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity), removal: .opacity))
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .onPreferenceChange(MTTabBarItemsPreferenceKey.self) { value in
+                tabs = value
             }
-        }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .onPreferenceChange(MTTabBarItemsPreferenceKey.self) { value in
-            tabs = value
         }
     }
 }

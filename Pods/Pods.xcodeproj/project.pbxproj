@@ -405,7 +405,7 @@
 		D51616A636FA5BCBE17931146901CE0D /* StructDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5731D205DAB18CF7015EBDB9B45218 /* StructDescriptor.swift */; };
 		D552C4D405D459DF6E986C8F1BAC6C3F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBCC038410C649EDA000655646BA0B1 /* Group.swift */; };
 		D69FD70A580EF63DB7746FE82FFF2C52 /* VideoRequestLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B37277FD4ECC02EEF9F3E0FC38694 /* VideoRequestLoader.swift */; };
-		D7251CE19A92152637E228C802C5BD15 /* Navbar+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629392E68CE84A5FCE2D196D48E11DBA /* Navbar+mt.swift */; };
+		D7251CE19A92152637E228C802C5BD15 /* MTNavbarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629392E68CE84A5FCE2D196D48E11DBA /* MTNavbarViewModifier.swift */; };
 		D76FD07ED264695F838F04A9EC461F3D /* StringProtocolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA9B2844411C4B0AD96F252C315F5B /* StringProtocolExtensions.swift */; };
 		D8C4A7FD4CD34FDAFDA7357D170BD51A /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8181457ED3A5A5AC8CFBD5FC5C30CCEC /* Double+Extensions.swift */; };
 		D8E19F1556B3CB8F8EA797A5D1213D6B /* MoyaPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62C3AF8C8A4B4737E676476DD25FFD2 /* MoyaPublisher.swift */; };
@@ -841,7 +841,7 @@
 		61B6E4EEFC02FC6B83FEFE2D0B930DA7 /* TextAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextAnimator.swift; path = "lottie-swift/src/Private/Model/Text/TextAnimator.swift"; sourceTree = "<group>"; };
 		61F62C6E412000C781FF01ABC33FEF26 /* ImageBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageBinder.swift; path = Sources/SwiftUI/ImageBinder.swift; sourceTree = "<group>"; };
 		627B05EEEE51EE4FDAF91A1504CA4D2E /* Introspect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Introspect.release.xcconfig; sourceTree = "<group>"; };
-		629392E68CE84A5FCE2D196D48E11DBA /* Navbar+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Navbar+mt.swift"; sourceTree = "<group>"; };
+		629392E68CE84A5FCE2D196D48E11DBA /* MTNavbarViewModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MTNavbarViewModifier.swift; sourceTree = "<group>"; };
 		62A51B5C0C04704D72274010DDC1A78B /* VideoFullscreenTransitioner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoFullscreenTransitioner.swift; path = GSPlayer/Classes/View/VideoFullscreenTransitioner.swift; sourceTree = "<group>"; };
 		62D37E407E1938FF46AE873ECF4D144C /* Kingfisher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Kingfisher-Info.plist"; sourceTree = "<group>"; };
 		63A414C67A0F4CD75B344757ED5926A3 /* Pods-Motion-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Motion-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -1863,7 +1863,7 @@
 				849F35BAE198A3AAF536D93684982602 /* MTScrollViewOffsetViewModifier.swift */,
 				5A6189CC1351DF6ABA0D09CCEF13F9D0 /* MTViewModifiers.swift */,
 				DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */,
-				629392E68CE84A5FCE2D196D48E11DBA /* Navbar+mt.swift */,
+				629392E68CE84A5FCE2D196D48E11DBA /* MTNavbarViewModifier.swift */,
 				EEB1FC652995E30BB149ABFEFE9D2418 /* ProgressView+mt.swift */,
 				AAF0AF4CE1A814D0993CDC935A09DEB7 /* Shadow+mt.swift */,
 				8FEEB7FA9BF50872D453A48A09678B3F /* Spacer+mt.swift */,
@@ -2924,7 +2924,7 @@
 				64ACE28C5404B0C478A932D6AD31FE3E /* MTVideoPlayer.swift in Sources */,
 				810D0D26A71FCB28007232B39F8C767C /* MTViewModifiers.swift in Sources */,
 				BF10445762C2081C1579E3E208B69605 /* MTWarningNofi.swift in Sources */,
-				D7251CE19A92152637E228C802C5BD15 /* Navbar+mt.swift in Sources */,
+				D7251CE19A92152637E228C802C5BD15 /* MTNavbarViewModifier.swift in Sources */,
 				0F2D6D6CA47AFDB4A5094E3931317300 /* NetworkHeaderPlugin.swift in Sources */,
 				744725462D0B82C6D98B933F4636FB47 /* Networking.swift in Sources */,
 				249CF4B86B2F2957077D8CDAAE910A81 /* NetworkLoggerPlugin.swift in Sources */,
