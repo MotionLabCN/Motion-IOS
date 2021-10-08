@@ -422,6 +422,7 @@
 		DE4607625926C5B769341885B3C488B6 /* AVPlayerItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B8B3B159D2F1FF17A1523AE5C4EA67 /* AVPlayerItem+Extensions.swift */; };
 		DF17920B88CAF8204B7A8E25576D6166 /* Color+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365800A9508680E110EA6C802142DE0 /* Color+mt.swift */; };
 		DF20FA3D69BC752B01D65651AF876198 /* GradientStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415F7BD2D819D790CF62067FAC5B1ED2 /* GradientStroke.swift */; };
+		DF5A565F270FE28C00ACA7B6 /* MTAnimationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */; };
 		DFE30AB9EA4F8027EB1EF690D9D8FF48 /* ProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC55BAA9876957F731E7EB0E4AAC46A /* ProtocolType.swift */; };
 		E0C65E16219718869CD2AFCA2C5465CB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B54D76E273DDBF6F7DFB3711DC3DA4 /* Request.swift */; };
 		E1219354DCD5422CBC6576ADEDA9C815 /* FieldList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EEDBDE4AF415B4AC041F6E8FB9489 /* FieldList.swift */; };
@@ -713,7 +714,7 @@
 		2295059191435FCFB75ACC31E49812F2 /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationInterceptor.swift; path = Source/AuthenticationInterceptor.swift; sourceTree = "<group>"; };
 		22F6F9733956215B0630580181D6118D /* Font.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Font.swift; path = "lottie-swift/src/Private/Model/Text/Font.swift"; sourceTree = "<group>"; };
 		235F0AEC05A3C9778AAEBBA8AD7207DF /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
-		23944B5DF8970A20B5CCBDA8314A6F72 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		23944B5DF8970A20B5CCBDA8314A6F72 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		242698546701C13E4F3A67DBB1ADBDF8 /* ActiveLabel */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActiveLabel; path = ActiveLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DE8C8C0F6D656468FEE274E8FEBD38 /* NSObject+KJ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+KJ.swift"; path = "Sources/KakaJSON/Extension/NSObject+KJ.swift"; sourceTree = "<group>"; };
 		25000468072BC32E805CEF8C63C00A04 /* NSButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSButton+Kingfisher.swift"; path = "Sources/Extensions/NSButton+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -980,7 +981,7 @@
 		9CEB2FD5AF08B25BDCC3BC6EDF881D08 /* BinaryFloatingPointExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BinaryFloatingPointExtensions.swift; path = Sources/SwifterSwift/SwiftStdlib/BinaryFloatingPointExtensions.swift; sourceTree = "<group>"; };
 		9D702DEE1F422A510B2203B3C837DE2A /* UIKitIntrospectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIKitIntrospectionViewController.swift; path = Introspect/UIKitIntrospectionViewController.swift; sourceTree = "<group>"; };
 		9D7B620AAAF0ED01D4406C7C2325CED4 /* Moya-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Moya-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F1A71CDECD786953CE74F019812AB1E /* AnimatedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedControl.swift; path = "lottie-swift/src/Public/iOS/AnimatedControl.swift"; sourceTree = "<group>"; };
 		9F2A10DC1D56C1646D96B77761C96D5C /* LocaleExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocaleExtensions.swift; path = Sources/SwifterSwift/Foundation/LocaleExtensions.swift; sourceTree = "<group>"; };
 		A003F15A3E434419B371DE5A6E05A232 /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/KakaJSON/Global/JSON.swift; sourceTree = "<group>"; };
@@ -1058,7 +1059,7 @@
 		C1E07AF9B3DE0FA57B081FAAFF6CB442 /* Response+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Response+Extension.swift"; sourceTree = "<group>"; };
 		C1FCDE7EAAB3FF6F2EE0E974EDF64DBA /* Transform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transform.swift; path = "lottie-swift/src/Private/Model/Objects/Transform.swift"; sourceTree = "<group>"; };
 		C238E5E33CF7DB02638672F822E05E22 /* ForeignClassType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ForeignClassType.swift; path = Sources/KakaJSON/Metadata/Type/ForeignClassType.swift; sourceTree = "<group>"; };
-		C30FF05C0C605EBC9F795244F394FEF9 /* MotionComponents.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MotionComponents.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C30FF05C0C605EBC9F795244F394FEF9 /* MotionComponents.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MotionComponents.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C365800A9508680E110EA6C802142DE0 /* Color+mt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Color+mt.swift"; sourceTree = "<group>"; };
 		C388B7E19A07FCDBDD032B9AB1082E5E /* NSPredicateExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSPredicateExtensions.swift; path = Sources/SwifterSwift/Foundation/NSPredicateExtensions.swift; sourceTree = "<group>"; };
 		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1075,7 +1076,7 @@
 		C9574D4D805C86298EC2B34E2473A3E8 /* ImageDataProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProcessor.swift; path = Sources/Networking/ImageDataProcessor.swift; sourceTree = "<group>"; };
 		CCEB0F8774509B26E17CF6A93F409729 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/General/Kingfisher.swift; sourceTree = "<group>"; };
 		CD21E12ACBB02D239A27689A6B634EDE /* AnimatorNodeDebugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatorNodeDebugging.swift; path = "lottie-swift/src/Private/Utility/Debugging/AnimatorNodeDebugging.swift"; sourceTree = "<group>"; };
-		CDFA28BF011EBF8C9707906F2509BF78 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		CDFA28BF011EBF8C9707906F2509BF78 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CE09D8BE9EE33342502EBC8C8E6C77C2 /* MTTabBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MTTabBar.swift; sourceTree = "<group>"; };
 		CE42EF472336F5B4115B5C3A6E1D797D /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
 		CEE42550E65D83E5A8CDE46C8B5C8CBE /* Interpolatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Interpolatable.swift; path = "lottie-swift/src/Private/Utility/Interpolatable/Interpolatable.swift"; sourceTree = "<group>"; };
@@ -1113,6 +1114,7 @@
 		DC906684A4F0897050B5317216C570EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		DDC1BCAFFC783DC220F9E28FEBE10B7C /* MTHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MTHelper.swift; path = MotionComponents/Tools/MTHelper.swift; sourceTree = "<group>"; };
 		DF5856D96E0DBDD5648DEA286F0A064D /* GSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GSPlayer.release.xcconfig; sourceTree = "<group>"; };
+		DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAnimationViewModifier.swift; sourceTree = "<group>"; };
 		DFE4C0BDBD1459059983A688271FE2FF /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		E00EB69645DEB20F8429E34CF7EAC855 /* lottie-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "lottie-ios-dummy.m"; sourceTree = "<group>"; };
 		E0AC0AB2178FB3645F30BE92310C98A0 /* KFOptionsSetter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFOptionsSetter.swift; path = Sources/General/KFOptionsSetter.swift; sourceTree = "<group>"; };
@@ -1512,7 +1514,6 @@
 				D1D77C74A4205D9871B9AEC727A359DF /* VectorsExtensions.swift */,
 				1F5B7C0FCEC5C6FD142FDD42E2C7479B /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -1558,7 +1559,6 @@
 				66204C454F30F918AB4EDA0C9D5FD1A0 /* StringTrimExtension.swift */,
 				E852996B4AB4305863BC4CB5705F90AD /* Support Files */,
 			);
-			name = ActiveLabel;
 			path = ActiveLabel;
 			sourceTree = "<group>";
 		};
@@ -1616,7 +1616,6 @@
 				418B37277FD4ECC02EEF9F3E0FC38694 /* VideoRequestLoader.swift */,
 				553AD25F287B0E3E2A89C967A503C6DB /* Support Files */,
 			);
-			name = GSPlayer;
 			path = GSPlayer;
 			sourceTree = "<group>";
 		};
@@ -1641,7 +1640,6 @@
 				BC8566EC6F5EAE6C03BF630344AAFF47 /* Keychain.swift */,
 				13641DBA8C950512809DA274FDDF0C50 /* Support Files */,
 			);
-			name = KeychainAccess;
 			path = KeychainAccess;
 			sourceTree = "<group>";
 		};
@@ -1738,7 +1736,6 @@
 				096C545414E4ACB34A40AB708CFAA2B0 /* Support Files */,
 				0D6EA9353065D701A057FF1D345F552F /* SwiftStdlib */,
 			);
-			name = SwifterSwift;
 			path = SwifterSwift;
 			sourceTree = "<group>";
 		};
@@ -1767,7 +1764,6 @@
 				77940F2337BAB533921B293150F7998C /* ViewExtensions.swift */,
 				D857EC21801C18A3D4E63CA7977C6F01 /* Support Files */,
 			);
-			name = Introspect;
 			path = Introspect;
 			sourceTree = "<group>";
 		};
@@ -1805,7 +1801,6 @@
 				4817B91FE0E34AA53EFF88A81DC3F244 /* SwiftyJSON.swift */,
 				1A7BE4FC5B8DE3DF73997C6195F71A65 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1867,6 +1862,7 @@
 				53B26EB79B70102075BB90166601BBEB /* Image+mt.swift */,
 				849F35BAE198A3AAF536D93684982602 /* MTScrollViewOffsetViewModifier.swift */,
 				5A6189CC1351DF6ABA0D09CCEF13F9D0 /* MTViewModifiers.swift */,
+				DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */,
 				629392E68CE84A5FCE2D196D48E11DBA /* Navbar+mt.swift */,
 				EEB1FC652995E30BB149ABFEFE9D2418 /* ProgressView+mt.swift */,
 				AAF0AF4CE1A814D0993CDC935A09DEB7 /* Shadow+mt.swift */,
@@ -1919,7 +1915,6 @@
 				F47E1B3179476B1D426D320BDE3EA459 /* Validation.swift */,
 				CF0D53974906DF9CEB547453A0B37DFA /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -2043,7 +2038,6 @@
 				5E828D42FC043CC86C78CBDCD5E249F5 /* Values.swift */,
 				25A08E0EBC2B19FE79F797F0C8CEA884 /* Support Files */,
 			);
-			name = KakaJSON;
 			path = KakaJSON;
 			sourceTree = "<group>";
 		};
@@ -2166,7 +2160,6 @@
 				09CFC99A1C666ECAF72D4D3B8BDFDF36 /* Core */,
 				A923075E766FD119DF125CC3B6332FFE /* Support Files */,
 			);
-			name = Moya;
 			path = Moya;
 			sourceTree = "<group>";
 		};
@@ -2191,7 +2184,6 @@
 				CE09D8BE9EE33342502EBC8C8E6C77C2 /* MTTabBar.swift */,
 				D0B9BB29DCCE1EC94C84B9B915A2EF22 /* MTTabView.swift */,
 			);
-			name = CustomTabbar;
 			path = CustomTabbar;
 			sourceTree = "<group>";
 		};
@@ -2289,7 +2281,6 @@
 				3893DB20C3F1D29F4339B43A24CBA37E /* WKInterfaceImage+Kingfisher.swift */,
 				A98C2DDB8A891E9AECBEEFD3DA350D83 /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -2908,6 +2899,7 @@
 				3D3747B519FF0D3069C053613CA22E9F /* EffectView.swift in Sources */,
 				BC16EE7EFA2EA70D2BCE940967896F62 /* ExtensionsComponent.swift in Sources */,
 				01293501AA11253F009DE14B9509366F /* FileManagerExtensions.swift in Sources */,
+				DF5A565F270FE28C00ACA7B6 /* MTAnimationViewModifier.swift in Sources */,
 				25945DA6B0E5A176802DE6E11F5261FB /* Font+mt.swift in Sources */,
 				E151BBC67853DC6990BF758B3BE06077 /* GeometryProxyExtensions.swift in Sources */,
 				804CFD46EC823B8EAB4C88A6F421A44A /* GithubApi.swift in Sources */,

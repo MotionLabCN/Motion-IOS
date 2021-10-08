@@ -18,6 +18,11 @@ public extension View {
         frame(width: square, height: square, alignment: alignment)
     }
     
+    /// 给视图加动画 NavgationView里的动画
+    func mtAnimation(_ animation: Animation? = .default) -> some View {
+        modifier(MTAnimationViewModifier(animationed: animation))
+    }
+    
     /// 加圆边框
     func mtBoderCircle(_ color: Color = .white, lineWidth: CGFloat = 3) -> some View {
         modifier(MTImageBorder(color: color, lineWidth: lineWidth))

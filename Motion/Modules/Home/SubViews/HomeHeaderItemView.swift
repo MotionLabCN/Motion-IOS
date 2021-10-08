@@ -9,17 +9,8 @@ import SwiftUI
 import MotionComponents
 
 
-class HomeHeaderItemVM: ObservableObject {
-    @Published var isAnimation = false
-    
-    init() {
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) { [weak self] in
-            self?.isAnimation = true
-        }
-    }
-}
+
 struct HomeHeaderItemView: View {
-    //@StateObject var vm = HomeHeaderItemVM()
     @State var isAnimation = false
     var body: some View {
         VStack(spacing: 3.0) {

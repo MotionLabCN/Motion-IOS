@@ -8,6 +8,9 @@
 import SwiftUI
 import MotionComponents
 
+
+
+
 struct ContentView: View {
  
     @EnvironmentObject var tabbarState: AppState.TabbarState

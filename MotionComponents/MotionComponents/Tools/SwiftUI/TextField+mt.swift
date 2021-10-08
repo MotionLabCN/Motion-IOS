@@ -67,6 +67,7 @@ public struct MTTextFieldStyle: TextFieldStyle {
                         self.text = ""
                     } label: {
                         Image.mt.load(.Close_circle)
+                            .transition(.opacity)
                             .foregroundColor(Color.black)
                     }
                 } else if let subText = config.subText {
@@ -76,6 +77,7 @@ public struct MTTextFieldStyle: TextFieldStyle {
                 }
             }
         }
+        .mtAnimation()
         .padding(.bottom, 8)
         .modifier(MTUnderlineModifier(lineColor: config.lineColor))
         .modifier(MTAttachTextModifier(text: config.desc, attached: .textField))
