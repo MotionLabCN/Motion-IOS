@@ -244,8 +244,7 @@ struct MTTabbar: View {
         }
         .frame(height: TabbarHeight)
         .background(
-            Color.white
-                .ignoresSafeArea(edges: .bottom)
+            MTBarBackgorundView()
         )
         
     }

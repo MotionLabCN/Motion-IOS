@@ -55,7 +55,6 @@ struct HomeView: View {
              .foregroundColor(.mt.gray_800)
             }
         })
-        .mtAttatchTabbarSpacer()
         .onDisappear(perform: {
             print("home onDisappear")
 

@@ -75,14 +75,6 @@ public extension View {
         )
     }
     
-    /// 适配底部Tabbar
-    func mtAttatchTabbarSpacer() -> some View {
-        VStack(spacing: 0) {
-            self
-            Spacer.mt.tabbar()
-        }
-    }
-    
     /// 给View加阴影
     @ViewBuilder
     func mtShadow(type: MTShadow) -> some View {

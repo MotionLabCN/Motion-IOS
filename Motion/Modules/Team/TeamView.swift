@@ -56,6 +56,8 @@ struct TeamView: View {
                         }
                     }
                 }
+            
+            Spacer.mt.tabbar()
         }// scrollview end
         .mtNavbar(content: {
             Text("小组")

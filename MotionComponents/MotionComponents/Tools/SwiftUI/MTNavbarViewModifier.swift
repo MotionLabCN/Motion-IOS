@@ -19,7 +19,7 @@ struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 15.0, *) {
             content
-                .safeAreaInset(edge: .top) {
+                .safeAreaInset(edge: .top, spacing: 0) {
                    navbar
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -91,8 +91,7 @@ struct MTNavbarViewModifier<MTContent: View, L: View, R: View>: ViewModifier {
         .frame(minHeight: 0.1)
         .frame(maxWidth: .infinity)
         .background(
-            BlurView(style: .systemMaterialLight)
-                .ignoresSafeArea( edges: .top)
+            MTBarBackgorundView()
         )
     }
 }

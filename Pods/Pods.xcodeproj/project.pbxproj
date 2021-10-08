@@ -423,6 +423,7 @@
 		DF17920B88CAF8204B7A8E25576D6166 /* Color+mt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C365800A9508680E110EA6C802142DE0 /* Color+mt.swift */; };
 		DF20FA3D69BC752B01D65651AF876198 /* GradientStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415F7BD2D819D790CF62067FAC5B1ED2 /* GradientStroke.swift */; };
 		DF5A565F270FE28C00ACA7B6 /* MTAnimationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */; };
+		DF5A5663270FF9A000ACA7B6 /* MTBarBackgorundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A5662270FF9A000ACA7B6 /* MTBarBackgorundView.swift */; };
 		DFE30AB9EA4F8027EB1EF690D9D8FF48 /* ProtocolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC55BAA9876957F731E7EB0E4AAC46A /* ProtocolType.swift */; };
 		E0C65E16219718869CD2AFCA2C5465CB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B54D76E273DDBF6F7DFB3711DC3DA4 /* Request.swift */; };
 		E1219354DCD5422CBC6576ADEDA9C815 /* FieldList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71EEDBDE4AF415B4AC041F6E8FB9489 /* FieldList.swift */; };
@@ -1115,6 +1116,7 @@
 		DDC1BCAFFC783DC220F9E28FEBE10B7C /* MTHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MTHelper.swift; path = MotionComponents/Tools/MTHelper.swift; sourceTree = "<group>"; };
 		DF5856D96E0DBDD5648DEA286F0A064D /* GSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GSPlayer.release.xcconfig; sourceTree = "<group>"; };
 		DF5A565E270FE28C00ACA7B6 /* MTAnimationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAnimationViewModifier.swift; sourceTree = "<group>"; };
+		DF5A5662270FF9A000ACA7B6 /* MTBarBackgorundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTBarBackgorundView.swift; sourceTree = "<group>"; };
 		DFE4C0BDBD1459059983A688271FE2FF /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		E00EB69645DEB20F8429E34CF7EAC855 /* lottie-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "lottie-ios-dummy.m"; sourceTree = "<group>"; };
 		E0AC0AB2178FB3645F30BE92310C98A0 /* KFOptionsSetter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFOptionsSetter.swift; path = Sources/General/KFOptionsSetter.swift; sourceTree = "<group>"; };
@@ -1957,6 +1959,7 @@
 				C8AFDE118123617FFCF6DBF0FD04B6A0 /* MTRichText.swift */,
 				6B2ECBD5E57E3A0CF4C8FF2DC65D05AE /* MTVideoPlayer.swift */,
 				58DECAC39AD0FA6032266216ECE692C3 /* MTWarningNofi.swift */,
+				DF5A5662270FF9A000ACA7B6 /* MTBarBackgorundView.swift */,
 				E8CCD86F9A8F17AFAF79F7C482D990DF /* CustomTabbar */,
 			);
 			name = Widgets;
@@ -2914,6 +2917,7 @@
 				20C38E5E578B9207793FD60457776344 /* MoyaResult+Extension.swift in Sources */,
 				60969C4E9EA9BEA2F5CBE0DCD7D0EFE0 /* mt.swift in Sources */,
 				CA2164B37B636EDBF5EDED897EFBB25D /* MTBackgroundCleanerView.swift in Sources */,
+				DF5A5663270FF9A000ACA7B6 /* MTBarBackgorundView.swift in Sources */,
 				ED8BF4099FE414E1EF65A4F6A2C62E45 /* MTDescriptionView.swift in Sources */,
 				55568A90622659516EA53750211CECB8 /* MTHelper.swift in Sources */,
 				8D4CD506A0793F28B0BBA0DA1594E729 /* MTPushNofi.swift in Sources */,

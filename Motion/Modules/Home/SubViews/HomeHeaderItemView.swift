@@ -54,7 +54,7 @@ struct HomeHeaderItemView: View {
                         .clipShape(Capsule(style: .continuous))
                         .scaleEffect(isAnimation ? 1.2: 1)
                         .opacity(isAnimation ? 0 : 1)
-                        .animation(.easeInOut(duration: 1.6).repeatForever(autoreverses: false))
+                        .mtAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: false))
                     
                 }
             )
@@ -68,7 +68,7 @@ struct HomeHeaderItemView: View {
                         .clipShape(Capsule(style: .continuous))
                         .scaleEffect(isAnimation ? 1.3: 1)
                         .opacity(isAnimation ? 0 : 1)
-                        .animation(.easeInOut(duration: 2.4).repeatForever(autoreverses: false))
+                        .mtAnimation(.easeInOut(duration: 2.4).repeatForever(autoreverses: false))
                     
                 }
                 
@@ -78,7 +78,9 @@ struct HomeHeaderItemView: View {
                 .font(.mt.caption1, textColor: .mt.gray_800)
         }
         .onAppear {
-            isAnimation = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                isAnimation = true
+            }
         }
         
     }
