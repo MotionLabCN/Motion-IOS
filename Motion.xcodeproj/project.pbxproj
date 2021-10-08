@@ -61,6 +61,7 @@
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
 		DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50804C270DD2D3003C7538 /* HomeVM.swift */; };
+		DF5A566B2710269600ACA7B6 /* FindTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A566A2710269600ACA7B6 /* FindTestView.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */; };
@@ -116,6 +117,7 @@
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
 		DF50804C270DD2D3003C7538 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		DF5A566A2710269600ACA7B6 /* FindTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindTestView.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DF95F20F26FB15A700081A7D /* startVedio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startVedio.mp4; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				5ACBA39226F2EBA600A5789E /* FindView.swift */,
+				DF5A566A2710269600ACA7B6 /* FindTestView.swift */,
 				5AC2146226F3766A00D4457C /* SubViews */,
 			);
 			path = Find;
@@ -601,6 +604,7 @@
 				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
+				DF5A566B2710269600ACA7B6 /* FindTestView.swift in Sources */,
 				DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */,
 				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
 			);

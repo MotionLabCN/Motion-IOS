@@ -165,6 +165,7 @@ extension ContentView {
                 
                 if tabbarState.selectedKind == .search {
                     FindView()
+//                    FindTestView()
                 }
                 
                 if tabbarState.selectedKind == .storage {
