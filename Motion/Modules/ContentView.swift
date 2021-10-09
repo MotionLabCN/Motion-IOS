@@ -140,6 +140,7 @@ extension ContentView {
         VStack {
             Spacer()
             HStack{
+                
                 Spacer()
                 Button {
                     userManager.logout()
@@ -164,8 +165,8 @@ extension ContentView {
                     .opacity(tabbarState.selectedKind == .home ? 1: 0)
                 
                 if tabbarState.selectedKind == .search {
-                    FindView()
-//                    FindTestView()
+//                    FindView()
+                    FindTestView()
                 }
                 
                 if tabbarState.selectedKind == .storage {
