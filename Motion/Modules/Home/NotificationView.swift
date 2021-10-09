@@ -18,7 +18,7 @@ struct NotificationView: View {
             //TOP Tabbar
                 TabView(selection: $tag, content:{ //tabview start
                     MessageView().tag(notificationViewTabs[0])
-                    MessageView().tag(notificationViewTabs[1])
+                    NoticeListView().tag(notificationViewTabs[1])
                     MessageView().tag(notificationViewTabs[2])
                     MessageView().tag(notificationViewTabs[3])
                     }) //tabview end

@@ -54,6 +54,9 @@
 		5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
+		A071104A271125E500963385 /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0711049271125E500963385 /* NoticeListView.swift */; };
+		A071104C2711285700963385 /* NotifListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104B2711285700963385 /* NotifListVM.swift */; };
+		A071104E27112EA800963385 /* NotifiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104D27112EA800963385 /* NotifiListModel.swift */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
 		DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528426FD710B00993FA5 /* MTSheetManager.swift */; };
@@ -108,6 +111,9 @@
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
+		A0711049271125E500963385 /* NoticeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListView.swift; sourceTree = "<group>"; };
+		A071104B2711285700963385 /* NotifListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifListVM.swift; sourceTree = "<group>"; };
+		A071104D27112EA800963385 /* NotifiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiListModel.swift; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				5A5842D426F4CDE100311388 /* MessageView.swift */,
+				A0711049271125E500963385 /* NoticeListView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -292,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				DF50804C270DD2D3003C7538 /* HomeVM.swift */,
+				A071104B2711285700963385 /* NotifListVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -393,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				DFECAB0D26F30DBD00AB192C /* PostModel.swift */,
+				A071104D27112EA800963385 /* NotifiListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -584,6 +593,7 @@
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
 				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
 				DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */,
+				A071104A271125E500963385 /* NoticeListView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
@@ -593,6 +603,8 @@
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */,
 				5AC2146726F3787300D4457C /* LeftMenuView.swift in Sources */,
+				A071104C2711285700963385 /* NotifListVM.swift in Sources */,
+				A071104E27112EA800963385 /* NotifiListModel.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
@@ -737,7 +749,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 6UB6WM6VQR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -760,7 +772,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 6UB6WM6VQR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

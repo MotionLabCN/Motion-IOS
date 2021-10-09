@@ -52,6 +52,7 @@ extension ContentView {
         VStack {
             Spacer()
             HStack{
+                
                 Spacer()
                 Button {
                     userManager.logout()

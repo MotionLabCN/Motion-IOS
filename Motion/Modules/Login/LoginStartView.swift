@@ -38,9 +38,9 @@ struct LoginStartView: View {
                 mp4
                 
                 logo
-                Text("算力、码力、人力，从Motion到世界。")
+                Text("算力、码力、人力，从Motion走向世界。")
                     .font(.mt.title1.mtBlod(), textColor: .white)
-                    .padding(.horizontal, 25)
+                    .padding(.horizontal, 16)
                 
                 bottomTool
                 
