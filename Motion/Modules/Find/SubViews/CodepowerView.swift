@@ -73,9 +73,9 @@ struct CodepowerView: View {
                 }
                 .offset(x: offsetAnimation ? -300 : 0)
                 .onAppear {
-//                    withAnimation(self.animation){
-//                        self.offsetAnimation.toggle()
-//                    }
+                    withAnimation(self.animation){
+                        self.offsetAnimation.toggle()
+                    }
                 }
                 
             }
