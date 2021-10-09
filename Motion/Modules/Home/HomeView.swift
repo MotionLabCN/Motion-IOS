@@ -18,6 +18,7 @@ struct HomeView: View {
 
     @State var isShowmtsheet = false
 
+    @EnvironmentObject var tabbarState: TabbarState
 
     init() {
         print("HomeView init")
@@ -55,9 +56,15 @@ struct HomeView: View {
              .foregroundColor(.mt.gray_800)
             }
         })
-        .onDisappear(perform: {
-            print("home onDisappear")
-
+        
+        .onChange(of: tabbarState.selectedKind, perform: { newvalue in
+            if newvalue == .home {
+                print("home selected appear")
+            }
+        })
+    
+        .mtTabbarKindChange(hanlder: { kind in
+            print("mtTabbarKindChange \(kind)")
         })
         
         .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {

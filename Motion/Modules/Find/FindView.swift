@@ -12,7 +12,7 @@ public var findViewTabs = ["码力","开源","热门","天梯","公司"]
 
 struct FindView: View {
     
-    @EnvironmentObject var findView: AppState.FindViewState
+    @EnvironmentObject var findView: FindViewState
     
     @State var offset : CGFloat = 0.0
     @GestureState var move : CGFloat = 0
@@ -89,13 +89,14 @@ struct FindView: View {
     var findViews : some View {
         HStack(spacing:0){
             CodepowerView()
+//            Rectangle()
             OpenSourceLibrary()
             RecommendView()
             Ladder()
             RecommendView()
 //            OfficialBusiness()
         }
-        .animation(.linear(duration: 0.2))
+        .mtAnimation(.linear(duration: 0.2))
         .frame(width: CGFloat(pageNumbers) * ScreenWidth())
      
     }

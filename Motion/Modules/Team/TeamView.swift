@@ -8,11 +8,28 @@
 import SwiftUI
 import MotionComponents
 
-
+struct ERji: View {
+    var body: some View {
+        ScrollView {
+            ForEach(0..<10) { _ in
+                Rectangle()
+                    .frame( height: 100)
+                    .foregroundColor(.random)
+                    
+            }
+        }
+        .onDisappear {
+            withAnimation(.easeInOut(duration: 0.15)) {
+                TabbarState.shared.isShowTabbar = true
+            }
+        }
+    }
+}
 struct TeamView: View {
     
     @State var show : Bool = false
     
+    @State var isTest = false
     var body: some View {
         //卡片宽度
         let cardWidth = (ScreenWidth() - 32 - 8 ) / 2
@@ -23,6 +40,17 @@ struct TeamView: View {
         ScrollView(.vertical , showsIndicators:true) {
 //            Spacer().frame(height:44)
             // scrollview start
+            Button("clickme") {
+                print("clickMe")
+                TabbarState.shared.isShowTabbar = false
+                isTest.toggle()
+            }
+            .frame(width: 100, height: 100)
+            .background(Color.red)
+            .mtRegisterRouter(isActive: $isTest, destination: {
+                ERji()
+            })
+            
             LazyVGrid(
                 columns:columns,
                 alignment: .center,

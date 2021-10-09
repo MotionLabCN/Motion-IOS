@@ -46,7 +46,9 @@ public struct MTTabView<Content: View>: View {
     
     public var body: some View {
         if #available(iOS 15.0, *) {
-            content
+            ZStack{
+                content
+            }
                 .safeAreaInset(edge: .bottom) {
                     if isShowTabbar {
                         MTTabBar(tabs: tabs, selection: $selection)
