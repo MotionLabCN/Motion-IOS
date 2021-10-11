@@ -71,12 +71,12 @@ struct CodepowerView: View {
                             .offset(y: item % 2 == 0 ? 10 : -10 )
                     }
                 }
-                .offset(x: offsetAnimation ? -300 : 0)
-                .onAppear {
-                    withAnimation(self.animation){
-                        self.offsetAnimation.toggle()
-                    }
-                }
+//                .offset(x: offsetAnimation ? -300 : 0)
+//                .onAppear {
+//                    withAnimation(self.animation){
+//                        self.offsetAnimation.toggle()
+//                    }
+//                }
                 
             }
         }
