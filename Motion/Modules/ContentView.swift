@@ -8,15 +8,12 @@
 import SwiftUI
 import MotionComponents
 
-
-
-
 struct ContentView: View {
  
-    @EnvironmentObject var tabbarState: AppState.TabbarState
-    @EnvironmentObject var router: AppState.TopRouterTable
+    @EnvironmentObject var tabbarState: TabbarState
+    @EnvironmentObject var router: TopRouterTable
     @EnvironmentObject var userManager: UserManager
-    @EnvironmentObject var findViewState: AppState.FindViewState
+    @EnvironmentObject var findViewState: FindViewState
     
     @GestureState var move : CGSize = .zero
     @State var isShowLeadingMenu : Bool = false
@@ -268,37 +265,11 @@ struct MTTabbar: View {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AppState.TabbarState())
-            .environmentObject(AppState.TopRouterTable())
+            .environmentObject(TabbarState())
+            .environmentObject(TopRouterTable())
             .environmentObject(UserManager())
             .previewDevice("iPhone 12")
     }
