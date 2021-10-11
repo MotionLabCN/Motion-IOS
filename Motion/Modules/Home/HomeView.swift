@@ -56,7 +56,6 @@ struct HomeView: View {
              .foregroundColor(.mt.gray_800)
             }
         })
-        
         .onChange(of: tabbarState.selectedKind, perform: { newvalue in
             if newvalue == .home {
                 print("home selected appear")
