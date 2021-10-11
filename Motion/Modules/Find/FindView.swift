@@ -88,10 +88,20 @@ struct FindView: View {
     @ViewBuilder
     var findViews : some View {
         HStack(spacing:0){
-            CodepowerView()
-            Ladder()
-            OpenSourceLibrary()
-            RecommendView()
+            //写法需要优化一下，但是这样减少了很多卡顿。否则一次性加载4个页面。
+            if findView.pageIndex == 0{
+                CodepowerView()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 1{
+                Ladder()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 2{
+                OpenSourceLibrary()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 3{
+                RecommendView()
+            }else{Color.white.frame(width: ScreenWidth())}
+          
 //            RecommendView()
 //            OfficialBusiness()
         }
