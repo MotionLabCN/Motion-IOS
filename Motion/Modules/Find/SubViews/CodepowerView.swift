@@ -64,7 +64,7 @@ struct CodepowerView: View {
                 LazyHStack{
                     Spacer().frame(width: 16,height: 160)
                 
-                    ForEach(0 ..< 5000) { item in
+                    ForEach(0 ... 5000, id: \.self) { item in
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .fill(Color.random)
                             .frame(width: 100, height: 140)
@@ -72,11 +72,14 @@ struct CodepowerView: View {
                     }
                 }
 //                .offset(x: offsetAnimation ? -300 : 0)
-//                .onAppear {
+                .onAppear {
+                    DispatchQueue.main.async {
+                        prox.scrollTo(2500, anchor: .center)
+                    }
 //                    withAnimation(self.animation){
 //                        self.offsetAnimation.toggle()
 //                    }
-//                }
+                }
                 
             }
         }

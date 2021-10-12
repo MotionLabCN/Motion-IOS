@@ -43,14 +43,21 @@ struct LoginInputPhoneView: View {
         .mtNavBarLogo()        
     }
     
+    
+//    @State var isGotoCode = false
     var rightBtn: some View {
-        NavigationLink {
-            LoginValidateCodeView()
-                .environmentObject(vm)
+        Button {
+            vm.sendCode()
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
+                .mtPlaceholderProgress(vm.isRequestingSendCode, progressColor: .white)
         }
+        .mtRegisterRouter(isActive: $vm.isRequestingSendCode, destination: {
+            LoginValidateCodeView()
+                .environmentObject(vm)
+        })
+        
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.bottom, 16)

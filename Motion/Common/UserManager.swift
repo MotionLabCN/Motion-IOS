@@ -36,6 +36,15 @@ struct UserInfo: Convertible {
     
 }
 
+struct LoginSuccessInfo {
+//    "access_token" = ""
+//    "token_type": "bearer",
+//    "refresh_token": "",
+//    "expires_in": 28799,
+//    "scope": "all",
+//    "jti": "4529eb3c-be6f-455e-9405-57b32ef42275"
+}
+
 
 //MARK: - 用户管理
 private let UserDiskCacheFileName = "currentUser"

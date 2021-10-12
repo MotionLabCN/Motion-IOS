@@ -8,26 +8,30 @@
 import MotionComponents
 
 enum LoginApi: MTTargetType {
-    case loginIn(p: PhoneLoginParameters)
+    case sendCode(p: SendCodeParameters)
+    case loginInWithCode(p: PhoneLoginParameters)
     case github
     
     var path: String {
         switch self {
-        case .loginIn: return "auth/login"
+        case .sendCode: return "verification/code/motion"
+        case .loginInWithCode: return "auth/login"
+    
         case .github: return "/member/info"
         }
     }
     
     var method: HTTPRequestMethod {
         switch self {
-        case .loginIn: return .post
-        case .github: return .get
+        case .loginInWithCode: return .post
+        default: return .get
         }
     }
     
     var parameters: [String : Any]? {
         switch self {
-        case let .loginIn(p): return p.kj.JSONObject()
+        case let .sendCode(p): return p.kj.JSONObject()
+        case let .loginInWithCode(p): return p.kj.JSONObject()
         case .github: return nil
         }
     }
@@ -56,8 +60,16 @@ enum LoginApi: MTTargetType {
 
 //MARK: - 入参
 extension LoginApi {
+    struct SendCodeParameters: Convertible {
+        var mobile = ""
+    }
+    
     struct PhoneLoginParameters: Convertible {
         var mobile = ""
         var smsCode = ""
+        var grant_type = "sms_code"
+        var scope = "all"
+        var device = "ios"
     }
+    
 }
