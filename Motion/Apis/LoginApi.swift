@@ -16,7 +16,6 @@ enum LoginApi: MTTargetType {
         switch self {
         case .sendCode: return "verification/code/motion"
         case .loginInWithCode: return "auth/login"
-    
         case .github: return "/member/info"
         }
     }

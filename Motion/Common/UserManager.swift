@@ -36,18 +36,26 @@ struct UserInfo: Convertible {
     
 }
 
-struct LoginSuccessInfo {
-//    "access_token" = ""
-//    "token_type": "bearer",
-//    "refresh_token": "",
-//    "expires_in": 28799,
-//    "scope": "all",
-//    "jti": "4529eb3c-be6f-455e-9405-57b32ef42275"
+
+struct LoginSuccessInfo: Convertible {
+    //1.一键手机登陆 2.github 3.apple 4.wechat 5.手机验证码
+    enum ChannelType: String, ConvertibleEnum {
+        case unkown = "", 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
+    }
+    
+    var access_token = "" // = ""
+    var token_type = "" //: "bearer",
+    var refresh_token = "" //: "",
+    var expires_in = 0 //: 28799,
+    var scope = "" //: "all",
+    var jti = "" //: "4529eb3c-be6f-455e-9405-57b32ef42275"
+    var channel = ChannelType.unkown
 }
 
 
 //MARK: - 用户管理
 private let UserDiskCacheFileName = "currentUser"
+private let CurrenTokenInfo = "CurrenTokenInfo"
 class UserManager: ObservableObject {
     /* 在App环境下通过
      .environmentObject(UserManager.shared) 注入
@@ -64,27 +72,36 @@ class UserManager: ObservableObject {
         #endif
         if let u = UserInfo.getForDisk(fileName: UserDiskCacheFileName) {
             user = u
-        }        
+        }
+        
     }
     
-    @AppStorage("token") private(set) var token: String = ""
-    @AppStorage("channel") private(set)  var channel = ""
     @Published private(set) var user = UserInfo() {
         didSet {
             user.cacheOnDisk(fileName: UserDiskCacheFileName) // 磁盘缓存
         }
     }
     
+    private(set) var tokenInfo = LoginSuccessInfo() {
+        didSet {
+            user.cacheOnDisk(fileName: CurrenTokenInfo)
+        }
+    }
+    var token: String { tokenInfo.access_token }
+    var channel: String { tokenInfo.channel.rawValue }
+
+    
     var hasLogin: Bool {
         user.id.count > 0
     }
 
-    func loginSusscessSaveToken(_ token: String, channel: ChannelType) {
-        self.token = token
-        self.channel = channel.rawValue
+    func loginSusscessSaveToken(_ token: LoginSuccessInfo, channel: LoginSuccessInfo.ChannelType) {
+        var tmp = token
+        tmp.channel = channel
+        self.tokenInfo = tmp
     }
     
-    func loginSuccessSaveUser(_ user: UserInfo?) { //网络请求后
+    func updateSaveUserInfo(_ user: UserInfo?) { //网络请求后
         withAnimation(.easeInOut(duration: 1)) {
             self.user = user ?? .init()
         }
@@ -96,22 +113,12 @@ class UserManager: ObservableObject {
     }
         
     func logout() {
-        token = ""
-        channel = ""
+        tokenInfo = .init()
         withAnimation(.easeInOut(duration: 1)) {
             user = UserInfo()
         }
     }
     
-}
-
-
-
-extension UserManager {
-    //1.一键手机登陆 2.github 3.apple 4.wechat 5.手机验证码
-    enum ChannelType: String {
-        case 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
-    }
 }
 
 

@@ -213,7 +213,7 @@ struct LoginStartView: View {
                     }
                     // 掉接口
                     //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE
-                    userManager.loginSusscessSaveToken(result.token, channel: .github)
+                    userManager.loginSusscessSaveToken(LoginSuccessInfo(access_token: result.token), channel: .github)
                     // 调用接口信息
                     LoginVM().loginInWithGithub()
                     isShowLoginSheet = false

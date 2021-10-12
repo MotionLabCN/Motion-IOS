@@ -44,7 +44,6 @@ struct LoginInputPhoneView: View {
     }
     
     
-//    @State var isGotoCode = false
     var rightBtn: some View {
         Button {
             vm.sendCode()
