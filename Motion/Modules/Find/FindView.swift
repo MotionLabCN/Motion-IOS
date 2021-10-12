@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-public var findViewTabs = ["码力","开源","热门","天梯","公司"]
+public var findViewTabs = ["码力","人力","开源","热门"]
 
 struct FindView: View {
     
@@ -17,7 +17,7 @@ struct FindView: View {
     @State var offset : CGFloat = 0.0
     @GestureState var move : CGFloat = 0
     
-    let pageNumbers = 5
+    let pageNumbers = 4
  
     func getOffset() -> CGFloat {
         let HStackWidth  = CGFloat(self.pageNumbers) * ScreenWidth()
@@ -88,12 +88,21 @@ struct FindView: View {
     @ViewBuilder
     var findViews : some View {
         HStack(spacing:0){
-            CodepowerView()
-//            Rectangle()
-            OpenSourceLibrary()
-            RecommendView()
-            Ladder()
-            RecommendView()
+            //写法需要优化一下，但是这样减少了很多卡顿。否则一次性加载4个页面。
+            if findView.pageIndex == 0{
+                CodepowerView()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 1{
+                Ladder()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 2{
+                OpenSourceLibrary()
+            }else{Color.white.frame(width: ScreenWidth())}
+            if findView.pageIndex == 3{
+                RecommendView()
+            }else{Color.white.frame(width: ScreenWidth())}
+          
+//            RecommendView()
 //            OfficialBusiness()
         }
         .mtAnimation(.linear(duration: 0.2))
@@ -123,7 +132,7 @@ struct FindView: View {
                 Divider()
                 Capsule(style: .continuous)
                     .frame(width: ScreenWidth() / CGFloat(pageNumbers) - 24, height: 3)
-                    .offset(x: -getOffset() / 5)
+                    .offset(x: -getOffset() / CGFloat(pageNumbers) )
                     .foregroundColor(Color.mt.accent_800)
                 .animation(.spring())
             }

@@ -9,27 +9,30 @@ import SwiftUI
 import MotionComponents
 
 struct ContentView: View {
+ 
     @EnvironmentObject var tabbarState: TabbarState
     @EnvironmentObject var router: TopRouterTable
     @EnvironmentObject var userManager: UserManager
+    @EnvironmentObject var findViewState: FindViewState
+    
+    @GestureState var move : CGSize = .zero
+    @State var isShowLeadingMenu : Bool = false
+    
+    func getOffset() -> CGFloat {
+        let SW = ScreenWidth()
+        if !isShowLeadingMenu {
+            return -0.4 * SW + move.width
+        }else{
+            return 0.4 * SW + move.width
+        }
+    }
     
     var body: some View {
+        
+
         if userManager.hasLogin {
             //主页
-            ZStack {
-                VStack(spacing: 0) {
-                    main
-                    
-                    if tabbarState.isShowTabbar {
-                        MTTabbar(selectedKind: $tabbarState.selectedKind)
-                            .transition(.move(edge: .bottom))
-                    }
-                }
-                                
-                if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
-                    actionCricleBtn
-                }
-            }
+                mainViews
         }else{
             //登陆
             NavigationView {
@@ -37,6 +40,27 @@ struct ContentView: View {
             }
             .transition(.move(edge: .leading).combined(with: .opacity))
         }
+        
+        //        if userManager.hasLogin {
+        //            NavigationView {
+        //                ZStack {
+        //                    routerView
+        //
+        //                    main
+        //
+        //                    tabbar
+        //
+        //                    actionCricleBtn
+        //                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
+        //                }
+        //                .navigationBarHidden(true)
+        //            }
+        //        } else {
+        //            LoginStartView()
+        //                .transition(.move(edge: .leading))
+        ////                .animation(.easeInOut(duration: 5))
+        //        }
+        
     }
     
 }
@@ -45,6 +69,44 @@ struct ContentView: View {
 
 //MARK: - body
 extension ContentView {
+    
+    var mainViews : some View {
+        GeometryReader { pox in
+            let progress = pox.frame(in: .global).minX / ScreenWidth() * 0.8
+            NavigationView {
+                ZStack {
+                    routerView
+                    
+                    main
+                    
+                    tabbar
+                    
+                    if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
+                        actionCricleBtn
+                    }
+                    
+                    Color.black.opacity(progress * 0.3)
+                        .disabled(isShowLeadingMenu)
+                        .ignoresSafeArea()
+                        .onTapGesture {isShowLeadingMenu.toggle()}
+                }
+                .navigationBarHidden(true)
+            }
+        }.frame(width: ScreenWidth())
+        
+    }
+    
+    var routerView: some View {
+        Color.white.frame(size: .zero)
+            .mtRegisterRouter(isActive: $router.linkurl) {
+                Text("待完善")
+            }
+            .mtRegisterRouter(isActive: $router.messageDetail) {
+                Text("顶级导航后")
+            }
+    }
+    
+    
     var actionCricleBtn: some View {
         VStack {
             Spacer()
@@ -68,33 +130,39 @@ extension ContentView {
     
     var main: some View {
         
-        TabView(selection: $tabbarState.selectedKind) {
-            NavigationView {
+        NavigationView {
+            ZStack {
                 HomeView()
-            }
-            .tag(MTTabbar.Kind.home)
-            //                .opacity(tabbarState.selectedKind == .home ? 1: 0)
-            
-            NavigationView {
-                FindTestView()
-//               FindView()
-            }
-            .tag(MTTabbar.Kind.search)
-            
-            NavigationView {
-                StorageView()
-            }
-            .tag(MTTabbar.Kind.storage)
-            
-            NavigationView {
+                    .opacity(tabbarState.selectedKind == .home ? 1: 0)
                 
-                TeamView()
+                if tabbarState.selectedKind == .search {
+                    FindView()
+//                    FindTestView()
+                }
+                
+                if tabbarState.selectedKind == .storage {
+                    StorageView()
+                }
+                
+                if tabbarState.selectedKind == .team {
+                    TeamView()
+                }
+                
             }
-            .tag(MTTabbar.Kind.team)
         }
-        
     }
     
+    @ViewBuilder
+    var tabbar: some View {
+        if tabbarState.isShowTabbar {
+            VStack {
+                Spacer(minLength: 0)
+                MTTabbar(selectedKind: $tabbarState.selectedKind)
+                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+        }
+    }
 }
 
 
@@ -151,32 +219,6 @@ struct MTTabbar: View {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
