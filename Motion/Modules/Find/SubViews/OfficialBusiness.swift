@@ -11,7 +11,7 @@ import MotionComponents
 let businessTabbarStr = ["计算/存储","技术/方案","技能/人员"]
 
 struct OfficialBusiness: View {
-    @State var tabindex : String = "计算/存储"
+    @State private var tabindex : String = "计算/存储"
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true, content: {

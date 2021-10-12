@@ -9,7 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct NoticeListView: View {
-    @State var notifListVM: NotifListVM = NotifListVM()
+    @State private var notifListVM: NotifListVM = NotifListVM()
     
     var body: some View {
         ScrollView {

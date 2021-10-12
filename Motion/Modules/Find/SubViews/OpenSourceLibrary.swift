@@ -9,7 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct OpenSourceLibrary: View {
-    @State var showMoney : Bool = false
+    @State private var showMoney : Bool = false
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
@@ -124,7 +124,7 @@ struct LibraryListCell: View {
 }
 
 struct MoneyNotiView: View {
-    @State var showLottie : Bool = true
+    @State private var showLottie : Bool = true
     var body: some View {
         Button {
             ()

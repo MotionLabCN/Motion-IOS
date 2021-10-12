@@ -11,12 +11,11 @@ import MotionComponents
 struct ContentView: View {
  
     @EnvironmentObject var tabbarState: TabbarState
-    @EnvironmentObject var router: TopRouterTable
     @EnvironmentObject var userManager: UserManager
     @EnvironmentObject var findViewState: FindViewState
     
     @GestureState var move : CGSize = .zero
-    @State var isShowLeadingMenu : Bool = false
+    @State private var isShowLeadingMenu : Bool = false
     
     func getOffset() -> CGFloat {
         let SW = ScreenWidth()
@@ -40,27 +39,6 @@ struct ContentView: View {
             }
             .transition(.move(edge: .leading).combined(with: .opacity))
         }
-        
-        //        if userManager.hasLogin {
-        //            NavigationView {
-        //                ZStack {
-        //                    routerView
-        //
-        //                    main
-        //
-        //                    tabbar
-        //
-        //                    actionCricleBtn
-        //                        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
-        //                }
-        //                .navigationBarHidden(true)
-        //            }
-        //        } else {
-        //            LoginStartView()
-        //                .transition(.move(edge: .leading))
-        ////                .animation(.easeInOut(duration: 5))
-        //        }
-        
     }
     
 }
@@ -74,9 +52,7 @@ extension ContentView {
         GeometryReader { pox in
             let progress = pox.frame(in: .global).minX / ScreenWidth() * 0.8
             NavigationView {
-                ZStack {
-                    routerView
-                    
+                ZStack {                    
                     main
                     
                     tabbar
@@ -95,17 +71,6 @@ extension ContentView {
         }.frame(width: ScreenWidth())
         
     }
-    
-    var routerView: some View {
-        Color.white.frame(size: .zero)
-            .mtRegisterRouter(isActive: $router.linkurl) {
-                Text("待完善")
-            }
-            .mtRegisterRouter(isActive: $router.messageDetail) {
-                Text("顶级导航后")
-            }
-    }
-    
     
     var actionCricleBtn: some View {
         VStack {
@@ -243,7 +208,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(TabbarState())
-            .environmentObject(TopRouterTable())
             .environmentObject(UserManager())
             .previewDevice("iPhone 12")
     }

@@ -13,7 +13,6 @@
 struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var tabbarState = TabbarState.shared
-    @StateObject var router = TopRouterTable.shared
     @StateObject var userManager = UserManager.shared
     
     @StateObject var findViewPageindex = FindViewState()
@@ -23,7 +22,6 @@ struct MotionApp: App {
             ContentView()
 //            MTActiveTestView()
                 .environmentObject(tabbarState)
-                .environmentObject(router)
                 .environmentObject(userManager)
                 .environmentObject(findViewPageindex)
 

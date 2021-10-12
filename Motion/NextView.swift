@@ -10,9 +10,9 @@ import MotionComponents
 
 struct NextView: View {
     @Environment(\.presentationMode) var  presentationMode
-    @State var isShowToast = false
+    @State private var isShowToast = false
     
-    @State var isShow = true
+    @State private var isShow = true
     var body: some View {
         NavigationView {
             Button {

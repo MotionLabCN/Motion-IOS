@@ -9,7 +9,7 @@ import SwiftUI
 import MotionComponents
 
 struct CodepowerView: View {
-    @State var offsetAnimation  : Bool = false
+    @State private var offsetAnimation  : Bool = false
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {

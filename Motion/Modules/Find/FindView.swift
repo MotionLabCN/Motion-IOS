@@ -14,7 +14,7 @@ struct FindView: View {
     
     @EnvironmentObject var findView: FindViewState
     
-    @State var offset : CGFloat = 0.0
+    @State private var offset : CGFloat = 0.0
     @GestureState var move : CGFloat = 0
     
     let pageNumbers = 4
@@ -26,6 +26,7 @@ struct FindView: View {
         return result
     }
     
+    @State private var isgotonext = false
     var body: some View {
         
         let gesture = DragGesture(minimumDistance: 15, coordinateSpace: .global)
@@ -52,7 +53,9 @@ struct FindView: View {
         
         
             VStack(spacing:0){
-                
+                Button("123") {
+                    isgotonext.toggle()
+                }
                 //TOP Tabbar
 
                 topTabbar

@@ -11,7 +11,7 @@ import MotionComponents
 
 
 struct HomeHeaderItemView: View {
-    @State var isAnimation = false
+    @State private var isAnimation = false
     var body: some View {
         VStack(spacing: 3.0) {
             HStack(spacing: 4.0) {
