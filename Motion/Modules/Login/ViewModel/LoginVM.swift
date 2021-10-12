@@ -75,12 +75,12 @@ class LoginVM: ObservableObject {
     }
     
     func loginInWithCode() {
-        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
-        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
-            let token = r.dataJson?["token"].string ?? ""
-            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
-            UserManager.shared.loginSuccessSaveUser(model)
-        }
+//        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
+//        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
+//            let token = r.dataJson?["token"].string ?? ""
+//            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
+//            UserManager.shared.loginSuccessSaveUser(model)
+//        }
     }
     
     func loginInWithGithub() {
