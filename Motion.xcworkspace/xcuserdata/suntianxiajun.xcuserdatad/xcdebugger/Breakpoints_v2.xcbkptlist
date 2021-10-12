@@ -94,9 +94,9 @@
             filePath = "Motion/Modules/Find/FindTestView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "body"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "SecondItemListView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,8 +126,8 @@
             filePath = "Motion/Modules/Find/FindTestView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "Motion/Modules/Find/FindTestView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -174,25 +174,9 @@
             filePath = "Motion/Modules/Find/FindTestView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E8236925-EB6A-409C-A9F1-A072FEAC4194"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Motion/Modules/Find/SubViews/CodepowerView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "body"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "CodeItemList"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -206,9 +190,9 @@
             filePath = "Motion/Modules/Find/FindTestView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "body"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "CodeItemList"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

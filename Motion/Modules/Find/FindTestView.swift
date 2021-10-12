@@ -13,40 +13,25 @@ import Lottie
 
 struct FindTestView: View {
     
-
-    @EnvironmentObject var findView: AppState.FindViewState
     // MARK: 码力集市价格语言
-    
+    @EnvironmentObject var findView: FindViewState
+
     @StateObject var findVM: FindVM = FindVM()
     
     @State var offset : CGFloat = 0
-    var body: some View {
-      
-
-    @EnvironmentObject var findView: FindViewState
     
-    @State var offset : CGFloat = 0
     var body: some View {
         
 
         VStack(spacing:0){
             
             MTPageSegmentView(titles: findViewTabs, offset: $offset)
-            
-
-            MTPageScrollView(count: findViewTabs.count, offset: $offset) {
-                Group {
-                    CodepowerView()
-                        .environmentObject(findVM)
-                    OpenSourceLibrary()
-                    RecommendView()
-                    Ladder()
-                    RecommendView()
 
             MTPageScrollView(offset: $offset) {
                 HStack(spacing: 0) {
                     Group {
                         CodepowerView()
+                            .environmentObject(findVM)
                         
                         OpenSourceLibrary()
                         

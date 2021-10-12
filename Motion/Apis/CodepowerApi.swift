@@ -8,6 +8,7 @@
 import MotionComponents
 
 /*  菜单 语言
+    本地: http://127.0.0.1:8802/sys/dict/group/lang?group=lang
     URL:https://ttchain.tntlinking.com/api/codemart/sys/dict/group/lang?group=lang
  */
 enum CodepowerApi: MTTargetType {

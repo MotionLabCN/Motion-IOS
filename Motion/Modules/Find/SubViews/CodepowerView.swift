@@ -95,7 +95,7 @@ struct CodepowerView: View {
                     Text("码力集市")
                         .font(.mt.title1.mtBlod(),textColor: .black)
                     Spacer()
-                Text(vm.selectFindModel.dictKey)
+                Text("语言")
                     .font(.mt.body2.mtBlod(),textColor: .black)
                 Button {
                     vm.isShowmtsheet.toggle()
@@ -147,8 +147,8 @@ struct CodepowerView: View {
             alignment: .center,
             spacing: 8,
             pinnedViews: .sectionFooters){
-                
-                ForEach(vm.proList, id:\.self) { item in
+                // vm.proList
+                ForEach(0..<10, id:\.self) { item in
                     VStack(alignment: .leading, spacing: 4){
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .frame(width:cardWidth, height: cardWidth * 1.6)

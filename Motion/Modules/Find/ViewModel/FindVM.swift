@@ -61,7 +61,7 @@ class FindVM: ObservableObject {
                       list: [FindModel(dictKey:"0-10",isSelect: false)])
         ]
         itemList.append(contentsOf: item)
-        selectFindModel = item[0];
+//        selectFindModel = item[0];
     }
     
     
