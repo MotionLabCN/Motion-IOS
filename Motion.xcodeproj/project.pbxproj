@@ -202,12 +202,12 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		5AAACF95271552F70060A5DF /* Disk */ = {
+		5AAACF95271552F70060A5DF /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				5AAACF96271553070060A5DF /* DiskPage.swift */,
 			);
-			path = Disk;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		5AC2146226F3766A00D4457C /* SubViews */ = {
@@ -289,7 +289,7 @@
 				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
-				5AAACF95271552F70060A5DF /* Disk */,
+				5AAACF95271552F70060A5DF /* Storage */,
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5A53377326FC114F00949087 /* PublicViews */,
 				5A40BA6C26FCB1610011D3B0 /* LottieViews */,

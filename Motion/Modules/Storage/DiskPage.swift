@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-struct DiskPage: View {
+struct Storage: View {
     
     @State var animationInt : Int = 0
     
@@ -23,19 +23,20 @@ struct DiskPage: View {
                         ActiveUser()
                             .offset(y: animationInt >= 2 ? 0 : -ScreenHeight() * 1.3)
                         Message()
-                            .offset(y: animationInt >= 4 ? 0 : -ScreenHeight() * 1.3)
+                            .offset(y: animationInt >= 3 ? 0 : -ScreenHeight() * 1.3)
                         
                   
                         Spacer()
                             .frame(height: ScreenHeight() * 0.1)
                         
                         Button("成为存储提供者"){
-                            
                         }.mtButtonStyle(.mainDefult(isEnable: true))
                             .padding(.horizontal,56)
+                            .offset(y: animationInt >= 4 ? 0 : -ScreenHeight() * 1.3)
                         Button("存储文件"){
                         }.mtButtonStyle(.mainGradient)
                             .padding(.horizontal,56)
+                            .offset(y: animationInt >= 5 ? 0 : -ScreenHeight() * 1.3)
                         
                     }
                     
@@ -55,64 +56,12 @@ struct DiskPage: View {
     }
 }
 
-struct HomePage_Previews: PreviewProvider {
+struct Storage_Previews: PreviewProvider {
     static var previews: some View {
-        DiskPage()
+        Storage()
     }
 }
 
-struct PercentageData: View {
-    var PercentNumber : String
-    var showTag : Bool = true
-    var showTagtext : Bool = true
-    var tagName : String
-    var tagColor : Color = .green
-    var unit : String = "%"
-    var tagIconType : tagIconType = .defult
-    
-    enum tagIconType{
-        case defult
-        case up
-        case down
-    }
-    var body: some View {
-        VStack(alignment:.leading,spacing:4){
-            
-            HStack(spacing:6){
-                if showTag {
-                    switch self.tagIconType {
-                    case .defult :
-                        Capsule()
-                            .frame(width: 4, height: 12)
-                            .foregroundColor(tagColor)
-                    case .up :
-                        Image(systemName: "arrow.up")
-                            .font(.system(size: 12, weight: .medium, design: .monospaced))
-                            .foregroundColor(tagColor)
-                    case .down :
-                        Image(systemName: "arrow.down")
-                            .font(.system(size: 12, weight: .medium, design: .monospaced))
-                            .foregroundColor(tagColor)
-                    }
-                }
-                if showTagtext{
-                    Text(tagName)
-                        .font(.system(size: 11, weight: .light, design: .monospaced))
-                        .foregroundColor(.black.opacity(0.3))
-                }
-                
-                
-            }
-            HStack(alignment: .bottom, spacing:4){
-                Text(PercentNumber)
-                    .font(.system(size:18, weight: .light, design: .monospaced))
-                Text(unit)
-                    .font(.system(size: 12, weight: .light, design: .monospaced))
-                    .foregroundColor(.black.opacity(0.3))
-            }
-        }
-    }
-}
 
 struct RoomListRow: View {
     var roomname : String
@@ -179,12 +128,7 @@ struct Message: View {
             PercentageData(PercentNumber: "0.08", showTag: true, showTagtext: true, tagName: "新增节点", tagColor:.green, unit: "%", tagIconType: .up)
             
         }
-        
-        .padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 0)
-     
+        .mtCardStyle()
         
      
     }
@@ -215,11 +159,7 @@ struct ActiveUser: View {
            
             
         }
-        .padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 0)
-     
+        .mtCardStyle()
         
         
     }
@@ -245,15 +185,13 @@ struct Today: View {
                 .frame(width: ScreenWidth() * 0.2)
             Spacer()
         }
-        .padding()
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-        .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 0)
-     
+        .mtCardStyle()
+       
         
         
     }
 }
+
 
 
 struct ProgessCircle: View {
@@ -276,6 +214,61 @@ struct ProgessCircle: View {
                 .frame(width: frame , height: frame)
         }
         .rotationEffect(Angle(degrees: 0))
+    }
+}
+
+
+
+struct PercentageData: View {
+    var PercentNumber : String
+    var showTag : Bool = true
+    var showTagtext : Bool = true
+    var tagName : String
+    var tagColor : Color = .green
+    var unit : String = "%"
+    var tagIconType : tagIconType = .defult
+    
+    enum tagIconType{
+        case defult
+        case up
+        case down
+    }
+    var body: some View {
+        VStack(alignment:.leading,spacing:4){
+            
+            HStack(spacing:6){
+                if showTag {
+                    switch self.tagIconType {
+                    case .defult :
+                        Capsule()
+                            .frame(width: 4, height: 12)
+                            .foregroundColor(tagColor)
+                    case .up :
+                        Image(systemName: "arrow.up")
+                            .font(.system(size: 12, weight: .medium, design: .monospaced))
+                            .foregroundColor(tagColor)
+                    case .down :
+                        Image(systemName: "arrow.down")
+                            .font(.system(size: 12, weight: .medium, design: .monospaced))
+                            .foregroundColor(tagColor)
+                    }
+                }
+                if showTagtext{
+                    Text(tagName)
+                        .font(.system(size: 11, weight: .light, design: .monospaced))
+                        .foregroundColor(.black.opacity(0.3))
+                }
+                
+                
+            }
+            HStack(alignment: .bottom, spacing:4){
+                Text(PercentNumber)
+                    .font(.system(size:18, weight: .light, design: .monospaced))
+                Text(unit)
+                    .font(.system(size: 12, weight: .light, design: .monospaced))
+                    .foregroundColor(.black.opacity(0.3))
+            }
+        }
     }
 }
 
@@ -438,3 +431,5 @@ struct ProgessCircle: View {
 //        .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 0)
 //    }
 //}
+
+

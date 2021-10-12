@@ -22,7 +22,7 @@ struct StorageView: View {
             }.tabViewStyle(.page(indexDisplayMode: .never))
             
             header
-
+            
         }
         .padding(.top,24)
         .navigationBarHidden(true)
@@ -44,10 +44,7 @@ struct StorageView: View {
                     }
                 }
                 .frame(height: ScreenWidth() * 0.2)
-                .padding()
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-                .shadow(color: .black.opacity(0.06), radius: 16, x: 0, y: 0)
+                .mtCardStyle()
             Spacer()
         }
       
