@@ -9,10 +9,14 @@ import SwiftUI
 import MotionComponents
 
 struct CodepowerView: View {
+    
+    @EnvironmentObject var vm: FindVM
+//    @Binding var isShowmtsheet: Bool
     @State var offsetAnimation  : Bool = false
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
+            
             VStack(spacing:12){
                 
                 Spacer().frame(width: 0, height: 44)
@@ -37,10 +41,10 @@ struct CodepowerView: View {
                 
             }
         }
-        
         .frame(width: ScreenWidth())
-        
-        
+        .onAppear {
+            print("22222")
+        }
     }
     
     var title : some View {
@@ -80,7 +84,6 @@ struct CodepowerView: View {
                 
             }
         }
-       
     }
     
     var shopTitle : some View {
@@ -89,12 +92,16 @@ struct CodepowerView: View {
                     Text("码力集市")
                         .font(.mt.title1.mtBlod(),textColor: .black)
                     Spacer()
-                    Text("价格")
+                Text(vm.selectFindModel.dictKey)
                     .font(.mt.body2.mtBlod(),textColor: .black)
+                Button {
+                    vm.isShowmtsheet.toggle()
+                } label: {
                     Image.mt.load(.Filter_list)
                     .foregroundColor(.red)
-              
+                }
                 
+
             }
             HStack(spacing:48){
                 VStack{
@@ -138,7 +145,7 @@ struct CodepowerView: View {
             spacing: 8,
             pinnedViews: .sectionFooters){
                 
-                ForEach(0 ..< 50) { item in
+                ForEach(vm.proList, id:\.self) { item in
                     VStack(alignment: .leading, spacing: 4){
                         RoundedRectangle(cornerRadius: 12, style: .continuous)
                             .frame(width:cardWidth, height: cardWidth * 1.6)
@@ -148,15 +155,15 @@ struct CodepowerView: View {
                         Text("¥2,392.00")
                             .font(.mt.body2.bold(),textColor: .mt.accent_800)
                     }
-                    
                 }
-                
             }
     }
 }
 
-struct CodepowerView_Previews: PreviewProvider {
-    static var previews: some View {
-        CodepowerView()
-    }
-}
+//struct CodepowerView_Previews: PreviewProvider {
+//    @ViewBuilder
+//    static var previews: some View {
+//        @State var isShow: Bool = false
+//        CodepowerView(isShowmtsheet: $isShow)
+//    }
+//}

@@ -88,7 +88,7 @@ struct FindView: View {
     @ViewBuilder
     var findViews : some View {
         HStack(spacing:0){
-            CodepowerView()
+//            CodepowerView(isShowmtsheet:false)
             OpenSourceLibrary()
             RecommendView()
             Ladder()
