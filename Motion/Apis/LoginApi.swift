@@ -12,7 +12,6 @@ import MotionComponents
 enum LoginApi: CustomTargetType {
     case sendCode(p: SendCodeParameters)
     case loginInWithCode(p: PhoneLoginParameters)
-    case github
     
     var baseURL: URL { URL(string: "http://192.168.0.224:8800")! }
 
@@ -38,7 +37,6 @@ enum LoginApi: CustomTargetType {
         switch self {
         case .sendCode: return "verification/code/motion"
         case .loginInWithCode: return "oauth/token"
-        case .github: return "/member/info"
         }
     }
     
@@ -53,7 +51,6 @@ enum LoginApi: CustomTargetType {
         switch self {
         case let .sendCode(p): return p.kj.JSONObject()
         case let .loginInWithCode(p): return p.kj.JSONObject()
-        case .github: return nil
         }
     }
     

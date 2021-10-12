@@ -49,6 +49,9 @@ class LoginVM: ObservableObject {
     /// 基础资料
     @Published var userName = "梁泽"
     
+    private var accountIsExsit = false
+    private var userInfo: UserInfo?
+    
     @Published var teamList: [TeamModel] = [
         .init(text: "远程协作", isSelected: true),
         .init(text: "社团、班级、小组"),
@@ -74,18 +77,8 @@ class LoginVM: ObservableObject {
         UserManager.shared.updateSaveUserInfo(.init(id: "假的"))
     }
     
-
-    
-    func loginInWithGithub() {
-        let target = LoginApi.github
-        Networking.requestObject(target, modeType: UserInfo.self) { r, model in
-            UserManager.shared.updateSaveUserInfo(model)
-        }
-    }
-    
     
     @Published var logicSendCode = LogicSendCode()
-    var accountIsExsit = false
     func sendCode(atPage page: LogicSendCode.Page) {
         logicSendCode.isRequesting = true
         
@@ -150,8 +143,12 @@ class LoginVM: ObservableObject {
             
             
             if self.accountIsExsit {
-                UserManager.shared.updateSaveUserInfo(m)
+                self.userInfo = m
+                self.logicAuth.isPushBaseInfoView = true
+
+//                UserManager.shared.updateSaveUserInfo(m)
             } else {
+                self.userInfo = m
                 self.logicAuth.isPushBaseInfoView = true
             }
             

@@ -11,9 +11,6 @@ import AVKit
 
 
 
-
-
-
 struct LoginStartView: View {
     @State private var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
@@ -53,8 +50,7 @@ struct LoginStartView: View {
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
             .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
-            .mtTopProgress(true)//网络加载
-            .mtToast(isPresented: $isShowToast, text: toastText, style: toastStyle)
+//            .mtTopProgress(true)//网络加载
             
 //        }
     }
@@ -141,7 +137,6 @@ struct LoginStartView: View {
     var startBtn: some View {
         Button("开始") {
             isShowLoginSheet = true
-            isShowToast = true
             toastText = "start "
         }
         .mtButtonStyle(.mainGradient)
@@ -200,22 +195,20 @@ struct LoginStartView: View {
             
              
             Button(action: {
-//                let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE"
-//                userManager.loginSusscessSaveToken(token, channel: .github)
-//                // 调用接口信息
-//                LoginVM().loginInWithGithub()
-                
                 ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { response in
                     guard case let .git(result) = response?.response else {
                         isShowToast = true
                         toastText = "Github登录失败"
                         return
                     }
-                    // 掉接口
-                    //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MyIsImV4cCI6MTYzMjk3NTM5OH0.w2CoMVO-6J5FWcmA1dmb8GCfFbKhG_D1WFluUDUUqgE
+                 
                     userManager.loginSusscessSaveToken(LoginSuccessInfo(access_token: result.token), channel: .github)
                     // 调用接口信息
-                    LoginVM().loginInWithGithub()
+                    Networking.requestObject(CommunityServiceApi.userinfo, modeType: UserInfo.self) { _, model in
+                        userManager.updateSaveUserInfo(model)
+                    }
+                    
+                    
                     isShowLoginSheet = false
 
                 })
