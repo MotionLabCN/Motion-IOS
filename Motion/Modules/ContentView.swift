@@ -85,11 +85,11 @@ extension ContentView {
             }
             .tag(MTTabbar.Kind.storage)
             
-            NavigationView {
-                
-                TeamView()
-            }
-            .tag(MTTabbar.Kind.team)
+//            NavigationView {
+//
+//                TeamView()
+//            }
+//            .tag(MTTabbar.Kind.team)
         }
         
     }
@@ -97,24 +97,18 @@ extension ContentView {
 }
 
 
-
-
-
-
-
-
 //MARK: - Tabbar
 struct MTTabbar: View {
     enum Kind: String, CaseIterable, Identifiable {
         var id: String { rawValue }
-        case home, search, storage, team
+        case home, search, storage
         
         var image: Image {
             switch self {
             case .home: return .mt.load(.Home)
             case .search: return .mt.load(.Search)
             case .storage: return .mt.load(.Pie_chart)
-            case .team: return .mt.load(.Group)
+//            case .team: return .mt.load(.Group)
             }
         }
     }

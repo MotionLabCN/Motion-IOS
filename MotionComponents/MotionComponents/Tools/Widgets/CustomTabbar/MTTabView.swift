@@ -17,14 +17,14 @@ public extension View {
 
 //MARK: - tabbar类型
 public enum MTTabKind: CaseIterable {
-    case home, search, storage, team
+    case home, search, storage
     
     var image: Image {
         switch self {
         case .home: return .mt.load(.Home)
         case .search: return .mt.load(.Search)
         case .storage: return .mt.load(.Pie_chart)
-        case .team: return .mt.load(.Group)
+//        case .team: return .mt.load(.Group)
         }
     }
 }
@@ -124,8 +124,8 @@ struct MTTabView_pre: PreviewProvider {
                 Color.random
                     .mtTabbarItem(tab: .storage, selection: $selection)
                 
-                Color.random
-                    .mtTabbarItem(tab: .team, selection: $selection)
+//                Color.random
+//                    .mtTabbarItem(tab: .team, selection: $selection)
                 
             })
         }
