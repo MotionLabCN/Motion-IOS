@@ -18,7 +18,7 @@ import MotionComponents
     价格:暂无接口写死 直接用数据模型
  */
 enum CodepowerApi: MTTargetType {
-    case language(p:CodepoweParameters)
+    case language(p:LangParameters)
     case technology
     case productList(p:ProductListParameters)
     
@@ -50,10 +50,12 @@ enum CodepowerApi: MTTargetType {
 
 //MARK: - 入参
 extension CodepowerApi {
-    struct CodepoweParameters: Convertible {
+    //MARK:语言参数
+    struct LangParameters: Convertible {
         var group = ""
     }
     
+    //MARK:产品列表接参数
     struct ProductListParameters: Convertible {
         //标签ID 1;2;3
         var labelIds = ""

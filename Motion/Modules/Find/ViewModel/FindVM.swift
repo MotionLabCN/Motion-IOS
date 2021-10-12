@@ -75,12 +75,13 @@ class FindVM: ObservableObject {
     
     // MARK: 获取码力数据
     func requestWithMenuList() {
+        // 语言
         let language = CodepowerApi.language(p: .init(group: "lang"))
         Networking.requestObject(language, modeType: UserInfo.self) { r, model in
             // 成功...
             self.getJSON()
         }
-        
+        // 技术
         let technology = CodepowerApi.technology
         Networking.requestObject(technology, modeType: UserInfo.self) { r, model in
             // 成功...
@@ -90,8 +91,10 @@ class FindVM: ObservableObject {
                 ["labelId":"2c9780827bf34b0e017c134b0ded0135","labelName":"python","labelHeat":4]
             ]
             
+            
         }
         
+        // 价格
         let json1: [[String: Any]] = [
             ["dictKey": "全部", "dictValue": "C/C++"],
             ["dictKey": "免费", "dictValue": "Java"],
