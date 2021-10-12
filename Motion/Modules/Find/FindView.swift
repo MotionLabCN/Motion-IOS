@@ -53,9 +53,7 @@ struct FindView: View {
         
         
             VStack(spacing:0){
-                Button("123") {
-                    isgotonext.toggle()
-                }
+        
                 //TOP Tabbar
 
                 topTabbar
@@ -96,24 +94,16 @@ struct FindView: View {
             Ladder()
             RecommendView()
             //写法需要优化一下，但是这样减少了很多卡顿。否则一次性加载4个页面。
-            if findView.pageIndex == 0{
-                CodepowerView()
-            }else{Color.white.frame(width: ScreenWidth())}
-            if findView.pageIndex == 1{
-                Ladder()
-            }else{Color.white.frame(width: ScreenWidth())}
-            if findView.pageIndex == 2{
-                OpenSourceLibrary()
-            }else{Color.white.frame(width: ScreenWidth())}
-            if findView.pageIndex == 3{
-                RecommendView()
-            }else{Color.white.frame(width: ScreenWidth())}
-          
+            CodepowerView()
+            Ladder()
+            OpenSourceLibrary()
+            RecommendView()
 //            RecommendView()
 //            OfficialBusiness()
         }
         .mtAnimation(.linear(duration: 0.2))
         .frame(width: CGFloat(pageNumbers) * ScreenWidth())
+      
      
     }
     

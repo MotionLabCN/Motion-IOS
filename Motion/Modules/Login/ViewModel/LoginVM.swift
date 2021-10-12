@@ -74,14 +74,7 @@ class LoginVM: ObservableObject {
         UserManager.shared.updateSaveUserInfo(.init(id: "假的"))
     }
     
-    func loginInWithCode() {
-        let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
-//        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
-//            let token = r.dataJson?["token"].string ?? ""
-//            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
-//            UserManager.shared.loginSuccessSaveUser(model)
-//        }
-    }
+
     
     func loginInWithGithub() {
         let target = LoginApi.github
@@ -99,6 +92,25 @@ class LoginVM: ObservableObject {
         Networking.request(LoginApi.sendCode(p: .init(mobile: phone))) { [weak self] result in
             self?.accountIsExsit = result.dataJson?["isExsit"].boolValue ?? false
             self?.isRequestingSendCode = false
+        }
+    }
+    
+    @Published var isRequestingLoginInWithCode = false
+    func loginInWithCode() {
+        isRequestingLoginInWithCode = true
+        
+        let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
+        Networking.requestObject(target, modeType: LoginSuccessInfo.self) { [weak self] r, model in
+            self?.isRequestingLoginInWithCode = false
+            
+            if let model = model {
+                UserManager.shared.loginSusscessSaveToken(model, channel: .手机验证码)
+                // 登录成功了有一个token  然后去获取用户信息
+            } else { //失败
+                
+            }
+            
+//            UserManager.shared.loginSuccessSaveUser(model)
         }
     }
 }
