@@ -29,7 +29,10 @@ class FindVM: ObservableObject {
     // 码力数据源
     @Published var itemList: [FindModel] = []
     
-    
+    var pageNum: Int = 0
+    var lang: String = ""
+    var price: String = ""
+    var labelIds: String = ""
     init() {
         getItems()
         
@@ -81,11 +84,34 @@ class FindVM: ObservableObject {
         let technology = CodepowerApi.technology
         Networking.requestObject(technology, modeType: UserInfo.self) { r, model in
             // 成功...
-            self.getJSON()
+            let json: [[String: Any]] = [
+                ["labelId":"2c9780827bf34b0e017bf6a45f9e0016","labelName":"redis","labelHeat":10],
+                ["labelId":"2c9780827bf34b0e017c15c07235017e","labelName":"spring","labelHeat":7],
+                ["labelId":"2c9780827bf34b0e017c134b0ded0135","labelName":"python","labelHeat":4]
+            ]
+            
         }
         
+        let json1: [[String: Any]] = [
+            ["dictKey": "全部", "dictValue": "C/C++"],
+            ["dictKey": "免费", "dictValue": "Java"],
+            ["dictKey": "1-98", "dictValue": "Python"],
+            ["dictKey": "99-198", "dictValue": "Python"],
+            ["dictKey": "199-1998", "dictValue": "Python"],
+            ["dictKey": "1999-2998", "dictValue": "Python"],
+            ["dictKey": "2999以上", "dictValue": "Python"]
+        ]
     }
     
+    
+    // MARK:产品列表接口
+    func requestWithProductList() {
+        let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
+        Networking.requestObject(technology, modeType: UserInfo.self) { r, model in
+            // 成功...
+            
+        }
+    }
     
     // MARK: 获取码力列表数据
     func requestWithCodeList() {
