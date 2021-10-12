@@ -58,7 +58,6 @@ struct LoginInputPhoneView: View {
             LoginValidateCodeView()
                 .environmentObject(vm)
         })
-        
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: vm.phone.count < LoginVM.Constant.phoneMaxNum ? .center : .trailing)
         .mtAnimation(.spring())
