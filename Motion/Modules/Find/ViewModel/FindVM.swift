@@ -118,11 +118,7 @@ class FindVM: ObservableObject {
     
     // MARK: 获取码力列表数据
     func requestWithCodeList() {
-//        addItem(title: "beck")
-        let target = LoginApi.github
-        Networking.requestObject(target, modeType: UserInfo.self) { r, model in
-            // 成功...
-        }
+
     }
     
     func getJSON() {
