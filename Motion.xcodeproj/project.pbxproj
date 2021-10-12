@@ -45,6 +45,7 @@
 		5A8F6DA126FC7FBF007E9101 /* OfficialBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F6DA026FC7FBF007E9101 /* OfficialBusiness.swift */; };
 		5A9155122704038800E8135F /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9155112704038800E8135F /* StorageView.swift */; };
 		5A91551427040CB700E8135F /* CodepowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91551327040CB700E8135F /* CodepowerView.swift */; };
+		5AAACF97271553070060A5DF /* DiskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAACF96271553070060A5DF /* DiskPage.swift */; };
 		5AC2146426F3767800D4457C /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146326F3767800D4457C /* RecommendView.swift */; };
 		5AC2146726F3787300D4457C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146626F3787300D4457C /* ProfileView.swift */; };
 		5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */; };
@@ -102,6 +103,7 @@
 		5A8F6DA026FC7FBF007E9101 /* OfficialBusiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialBusiness.swift; sourceTree = "<group>"; };
 		5A9155112704038800E8135F /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		5A91551327040CB700E8135F /* CodepowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodepowerView.swift; sourceTree = "<group>"; };
+		5AAACF96271553070060A5DF /* DiskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskPage.swift; sourceTree = "<group>"; };
 		5AC2146326F3767800D4457C /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		5AC2146626F3787300D4457C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetail.swift; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		5AAACF95271552F70060A5DF /* Disk */ = {
+			isa = PBXGroup;
+			children = (
+				5AAACF96271553070060A5DF /* DiskPage.swift */,
+			);
+			path = Disk;
+			sourceTree = "<group>";
+		};
 		5AC2146226F3766A00D4457C /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +289,7 @@
 				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
+				5AAACF95271552F70060A5DF /* Disk */,
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5A53377326FC114F00949087 /* PublicViews */,
 				5A40BA6C26FCB1610011D3B0 /* LottieViews */,
@@ -579,6 +590,7 @@
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
+				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
