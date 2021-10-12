@@ -9,29 +9,26 @@ import SwiftUI
 import MotionComponents
 
 struct ContentView: View {
- 
     @EnvironmentObject var tabbarState: TabbarState
     @EnvironmentObject var userManager: UserManager
-    @EnvironmentObject var findViewState: FindViewState
-    
-    @GestureState var move : CGSize = .zero
-    @State private var isShowLeadingMenu : Bool = false
-    
-    func getOffset() -> CGFloat {
-        let SW = ScreenWidth()
-        if !isShowLeadingMenu {
-            return -0.4 * SW + move.width
-        }else{
-            return 0.4 * SW + move.width
-        }
-    }
     
     var body: some View {
-        
-
         if userManager.hasLogin {
             //主页
-                mainViews
+            ZStack {
+                VStack(spacing: 0) {
+                    main
+                    
+                    if tabbarState.isShowTabbar {
+                        MTTabbar(selectedKind: $tabbarState.selectedKind)
+                            .transition(.move(edge: .bottom))
+                    }
+                }
+                                
+                if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
+                    actionCricleBtn
+                }
+            }
         }else{
             //登陆
             NavigationView {
@@ -47,31 +44,6 @@ struct ContentView: View {
 
 //MARK: - body
 extension ContentView {
-    
-    var mainViews : some View {
-        GeometryReader { pox in
-            let progress = pox.frame(in: .global).minX / ScreenWidth() * 0.8
-            NavigationView {
-                ZStack {                    
-                    main
-                    
-                    tabbar
-                    
-                    if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
-                        actionCricleBtn
-                    }
-                    
-                    Color.black.opacity(progress * 0.3)
-                        .disabled(isShowLeadingMenu)
-                        .ignoresSafeArea()
-                        .onTapGesture {isShowLeadingMenu.toggle()}
-                }
-                .navigationBarHidden(true)
-            }
-        }.frame(width: ScreenWidth())
-        
-    }
-    
     var actionCricleBtn: some View {
         VStack {
             Spacer()
@@ -95,39 +67,33 @@ extension ContentView {
     
     var main: some View {
         
-        NavigationView {
-            ZStack {
+        TabView(selection: $tabbarState.selectedKind) {
+            NavigationView {
                 HomeView()
-                    .opacity(tabbarState.selectedKind == .home ? 1: 0)
-                
-                if tabbarState.selectedKind == .search {
-                    FindView()
-//                    FindTestView()
-                }
-                
-                if tabbarState.selectedKind == .storage {
-                    StorageView()
-                }
-                
-                if tabbarState.selectedKind == .team {
-                    TeamView()
-                }
-                
             }
+            .tag(MTTabbar.Kind.home)
+            //                .opacity(tabbarState.selectedKind == .home ? 1: 0)
+            
+            NavigationView {
+                FindTestView()
+//               FindView()
+            }
+            .tag(MTTabbar.Kind.search)
+            
+            NavigationView {
+                StorageView()
+            }
+            .tag(MTTabbar.Kind.storage)
+            
+            NavigationView {
+                
+                TeamView()
+            }
+            .tag(MTTabbar.Kind.team)
         }
+        
     }
     
-    @ViewBuilder
-    var tabbar: some View {
-        if tabbarState.isShowTabbar {
-            VStack {
-                Spacer(minLength: 0)
-                MTTabbar(selectedKind: $tabbarState.selectedKind)
-                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity))
-            }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
-        }
-    }
 }
 
 
@@ -184,6 +150,32 @@ struct MTTabbar: View {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
