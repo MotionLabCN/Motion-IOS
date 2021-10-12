@@ -38,16 +38,31 @@ struct MTAvatar: View {
     }
 }
 
-struct MTLocUserAvatar: View {
-    @State var isPresented = false
-    var frame : CGFloat = 36
+class MTLocUserVM: ObservableObject {
+    @Published var isShowProfile = false
+}
 
-            
+struct MTLocUserAvatar: View {
+//    @EnvironmentObject var vm: MTLocUserVM
+    
+    @StateObject var vm = MTLocUserVM()
+    @State private var isgotonext = false
+    
+    var frame : CGFloat = 36
     var body: some View {
         MTAvatar(frame: frame, urlString: UserManager.shared.user.avatarUrl) {
-            
+//            router.profile.toggle()
+            isgotonext.toggle()
         }
-
+        .fullScreenCover(isPresented: $isgotonext) {
+            ProfileView()
+                .environmentObject(vm)
+        }
+        .mtRegisterRouter(isActive: $vm.isShowProfile) {
+            Text("detail")
+        }
+                
+    
     }
 }
 

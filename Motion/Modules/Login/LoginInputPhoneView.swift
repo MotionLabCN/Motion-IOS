@@ -13,7 +13,7 @@ struct LoginInputPhoneView: View {
     @StateObject var vm = LoginVM()
     var textFieldConfig = MTTextFieldStyle.Config()
     
-    @State var textFieldText = ""
+    @State private var textFieldText = ""
     var body: some View {
         VStack(alignment: .center, spacing: 26.0) {
             Text("输入手机号码")
@@ -44,7 +44,7 @@ struct LoginInputPhoneView: View {
     }
     
     
-//    @State var isGotoCode = false
+//    @State private var isGotoCode = false
     var rightBtn: some View {
         Button {
             vm.sendCode()

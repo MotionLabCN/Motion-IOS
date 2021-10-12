@@ -51,13 +51,6 @@ class TabbarState: ObservableObject {
     
 }
 
-//MARK: - 顶层router表
-class TopRouterTable: ObservableObject {
-    static let shared = TopRouterTable()
-
-    @Published var linkurl = false
-    @Published var messageDetail = false
-}
 
 //MARK: - FindViewState ????
 class FindViewState : ObservableObject {

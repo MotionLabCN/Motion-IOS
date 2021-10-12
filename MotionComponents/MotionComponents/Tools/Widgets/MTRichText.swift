@@ -324,7 +324,7 @@ fileprivate struct MTActiveLabelRepresentable: UIViewRepresentable {
 //MARK: - 用法
 struct MTActiveTestView: View {
     let customType1 = ActiveType.custom(pattern: "are")
-    @State var text = "This is a post with #multiple #hashtags and a @userhandle. Links are also supported like" +
+    @State private var text = "This is a post with #multiple #hashtags and a @userhandle. Links are also supported like" +
     " this one: http://optonaut.co. Now it also supports custom patterns -> are\n\n" +
         "Let's trim a long link: \nhttps://twitter.com/twicket_app/status/649678392372121601"
     

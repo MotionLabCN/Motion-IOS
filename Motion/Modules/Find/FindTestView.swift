@@ -14,7 +14,7 @@ struct FindTestView: View {
     
     @EnvironmentObject var findView: FindViewState
     
-    @State var offset : CGFloat = 0
+    @State private var offset : CGFloat = 0
     var body: some View {
         
         VStack(spacing:0){

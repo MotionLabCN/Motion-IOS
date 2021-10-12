@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MTAnimationViewModifier: ViewModifier {
     let animationed: Animation?
-    @State var canAnimation = false
+    @State private var canAnimation = false
     func body(content: Content) -> some View {
         content
             .animation(canAnimation ? animationed : nil)

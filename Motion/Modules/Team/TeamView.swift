@@ -27,9 +27,9 @@ struct ERji: View {
 }
 struct TeamView: View {
     
-    @State var show : Bool = false
+    @State private var show : Bool = false
     
-    @State var isTest = false
+    @State private var isTest = false
     var body: some View {
         //卡片宽度
         let cardWidth = (ScreenWidth() - 32 - 8 ) / 2
@@ -95,10 +95,12 @@ struct TeamView: View {
         }, trailing: {
             SettingBtn()
         })
-        .fullScreenCover(isPresented: $show) {
-            SettingView()
+//        .fullScreenCover(isPresented: $show) {
+//            SettingView()
+//        }
+        .fullScreenCover(isPresented: .constant(false)) {
+            EmptyView()
         }
-        
         
     }
 }

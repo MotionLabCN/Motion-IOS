@@ -16,7 +16,7 @@ struct HomeView: View {
     
     @State private var isShowPlaceholder = true
 
-    @State var isShowmtsheet = false
+    @State private var isShowmtsheet = false
 
     @EnvironmentObject var tabbarState: TabbarState
 
@@ -56,6 +56,9 @@ struct HomeView: View {
              .foregroundColor(.mt.gray_800)
             }
         })
+        .fullScreenCover(isPresented: .constant(false)) {
+            EmptyView()
+        }
         .onChange(of: tabbarState.selectedKind, perform: { newvalue in
             if newvalue == .home {
                 print("home selected appear")

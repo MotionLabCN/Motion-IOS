@@ -15,7 +15,7 @@ import AVKit
 
 
 struct LoginStartView: View {
-    @State var isShowTermsOfService = false
+    @State private var isShowTermsOfService = false
     @EnvironmentObject var userManager: UserManager
     var player = AVPlayer()
     
