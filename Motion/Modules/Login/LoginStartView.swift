@@ -20,49 +20,40 @@ struct LoginStartView: View {
     @State private var playTime: CMTime = .zero
     @State private var mp4Start = true
     
-    @State private var isShowLoginSheet = false
-    @State private var isPhoneLoginActive = false
     
-    @State private var isShowToast = false
-    @State private var toastText = ""
-    @State private var toastStyle = MTPushNofi.PushNofiType.danger
+    @StateObject private var vm = LoginVM()
     
     var body: some View {
-//        NavigationView {
-            ZStack {
-                rotuerView
-                
-                mp4
-                
-                logo
-                Text("算力、码力、人力，从Motion走向世界。")
-                    .font(.mt.title1.mtBlod(), textColor: .white)
-                    .padding(.horizontal, 16)
-                
-                bottomTool
-                
-                if mp4Start == false {
-                    placeholder
-                }
-     
+        ZStack {
+            mp4
             
+            logo
+            Text("算力、码力、人力，从Motion走向世界。")
+                .font(.mt.title1.mtBlod(), textColor: .white)
+                .padding(.horizontal, 16)
+            
+            bottomTool
+            
+            if mp4Start == false {
+                placeholder
             }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
-            .navigationBarHidden(true)
-            .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
-//            .mtTopProgress(true)//网络加载
             
-//        }
+            
+        }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .navigationBarHidden(true)
+        .mtSheet(isPresented: $vm.logicStart.isShowLoginSheet, content: loginMethodSheetContent)
+        .mtTopProgress(vm.logicStart.isShowLoading, usingBackgorund: true)//网络加载
+        
+        .mtRegisterRouter(isActive: $vm.logicStart.isPushInputPhoneView) {
+            LoginInputPhoneView()
+                .environmentObject(vm)
+        }
+      
+        
     }
     
-    var rotuerView: some View {
-        NavigationLink(isActive: $isPhoneLoginActive) {
-            LoginInputPhoneView()
-        } label: {
-            EmptyView()
-        }
 
-    }
     
     var logo: some View {
         VStack {
@@ -101,7 +92,6 @@ struct LoginStartView: View {
                 //                .mtAnimation(isOverlay: false)
                 
                 // 减去 容器padding - 图片大小 - stack间隙
-                let tipTextW: CGFloat = ScreenWidth() - 38 * 2 - 16 - 16
                 let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
                 let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
                 MTRichText(text)
@@ -125,7 +115,7 @@ struct LoginStartView: View {
                 
                 
             }
-//            .frame(width: ScreenWidth() - 32 -)
+            //            .frame(width: ScreenWidth() - 32 -)
             .padding(.leading, -16)
             
             
@@ -136,11 +126,10 @@ struct LoginStartView: View {
     
     var startBtn: some View {
         Button("开始") {
-            isShowLoginSheet = true
-            toastText = "start "
+            vm.clickLoginStart()
         }
         .mtButtonStyle(.mainGradient)
-
+        
     }
     
     @ViewBuilder
@@ -177,7 +166,7 @@ struct LoginStartView: View {
     
     /// sheet弹出框框
     func loginMethodSheetContent() -> some View {
-         VStack(spacing: 16.0) {
+        VStack(spacing: 16.0) {
             VStack(spacing: 4.0) {
                 Text("152 **** 3458")
                     .font(.mt.title2.mtBlod(), textColor: .black)
@@ -185,55 +174,39 @@ struct LoginStartView: View {
                     .font(.mt.body3.mtBlod(), textColor: .mt.gray_600)
             }
             
-
+            
             Button("本机号码一键登录", action: {
-                isShowLoginSheet = false
                 LoginVM().debugLoginIn()
             })
-            .mtButtonStyle(.mainGradient)
+                .mtButtonStyle(.mainGradient)
             
             
-             
+            
             Button(action: {
-                ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { response in
-                    guard case let .git(result) = response?.response else {
-                        isShowToast = true
-                        toastText = "Github登录失败"
-                        return
-                    }
-                 
-                    userManager.loginSusscessSaveToken(LoginSuccessInfo(access_token: result.token), channel: .github)
-                    // 调用接口信息
-                    Networking.requestObject(CommunityServiceApi.userinfo, modeType: UserInfo.self) { _, model in
-                        userManager.updateSaveUserInfo(model)
-                    }
-                    
-                    
-                    isShowLoginSheet = false
-
-                })
+                vm.loginInWithGithub()
             }, label: {
                 HStack {
                     Image.mt.load(.Github)
                     Text("使用GitHub登录")
                 }
             })
-            .mtButtonStyle(.mainStorKer())
+                .mtButtonStyle(.mainStorKer())
             
             Button(action: {
-                toastStyle = .warning
-                isShowToast = true
-                toastText = "click pinggu"
-                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
-                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
-                })
+                print("使用Apple登录")
+//                toastStyle = .warning
+//                isShowToast = true
+//                toastText = "click pinggu"
+//                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
+//                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
+//                })
             }, label: {
                 HStack {
                     Image.mt.load(.Github)
                     Text("使用Apple登录")
                 }
             })
-            .mtButtonStyle(.mainStorKer())
+                .mtButtonStyle(.mainStorKer())
             
             //
             HStack {
@@ -246,8 +219,7 @@ struct LoginStartView: View {
             }
             
             Button("其他手机号码登录")  {
-                isShowLoginSheet = false
-                isPhoneLoginActive = true
+                vm.clickPhoneCodeLogin()
             }
             .mtButtonStyle(.mainStorKer())
         }
@@ -292,9 +264,9 @@ struct LoginStartView_Previews: PreviewProvider {
         NavigationView {
             let result = LoginStartView()
             
-    //        result.bottomTool
-    //            .previewLayout(.fixed(width: ScreenWidth(), height: 200))
-    //            .background(Color.gray)
+            //        result.bottomTool
+            //            .previewLayout(.fixed(width: ScreenWidth(), height: 200))
+            //            .background(Color.gray)
             
             result
         }

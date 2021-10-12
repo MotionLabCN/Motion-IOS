@@ -79,17 +79,22 @@ struct MTViewTopProgressViewModifier: ViewModifier {
     let usingBackgorund: Bool
     
     func body(content: Content) -> some View {
-        content
-            .overlay(
-                ZStack {
-                    if usingBackgorund {
-                        Color.black.opacity(0.3)
-                            .ignoresSafeArea(edges: .all)
+        if isShow {
+            content
+                .overlay(
+                    ZStack {
+                        if usingBackgorund {
+                            Color.black.opacity(0.3)
+                                .ignoresSafeArea(edges: .all)
+                        }
+                        
+                        ProgressView().mt(style: .mid, withText: text)
                     }
-                    
-                    ProgressView().mt(style: .mid, withText: text)
-                }
-            )
+                )
+        } else {
+            content
+        }
+      
     }
 }
 

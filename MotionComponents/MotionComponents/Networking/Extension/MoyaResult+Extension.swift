@@ -35,6 +35,10 @@ enum StatusCode: Int {
 }
 
 
+public struct NetworkResponse<Convertible> {
+    
+}
+
 //MARK: - Result 扩展
 //Result<Moya.Response, MoyaError>
 public extension Result where Success == Moya.Response {

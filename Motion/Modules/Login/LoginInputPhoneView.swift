@@ -10,7 +10,8 @@ import MotionComponents
 import Introspect
 
 struct LoginInputPhoneView: View {
-    @StateObject var vm = LoginVM()
+    
+    @EnvironmentObject var vm: LoginVM
     var textFieldConfig = MTTextFieldStyle.Config()
     
     @State private var textFieldText = ""
@@ -47,7 +48,7 @@ struct LoginInputPhoneView: View {
     var rightBtn: some View {
     
         Button {
-            vm.sendCode(atPage: .inputPhone)
+            vm.clickNextAtInputPhone()
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)

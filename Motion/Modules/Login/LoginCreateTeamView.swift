@@ -72,7 +72,8 @@ struct LoginCreateTeamView: View {
 
 struct LoginCreateTeamView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm =  LoginVM()
+        let vm =    LoginVM()
+
         vm.choose(vm.teamList.first!)
         return LoginCreateTeamView()
             .environmentObject(vm)

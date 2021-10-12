@@ -15,9 +15,15 @@ class LoginVM: ObservableObject {
         static let codeMaxNum = 6
     }
     
+    private(set) var channel: LoginSuccessInfo.ChannelType = .unkown {
+        didSet {
+            phone = "15527864162"
+        }
+    }
+
 //    private var cancellableSet = Set<Combine.AnyCancellable>()
     /// 手机号
-    @Published var phone = "15327335149" {
+    @Published var phone = "" {
         didSet {
             if phone.count > Constant.phoneMaxNum && oldValue.count <= Constant.phoneMaxNum {
                 HapticManager.shared.notification(type: .error)
@@ -32,7 +38,7 @@ class LoginVM: ObservableObject {
     }
         
     /// 验证码
-    @Published var code = "2222" {
+    @Published var code = "" {
         didSet {
             if code.count > Constant.codeMaxNum && oldValue.count <= Constant.codeMaxNum {
                 HapticManager.shared.notification(type: .error)
@@ -50,7 +56,7 @@ class LoginVM: ObservableObject {
     @Published var userName = "梁泽"
     
     private var accountIsExsit = false
-    private var userInfo: UserInfo?
+    var userInfo: UserInfo?
     
     @Published var teamList: [TeamModel] = [
         .init(text: "远程协作", isSelected: true),
@@ -71,6 +77,8 @@ class LoginVM: ObservableObject {
             teamList[index].isSelected = true
         }
     }
+
+    @Published var logicStart = LogicStart()
 
     
     func debugLoginIn() {
@@ -93,7 +101,9 @@ class LoginVM: ObservableObject {
             case .inputPhone:
                 self?.logicSendCode.isRequesting = false
                 self?.logicSendCode.isPushCodeView = true
-            case .validateCode: break
+            case .validateCode:
+                self?.logicAuth.toastisPresented = true
+                self?.logicAuth.toastText = result.message
             }
         }
     }
@@ -109,13 +119,14 @@ class LoginVM: ObservableObject {
         
         let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
         Networking.requestObject(target, modeType: LoginSuccessInfo.self, atKeyPath: nil) { [weak self] r, model in
-            self?.logicAuth.isRequesting = false
             
             if let model = model {
                 UserManager.shared.loginSusscessSaveToken(model, channel: .手机验证码)
                 // 登录成功了有一个token  然后去获取用户信息
-                self?.getUserInfo()
+                self?.getUserInfo() //隐藏   logicAuth.isRequesting = false
             } else { //失败
+                self?.logicAuth.isRequesting = false //失败了
+                
                 self?.logicAuth.toastisPresented = true
                 self?.logicAuth.toastText = r.errorDesc
                 #if DEBUG
@@ -127,11 +138,39 @@ class LoginVM: ObservableObject {
         }
     }
     
+    func loginInWithGithub() {
+        channel = .github
+        logicStart.isShowLoading = true
+        
+        ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { [weak self] response in
+            guard let self = self  else {
+                return
+            }
+
+            guard case let .git(result) = response?.response else {
+                self.logicStart.isShowToast = true
+                self.logicStart.toastText = "Github登录失败"
+                self.logicStart.isShowLoading = false
+                return
+            }
+            
+            UserManager.shared.loginSusscessSaveToken(LoginSuccessInfo(access_token: result.token), channel: .github)
+            // 调用接口信息
+            // 去绑定手机号
+            self.getUserInfo()
+            
+        })
+    }
     
+    // 手机号验证码登录时
+    @Published var isGetUserInfo = false
     func getUserInfo() {
+        isGetUserInfo = true
+        
         Networking.requestObject(CommunityServiceApi.userinfo, modeType: UserInfo.self) { [weak self] r, model in
             //判断当前账号是否存在  如果存在直接关掉视图  accountIsExsit
             guard let self = self else { return }
+            self.isGetUserInfo = false
             
             guard let m = model else {
                 self.logicAuth.toastisPresented = true
@@ -141,23 +180,81 @@ class LoginVM: ObservableObject {
 
             
             
-            
-            if self.accountIsExsit {
-                self.userInfo = m
-                self.logicAuth.isPushBaseInfoView = true
+            self.userInfo = m
 
-//                UserManager.shared.updateSaveUserInfo(m)
-            } else {
-                self.userInfo = m
-                self.logicAuth.isPushBaseInfoView = true
+            switch self.channel {
+            case .unkown, .wechat: break
+            case .手机验证码:
+                self.logicAuth.isRequesting = false
+
+                if self.accountIsExsit {
+                    self.loginCompletion()
+                } else {
+                    self.logicAuth.isPushBaseInfoView = true
+                }
+            case .一键手机登陆: break
+            case .github, .apple: //绑定手机号
+                if UserManager.shared.user.mobileAuth { //已经授权了
+                    self.loginCompletion()
+                } else { // 去绑定手机号
+                    self.logicStart.isShowLoading = false
+                    self.logicStart.isShowLoginSheet = false
+                    self.logicStart.isPushInputPhoneView = true
+                }
+       
+     
             }
             
-            print("model")
+           
+            
         }
+    }
+    
+    /// 个人资料页面 点跳过
+    func loginCompletion() {
+        UserManager.shared.updateSaveUserInfo(userInfo)
+    }
+    
+    
+    @Published var logicBaseInfo = LogicBaseInfo()
+    /// 目前只修改user name
+    func updateUserBaseInfo() {
+        logicBaseInfo.isRequesting = true
+        // 修改完成后  loginCompletion()
     }
 }
 
 
+
+//MARK: - 点击事件
+extension LoginVM {
+    func clickLoginStart() {
+        logicStart.isShowLoginSheet = true
+    }
+    
+    func clickPhoneCodeLogin() {
+        channel = .手机验证码
+        
+        logicStart.isShowLoginSheet = false
+        logicStart.isPushInputPhoneView = true
+    }
+   
+    func clickNextAtInputPhone() {
+        print("channle \(channel)")
+        if channel == .手机验证码 {
+            sendCode(atPage: .inputPhone)
+        }
+        
+        if channel == .github {
+            print("绑定手机号")
+        }
+    }
+   
+    
+}
+
+
+//MARK: - 配置
 extension LoginVM {
     struct TeamModel: Identifiable, Equatable {
         var id: UUID = UUID()
@@ -171,6 +268,19 @@ extension LoginVM {
     }
     
     //MARK: - Logic Published
+    struct LogicStart {
+        var isShowLoading = false
+
+        var isShowToast = false
+        var toastText = ""
+        var toastStyle = MTPushNofi.PushNofiType.danger
+        
+        var isShowLoginSheet = false 
+        var isPushInputPhoneView = false
+        
+    }
+    
+    
     struct LogicSendCode {
         /*
          在哪个页面点
@@ -186,12 +296,18 @@ extension LoginVM {
     }
     
     
-    // logic
+    // 填写验证码页面
     struct LogicAuth {
         var isRequesting = false
         var toastisPresented = false
         var toastText = ""
         var isPushBaseInfoView = false
+    }
+    
+    // 修改用户资料
+    struct LogicBaseInfo {
+        var isRequesting = false
+
     }
 }
 

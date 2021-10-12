@@ -55,7 +55,6 @@ public class ThirdAuth: NSObject {
 
         components?.queryItems = queryItems
         let url = components?.url
-        print("========== githubSingInUrl \(url!)")
         return  url!
     }
     

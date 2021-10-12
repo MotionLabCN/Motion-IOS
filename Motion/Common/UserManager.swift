@@ -14,26 +14,34 @@ import SwiftUI
 
 //MARK: - 用户模型
 struct UserInfo: Convertible {
-    var id = "" //: 64,
-    var username = "" //: "15271327766",
-    var password = "" //: "3e35ebb1ad8758547da307705b75d343",
-    var nickName = "" //: null,
+    var id = "" //: "e897c635-9ce6-4aa8-a9c0-e14180cee3e7",
+    var username = "" //: "15527864162",
+    var nickname = "" //: "15527864162",
+    var headImgUrl = "" //: null,
+    var country = "" //: null,
+    var province = "" //: null,
+    var city = "" //: null,
+    var mobile = "" //: "15527864162",
     var realName = "" //: null,
-    var mobile = "" //: "15271327766",
-    var registerDate = "" //: "2021-09-29T07:50:47.000+0000",
+    var sex = "" //: null,
     var email = "" //: null,
-    var registerChannel = "" //: null,
-    var registerOs = "" //: null,
-    var unionMemberId = "" //: null,
-    var avatarUrl = "" //: null,
-    var status = "" //: 1,
+    var lastLoginTime = "" //: null,
+    var emailAuth = false //: false,
+    var mobileAuth = false //: true,
+    var wechatAuth = false //: false,
+    var age = "" //: null,
+    var profession = "" //: null,
+    var education = "" //: null,
+    var weight = "" //: null,
+    var openid = "" //: null,
+    var unionid = "" //: null,
     var tcc = "" //: 0,
     var metaCoin = "" //: 5000,
     var linkNum = "" //: 0,
-    var byLinkNum = "" //: 0,
+    var bylinkNum = "" //: 0,
     var description = "" //: null,
-    var lastActiveTime = "" //: "2021-09-29T07:50:47.000+0000"
-    
+    var lastActiveTime = "" //: "2021-10-12 16:03:10",
+    var linkUrl = "" //: null
 }
 
 
@@ -109,7 +117,7 @@ class UserManager: ObservableObject {
     
     /// 修改用户昵称 并触发 Publisher 示例
     func changeNickName(_ name: String)  {
-        user.nickName = name
+
     }
         
     func logout() {

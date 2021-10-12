@@ -31,12 +31,12 @@ struct LoginBaseInfoView: View {
         }
         .padding(.horizontal, 36)
         .navigationBarItems(leading: EmptyView(), trailing:
-            NavigationLink(destination: {
-                LoginCreateTeamView()
-                    .environmentObject(vm)
+            Button(action: {
+                vm.loginCompletion()
+            
             }, label: {
                 Text("跳过")
-                .font(.mt.body2.mtBlod(), textColor: .mt.gray_600)
+                    .font(.mt.body2.mtBlod(), textColor: .mt.gray_600)
             })
         )
         .mtNavBarLogo()
@@ -47,15 +47,18 @@ struct LoginBaseInfoView: View {
     
 
     var rightBtn: some View {
-        NavigationLink {
-            LoginCreateTeamView()
-                .environmentObject(vm)
-        } label: {
+        Button(action: {
+            vm.updateUserBaseInfo()
+//            LoginCreateTeamView()
+//                .environmentObject(vm)
+        }, label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
-        }
+                .mtPlaceholderProgress(vm.logicBaseInfo.isRequesting, progressColor: .white)
+        })
         .mtButtonStyle(.cricleDefult(.black))
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .frame(maxWidth: .infinity, alignment: vm.userName.isEmpty ? .center : .trailing)
+        .mtAnimation(.spring())
         .padding(.bottom, 16)
         .opacity(vm.userName.isEmpty ? 0.6 : 1)
         .disabled(vm.userName.isEmpty)

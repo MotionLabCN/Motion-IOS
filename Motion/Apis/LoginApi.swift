@@ -88,6 +88,7 @@ extension LoginApi {
         var grant_type = "sms_code"
         var scope = "all"
         var device = "ios"
+        var motion = "1"
     }
     
 }

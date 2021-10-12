@@ -50,7 +50,7 @@ struct MTLocUserAvatar: View {
     
     var frame : CGFloat = 36
     var body: some View {
-        MTAvatar(frame: frame, urlString: UserManager.shared.user.avatarUrl) {
+        MTAvatar(frame: frame, urlString: UserManager.shared.user.headImgUrl) {
 //            router.profile.toggle()
             isgotonext.toggle()
         }
