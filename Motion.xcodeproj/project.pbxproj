@@ -62,6 +62,7 @@
 		A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */; };
 		A0731B44271522D200A6FF79 /* FindTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B43271522D200A6FF79 /* FindTestView.swift */; };
 		A0731B52271539E100A6FF79 /* Codepower.json in Resources */ = {isa = PBXBuildFile; fileRef = A0731B51271539E100A6FF79 /* Codepower.json */; };
+		A0731B55271584DA00A6FF79 /* codepower_lang.json in Resources */ = {isa = PBXBuildFile; fileRef = A0731B54271584DA00A6FF79 /* codepower_lang.json */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
 		DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528426FD710B00993FA5 /* MTSheetManager.swift */; };
@@ -124,6 +125,7 @@
 		A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodepowerApi.swift; sourceTree = "<group>"; };
 		A0731B43271522D200A6FF79 /* FindTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTestView.swift; sourceTree = "<group>"; };
 		A0731B51271539E100A6FF79 /* Codepower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Codepower.json; sourceTree = "<group>"; };
+		A0731B54271584DA00A6FF79 /* codepower_lang.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = codepower_lang.json; path = Motion/Modules/Find/ViewModel/codepower_lang.json; sourceTree = SOURCE_ROOT; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -264,6 +266,14 @@
 				A071105027117AC700963385 /* FindVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0731B53271584CC00A6FF79 /* MockJsons */ = {
+			isa = PBXGroup;
+			children = (
+				A0731B54271584DA00A6FF79 /* codepower_lang.json */,
+			);
+			path = MockJsons;
 			sourceTree = "<group>";
 		};
 		C964F152E958CB1785F74CA1 /* Pods */ = {
@@ -431,6 +441,7 @@
 		DFECAB0B26F30D9D00AB192C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A0731B53271584CC00A6FF79 /* MockJsons */,
 				DFECAB0D26F30DBD00AB192C /* PostModel.swift */,
 				A071104D27112EA800963385 /* NotifiListModel.swift */,
 			);
@@ -516,6 +527,7 @@
 				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
 				A0731B52271539E100A6FF79 /* Codepower.json in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
+				A0731B55271584DA00A6FF79 /* codepower_lang.json in Resources */,
 				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
 				DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */,
 			);

@@ -33,3 +33,11 @@ extension MTTargetType {
   
     
 }
+
+
+struct NetResponse<Convertible> {
+    var code = "" //:200,
+    var message = "" //:null,
+    var path = "" //:"/sys/dict/group/lang",
+    var data: Convertible?
+}
