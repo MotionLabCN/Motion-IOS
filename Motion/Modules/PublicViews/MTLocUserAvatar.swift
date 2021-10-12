@@ -25,14 +25,11 @@ struct MTAvatar: View {
             action()
         } label: {
             KFImage(urlString?.url)
-//                .placeholder {
-//                    Capsule(style: .continuous)
-//                        .foregroundColor(.mt.gray_300)
-//                        .overlay(
-//                            Image.mt.load(.Person)
-//                                .foregroundColor(.black)
-//                        )
-//                }
+                .placeholder {
+                    Image("touxiang")
+                        .resizable()
+                        .clipShape(Capsule(style: .continuous))
+                }
                 .resizable()
                 .scaledToFill()
                 .mtFrame(square: frame)

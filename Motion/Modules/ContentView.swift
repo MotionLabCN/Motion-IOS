@@ -8,15 +8,12 @@
 import SwiftUI
 import MotionComponents
 
-
-
-
 struct ContentView: View {
  
-    @EnvironmentObject var tabbarState: AppState.TabbarState
-    @EnvironmentObject var router: AppState.TopRouterTable
+    @EnvironmentObject var tabbarState: TabbarState
+    @EnvironmentObject var router: TopRouterTable
     @EnvironmentObject var userManager: UserManager
-    @EnvironmentObject var findViewState: AppState.FindViewState
+    @EnvironmentObject var findViewState: FindViewState
     
     @GestureState var move : CGSize = .zero
     @State var isShowLeadingMenu : Bool = false
@@ -32,37 +29,11 @@ struct ContentView: View {
     
     var body: some View {
         
-        //手势
-        let gesture = DragGesture(minimumDistance: findViewState.pageIndex == 0 ? 2 : 40,coordinateSpace: .global)
-            .updating($move, body: { value,out, transition in
-                let width = value.translation.width
-                if isShowLeadingMenu {
-                    if width < 0{
-                        out = value.translation}}
-                if !isShowLeadingMenu{if width > 0 {
-                    out = value.translation
-                }}})
-            .onEnded({ value in
-                let SW = ScreenWidth()
-                if value.translation.width > SW * 0.2 {
-                    isShowLeadingMenu = true}
-                if value.translation.width < -SW * 0.2 {
-                    isShowLeadingMenu = false}})
-        
-        
+
         if userManager.hasLogin {
             //主页
-            HStack(spacing:0){
-                LeftMenuView()
                 mainViews
-            }
-            .mtAnimation(.linear(duration: 0.2))
-            .frame(width: ScreenWidth() * 1.8)
-            .offset(x: getOffset())
-            .highPriorityGesture(  gesture )
-            
         }else{
-            
             //登陆
             NavigationView {
                 LoginStartView()
@@ -165,8 +136,8 @@ extension ContentView {
                     .opacity(tabbarState.selectedKind == .home ? 1: 0)
                 
                 if tabbarState.selectedKind == .search {
-//                    FindView()
-                    FindTestView()
+                    FindView()
+//                    FindTestView()
                 }
                 
                 if tabbarState.selectedKind == .storage {
@@ -179,10 +150,6 @@ extension ContentView {
                 
             }
         }
-        
-        
-        
-        
     }
     
     @ViewBuilder
@@ -272,37 +239,11 @@ struct MTTabbar: View {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(AppState.TabbarState())
-            .environmentObject(AppState.TopRouterTable())
+            .environmentObject(TabbarState())
+            .environmentObject(TopRouterTable())
             .environmentObject(UserManager())
             .previewDevice("iPhone 12")
     }

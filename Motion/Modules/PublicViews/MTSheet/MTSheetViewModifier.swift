@@ -82,7 +82,7 @@ fileprivate struct MTSheetNoramlViewModifier<MTContent>: ViewModifier where MTCo
                         .transition(.move(edge: .bottom))
                         .animation(.default)
                         .onDisappear {
-                            AppState.TabbarState.shared.hanlderSheetShow(false)
+                            TabbarState.shared.hanlderSheetShow(false)
                             onDismiss?()
                         }
                         
@@ -91,7 +91,7 @@ fileprivate struct MTSheetNoramlViewModifier<MTContent>: ViewModifier where MTCo
                    
             )
             .onChange(of: isPresented) { showSheet in
-                AppState.TabbarState.shared.hanlderSheetShow(showSheet)
+                TabbarState.shared.hanlderSheetShow(showSheet)
             }
     }
     
@@ -151,7 +151,7 @@ fileprivate struct MTSheetDragViewModifier<MTContent>: ViewModifier where MTCont
                    
             )
             .onChange(of: isPresented) { showSheet in
-                AppState.TabbarState.shared.hanlderSheetShow(showSheet)
+                TabbarState.shared.hanlderSheetShow(showSheet)
             }
     }
     

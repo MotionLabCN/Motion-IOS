@@ -78,7 +78,7 @@ struct HomeHeaderItemView: View {
                 .font(.mt.caption1, textColor: .mt.gray_800)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 isAnimation = true
             }
         }

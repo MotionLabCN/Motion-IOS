@@ -12,11 +12,11 @@
 @main
 struct MotionApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var tabbarState = AppState.TabbarState.shared
-    @StateObject var router = AppState.TopRouterTable.shared
+    @StateObject var tabbarState = TabbarState.shared
+    @StateObject var router = TopRouterTable.shared
     @StateObject var userManager = UserManager.shared
     
-    @StateObject var findViewPageindex = AppState.FindViewState()
+    @StateObject var findViewPageindex = FindViewState()
 
     var body: some Scene {
         WindowGroup {
