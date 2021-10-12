@@ -7,30 +7,34 @@
 
 import MotionComponents
 
-/*  菜单 语言
+// 码力模块菜单 语言
+/*URL
     本地: http://127.0.0.1:8802/sys/dict/group/lang?group=lang
-    URL:https://ttchain.tntlinking.com/api/codemart/sys/dict/group/lang?group=lang
+    语言:https://ttchain.tntlinking.com/api/codemart/sys/dict/group/lang?group=lang
+    价格:https://ttchain.tntlinking.com/api/codemart/label_user_customize/all
  */
 enum CodepowerApi: MTTargetType {
-    case codepowerNemu(p:CodepoweParameters)
+    case language(p:CodepoweParameters)
+    case technology
     
     var path: String {
         switch self {
-        case .codepowerNemu: return "api/codemart/sys/dict/group/lang"
+        case .language: return "/sys/dict/group/lang"
+        case .technology: return "https://ttchain.tntlinking.com/api/codemart/label_user_customize/all"
         }
     }
     
     var method: HTTPRequestMethod {
         switch self {
-        case .codepowerNemu: return .get
-
+        case .language: return .get
+        case .technology: return .get
         }
     }
     
     var parameters: [String : Any]? {
         switch self {
-        case let .codepowerNemu(p): return p.kj.JSONObject()
-        
+        case let .language(p): return p.kj.JSONObject()
+        case .technology: return nil
         }
     }
 }

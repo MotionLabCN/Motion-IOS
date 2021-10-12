@@ -140,7 +140,7 @@ struct FindTestView: View {
             ZStack (alignment: .topTrailing) {
                 Button {
                     findVM.isShowmtDetail.toggle() // 方法1通过外面bool
-                    findVM.addItem(title: "beck")
+                    
                     //                presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("完成")
@@ -153,7 +153,7 @@ struct FindTestView: View {
                         .font(.mt.title2, textColor: .mt.gray_900)
                         .padding()
                     List {
-                        ForEach(findVM.selectFindModel.list) { item in
+                        ForEach(findVM.selectFindModel.data) { item in
                             HStack {
                                 Text(item.dictKey)
                                     .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
@@ -165,7 +165,9 @@ struct FindTestView: View {
                             .contentShape(Rectangle())
                             .onTapGesture(perform: {
                                 // 选中和取消
-                                findVM.updateItem(item: item)
+//                                findVM.updateItem(item: item)
+                                findVM.updateItes(item: item)
+                                
                             })
                         }
                     }
@@ -200,7 +202,7 @@ struct FindTestView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding()
                 ){
-                    ForEach(findVM.selectFindModel.list) { item in
+                    ForEach(findVM.selectFindModel.data) { item in
                         
                         HStack {
                             Text(item.dictKey)
@@ -222,7 +224,7 @@ struct FindTestView: View {
                         .contentShape(Rectangle())
                         .onTapGesture(perform: {
                             // 选中和取消
-                            findVM.updateItem(item: item)
+                            findVM.updateItes(item: item)
                         })
                     }
                 }
