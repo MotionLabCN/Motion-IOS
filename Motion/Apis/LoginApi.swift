@@ -7,15 +7,37 @@
 
 import MotionComponents
 
-enum LoginApi: MTTargetType {
+
+
+enum LoginApi: CustomTargetType {
     case sendCode(p: SendCodeParameters)
     case loginInWithCode(p: PhoneLoginParameters)
     case github
     
+    var baseURL: URL { URL(string: "http://192.168.0.224:8800")! }
+
+    
+    var headers: [String: String]? {
+        var headers = [
+            "apiVersion": "1.0",
+            "os": "1",// 1.ios, 2.android
+        ]
+        switch self {
+        case .loginInWithCode:
+            // "tntlinking:tntlinking123**".base64Encoded!
+            let authValue = "Basic" + " " + "dG50bGlua2luZzp0bnRsaW5raW5nMTIzKio="
+            headers["Authorization"] = authValue
+        default: break
+        }
+        return headers
+    }
+    
+
+    
     var path: String {
         switch self {
         case .sendCode: return "verification/code/motion"
-        case .loginInWithCode: return "auth/login"
+        case .loginInWithCode: return "oauth/token"
         case .github: return "/member/info"
         }
     }

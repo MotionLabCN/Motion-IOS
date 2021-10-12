@@ -18,7 +18,7 @@ struct ProjectConfig {
     
     static var baseUrl: String {
         switch env {
-        case .local: return "http://127.0.0.1:8802"//"http://192.168.0.224:8800"
+        case .local: return "http://192.168.0.224:8088"
         case .test: return "http://192.168.0.224:8085"
         }
     }

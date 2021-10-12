@@ -41,7 +41,7 @@ struct LoginValidateCodeView: View {
         .padding(.horizontal, 36)
         .mtNavBarLogo()
         .navigationBarBackButtonHidden(true)
-        
+        .mtToast(isPresented: $vm.logicAuth.toastisPresented, text: vm.logicAuth.toastText)
     }
     
     var header: some View {
@@ -59,7 +59,7 @@ struct LoginValidateCodeView: View {
                 Text("或").foregroundColor(.mt.gray_800)
                 
                 Button("重发短信") {
-                    vm.sendCode()
+                    vm.sendCode(atPage: .validateCode)
                 }
             }
             .font(.mt.body2.mtBlod())
@@ -69,12 +69,13 @@ struct LoginValidateCodeView: View {
     
     var rightBtn: some View {
         Button {
-            
+            vm.loginInWithCode()
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
+                .mtPlaceholderProgress(vm.logicAuth.isRequesting, progressColor: .white)
         }
-        .mtRegisterRouter(isActive: .constant(false), destination: {
+        .mtRegisterRouter(isActive: $vm.logicAuth.isPushBaseInfoView, destination: {
             LoginBaseInfoView()
                 .environmentObject(vm)
         })
