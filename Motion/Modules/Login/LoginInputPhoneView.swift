@@ -45,6 +45,7 @@ struct LoginInputPhoneView: View {
     
     
     var rightBtn: some View {
+    
         Button {
             vm.sendCode(atPage: .inputPhone)
         } label: {
@@ -58,10 +59,12 @@ struct LoginInputPhoneView: View {
         })
         
         .mtButtonStyle(.cricleDefult(.black))
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .frame(maxWidth: .infinity, alignment: vm.phone.count < LoginVM.Constant.phoneMaxNum ? .center : .trailing)
+        .mtAnimation(.spring())
         .padding(.bottom, 16)
         .opacity(vm.phone.count < LoginVM.Constant.phoneMaxNum ? 0.6 : 1)
         .disabled(vm.phone.count < LoginVM.Constant.phoneMaxNum)
+        
       
     }
     
