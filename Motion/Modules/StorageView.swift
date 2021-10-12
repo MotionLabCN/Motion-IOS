@@ -16,7 +16,7 @@ struct StorageView: View {
         ZStack{
          
             TabView(selection: $pageIndex){
-                DiskPage().tag(0)
+                StoragePage().tag(0)
                 JoinPeerView().tag(1)
                 Text("page3").tag(2)
             }.tabViewStyle(.page(indexDisplayMode: .never))

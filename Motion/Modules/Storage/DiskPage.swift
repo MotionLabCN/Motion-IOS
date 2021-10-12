@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-struct Storage: View {
+struct StoragePage: View {
     
     @State var animationInt : Int = 0
     
@@ -56,9 +56,9 @@ struct Storage: View {
     }
 }
 
-struct Storage_Previews: PreviewProvider {
+struct StoragePage_Previews: PreviewProvider {
     static var previews: some View {
-        Storage()
+        StoragePage()
     }
 }
 
