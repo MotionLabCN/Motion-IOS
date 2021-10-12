@@ -12,7 +12,7 @@ struct CodepowerView: View {
     
     @EnvironmentObject var vm: FindVM
 //    @Binding var isShowmtsheet: Bool
-    @State var offsetAnimation  : Bool = false
+    @State  var offsetAnimation  : Bool = false
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {

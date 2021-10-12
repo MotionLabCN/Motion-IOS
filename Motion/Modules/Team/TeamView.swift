@@ -27,9 +27,9 @@ struct ERji: View {
 }
 struct TeamView: View {
     
-    @State var show : Bool = false
+    @State private var show : Bool = false
     
-    @State var isTest = false
+    @State private var isTest = false
     var body: some View {
         //卡片宽度
         let cardWidth = (ScreenWidth() - 32 - 8 ) / 2
@@ -37,56 +37,57 @@ struct TeamView: View {
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
         
-        ScrollView(.vertical , showsIndicators:true) {
-//            Spacer().frame(height:44)
-            // scrollview start
-            Button("clickme") {
-                print("clickMe")
-                TabbarState.shared.isShowTabbar = false
-                isTest.toggle()
-            }
-            .frame(width: 100, height: 100)
-            .background(Color.red)
-            .mtRegisterRouter(isActive: $isTest, destination: {
-                ERji()
-            })
-            
-            LazyVGrid(
-                columns:columns,
-                alignment: .center,
-                spacing: 8,
-                pinnedViews: .sectionFooters){
-                    
-                    //我的小组
-                    Section(header:
-                                HStack {Text("我的小组")
-                            .font(.mt.title3.mtBlod())
-                        Spacer()}.padding(.init(horizontal: 16, vertical: 8))
-                            
-                    ){
-                        ForEach(0 ..< 3) { item in
-                            TeamCard(width: cardWidth)}
-                    }
-                    //活跃小组
-                    Section(header:
-                                HStack {
-                        Text("活跃小组")
-                            .font(.mt.title3.mtBlod())
-                        Spacer()
-                        Text("隐藏")
-                            .font(.mt.body1)
-                            .foregroundColor(.mt.accent_700)
-                    }.padding(.init(horizontal: 16, vertical: 8))
-                            
-                    ){
-                        ForEach(0 ..< 100) { item in
-                            TeamCard(width: cardWidth)
-                        }
-                    }
-                }
-            
-            Spacer.mt.tabbar()
-        }// scrollview end
+        Text("hello")
+//        ScrollView(.vertical , showsIndicators:true) {
+////            Spacer().frame(height:44)
+//            // scrollview start
+//            Button("clickme") {
+//                print("clickMe")
+//                TabbarState.shared.isShowTabbar = false
+//                isTest.toggle()
+//            }
+//            .frame(width: 100, height: 100)
+//            .background(Color.red)
+//            .mtRegisterRouter(isActive: $isTest, destination: {
+//                ERji()
+//            })
+//
+//            LazyVGrid(
+//                columns:columns,
+//                alignment: .center,
+//                spacing: 8,
+//                pinnedViews: .sectionFooters){
+//
+//                    //我的小组
+//                    Section(header:
+//                                HStack {Text("我的小组")
+//                            .font(.mt.title3.mtBlod())
+//                        Spacer()}.padding(.init(horizontal: 16, vertical: 8))
+//
+//                    ){
+//                        ForEach(0 ..< 3) { item in
+//                            TeamCard(width: cardWidth)}
+//                    }
+//                    //活跃小组
+//                    Section(header:
+//                                HStack {
+//                        Text("活跃小组")
+//                            .font(.mt.title3.mtBlod())
+//                        Spacer()
+//                        Text("隐藏")
+//                            .font(.mt.body1)
+//                            .foregroundColor(.mt.accent_700)
+//                    }.padding(.init(horizontal: 16, vertical: 8))
+//
+//                    ){
+//                        ForEach(0 ..< 100) { item in
+//                            TeamCard(width: cardWidth)
+//                        }
+//                    }
+//                }
+//
+//            Spacer.mt.tabbar()
+        // scrollview end
         .mtNavbar(content: {
             Text("小组")
                 .font(.mt.body1.mtBlod(),textColor: .black)
@@ -95,10 +96,12 @@ struct TeamView: View {
         }, trailing: {
             SettingBtn()
         })
-        .fullScreenCover(isPresented: $show) {
-            SettingView()
+//        .fullScreenCover(isPresented: $show) {
+//            SettingView()
+//        }
+        .fullScreenCover(isPresented: .constant(false)) {
+            EmptyView()
         }
-        
         
     }
 }

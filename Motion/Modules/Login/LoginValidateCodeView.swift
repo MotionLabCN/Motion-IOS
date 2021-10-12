@@ -14,17 +14,23 @@ struct LoginValidateCodeView: View {
     
     var textFieldConfig = MTTextFieldStyle.Config()
     
+    @State var textFieldText = ""
+
     var body: some View {
         VStack(alignment: .center, spacing: 26.0) {
             header
             
-            TextField("验证码", text: $vm.code)
-                .mtTextFieldStyle($vm.code, config: textFieldConfig)
+            TextField("验证码", text: $textFieldText)
+                .mtTextFieldStyle($textFieldText, config: textFieldConfig)
                 .keyboardType(.numberPad)
                 .introspectTextField { textField in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak textField] in
                         textField?.becomeFirstResponder()
                     }
+                }
+                .onChange(of: textFieldText) { newValue in
+                    vm.code = newValue
+                    textFieldText = vm.code
                 }
                 
             
@@ -53,7 +59,7 @@ struct LoginValidateCodeView: View {
                 Text("或").foregroundColor(.mt.gray_800)
                 
                 Button("重发短信") {
-                    
+                    vm.sendCode()
                 }
             }
             .font(.mt.body2.mtBlod())
@@ -62,13 +68,16 @@ struct LoginValidateCodeView: View {
     }
     
     var rightBtn: some View {
-        NavigationLink {
-            LoginBaseInfoView()
-                .environmentObject(vm)
+        Button {
+            
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
         }
+        .mtRegisterRouter(isActive: .constant(false), destination: {
+            LoginBaseInfoView()
+                .environmentObject(vm)
+        })
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding(.bottom, 16)

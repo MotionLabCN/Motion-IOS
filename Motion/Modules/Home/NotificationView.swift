@@ -11,7 +11,7 @@ fileprivate var notificationViewTabs = ["私信","通知","提及","小组"]
 
 struct NotificationView: View {
     
-    @State var tag  =  notificationViewTabs[0]
+    @State private var tag  =  notificationViewTabs[0]
     
     var body: some View {
         VStack(spacing:0){

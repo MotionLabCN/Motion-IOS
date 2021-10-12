@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostEditor: View {
-    @State var posttext : String = ""
+    @State private var posttext : String = ""
     var body: some View {
 
         HStack(alignment: .top, spacing: 12){

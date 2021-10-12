@@ -289,7 +289,7 @@ struct MTSheet_preView: PreviewProvider {
 //
 //    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.75
 //    @State private var endingOffsetY: CGFloat = 0
-//    //    @State var centerOffsetY: CGFloat = UIScreen.main.bounds.height * 0.5
+//    //    @State private var centerOffsetY: CGFloat = UIScreen.main.bounds.height * 0.5
 //    @State private var currentDragOffsetY: CGFloat = 0
 //
 //    @State private var isOnAppear = false
@@ -397,7 +397,7 @@ struct MTSheet_preView: PreviewProvider {
 //
 //    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.75
 //    @State private var endingOffsetY: CGFloat = 0
-//    //    @State var centerOffsetY: CGFloat = UIScreen.main.bounds.height * 0.5
+//    //    @State private var centerOffsetY: CGFloat = UIScreen.main.bounds.height * 0.5
 //    @State private var currentDragOffsetY: CGFloat = 0
 //
 //

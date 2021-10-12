@@ -9,8 +9,8 @@ import SwiftUI
 import MotionComponents
 
 struct RecommendView: View {
-    @State var showMoney : Bool = false
-    @State var showDetail : Bool = false
+    @State private var showMoney : Bool = false
+    @State private var showDetail : Bool = false
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
@@ -57,8 +57,7 @@ struct RecommendView: View {
             BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
             PostDetailView()
         }
-        
-     
+
     }
 }
 

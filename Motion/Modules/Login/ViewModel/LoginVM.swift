@@ -12,7 +12,7 @@ import MotionComponents
 class LoginVM: ObservableObject {
     struct Constant {
         static let phoneMaxNum = 11
-        static let codeMaxNum = 4
+        static let codeMaxNum = 6
     }
     
 //    private var cancellableSet = Set<Combine.AnyCancellable>()
@@ -71,11 +71,11 @@ class LoginVM: ObservableObject {
 
     
     func debugLoginIn() {
-        UserManager.shared.loginSuccessSaveUser(.init(id: "假的"))
+        UserManager.shared.updateSaveUserInfo(.init(id: "假的"))
     }
     
     func loginInWithCode() {
-//        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
+        let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
 //        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
 //            let token = r.dataJson?["token"].string ?? ""
 //            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
@@ -86,7 +86,7 @@ class LoginVM: ObservableObject {
     func loginInWithGithub() {
         let target = LoginApi.github
         Networking.requestObject(target, modeType: UserInfo.self) { r, model in
-            UserManager.shared.loginSuccessSaveUser(model)
+            UserManager.shared.updateSaveUserInfo(model)
         }
     }
     
