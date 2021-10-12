@@ -57,3 +57,14 @@ class FindViewState : ObservableObject {
     @Published var pageIndex : Int = 0
 }
 
+
+
+
+
+
+
+
+
+
+
+

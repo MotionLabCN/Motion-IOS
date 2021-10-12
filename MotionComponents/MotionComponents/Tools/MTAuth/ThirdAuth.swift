@@ -41,7 +41,7 @@ public class ThirdAuth: NSObject {
         case .zhuyiLocal:
             configure(clientId: "b058a7554fe97d6f5315", clientSecret: "39647efd32fdf8e08efa76e8f6994b3dbddf2ddd")
         case .motion:
-            configure(clientId: "9e8ee5130e06ce054096", clientSecret: "446b32b8b22103ff2a58b71577df9a88c11f3906")
+            configure(clientId: "abbcb9055e3df2b50fba", clientSecret: "446b32b8b22103ff2a58b71577df9a88c11f3906")
         }
     }
     
