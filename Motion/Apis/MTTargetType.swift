@@ -21,11 +21,15 @@ extension MTTargetType {
             "apiVersion": "1.0",
             "os": "1",// 1.ios, 2.android
         ]
-        headers["channel"] = UserManager.shared.channel
-        headers["token"] = UserManager.shared.token
+        if !UserManager.shared.channel.isEmpty {
+            headers["channel"] = UserManager.shared.channel
+        }
+        if !UserManager.shared.token.isEmpty {
+            headers["token"] = UserManager.shared.token
+        }
         return headers
     }
     
-    var parameterEncoding: ParameterEncoding { JSONEncoding.default }
+    var parameterEncoding: ParameterEncoding { URLEncoding.default }
     
 }

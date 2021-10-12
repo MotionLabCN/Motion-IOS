@@ -74,19 +74,31 @@ class LoginVM: ObservableObject {
         UserManager.shared.loginSuccessSaveUser(.init(id: "假的"))
     }
     
-    func loginIn() {
-        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
-        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
-            let token = r.dataJson?["token"].string ?? ""
-            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
-            UserManager.shared.loginSuccessSaveUser(model)
-        }
+    func loginInWithCode() {
+//        let target = LoginApi.loginIn(p: .init(mobile: "15271327766", smsCode: "888888"))
+//        Networking.requestObject(target, modeType: UserInfo.self, atKeyPath: "data.member") { r, model in
+//            let token = r.dataJson?["token"].string ?? ""
+//            UserManager.shared.loginSusscessSaveToken(token, channel: .手机验证码)
+//            UserManager.shared.loginSuccessSaveUser(model)
+//        }
     }
     
     func loginInWithGithub() {
         let target = LoginApi.github
         Networking.requestObject(target, modeType: UserInfo.self) { r, model in
             UserManager.shared.loginSuccessSaveUser(model)
+        }
+    }
+    
+    
+    @Published var isRequestingSendCode = false
+    var accountIsExsit = false
+    func sendCode() {
+        isRequestingSendCode = true
+        
+        Networking.request(LoginApi.sendCode(p: .init(mobile: phone))) { [weak self] result in
+            self?.accountIsExsit = result.dataJson?["isExsit"].boolValue ?? false
+            self?.isRequestingSendCode = false
         }
     }
 }
