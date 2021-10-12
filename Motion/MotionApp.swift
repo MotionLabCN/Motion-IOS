@@ -31,6 +31,7 @@ struct MotionApp: App {
     
     init() {
         print("")
+        MockTool.using()
 //        UserManager.shared.logout()
     }
 }

@@ -35,8 +35,10 @@ enum StatusCode: Int {
 }
 
 
-public struct NetworkResponse<Convertible> {
-    
+public struct NetworkResponse<T: Convertible> {
+    public var code = 200
+    public var message = ""
+    public var data: T?
 }
 
 //MARK: - Result 扩展
