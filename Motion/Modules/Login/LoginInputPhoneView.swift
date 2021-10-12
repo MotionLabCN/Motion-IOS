@@ -46,13 +46,13 @@ struct LoginInputPhoneView: View {
     
     var rightBtn: some View {
         Button {
-            vm.sendCode()
+            vm.sendCode(atPage: .inputPhone)
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
-                .mtPlaceholderProgress(vm.isRequestingSendCode, progressColor: .white)
+                .mtPlaceholderProgress(vm.logicSendCode.isRequesting, progressColor: .white)
         }
-        .mtRegisterRouter(isActive: $vm.isRequestingSendCode, destination: {
+        .mtRegisterRouter(isActive: $vm.logicSendCode.isPushCodeView, destination: {
             LoginValidateCodeView()
                 .environmentObject(vm)
         })

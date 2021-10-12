@@ -60,17 +60,18 @@ public class CustomNetworkLoggerPlugin: PluginType {
         
         switch result {
         case let .success(response):
-            if let code = try? response.map(Int.self, atKeyPath: "code") {
-                let message = (try? response.map(String.self, atKeyPath: "note")) ?? ""
+            if let data = String(data: response.data, encoding: .utf8) {
+                let message = (try? response.map(String.self, atKeyPath: "message")) ?? ""
+                let code = (try? response.map(String.self, atKeyPath: "code")) ?? ""
                 print("""
                     HttpCode : \(response.response?.statusCode ?? -1)
                     status :\(code)
                     message : \(message)
                     """)
-                print("响应数据：\n \(String(data: response.data, encoding: .utf8) ?? "")")
+                print("响应数据：\n \(data))")
             } else {
-                print("code解析失败")
-                print("请求错误详情：\(String(data: response.data, encoding: .utf8) ?? "没有错误信息")")
+                let message = (try? response.map(String.self, atKeyPath: "error_description")) ?? ""
+                print("message: \(message)")
             }
             
         case let .failure(error):

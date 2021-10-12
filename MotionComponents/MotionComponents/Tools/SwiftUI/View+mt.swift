@@ -58,12 +58,17 @@ public extension View {
     }
     
     /// toast MTPushNofi
-    func mtToast(isPresented: Binding<Bool>, text: String, style: MTPushNofi.PushNofiType = .defult, dismissTime:  MTToast.DismissTime = .auto(duration: 3), postion: MTToast.Postion = .bottom(offsetY: 0), didClickClose: Block_T? = nil) -> some View {
-        modifier(
-            MTToastViewModifier(isPresented: isPresented, dismissTime: dismissTime, postion: postion, content: {
-                MTPushNofi(text: text, style: style, didClickClose: didClickClose)
-            })
-        )
+    @ViewBuilder
+    func mtToast(isPresented: Binding<Bool>, text: String, style: MTPushNofi.PushNofiType = .defult, dismissTime:  MTToast.DismissTime = .auto(duration: 3), postion: MTToast.Postion = .bottom(offsetY: 20), didClickClose: Block_T? = nil) -> some View {
+        if text.isEmpty {
+            self
+        } else {
+            modifier(
+                MTToastViewModifier(isPresented: isPresented, dismissTime: dismissTime, postion: postion, content: {
+                    MTPushNofi(text: text, style: style, didClickClose: didClickClose)
+                })
+            )
+        }
     }
     
     /// toast MTPushNofi using config

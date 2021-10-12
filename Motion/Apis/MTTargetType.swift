@@ -25,11 +25,11 @@ extension MTTargetType {
             headers["channel"] = UserManager.shared.channel
         }
         if !UserManager.shared.token.isEmpty {
-            headers["token"] = UserManager.shared.token
+            headers["Authorization"] = "Bearer" + " " + UserManager.shared.token
         }
         return headers
     }
     
-    var parameterEncoding: ParameterEncoding { URLEncoding.default }
+  
     
 }

@@ -8,16 +8,13 @@
 import MotionComponents
 
 
-enum  CommunityServiceApi {
+enum CommunityServiceApi: MTTargetType {
     case userinfo
     
-    var baseURL: URL { URL(string: "http://192.168.0.224:8088")! }
 
-    
     var path: String {
         switch self {
         case .userinfo: return "motion-community/userext/info"
-       
         }
     }
     

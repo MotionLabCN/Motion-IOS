@@ -16,29 +16,22 @@ public typealias MoyaResult = Result<Moya.Response, MoyaError>
 enum StatusCode: Int {
     case unknow = -10
     /// 解析错误
-    case parsingError = -9
-    /// 请求错误
-    case requestError = -8
-    /// 无响应
-    case noResponse = -1
-    
-    case success = 200
-    case exception = 400
-    /// 用户未登录 登陆超期
-    case unlogin = 1003
-    /// 用户无权限
-    case noPermissions = 403
-    /// 资源不存在
-    case notFound = 404
+//    case parsingError = -9
+//    /// 请求错误
+//    case requestError = -8
+//    /// 无响应
+//    case noResponse = -1
+//
+//    case success = 200
+//    case exception = 400
+//    /// 用户未登录 登陆超期
+//    case unlogin = 1003
+//    /// 用户无权限
+//    case noPermissions = 403
+//    /// 资源不存在
+//    case notFound = 404
     
     case other
-}
-
-//MARK: - 响应
-struct NetResponse<Element>: Convertible {
-    public var code: StatusCode = .noResponse
-    public var message: String?
-    public var data: Element?
 }
 
 
@@ -78,6 +71,10 @@ public extension Result where Success == Moya.Response {
     var isSuccess: Bool {
         return code == 0
     }
+    
+    var errorDesc: String {
+        json?["error_description"].stringValue ?? ""
+    }
 }
 
 public extension Result where Failure == MoyaError {
@@ -92,13 +89,6 @@ public extension Result where Failure == MoyaError {
 }
 
 //MARK: - 数据解析
-extension Result where Success == Moya.Response {
-    // 暂不公开
-    func mapNetResponse<T>(_ type: T.Type) -> NetResponse<T>? {
-        return json?.dictionaryObject?.kj.model(NetResponse<T>.self)
-    }
-}
-
 public extension Result where Success == Moya.Response {
     func mapObject<T: Convertible>(_ type: T.Type, atKeyPath keyPath: String? = nil) -> T? {
         if let keyPath = keyPath {

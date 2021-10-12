@@ -42,8 +42,14 @@ public extension CustomTargetType {
     
     var parameters: [String: Any]? { nil }
     
-    var parameterEncoding: ParameterEncoding { URLEncoding.default }
-
+    var parameterEncoding: ParameterEncoding {
+        switch self.method {
+        case .get: return URLEncoding.default
+//        default: return JSONEncoding.default
+        default: return URLEncoding.default
+        }
+    }
+    
     var headers: [String: String]? {
 //        var headers = [
 //            "lz_header": "lz_header_value",

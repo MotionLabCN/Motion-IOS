@@ -31,19 +31,6 @@ open class CGI<Target: TargetType>: MoyaProvider<Target> {
                    completion: @escaping Completion) -> Moya.Cancellable {
         super.request(target, callbackQueue: callbackQueue, progress: progress, completion: completion)
     }
-    
-    /// 暂不公开
-    @discardableResult
-    func request<T>(_ target: Target, dataType: T.Type, completion: @escaping (MoyaResult, NetResponse<T>) -> Void ) -> Moya.Cancellable {
-        return request(target) { (r) in
-            if r.error != nil {
-                completion(r, .init(code: .requestError, message: "网络请求失败", data: nil))
-            } else {
-                let o: NetResponse<T> = r.mapNetResponse(T.self) ?? .init(code: .parsingError, message: "数据解析失败", data: nil)
-                completion(r, o)
-            }
-        }
-    }
 }
 
 /*
