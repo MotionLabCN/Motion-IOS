@@ -6,7 +6,7 @@ target 'Motion' do
   use_frameworks!
 
    pod 'MotionComponents', :path => './MotionComponents'
-   pod 'Kingfisher'
+   pod 'Kingfisher/SwiftUI'
    pod 'lottie-ios'
    pod 'Introspect'
 
