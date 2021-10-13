@@ -41,7 +41,6 @@ struct FindTestView: View {
                         RecommendView()
                     }
                     .frame(width: ScreenWidth())
-
                 }
             }
         }
@@ -83,7 +82,7 @@ struct FindTestView: View {
                         findVM.isShowmtsheet.toggle()
                         
                         // 请求接口
-                        findVM.requestWithCodeList()
+                        findVM.requestWithProductList()
                         
                     } label: {
                         Text("应用")
@@ -99,7 +98,7 @@ struct FindTestView: View {
         // 二级分类弹框
         .sheet(isPresented: $findVM.isShowmtDetail) {
 //            SecondItemListView
-            productList
+            ProductList
         }
     }
     
@@ -112,8 +111,7 @@ struct FindTestView: View {
                     Image(systemName: "heart.fill")
                         .frame(width: 30, height: 30)
                     
-                    
-                    Text(item.dictKey)
+                    Text(item.title)
                         .font(.mt.body1, textColor: .mt.gray_900)
                     Spacer()
                     Text(item.showText)
@@ -151,74 +149,25 @@ struct FindTestView: View {
                 .padding(20)
                 
                 VStack {
-                    Text(findVM.selectFindModel.dictKey)
+                    Text(findVM.selectFindModel.title)
                         .font(.mt.title2, textColor: .mt.gray_900)
                         .padding()
                     List {
+                        
                         switch findVM.selectCodeSelectStyle {
                         case .lang:
-                            
-                            ForEach(findVM.selectFindModel.data) { item in
-                                HStack {
-                                    Text(item.dictKey)
-                                        .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                    Spacer()
-                                    Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                        .foregroundColor(item.isSelect ? .green : .red)
-                                }
-                                .padding(5)
-                                .contentShape(Rectangle())
-                                .onTapGesture(perform: {
-                                    // 选中和取消
-    //                                findVM.updateItem(item: item)
-                                    findVM.updateItes(item: item)
-                                })
-                            }
+                            LangListView
                             
                         case .to:
-                            ForEach(findVM.selectFindModel.technologyList) { item in
-                                HStack {
-                                    Text(item.labelName)
-                                        .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                    Spacer()
-                                    Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                        .foregroundColor(item.isSelect ? .green : .red)
-                                }
-                                .padding(5)
-                                .contentShape(Rectangle())
-                                .onTapGesture(perform: {
-                                    // 选中和取消
-    //                                findVM.updateItem(item: item)
-//                                    findVM.updateItes(item: item)
-                                    
-                                })
-                            }
+                            TechnologyListView
+                            
                         case .price:
-                            ForEach(findVM.selectFindModel.priceList) { item in
-                                HStack {
-                                    Text(item.dictKey)
-                                        .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                    Spacer()
-                                    Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                        .foregroundColor(item.isSelect ? .green : .red)
-                                }
-                                .padding(5)
-                                .contentShape(Rectangle())
-                                .onTapGesture(perform: {
-                                    // 选中和取消
-    //                                findVM.updateItem(item: item)
-                                    findVM.updateItes(item: item)
-                                    
-                                })
-                            }
+                            PriceListView
                         default:
                             Text("findVM.selectFindModel.dictKey")
                                .font(.mt.title2, textColor: .mt.gray_900)
                                .padding()
                         }
-
-                        
-                        
                     }
                     .listStyle(PlainListStyle())
                 }
@@ -226,14 +175,14 @@ struct FindTestView: View {
         }
     
     @ViewBuilder
-    var productList : some View {
+    var ProductList : some View {
         //        let columns: [GridItem] = [
         //            GridItem(.adaptive(minimum: 100, maximum: 150)), // 范围内自动计算width
         //        ]
-        let cardWidth = (ScreenWidth() - 32 - 8 ) / 4
+        let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
         //排序方式
         let columns =
-        Array(repeating:  GridItem(.fixed(cardWidth)), count: 4)
+        Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
         
         ScrollView {
             //            Rectangle()
@@ -242,106 +191,159 @@ struct FindTestView: View {
             // 网格列表
             LazyVGrid(columns: columns,
                       alignment: .center,
-                      spacing: 8,
+                      spacing: 20,
                       //                      pinnedViews: [.sectionHeaders],
                       content: {
                 Section(header:
-                            Text(findVM.selectFindModel.dictKey)
+                            Text(findVM.selectFindModel.title)
                             .font(.mt.title2, textColor: .mt.gray_900)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding()
                 ){
                     switch findVM.selectCodeSelectStyle {
                     case .lang:
-                        ForEach(findVM.selectFindModel.data) { item in
-                            
-                            HStack {
-                                Text(item.dictKey)
-                                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                //                        Spacer()
-                                //                        Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                //                            .foregroundColor(item.isSelect ? .green : .red)
-                            }
-                            .frame(height:40)
-                            .padding(.horizontal,16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.mt.gray_200)
-                            )
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture(perform: {
-                                // 选中和取消
-                                findVM.updateItes(item: item)
-                            })
-                        }
+                        LangListView
                     case .to:
-                        ForEach(findVM.selectFindModel.technologyList) { item in
-                            
-                            HStack {
-                                Text(item.labelName)
-                                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                //                        Spacer()
-                                //                        Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                //                            .foregroundColor(item.isSelect ? .green : .red)
-                            }
-                            .frame(height:40)
-                            .padding(.horizontal,16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.mt.gray_200)
-                            )
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture(perform: {
-                                // 选中和取消
-//                                findVM.updateItes(item: item)
-                            })
-                        }
+                        TechnologyListView
                         
                     case .price:
-                        ForEach(findVM.selectFindModel.data) { item in
-                            
-                            HStack {
-                                Text(item.dictKey)
-                                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-                                //                        Spacer()
-                                //                        Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
-                                //                            .foregroundColor(item.isSelect ? .green : .red)
-                            }
-                            .frame(height:40)
-                            .padding(.horizontal,16)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.mt.gray_200)
-                            )
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture(perform: {
-                                // 选中和取消
-                                findVM.updateItes(item: item)
-                            })
-                        }
+                        PriceListView
                         
                     default:
                         Text("sdadad....")
                     }
-                    
-                    
                 }
             })
         }
     }
     
+    
+    //MARK: 语言view
+    var LangListView: some View {
+//        ForEach(findVM.selectFindModel.data) { item in
+//            HStack {
+//                Text(item.dictKey)
+//                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+//                Spacer()
+//                Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
+//                    .foregroundColor(item.isSelect ? .green : .red)
+//            }
+//            .padding(5)
+//            .contentShape(Rectangle())
+//            .onTapGesture(perform: {
+//                // 选中和取消
+////                                findVM.updateItem(item: item)
+//                findVM.updateItes(item: item)
+//            })
+//        }
+        ForEach(findVM.selectFindModel.data) { item in
+            
+            HStack {
+                Text(item.dictKey)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateItes(item: item)
+            })
+        }
+    }
+    //MARK: 技术view
+    var TechnologyListView: some View {
+//        ForEach(findVM.selectFindModel.technologyList) { item in
+//            HStack {
+//                Text(item.labelName)
+//                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+//                Spacer()
+//                Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
+//                    .foregroundColor(item.isSelect ? .green : .red)
+//            }
+//            .padding(5)
+//            .contentShape(Rectangle())
+//            .onTapGesture(perform: {
+//                // 选中和取消
+////                                findVM.updateItem(item: item)
+////                                    findVM.updateItes(item: item)
+//                findVM.updateTechnologyItes(item: item)
+//            })
+//        }
+        ForEach(findVM.selectFindModel.technologyList) { item in
+            
+            HStack {
+                Text(item.labelName)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateTechnologyItes(item: item)
+                
+            })
+        }
+    }
+    //MARK: 价格view
+    var PriceListView: some View {
+//        ForEach(findVM.selectFindModel.priceList) { item in
+//            HStack {
+//                Text(item.dictKey)
+//                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+//                Spacer()
+//                Image(systemName: item.isSelect ? "checkmark.circle" : "circle")
+//                    .foregroundColor(item.isSelect ? .green : .red)
+//            }
+//            .padding(5)
+//            .contentShape(Rectangle())
+//            .onTapGesture(perform: {
+//                // 选中和取消
+//                findVM.updateItes(item: item)
+//            })
+//        }
+        ForEach(findVM.selectFindModel.data) { item in
+            HStack {
+                Text(item.dictKey)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateItes(item: item)
+            })
+        }
+    }
 }
         
 //

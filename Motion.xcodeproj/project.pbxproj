@@ -61,7 +61,9 @@
 		A071105127117AC700963385 /* FindVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071105027117AC700963385 /* FindVM.swift */; };
 		A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */; };
 		A0731B44271522D200A6FF79 /* FindTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B43271522D200A6FF79 /* FindTestView.swift */; };
-		A0731B52271539E100A6FF79 /* Codepower.json in Resources */ = {isa = PBXBuildFile; fileRef = A0731B51271539E100A6FF79 /* Codepower.json */; };
+		A0731B52271539E100A6FF79 /* codepower_te.json in Resources */ = {isa = PBXBuildFile; fileRef = A0731B51271539E100A6FF79 /* codepower_te.json */; };
+		A07613F22716871D00138857 /* codepower_pro.json in Resources */ = {isa = PBXBuildFile; fileRef = A07613F12716871D00138857 /* codepower_pro.json */; };
+		A07613F42716A19700138857 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07613F32716A19700138857 /* Double.swift */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
 		DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528426FD710B00993FA5 /* MTSheetManager.swift */; };
@@ -124,7 +126,9 @@
 		A071105027117AC700963385 /* FindVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindVM.swift; sourceTree = "<group>"; };
 		A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodepowerApi.swift; sourceTree = "<group>"; };
 		A0731B43271522D200A6FF79 /* FindTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTestView.swift; sourceTree = "<group>"; };
-		A0731B51271539E100A6FF79 /* Codepower.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Codepower.json; sourceTree = "<group>"; };
+		A0731B51271539E100A6FF79 /* codepower_te.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_te.json; sourceTree = "<group>"; };
+		A07613F12716871D00138857 /* codepower_pro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_pro.json; sourceTree = "<group>"; };
+		A07613F32716A19700138857 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetViewModifier.swift; sourceTree = "<group>"; };
@@ -262,8 +266,8 @@
 		A071104F27117AA500963385 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A0731B51271539E100A6FF79 /* Codepower.json */,
 				A071105027117AC700963385 /* FindVM.swift */,
+				A07613F32716A19700138857 /* Double.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -340,6 +344,8 @@
 			children = (
 				DF8E411E2715892700B26E27 /* MockTool.swift */,
 				DF8E41202715894900B26E27 /* codepower_langs.json */,
+				A0731B51271539E100A6FF79 /* codepower_te.json */,
+				A07613F12716871D00138857 /* codepower_pro.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -525,8 +531,9 @@
 			files = (
 				DF8E41212715894900B26E27 /* codepower_langs.json in Resources */,
 				5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */,
+				A07613F22716871D00138857 /* codepower_pro.json in Resources */,
 				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
-				A0731B52271539E100A6FF79 /* Codepower.json in Resources */,
+				A0731B52271539E100A6FF79 /* codepower_te.json in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
 				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
 				DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */,
@@ -646,6 +653,7 @@
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
+				A07613F42716A19700138857 /* Double.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */,
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,

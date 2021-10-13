@@ -41,21 +41,18 @@ class FindVM: ObservableObject {
     
     enum CodeSelectStyle {
         case def,lang ,to ,price
-        
     }
     // 选中当前模型
     
-    @Published var selectFindModel: FindModel = FindModel(dictKey:"语言", data: [],technology: [],price:[])
-//    @Published var selectTogModel: FindModel = FindModel(dictKey:"技术", data: [],technology: [],price:[])
-//    @Published var selectPriceModel: FindModel = FindModel(dictKey:"价格", data: [],technology: [],price:[])
+    @Published var selectFindModel: FindModel = FindModel(title:"全部", data: [],technology: [],price:[])
     
     // 码力数据源
     @Published var itemList: [FindModel] = []
     
     //MARK: 产品接口模块 and 数据模型
     // 产品列表接口参数
-    @Published var proList: [String] = [
-        "ssss","1","2"
+    @Published var proList: [CodeProductModel] = [
+        
     ]
     var pageNum: Int = 0
     var lang: String = ""
@@ -67,18 +64,104 @@ class FindVM: ObservableObject {
         getItems()
         
         requestWithMenuList()
+        
+        requestWithProductList()
     }
     
     func getItems() {
         let item =  [
-            FindModel(dictKey:"语言",data: [], technology: [], price: []),
-            FindModel(dictKey:"技术",data: [], technology: [], price: []),
-            FindModel(dictKey:"价格",data: [], technology: [], price: []),
+            FindModel(title:"语言",data: [], technology: [], price: []),
+            FindModel(title:"技术",data: [], technology: [], price: []),
+            FindModel(title:"价格",data: [], technology: [], price: []),
         ]
         itemList.append(contentsOf: item)
 //        selectFindModel = item[0];
     }
+}
+
+// MARK: 网络请求模块
+extension FindVM {
+    // MARK: 获取码力数据
+    func requestWithMenuList() {
+        // 语言
+        let language = CodepowerApi.language(p: .init(group: "lang"))
+        Networking.requestObject(language, modeType: UserInfo.self) {[weak self] r, model in
+            // 成功...
+            if let model = model {
+                
+            }else {
+                //失败
+                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
+                self?.itemList[0].data.append(contentsOf: arr)
+            }
+        }
+        // 技术
+        let technology = CodepowerApi.technology
+        Networking.requestObject(technology, modeType: UserInfo.self) {[weak self] r, model in
+            // 成功...
+            if let model = model {
+                
+            }else {
+                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+                self?.itemList[1].technologyList.append(contentsOf: arr)
+            }
+        }
+        
+        // 价格
+        let json1: [[String: Any]] = [
+            ["dictKey": "全部", "dictValue": ""],
+            ["dictKey": "免费", "dictValue": "0"],
+            ["dictKey": "1-98", "dictValue": "1"],
+            ["dictKey": "99-198", "dictValue": "2"],
+            ["dictKey": "199-1998", "dictValue": "3"],
+            ["dictKey": "1999-2998", "dictValue": "4"],
+            ["dictKey": "2999以上", "dictValue": "5"]
+        ]
+        
+        let cars = json1.kj.modelArray(LangModel.self)
+        self.itemList[2].data.append(contentsOf: cars)
+        
+        
+    }
     
+    
+    // MARK:产品列表接口
+    func requestWithProductList() {
+        
+        switch selectCodeSelectStyle {
+        case .def:
+            labelIds = ""
+            lang = ""
+            price = ""
+            pageNum = 0
+        case .lang:
+            labelIds = ""
+            lang = itemList[0].data[selectDetail].dictValue
+            price = ""
+            pageNum = 0
+        case .to:
+            labelIds = itemList[1].technologyList[selectDetail].labelId
+            lang = ""
+            price = ""
+            pageNum = 0
+        case .price:
+            labelIds = ""
+            lang = ""
+            price = itemList[2].data[selectDetail].dictValue
+            pageNum = 0
+        }
+        
+        let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
+        Networking.requestObject(technology, modeType: UserInfo.self) {[weak self] r, model in
+            // 成功...
+            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
+            self?.proList.append(contentsOf: arr)
+        }
+    }
+}
+
+// MARK: 模型处理模块
+extension FindVM {
     // MARK: 修改数据
     func updateItes(item: LangModel) {
         // 所有设置false
@@ -86,12 +169,10 @@ class FindVM: ObservableObject {
         switch selectCodeSelectStyle {
         case .lang:
             selectIndex = 0
-            
         case .to:
             selectIndex = 1
         case .price:
             selectIndex = 2
-            
         case .def:
             selectIndex = 0
         }
@@ -110,107 +191,33 @@ class FindVM: ObservableObject {
         }
         isShowmtDetail.toggle()
     }
-    
-    
-    // MARK: 获取码力数据
-    func requestWithMenuList() {
-        // 语言
-        let language = CodepowerApi.language(p: .init(group: "lang"))
-        
-        let tmparr1 = mockLangs()
-        Networking.requestObject(language, modeType: UserInfo.self) {[weak self] r, model in
-            // 成功...
-            // 调用json数组的modelArray方法即可
-//            let cars = json1.kj.modelArray(LangModel.self)
-            self?.itemList[0].data.append(contentsOf: tmparr1)
-        }
-        // 技术
-        let technology = CodepowerApi.technology
-        Networking.requestObject(technology, modeType: UserInfo.self) {[weak self] r, model in
-            // 成功...
-            let json: [[String: Any]] = [
-                ["labelId":"2c9780827bf34b0e017bf6a45f9e0016","labelName":"redis","labelHeat":10],
-                ["labelId":"2c9780827bf34b0e017c15c07235017e","labelName":"spring","labelHeat":7],
-                ["labelId":"2c9780827bf34b0e017c134b0ded0135","labelName":"python","labelHeat":4]
-            ]
+    //MARK: 技术选中数据模型更新
+    func updateTechnologyItes(item: TechnologyModel) {
+        // 所有设置false
+        let selectIndex = 1
+        if let index = selectFindModel.technologyList.firstIndex(where: {$0.isSelect == true}) {
+            selectFindModel.technologyList[index].isSelect = false
             
-            let cars = json.kj.modelArray(TechnologyModel.self)
-            self?.itemList[1].technologyList.append(contentsOf: cars)
-            
+            itemList[selectIndex].technologyList[index].isSelect = false
         }
         
-        // 价格
-        let json1: [[String: Any]] = [
-            ["dictKey": "全部", "dictValue": "C/C++"],
-            ["dictKey": "免费", "dictValue": "Java"],
-            ["dictKey": "1-98", "dictValue": "Python"],
-            ["dictKey": "99-198", "dictValue": "Python"],
-            ["dictKey": "199-1998", "dictValue": "Python"],
-            ["dictKey": "1999-2998", "dictValue": "Python"],
-            ["dictKey": "2999以上", "dictValue": "Python"]
-        ]
-        
-        let cars = json1.kj.modelArray(LangModel.self)
-        self.itemList[2].data.append(contentsOf: cars)
-        
-    }
-    
-    
-    // MARK:产品列表接口
-    func requestWithProductList() {
-        let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
-        Networking.requestObject(technology, modeType: UserInfo.self) { r, model in
-            // 成功...
-            
+        if let index = selectFindModel.technologyList.firstIndex(where: {$0.id == item.id}) {
+            let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
+            selectFindModel.technologyList[index] = codeModel
+            itemList[selectIndex].technologyList[index] = codeModel // 修改数据源
+            selectDetail = index
+            itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
         }
-    }
-    
-    // MARK: 获取码力列表数据
-    func requestWithCodeList() {
-
-    }
-    
-    func getJSON() {
-        let path = Bundle.main.path(forResource: "Codepower", ofType: "json")
-        let url = URL(fileURLWithPath: path!)
-        
-        do {
-            let data = try Data(contentsOf: url)
-            let jsonData:Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-
-            //                LangModel.kj
-            let json = jsonData as! [String: Any]
-            let arr = json["data"]
-
-//            let cars = json.kj.modelArray(LangModel.self)
-
-            let json1: [[String: Any]] = [
-                ["dictKey": "C/C++", "dictValue": "C/C++"],
-                ["dictKey": "Java", "dictValue": "Java"],
-                ["dictKey": "Python", "dictValue": "Python"]
-            ]
-
-            // 调用json数组的modelArray方法即可
-            let cars = json1.kj.modelArray(LangModel.self)
-            self.itemList[0].data.append(contentsOf: cars)
-            
-        } catch let error  {
-            print("读取本地数据出现错误!")
-        }
+        isShowmtDetail.toggle()
     }
 }
 
-//mark: - mock
-extension FindVM {
-    func mockLangs() -> [LangModel] {
-        let r = read(NetResponse<LangModel>.self, from:Bundle.main.path(forResource: "codepower_lang", ofType: "json") ?? "")
-        return r?.data as? [LangModel] ?? []
-    }
-}
 
+// MARK: 语言技术价格一级分类数据模型
 struct FindModel: Identifiable {
     var id: String
-    var dictKey: String
+    
+    var title: String
     
     var subTitle: String = ""
     
@@ -232,22 +239,17 @@ struct FindModel: Identifiable {
         subTitle.isEmpty ? "全部" : subTitle
     }
     
-    init(id: String = UUID().uuidString, dictKey:String, data: [LangModel], technology: [TechnologyModel],price: [LangModel]) {
+    init(id: String = UUID().uuidString, title:String, data: [LangModel], technology: [TechnologyModel],price: [LangModel]) {
         self.id = id
-        self.dictKey = dictKey
+        self.title = title
         self.data = data
         self.technologyList = technology
         self.priceList = price
     }
-    // MARK:更新数据
-//    func updateCompletion() -> FindModel {
-//        return FindModel(id: id, dictKey: dictKey, isSelect: !isSelect)
-//    }
 }
 
-
+// MARK: 语言 or 价格模型
 struct LangModel: Identifiable, Convertible {
-
     let id: String = UUID().uuidString
     var dictKeyGroup: String = ""
     var dictKey: String = ""
@@ -256,7 +258,7 @@ struct LangModel: Identifiable, Convertible {
     var isSelect: Bool = false
 }
 
-
+// MARK: 技术模型
 struct TechnologyModel: Identifiable, Convertible {
     let id: String = UUID().uuidString
     var labelId: String = ""
@@ -266,22 +268,34 @@ struct TechnologyModel: Identifiable, Convertible {
     var isSelect: Bool = false
 }
 
+struct CodeProductModel: Identifiable, Convertible {
+    var id: String = UUID().uuidString
+    var productId = "" //:"2c9780827c30630d017c306c65600000",
+    var productName = ""//:"网站后台权限管理系统",
+    var productLang = ""//:"Java",
+    var productPrice = ""// ":0.01,
+    var productOriginalPrice = ""//:0.01,
+    var status = ""//:0,
+    var cstCreate = ""
+    var cstCreateTimestamp = ""
+    var createUserId = ""
+    var authorNickname = ""
+    var authorHeadImgUrl = ""
+    var countBrowses = "" // 浏览个数
+    var bought = ""
+    
+    var storageAttachments: [CodeDetailModel] = []
+    
+    var productImg: String {
+        storageAttachments.count > 2 ? storageAttachments[1].attachmentKey : ""
+    }
+    
+}
 
-
-
-//    func updateItem(item: FindModel) {
-//        // 所有设置false
-//        if let index = selectFindModel.list.firstIndex(where: {$0.isSelect == true}) {
-//            selectFindModel.list[index].isSelect = false
-//            itemList[selectIndex].list[index].isSelect = false
-//        }
-//
-//        if let index = selectFindModel.list.firstIndex(where: {$0.id == item.id}) {
-//            let findModel = FindModel(dictKey:item.dictKey, isSelect: !item.isSelect)
-//            selectFindModel.list[index] = findModel
-//            itemList[selectIndex].list[index] = findModel // 修改数据源
-//            selectDetail = index
-//            itemList[selectIndex].subTitle = findModel.isSelect ? findModel.dictKey : "全部"
-//        }
-//        isShowmtDetail.toggle()
-//    }
+struct CodeDetailModel: Identifiable, Convertible {
+    var id: String = UUID().uuidString
+    
+    var attachmentKey: String = ""
+    
+    var attachmentKeyThumbnail: String = ""
+}
