@@ -18,6 +18,7 @@ struct NoticeListView: View {
                 Divider.mt.defult()
             }
         }
+        .navigationTitle("通知")
     }
     
 

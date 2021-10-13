@@ -9,18 +9,19 @@ import SwiftUI
 import MotionComponents
 
 struct SettingBtn: View {
-    
+    @State var showSettingView : Bool = false
     var body: some View {
         Button(
             action: {
-               
+                showSettingView.toggle()
             },
             label: {
-                Image
-                    .mt.load(.Setting)
-                    .foregroundColor(.mt.gray_900)
+                Image .mt.load(.Setting).foregroundColor(.mt.gray_900)
             }
         )
+            .fullScreenCover(isPresented: $showSettingView) {
+                SettingView()
+            }
     }
 }
 

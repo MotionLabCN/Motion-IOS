@@ -143,6 +143,7 @@
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DF8E411E2715892700B26E27 /* MockTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTool.swift; sourceTree = "<group>"; };
 		DF8E41202715894900B26E27 /* codepower_langs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_langs.json; sourceTree = "<group>"; };
+		DF92E5AB271663FA005FD4E5 /* Motion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Motion.entitlements; sourceTree = "<group>"; };
 		DF95F20F26FB15A700081A7D /* startVedio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startVedio.mp4; sourceTree = "<group>"; };
 		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFA3796D27003B5D00202D07 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
@@ -306,8 +307,8 @@
 			children = (
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
 				5A9155112704038800E8135F /* StorageView.swift */,
-				5ACBA38F26F2E66E00A5789E /* Find */,
 				DF95F20A26FAF77100081A7D /* Login */,
+				5ACBA38F26F2E66E00A5789E /* Find */,
 				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
@@ -402,6 +403,7 @@
 		DFE0C0AB26E783CE00EDB44F /* Motion */ = {
 			isa = PBXGroup;
 			children = (
+				DF92E5AB271663FA005FD4E5 /* Motion.entitlements */,
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
@@ -732,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -787,7 +789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -803,18 +805,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.001;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -826,18 +832,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.001;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
