@@ -197,9 +197,9 @@ struct LoginStartView: View {
 //                toastStyle = .warning
 //                isShowToast = true
 //                toastText = "click pinggu"
-//                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
-//                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
-//                })
+                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
+                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
+                })
             }, label: {
                 HStack {
                     Image.mt.load(.Github)

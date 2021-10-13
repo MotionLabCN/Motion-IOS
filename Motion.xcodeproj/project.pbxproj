@@ -139,6 +139,7 @@
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DF8E411E2715892700B26E27 /* MockTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTool.swift; sourceTree = "<group>"; };
 		DF8E41202715894900B26E27 /* codepower_langs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_langs.json; sourceTree = "<group>"; };
+		DF92E5AB271663FA005FD4E5 /* Motion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Motion.entitlements; sourceTree = "<group>"; };
 		DF95F20F26FB15A700081A7D /* startVedio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = startVedio.mp4; sourceTree = "<group>"; };
 		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFA3796D27003B5D00202D07 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
@@ -396,6 +397,7 @@
 		DFE0C0AB26E783CE00EDB44F /* Motion */ = {
 			isa = PBXGroup;
 			children = (
+				DF92E5AB271663FA005FD4E5 /* Motion.entitlements */,
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
@@ -795,9 +797,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -818,9 +821,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
-				DEVELOPMENT_TEAM = RC55F2EK57;
+				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Motion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

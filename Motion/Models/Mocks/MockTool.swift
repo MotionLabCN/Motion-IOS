@@ -10,13 +10,16 @@ import Foundation
 
 
 struct MockTool {
- 
-    static func readObject<T: Convertible>(_ type: T.Type, fileName: String, atKeyPath keyPath: String? = "data") -> T? {
-        
+    
+    static func jsonForFile(_ fileName: String) -> JSON? {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"), let data = try? Data(contentsOf: url) else {
             return nil
         }
-        let json =  try? JSON(data: data)
+        return try? JSON(data: data)
+    }
+ 
+    static func readObject<T: Convertible>(_ type: T.Type, fileName: String, atKeyPath keyPath: String? = "data") -> T? {
+        let json =  jsonForFile(fileName)
         
         if let keyPath = keyPath {
             guard let originDic = (json?.dictionaryObject as NSDictionary?)?.value(forKeyPath: keyPath) else {
@@ -30,12 +33,8 @@ struct MockTool {
     }
     
     static func readArray<T: Convertible>(_ type: T.Type, fileName: String, atKeyPath keyPath: String? = "data") -> [T]? {
-        
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"), let data = try? Data(contentsOf: url) else {
-            return nil
-        }
-        let json =  try? JSON(data: data)
-        
+        let json =  jsonForFile(fileName)
+
         if let keyPath = keyPath {
             guard let originDic = (json?.dictionaryObject as NSDictionary?)?.value(forKeyPath: keyPath) else {
                 return nil
@@ -50,7 +49,7 @@ struct MockTool {
     
     /// 示例
     static func using() {
-        let arr = readArray(LangModel.self, fileName: "codepower_langs")
+        let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs")
         print("")
     }
 }
