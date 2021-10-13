@@ -31,12 +31,9 @@ struct FindTestView: View {
                     Group {
                         CodepowerView()
                             .environmentObject(findVM)
+                        Ladder()
                         
                         OpenSourceLibrary()
-                        
-                        RecommendView()
-                        
-                        Ladder()
                         
                         RecommendView()
                     }
