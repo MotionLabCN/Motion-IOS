@@ -56,17 +56,9 @@ struct LoginInputPhoneView: View {
     var rightBtn: some View {
     
         Button {
-            print("channle \(vm.channel)")
             vm.sendCode(atPage: .inputPhone, completion: {
                 isPushCodeView = true
             })
-//            if vm.channel == .手机验证码 {
-//                
-//            }
-//            
-//            if vm.channel == .github {
-//                print("绑定手机号")
-//            }
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)

@@ -51,8 +51,14 @@ public enum RequestStatus {
     case requesting
     /// 请求完成
     case completion
+    case completionTip(text: String, status: MTPushNofi.PushNofiType = .defult)
     
-    public var isRequesting: Bool { self == .requesting }
+    public var isRequesting: Bool {
+        switch self {
+        case .requesting: return true
+        default: return false
+        }
+    }
 }
 
 

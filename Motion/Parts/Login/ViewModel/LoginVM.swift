@@ -276,8 +276,14 @@ class LoginVM: ObservableObject {
     func updateUserBaseInfo() {
         requestStateForBaseInfo = .requesting
         
+        let un = userName
         Networking.request(ModifilerUserInfoApi.updateInfo(p: .init(nickname: userName))) { [weak self] result in
             self?.requestStateForBaseInfo = .completion
+            if result.isSuccess {
+                self?.userInfo?.nickname = un
+                
+                UserManager.shared.updateSaveUserInfo(self?.userInfo)
+            }
         }
     }
 }
