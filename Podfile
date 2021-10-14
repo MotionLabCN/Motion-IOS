@@ -10,4 +10,9 @@ target 'Motion' do
    pod 'lottie-ios'
    pod 'Introspect'
 
+
+pod 'UMCommon'
+pod 'UMDevice'
+pod 'UMCCommonLog'
+
 end
