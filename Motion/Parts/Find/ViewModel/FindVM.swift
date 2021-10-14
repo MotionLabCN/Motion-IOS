@@ -111,14 +111,14 @@ extension FindVM {
             self?.logicCode.isRequesting = false
             
             if let list = list {
-//                self?.itemList[0].data.append(contentsOf: list)
+                self?.itemList[0].data = list
                 
-                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-                self?.itemList[0].data = arr
+//                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
+//                self?.itemList[0].data = arr
             }else {
                 //失败
-                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-                self?.itemList[0].data = arr
+//                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
+//                self?.itemList[0].data = arr
                 
                     self?.logicCode.toastText = "请求失败"
                     self?.logicCode.isShowToast = true
@@ -142,12 +142,12 @@ extension FindVM {
             if let list = list {
 //                self?.itemList[1].technologyList.append(contentsOf: list)
                 
-                    let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-                    self?.itemList[1].technologyList = arr
+//                    let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+                    self?.itemList[1].technologyList = list
                 
             }else {
-                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-                self?.itemList[1].technologyList = arr
+//                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+//                self?.itemList[1].technologyList = arr
             }
             
             // 拿到数据开始设置上次选中模型 设置选中状态
@@ -203,7 +203,7 @@ extension FindVM {
         }
         
         let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
-        Networking.requestArray(technology, modeType: CodeProductModel.self) {[weak self] r, list in
+        Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
             // 成功...
             self?.logicProduct.isRequesting = false
             if let list = list {
@@ -224,7 +224,6 @@ extension FindVM {
     func clearItems() {
         
         selectCodeSelectStyle = .def
-        
         
         itemList[0].data[selectLangIndex].isSelect = false
         itemList[0].subTitle = ""

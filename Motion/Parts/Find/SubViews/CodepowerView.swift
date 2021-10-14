@@ -38,7 +38,15 @@ struct CodepowerView: View {
                 
                 shopTitle
                 
-                productList
+                if vm.proList.count > 0 {
+                    productList
+                } else {
+                    Text("暂无数据")
+                        .padding(.horizontal,16)
+                        .frame(height:200)
+                        
+                }
+                
                 
             }
         }
