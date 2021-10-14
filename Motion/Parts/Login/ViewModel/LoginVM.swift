@@ -15,7 +15,7 @@ class LoginVM: ObservableObject {
         static let codeMaxNum = 6
     }
     
-    private(set) var channel: LoginSuccessInfo.ChannelType = .unkown {
+    var channel: LoginSuccessInfo.ChannelType = .unkown {
         didSet {
             phone = "15271327766"
         }
@@ -87,60 +87,116 @@ class LoginVM: ObservableObject {
     
     
     @Published var logicSendCode = LogicSendCode()
-    func sendCode(atPage page: LogicSendCode.Page) {
-        logicSendCode.isRequesting = true
-        
-        Networking.request(LoginApi.sendCode(p: .init(mobile: phone))) { [weak self] result in
-            self?.accountIsExsit = result.dataJson?["isExsit"].boolValue ?? false
-            /*
-             在哪个页面点
-             如果在输入手机号点下一步请求验证码 成功后跳转到输入验证码
-             如果在输入验证码点重发 仅发送验证码
-            */
-            switch page {
-            case .inputPhone:
-                self?.logicSendCode.isRequesting = false
-                self?.logicSendCode.isPushCodeView = true
-            case .validateCode:
-                self?.logicAuth.toastisPresented = true
-                self?.logicAuth.toastText = result.message
-            }
-        }
-    }
-    
-    
-  
+    @Published var sendCodeRequestStatus = RequestStatus.prepare
 
-  
-    
-    @Published var logicAuth = LogicAuth()
-    func loginInWithCode() {
-        logicAuth.isRequesting = true
-        
-        let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
-        Networking.requestObject(target, modeType: LoginSuccessInfo.self, atKeyPath: nil) { [weak self] r, model in
-            
-            if let model = model {
-                UserManager.shared.loginSusscessSaveToken(model, channel: .手机验证码)
-                // 登录成功了有一个token  然后去获取用户信息
-                self?.getUserInfo() //隐藏   logicAuth.isRequesting = false
-            } else { //失败
-                self?.logicAuth.isRequesting = false //失败了
-                
-                self?.logicAuth.toastisPresented = true
-                self?.logicAuth.toastText = r.errorDesc
-                #if DEBUG
-                self?.getUserInfo()
-                #endif
-            }
-            
-//            UserManager.shared.loginSuccessSaveUser(model)
-        }
+    /*
+     在哪个页面点
+     如果在输入手机号点下一步请求验证码 成功后跳转到输入验证码
+     如果在输入验证码点重发 停在当前面
+    */
+    enum SendCodePage {
+    case inputPhone, validateCode
     }
     
-    func loginInWithGithub() {
+    func sendCode(atPage page: SendCodePage, completion: @escaping Block_T) {
+        sendCodeRequestStatus  = .requesting
+        
+        if channel == .手机验证码 {
+            Networking.request(LoginApi.sendCode(p: .init(mobile: phone))) { [weak self] result in
+                self?.accountIsExsit = result.dataJson?["isExsit"].boolValue ?? false
+                /*
+                 在哪个页面点
+                 如果在输入手机号点下一步请求验证码 成功后跳转到输入验证码
+                 如果在输入验证码点重发 仅发送验证码
+                */
+                switch page {
+                case .inputPhone:
+                    self?.sendCodeRequestStatus = .completion
+                    if result.isSuccess {
+                        completion()
+                    } else {
+                        self?.logicSendCode.toastisPresented = true
+                        self?.logicSendCode.toastText = result.message
+                    }
+                    
+                case .validateCode:
+                    self?.logicAuth.toastisPresented = true
+                    self?.logicAuth.toastText = result.message
+                }
+            }
+        }
+        
+        // 绑定手机过来
+        if channel == .github || channel == .apple {
+            Networking.request(ModifilerUserInfoApi.sendCode(p: .init(mobile: phone))) { [weak self] result in
+                self?.sendCodeRequestStatus  = .completion
+
+                if result.isSuccess { //绑定成功
+                    completion()
+                } else {
+                    self?.logicSendCode.toastisPresented = true
+                    self?.logicSendCode.toastText = result.message
+                }
+            }
+        }
+        
+    }
+    
+    
+  
+    /// 页面的push
+    private var hanlderPushBlock: Block_T?
+
+    @Published var logicAuth = LogicAuth()
+    func loginInWithCode(preparePush: @escaping (() -> Void)) {        
+        logicAuth.isRequesting = true
+        self.hanlderPushBlock = preparePush
+        
+        if channel == .手机验证码 {
+            let target = LoginApi.loginInWithCode(p: .init(mobile: phone, smsCode: code))
+            Networking.requestObject(target, modeType: LoginSuccessInfo.self, atKeyPath: nil) { [weak self] r, model in
+                
+                if let model = model, model.access_token.count > 0 {
+                    UserManager.shared.loginSusscessSaveToken(model, channel: .手机验证码)
+                    // 登录成功了有一个token  然后去获取用户信息
+                    self?.getUserInfo() //隐藏   logicAuth.isRequesting = false
+                } else { //失败
+                    self?.logicAuth.isRequesting = false //失败了
+                    
+                    self?.logicAuth.toastisPresented = true
+                    self?.logicAuth.toastText = r.message
+                    #if DEBUG
+                    self?.getUserInfo()
+                    #endif
+                }
+            }
+        }
+        
+        
+        
+        // 绑定手机过来
+        if channel == .github || channel == .apple {
+            guard let user = userInfo else { return }
+            
+            let ph = phone
+            Networking.request(ModifilerUserInfoApi.updatePhone(p: .init(userId: user.id, mobile: phone, code: code))) { [weak self] result in
+                self?.logicAuth.isRequesting = false
+                if result.isSuccess {
+                    UserManager.shared.updatePhone(ph)
+                    self?.loginCompletion()
+                } else {
+                    self?.logicAuth.toastisPresented = true
+                    self?.logicAuth.toastText = result.message
+                }
+            }
+        }
+       
+    }
+    
+    func loginInWithGithub(preparePush: @escaping (() -> Void)) {
         channel = .github
         logicStart.isShowLoading = true
+        hanlderPushBlock = preparePush
         
         ThirdAuth.shared.signIn(platform: .git(method: .asAuth), completion: { [weak self] response in
             guard let self = self  else {
@@ -153,12 +209,11 @@ class LoginVM: ObservableObject {
                 self.logicStart.isShowLoading = false
                 return
             }
-            
+
             UserManager.shared.loginSusscessSaveToken(LoginSuccessInfo(access_token: result.token), channel: .github)
             // 调用接口信息
             // 去绑定手机号
             self.getUserInfo()
-            
         })
     }
     
@@ -171,6 +226,9 @@ class LoginVM: ObservableObject {
             //判断当前账号是否存在  如果存在直接关掉视图  accountIsExsit
             guard let self = self else { return }
             self.isGetUserInfo = false
+            self.logicAuth.isRequesting = false
+            self.logicStart.isShowLoading = false
+
             
             guard let m = model else {
                 self.logicAuth.toastisPresented = true
@@ -185,21 +243,18 @@ class LoginVM: ObservableObject {
             switch self.channel {
             case .unkown, .wechat: break
             case .手机验证码:
-                self.logicAuth.isRequesting = false
-
                 if self.accountIsExsit {
                     self.loginCompletion()
                 } else {
-                    self.logicAuth.isPushBaseInfoView = true
+                    self.hanlderPushBlock?()
+//                    self.logicAuth.isPushBaseInfoView = true
                 }
             case .一键手机登陆: break
             case .github, .apple: //绑定手机号
                 if UserManager.shared.user.mobileAuth { //已经授权了
                     self.loginCompletion()
                 } else { // 去绑定手机号
-                    self.logicStart.isShowLoading = false
-                    self.logicStart.isShowLoginSheet = false
-                    self.logicStart.isPushInputPhoneView = true
+                    self.hanlderPushBlock?()
                 }
        
      
@@ -216,42 +271,20 @@ class LoginVM: ObservableObject {
     }
     
     
-    @Published var logicBaseInfo = LogicBaseInfo()
+    @Published var requestStateForBaseInfo = RequestStatus.prepare
     /// 目前只修改user name
     func updateUserBaseInfo() {
-        logicBaseInfo.isRequesting = true
-        // 修改完成后  loginCompletion()
+        requestStateForBaseInfo = .requesting
+        
+        Networking.request(ModifilerUserInfoApi.updateInfo(p: .init(nickname: userName))) { [weak self] result in
+            self?.requestStateForBaseInfo = .completion
+        }
     }
 }
 
 
 
-//MARK: - 点击事件
-extension LoginVM {
-    func clickLoginStart() {
-        logicStart.isShowLoginSheet = true
-    }
-    
-    func clickPhoneCodeLogin() {
-        channel = .手机验证码
-        
-        logicStart.isShowLoginSheet = false
-        logicStart.isPushInputPhoneView = true
-    }
-   
-    func clickNextAtInputPhone() {
-        print("channle \(channel)")
-        if channel == .手机验证码 {
-            sendCode(atPage: .inputPhone)
-        }
-        
-        if channel == .github {
-            print("绑定手机号")
-        }
-    }
-   
-    
-}
+
 
 
 //MARK: - 配置
@@ -274,25 +307,12 @@ extension LoginVM {
         var isShowToast = false
         var toastText = ""
         var toastStyle = MTPushNofi.PushNofiType.danger
-        
-        var isShowLoginSheet = false 
-        var isPushInputPhoneView = false
-        
     }
     
     
     struct LogicSendCode {
-        /*
-         在哪个页面点
-         如果在输入手机号点下一步请求验证码 成功后跳转到输入验证码
-         如果在输入验证码点重发 停在当前面
-        */
-        enum Page {
-        case inputPhone, validateCode
-        }
-        
-        var isRequesting = false
-        var isPushCodeView = false
+        var toastisPresented = false
+        var toastText = ""
     }
     
     
@@ -301,14 +321,9 @@ extension LoginVM {
         var isRequesting = false
         var toastisPresented = false
         var toastText = ""
-        var isPushBaseInfoView = false
     }
     
-    // 修改用户资料
-    struct LogicBaseInfo {
-        var isRequesting = false
-
-    }
+    
 }
 
 

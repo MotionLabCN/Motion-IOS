@@ -10,6 +10,7 @@ import MotionComponents
 
 struct LoginValidateCodeView: View {
     @EnvironmentObject var vm: LoginVM
+    @State var isPushBaseInfoView = false
     @Environment(\.presentationMode) var presentationMode
     
     var textFieldConfig = MTTextFieldStyle.Config()
@@ -42,6 +43,11 @@ struct LoginValidateCodeView: View {
         .mtNavBarLogo()
         .navigationBarBackButtonHidden(true)
         .mtToast(isPresented: $vm.logicAuth.toastisPresented, text: vm.logicAuth.toastText)
+        
+        .mtRegisterRouter(isActive: $isPushBaseInfoView, destination: {
+            LoginBaseInfoView()
+                .environmentObject(vm)
+        })
     }
     
     var header: some View {
@@ -59,7 +65,9 @@ struct LoginValidateCodeView: View {
                 Text("或").foregroundColor(.mt.gray_800)
                 
                 Button("重发短信") {
-                    vm.sendCode(atPage: .validateCode)
+                    vm.sendCode(atPage: .validateCode, completion: {
+                        
+                    })
                 }
             }
             .font(.mt.body2.mtBlod())
@@ -69,16 +77,20 @@ struct LoginValidateCodeView: View {
     
     var rightBtn: some View {
         Button {
-            vm.loginInWithCode()
+            vm.loginInWithCode(preparePush: {
+                if vm.channel == .手机验证码 {
+                    isPushBaseInfoView = true
+                }
+                
+//                if vm.channel == .apple || vm.channel == .github { //第三方
+//
+//                }
+            })
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
                 .mtPlaceholderProgress(vm.logicAuth.isRequesting, progressColor: .white)
         }
-        .mtRegisterRouter(isActive: $vm.logicAuth.isPushBaseInfoView, destination: {
-            LoginBaseInfoView()
-                .environmentObject(vm)
-        })
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: vm.code.count < LoginVM.Constant.codeMaxNum ? .center : .trailing)
         .mtAnimation(.spring())

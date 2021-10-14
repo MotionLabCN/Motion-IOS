@@ -13,7 +13,7 @@ import Moya
 
 public typealias MoyaResult = Result<Moya.Response, MoyaError>
 
-enum StatusCode: Int {
+public enum StatusCode: Int {
     case unknow = -10
     /// 解析错误
 //    case parsingError = -9
@@ -22,7 +22,7 @@ enum StatusCode: Int {
 //    /// 无响应
 //    case noResponse = -1
 //
-//    case success = 200
+    case success = 200
 //    case exception = 400
 //    /// 用户未登录 登陆超期
 //    case unlogin = 1003
@@ -56,12 +56,12 @@ public extension Result where Success == Moya.Response {
     }
     
     //MARK: - 自定义的
-    var code: Int {
-        return json?["code"].intValue ?? -1000
+    var code: StatusCode {
+        return .init(rawValue: json?["code"].intValue ?? -10) ?? .unknow
     }
     
     var message: String {
-        return json?["message"].stringValue ?? ""
+        return json?["message"].string ?? errorDesc
     }
     
     // 有个字段叫 data
@@ -75,7 +75,7 @@ public extension Result where Success == Moya.Response {
     
     //MARK: - 其他
     var isSuccess: Bool {
-        return code == 0
+        return code == .success
     }
     
     var errorDesc: String {

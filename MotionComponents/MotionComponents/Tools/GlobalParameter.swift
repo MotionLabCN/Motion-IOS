@@ -42,3 +42,20 @@ public typealias Block_T_String = (String?) -> Void
 public typealias Block_T_Bool = (Bool) -> Void
 public typealias Block_T_Any = (Any?) -> Void
 
+
+
+public enum RequestStatus {
+    /// 准备状态
+    case prepare
+    /// 请求中
+    case requesting
+    /// 请求完成
+    case completion
+    
+    public var isRequesting: Bool { self == .requesting }
+}
+
+
+
+
+

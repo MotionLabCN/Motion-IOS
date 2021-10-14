@@ -98,6 +98,10 @@
 		DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */; };
 		DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */; };
 		DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */; };
+		DFF1658F2717C140004D1B72 /* ListApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF1658E2717C140004D1B72 /* ListApi.swift */; };
+		DFF165912717C240004D1B72 /* LiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165902717C240004D1B72 /* LiVM.swift */; };
+		DFF165932717C2A8004D1B72 /* LiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165922717C2A8004D1B72 /* LiModel.swift */; };
+		DFF165952717EBBB004D1B72 /* ModifilerUserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +177,10 @@
 		DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfig.swift; sourceTree = "<group>"; };
 		DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTTargetType.swift; sourceTree = "<group>"; };
 		DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
+		DFF1658E2717C140004D1B72 /* ListApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListApi.swift; sourceTree = "<group>"; };
+		DFF165902717C240004D1B72 /* LiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiVM.swift; sourceTree = "<group>"; };
+		DFF165922717C2A8004D1B72 /* LiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiModel.swift; sourceTree = "<group>"; };
+		DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifilerUserInfoApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,7 +332,7 @@
 			path = MTSheet;
 			sourceTree = "<group>";
 		};
-		DF4145B626F1B1C700DD5F9F /* Modules */ = {
+		DF4145B626F1B1C700DD5F9F /* Parts */ = {
 			isa = PBXGroup;
 			children = (
 				DFE0C0AE26E783CE00EDB44F /* ContentView.swift */,
@@ -341,7 +349,7 @@
 				5A7EBFF926F20CAD0026D870 /* Setting */,
 				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
-			path = Modules;
+			path = Parts;
 			sourceTree = "<group>";
 		};
 		DF4145BB26F2EB2100DD5F9F /* SubViews */ = {
@@ -391,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				DFA3796D27003B5D00202D07 /* LoginVM.swift */,
+				DFF165902717C240004D1B72 /* LiVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -434,7 +443,7 @@
 				5A6AB49F2717E26E00AED1B6 /* UMSwift */,
 				DFEB1D2B2704506600B7C1DB /* Apis */,
 				DFECAB0B26F30D9D00AB192C /* Models */,
-				DF4145B626F1B1C700DD5F9F /* Modules */,
+				DF4145B626F1B1C700DD5F9F /* Parts */,
 				DF8298B926F079ED0007DEEA /* NextView.swift */,
 				DFE0C0B026E783CF00EDB44F /* Assets.xcassets */,
 				DFE0C0B526E783CF00EDB44F /* Info.plist */,
@@ -468,6 +477,8 @@
 				DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */,
 				A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */,
 				DF7061482715264F00761A19 /* CommunityServiceApi.swift */,
+				DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */,
+				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -477,6 +488,7 @@
 			children = (
 				DF8E411D2715891900B26E27 /* Mocks */,
 				A071104D27112EA800963385 /* NotifiListModel.swift */,
+				DFF165922717C2A8004D1B72 /* LiModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -684,6 +696,7 @@
 				DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */,
 				A071105127117AC700963385 /* FindVM.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
+				DFF165912717C240004D1B72 /* LiVM.swift in Sources */,
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
 				5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */,
 				A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */,
@@ -701,6 +714,7 @@
 				A071104A271125E500963385 /* NoticeListView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
+				DFF165952717EBBB004D1B72 /* ModifilerUserInfoApi.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
 				A07613F42716A19700138857 /* Double.swift in Sources */,
@@ -708,6 +722,7 @@
 				DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */,
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */,
+				DFF165932717C2A8004D1B72 /* LiModel.swift in Sources */,
 				5AC2146726F3787300D4457C /* ProfileView.swift in Sources */,
 				A071104C2711285700963385 /* NotifListVM.swift in Sources */,
 				DF8E411F2715892700B26E27 /* MockTool.swift in Sources */,
@@ -726,6 +741,7 @@
 				5A6AB4A42717E26E00AED1B6 /* UMCommonSwift.swift in Sources */,
 				DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */,
 				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
+				DFF1658F2717C140004D1B72 /* ListApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

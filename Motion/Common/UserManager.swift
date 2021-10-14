@@ -81,6 +81,9 @@ class UserManager: ObservableObject {
         if let u = UserInfo.getForDisk(fileName: UserDiskCacheFileName) {
             user = u
         }
+        if let to = LoginSuccessInfo.getForDisk(fileName: CurrenTokenInfo) {
+            tokenInfo = to
+        }
         
     }
     
@@ -92,10 +95,12 @@ class UserManager: ObservableObject {
     
     private(set) var tokenInfo = LoginSuccessInfo() {
         didSet {
-            user.cacheOnDisk(fileName: CurrenTokenInfo)
+            tokenInfo.cacheOnDisk(fileName: CurrenTokenInfo)
         }
     }
-    var token: String { tokenInfo.access_token }
+    var token: String {
+        tokenInfo.access_token
+    }
     var channel: String { tokenInfo.channel.rawValue }
 
     
@@ -119,7 +124,12 @@ class UserManager: ObservableObject {
     func changeNickName(_ name: String)  {
 
     }
-        
+    
+    func updatePhone(_ phone: String) {
+        user.mobile = phone
+        user.mobileAuth = true 
+    }
+    
     func logout() {
         tokenInfo = .init()
         withAnimation(.easeInOut(duration: 1)) {
@@ -160,36 +170,3 @@ struct UserManagerTestView {
 }
 
 
-
-
-
-
-//MARK: - 测试
-extension UserManager {
-    static func test() {
-        UserManager.shared.$user
-            .sink { user in
-                print("user= \(user)l")
-            }
-            .store(in: &UserManager.shared.cancellable)
-        testSave()
-        
-        print("")
-        
-        testChangeNickName()
-        
-        print("")
-        
-        UserManager.shared.logout()
-        
-        print("")
-    }
-    
-    static func testSave() {
-//        UserManager.shared.save(userJson: ["nickName" :"liangze"])
-    }
-    
-    static func testChangeNickName() {
-        UserManager.shared.changeNickName("梁泽")
-    }
-}

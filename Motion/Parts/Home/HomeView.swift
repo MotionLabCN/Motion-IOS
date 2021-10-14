@@ -69,23 +69,23 @@ struct HomeView: View {
             print("mtTabbarKindChange \(kind)")
         })
         
-        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
-                VStack {
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-
-                    Button {
-                        isShowmtsheet = false
-                    } label: {
-                        Text("关闭")
-                    }
-                }
-        }
+//        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
+//                VStack {
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//
+//                    Button {
+//                        isShowmtsheet = false
+//                    } label: {
+//                        Text("关闭")
+//                    }
+//                }
+//        }
 
         
     }
@@ -140,7 +140,12 @@ extension HomeView {
                     )
             })
                 .mtTapAnimation(style: .overlayOrScale())
+                
             
+        }
+        .mtRegisterRouter(isActive: $isShowmtsheet) {
+            LoginBaseInfoView()
+                .environmentObject(LoginVM())
         }
     
 //        .mtFullScreenCover(isPresented: $isShowmtsheet) {

@@ -10,11 +10,15 @@ import MotionComponents
 
 
 protocol MTTargetType: CustomTargetType {
-    
+   
 }
 
 extension MTTargetType {
-    var baseURL: URL { URL(string: ProjectConfig.baseUrl)! }
+    var scheme: String { ProjectConfig.scheme }
+    var host: String { ProjectConfig.host }
+    var port: Int? { ProjectConfig.port }
+    var firstPath: String? { ProjectConfig.firstPath }
+    
 
     var headers: [String: String]? {
         var headers = [

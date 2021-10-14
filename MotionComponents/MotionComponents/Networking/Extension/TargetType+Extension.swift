@@ -13,10 +13,29 @@ public typealias HTTPRequestMethod = Moya.Method
 public protocol CustomTargetType: TargetType {
     var parameters: [String: Any]? { get }
     var parameterEncoding: ParameterEncoding { get }
+    
+    var scheme: String { get }
+    var host: String { get }
+    var port: Int? { get }
+    var firstPath: String? { get }
 }
 
 public extension CustomTargetType {
-    var baseURL: URL { URL(string: "https://fm.douban.com/")! }
+    var baseURL: URL {
+        var url = "\(scheme)://\(host)"
+        if let p = port {
+            url = "\(url):\(p)"
+        }
+        if let first = firstPath {
+            url = "\(url)/\(first)"
+        }
+        return URL(string: url)!
+    }
+    
+    var scheme: String { "http" }
+    var host: String { "" }
+    var port: Int? { nil }
+    var firstPath: String? { nil }
 
     var method: HTTPRequestMethod {
         return .get
