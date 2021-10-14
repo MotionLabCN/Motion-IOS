@@ -18,13 +18,11 @@ struct ContentView: View {
             ZStack {
                 VStack(spacing: 0) {
                     main
-                    
                     if tabbarState.isShowTabbar {
                         MTTabbar(selectedKind: $tabbarState.selectedKind)
                             .transition(.move(edge: .bottom))
                     }
-                }
-                                
+                }                
                 if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
                     actionCricleBtn
                 }
