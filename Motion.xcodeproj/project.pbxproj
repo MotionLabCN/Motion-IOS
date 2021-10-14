@@ -39,6 +39,7 @@
 		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
 		5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53377426FC116600949087 /* MTLocUserAvatar.swift */; };
 		5A5842D526F4CDE100311388 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5842D426F4CDE100311388 /* MessageView.swift */; };
+		5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB49D2717D47300AED1B6 /* OrderView.swift */; };
 		5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF526F1DE240026D870 /* NotificationView.swift */; };
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
@@ -103,6 +104,7 @@
 		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		5A53377426FC116600949087 /* MTLocUserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLocUserAvatar.swift; sourceTree = "<group>"; };
 		5A5842D426F4CDE100311388 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		5A6AB49D2717D47300AED1B6 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		5A7EBFF526F1DE240026D870 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				5AC2146626F3787300D4457C /* ProfileView.swift */,
+				5A6AB49D2717D47300AED1B6 /* OrderView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
+				5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,

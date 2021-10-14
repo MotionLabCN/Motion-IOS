@@ -14,6 +14,9 @@ struct ProfileView: View {
     
     @EnvironmentObject var locUserVm: MTLocUserVM
     
+    @State private var showSettingView : Bool = false
+    @State private var showOrderView : Bool = false
+    
     var body: some View {
         
         NavigationView{
@@ -29,15 +32,37 @@ struct ProfileView: View {
                     Spacer()
                         logo
             }
-        .background(Color.white)
+        .background(naviLinksandSheet)
         .overlay( closeBtn,alignment: .topTrailing)
         .navigationBarHidden(true)
         }
+       
            
         
         
         
     }
+    @ViewBuilder
+    var naviLinksandSheet : some View {
+        
+        Group{
+            NavigationLink(isActive: $showSettingView) {
+                SettingView().navigationBarHidden(true)
+            } label: {
+                EmptyView()
+            }
+            NavigationLink(isActive: $showSettingView) {
+                SettingView()
+            } label: {
+                EmptyView()
+            }
+        }
+        .sheet(isPresented: $showOrderView) {
+            OrderView()
+        }
+        
+    }
+    
     var closeBtn : some View {
         Button {
             self.persentationMode.wrappedValue.dismiss()
@@ -52,6 +77,7 @@ struct ProfileView: View {
             .frame(maxWidth:.infinity,alignment: .trailing)
             .padding()
     }
+    
     var logo : some View{
         VStack{
             Image.mt.load(.Logo)
@@ -67,23 +93,26 @@ struct ProfileView: View {
         
         VStack{
             ProfileListRow(icon: Image.mt.load(.Person), text: "查看个人主页")
-                .onTapGesture {
-                    locUserVm.isShowProfile.toggle()
-
-                    persentationMode.wrappedValue.dismiss()
-                }
-           
+            {locUserVm.isShowProfile.toggle()
+              persentationMode.wrappedValue.dismiss()}
             
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "储存空间")
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "上传码力")
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "认证技术顾问")
-            ProfileListRow(icon: Image.mt.load(.Logo), text: "元宇宙硬币")
+            ProfileListRow(icon: Image.mt.load(.Cart), text: "我的订单"){
+                showOrderView.toggle()
+            }
+            
+            ProfileListRow(icon: Image.mt.load(.Apps), text: "代码仓库"){
+                
+            }
+            
+            ProfileListRow(icon: Image.mt.load(.Apps), text: "储存空间"){}
+            
+            ProfileListRow(icon: Image.mt.load(.Apps), text: "认证技术顾问"){}
+            
+            ProfileListRow(icon: Image.mt.load(.Logo), text: "元宇宙硬币"){}
          
-            NavigationLink(destination: {
-                SettingView()
-                    .navigationBarHidden(true)
-            }, label: {
-            ProfileListRow(icon: Image.mt.load(.Setting), text: "设置")})
+            ProfileListRow(icon: Image.mt.load(.Setting), text: "设置"){
+                    showSettingView.toggle()
+                }
         }
            
     
@@ -129,15 +158,20 @@ struct LeftMenuView_Previews: PreviewProvider {
 struct ProfileListRow: View {
     var icon : Image
     var text : String
+    var action : ()->Void
     var body: some View {
-        HStack{
-            icon
-                .foregroundColor(.mt.gray_600)
-            Text(text)
-                .font(.mt.body1,textColor: .black)
-            Spacer()
+        Button {
+            action()
+        } label: {
+            HStack{
+                icon
+                    .foregroundColor(.mt.gray_600)
+                Text(text)
+                    .font(.mt.body1,textColor: .black)
+                Spacer()
+            }
+            .padding()
+            .padding(.horizontal)
         }
-        .padding()
-        .padding(.horizontal)
     }
 }

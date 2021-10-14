@@ -42,7 +42,6 @@ struct FindTestView: View {
             }
         }
         .frame(width: ScreenWidth())
-
         .mtNavbar(content: {
             Capsule().frame(width: 255, height: 32)
                 .foregroundColor(.mt.gray_200)

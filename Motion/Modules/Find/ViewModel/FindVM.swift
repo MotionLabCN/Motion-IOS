@@ -64,10 +64,8 @@ class FindVM: ObservableObject {
     
     init() {
         getItems()
-        
-        requestWithMenuList()
-        
-        requestWithProductList()
+//        requestWithMenuList()
+//        requestWithProductList()
     }
     
     func getItems() {
