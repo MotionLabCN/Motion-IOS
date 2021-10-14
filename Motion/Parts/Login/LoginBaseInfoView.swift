@@ -33,7 +33,6 @@ struct LoginBaseInfoView: View {
         .navigationBarItems(leading: EmptyView(), trailing:
             Button(action: {
                 vm.loginCompletion()
-            
             }, label: {
                 Text("跳过")
                     .font(.mt.body2.mtBlod(), textColor: .mt.gray_600)
@@ -54,7 +53,7 @@ struct LoginBaseInfoView: View {
         }, label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
-                .mtPlaceholderProgress(vm.logicBaseInfo.isRequesting, progressColor: .white)
+                .mtPlaceholderProgress(vm.requestStateForBaseInfo.isRequesting, progressColor: .white)
         })
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: vm.userName.isEmpty ? .center : .trailing)

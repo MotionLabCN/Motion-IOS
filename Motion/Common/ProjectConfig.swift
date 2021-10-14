@@ -16,12 +16,25 @@ struct ProjectConfig {
     case local, test
     }
     
-    static var baseUrl: String {
+    static var scheme: String { "http" }
+    
+    static var host: String {
         switch env {
-        case .local: return "http://192.168.0.224:8088"
-        case .test: return "http://192.168.0.224:8085"
+        case .local: return "192.168.0.224"
+        case .test: return "192.168.0.224"
         }
     }
+    
+    static var port: Int? {
+        switch env {
+        case .local: return 8088
+        case .test: return 8081
+        }
+    }
+    
+    static var firstPath: String? { nil }
+    
+  
     
 
 }

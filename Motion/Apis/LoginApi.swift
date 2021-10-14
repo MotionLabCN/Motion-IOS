@@ -13,8 +13,30 @@ enum LoginApi: CustomTargetType {
     case sendCode(p: SendCodeParameters)
     case loginInWithCode(p: PhoneLoginParameters)
     
-    var baseURL: URL { URL(string: "http://192.168.0.224:8800")! }
-
+    var host: String {
+//        switch self {
+//        case .sendCode: return "183.66.65.207"
+//        default: return ProjectConfig.host
+//        }
+        ProjectConfig.host
+    }
+    
+    var port: Int? {
+//        switch self {
+//        case .sendCode: return 8081
+//        default: return 8800
+//        }
+        8800
+    }
+    
+    var firstPath: String? {
+//        switch self {
+//        case .sendCode: return "api/authorization"
+//        default: return nil
+//        }
+        nil
+    }
+    
     
     var headers: [String: String]? {
         var headers = [

@@ -12,6 +12,8 @@ import Introspect
 struct LoginInputPhoneView: View {
     
     @EnvironmentObject var vm: LoginVM
+    @State var isPushCodeView = false 
+    
     var textFieldConfig = MTTextFieldStyle.Config()
     
     @State private var textFieldText = ""
@@ -41,23 +43,35 @@ struct LoginInputPhoneView: View {
             rightBtn
         }
         .padding(.horizontal, 36)
-        .mtNavBarLogo()        
+        .mtNavBarLogo()
+        .mtToast(isPresented: $vm.logicSendCode.toastisPresented, text: vm.logicSendCode.toastText)
+        .mtRegisterRouter(isActive: $isPushCodeView, destination: {
+            LoginValidateCodeView()
+                .environmentObject(vm)
+        })
+       
     }
     
     
     var rightBtn: some View {
     
         Button {
-            vm.clickNextAtInputPhone()
+            print("channle \(vm.channel)")
+            vm.sendCode(atPage: .inputPhone, completion: {
+                isPushCodeView = true
+            })
+//            if vm.channel == .手机验证码 {
+//                
+//            }
+//            
+//            if vm.channel == .github {
+//                print("绑定手机号")
+//            }
         } label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
-                .mtPlaceholderProgress(vm.logicSendCode.isRequesting, progressColor: .white)
+                .mtPlaceholderProgress(vm.sendCodeRequestStatus.isRequesting, progressColor: .white)
         }
-        .mtRegisterRouter(isActive: $vm.logicSendCode.isPushCodeView, destination: {
-            LoginValidateCodeView()
-                .environmentObject(vm)
-        })
         .mtButtonStyle(.cricleDefult(.black))
         .frame(maxWidth: .infinity, alignment: vm.phone.count < LoginVM.Constant.phoneMaxNum ? .center : .trailing)
         .mtAnimation(.spring())

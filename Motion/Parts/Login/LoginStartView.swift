@@ -22,6 +22,9 @@ struct LoginStartView: View {
     
     
     @StateObject private var vm = LoginVM()
+    @State private var isPushInputPhoneView = false
+    @State private var isShowLoginSheet = false
+
     
     var body: some View {
         ZStack {
@@ -42,15 +45,14 @@ struct LoginStartView: View {
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .navigationBarHidden(true)
-        .mtSheet(isPresented: $vm.logicStart.isShowLoginSheet, content: loginMethodSheetContent)
+        .mtSheet(isPresented: $isShowLoginSheet, content: loginMethodSheetContent)
         .mtTopProgress(vm.logicStart.isShowLoading, usingBackgorund: true)//网络加载
-        
-        .mtRegisterRouter(isActive: $vm.logicStart.isPushInputPhoneView) {
+        .mtRegisterRouter(isActive: $isPushInputPhoneView) {
             LoginInputPhoneView()
                 .environmentObject(vm)
         }
-      
-        
+       
+       
     }
     
 
@@ -126,7 +128,7 @@ struct LoginStartView: View {
     
     var startBtn: some View {
         Button("开始") {
-            vm.clickLoginStart()
+            isShowLoginSheet = true
         }
         .mtButtonStyle(.mainGradient)
         
@@ -181,9 +183,11 @@ struct LoginStartView: View {
                 .mtButtonStyle(.mainGradient)
             
             
-            
             Button(action: {
-                vm.loginInWithGithub()
+                vm.loginInWithGithub {
+                    isShowLoginSheet = false
+                    isPushInputPhoneView = true
+                }
             }, label: {
                 HStack {
                     Image.mt.load(.Github)
@@ -219,7 +223,10 @@ struct LoginStartView: View {
             }
             
             Button("其他手机号码登录")  {
-                vm.clickPhoneCodeLogin()
+                vm.channel = .手机验证码
+                
+                isShowLoginSheet = false
+                isPushInputPhoneView = true
             }
             .mtButtonStyle(.mainStorKer())
         }

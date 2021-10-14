@@ -19,8 +19,8 @@ struct MotionApp: App {
 
     var body: some Scene {
         WindowGroup {
+//            LiV()
             ContentView()
-//            MTActiveTestView()
                 .environmentObject(tabbarState)
                 .environmentObject(userManager)
                 .environmentObject(findViewPageindex)
