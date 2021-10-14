@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MotionComponents
+import Kingfisher
 
 struct CodepowerView: View {
     
@@ -95,8 +96,14 @@ struct CodepowerView: View {
                     Text("码力集市")
                         .font(.mt.title1.mtBlod(),textColor: .black)
                     Spacer()
-                Text("语言")
-                    .font(.mt.body2.mtBlod(),textColor: .black)
+                if vm.selectFindModel.subTitle.count > 0 {
+                    Text(vm.selectFindModel.subTitle)
+                        .font(.mt.body2.mtBlod(),textColor: .black)
+                }else {
+                    Text("全部")
+                        .font(.mt.body2.mtBlod(),textColor: .black)
+                }
+                
                 Button {
                     vm.isShowmtsheet.toggle()
                 } label: {
@@ -148,19 +155,73 @@ struct CodepowerView: View {
             spacing: 8,
             pinnedViews: .sectionFooters){
                 // vm.proList
-                ForEach(0..<10, id:\.self) { item in
+                ForEach(vm.proList) { item in
                     VStack(alignment: .leading, spacing: 4){
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        
+                        KFImage(URL(string: item.productImg))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Capsule(style: .continuous))
+                            .cornerRadius(12)
                             .frame(width:cardWidth, height: cardWidth * 1.6)
-                            .foregroundColor(.random)
-                        Text("SpringBoot")
+                            .clipShape(
+                //                Circle()// 圆角
+                                RoundedRectangle(cornerRadius: 20) //自定义角度
+                                
+                //                Ellipse() // 椭圆
+//                                Capsule(style: .circular)
+                //                Circle()
+                            )
+
+//                            .background(
+//                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+//                                    .frame(width:cardWidth, height: cardWidth * 1.6)
+//                                    .foregroundColor(.random)
+//                            )
+                            
+                        
+                        Text(item.productName)
                             .font(.mt.body2.bold(),textColor: .black)
-                        Text("¥2,392.00")
+                        Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
                             .font(.mt.body2.bold(),textColor: .mt.accent_800)
+                        Spacer(minLength: 10)
+                        HStack {
+                            KFImage(URL(string: item.authorHeadImgUrl))
+                                .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                    .background(
+                                        Circle()
+                                            .frame(width: 30, height: 30)
+                                            .foregroundColor(.random)
+                                    )
+                            Text(item.authorNickname)
+                                .font(.mt.body3, textColor: .mt.gray_500)
+                            
+                            Spacer()
+                            
+                        Text(item.countBrowses)
+                            .font(.mt.body3, textColor: .mt.gray_500)
+                        }
                     }
                 }
             }
+        
+//        func fetchRemoteImage() //用来下载互联网上的图片
+//            {
+//                guard let url = URL(string: "http://hdjc8.com/images/logo.png") else { return } //初始化一个字符串常量，作为网络图片的地址
+//                URLSession.shared.dataTask(with: url){ (data, response, error) in //执行URLSession单例对象的数据任务方法，以下载指定的图片
+//                    if let image = UIImage(data: data!){
+//                        self.remoteImage = image //当图片下载成功之后，将下载后的数据转换为图像，并存储在remoteImage属性中
+//                    }
+//                    else{
+//                        print(error ?? "") //如果图片下载失败之后，则在控制台输出错误信息
+//                    }
+//                }.resume() //通过执行resume方法，开始下载指定路径的网络图片
+//            }
     }
+
 }
 
 //struct CodepowerView_Previews: PreviewProvider {

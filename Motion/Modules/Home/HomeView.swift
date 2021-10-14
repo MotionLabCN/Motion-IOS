@@ -50,7 +50,7 @@ struct HomeView: View {
         }
                   , trailing: {
             NavigationLink {
-                NotificationView()
+                NoticeListView()
             } label: {
                 Image.mt.load(.Mail)
              .foregroundColor(.mt.gray_800)
