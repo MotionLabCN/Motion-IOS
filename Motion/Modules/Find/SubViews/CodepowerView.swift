@@ -95,19 +95,13 @@ struct CodepowerView: View {
                 Text("码力集市")
                     .font(.mt.title1.mtBlod(),textColor: .black)
                 Spacer()
-                //                if vm {
-                                    Text(vm.selectFindModel.subTitle)
-                                        .font(.mt.body2.mtBlod(),textColor: .black)
-                //                }else {
-                //                    Text("全部")
-                //                        .font(.mt.body2.mtBlod(),textColor: .black)
-                //                }
                 
-//                Text("全部")
-//                    .font(.mt.body2.mtBlod(),textColor: .black)
+                Text(vm.selectFindModel.subTitle)
+                    .font(.mt.body2.mtBlod(),textColor: .black)
                 
                 Button {
                     vm.isShowmtsheet.toggle()
+                    vm.requestWithMenuList()
                 } label: {
                     Image.mt.load(.Filter_list)
                         .foregroundColor(.red)

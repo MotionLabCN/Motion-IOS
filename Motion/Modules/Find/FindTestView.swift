@@ -41,8 +41,11 @@ struct FindTestView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            print("sssss")
+        })
         .frame(width: ScreenWidth())
-
+        
         .mtNavbar(content: {
             Capsule().frame(width: 255, height: 32)
                 .foregroundColor(.mt.gray_200)
@@ -63,6 +66,9 @@ struct FindTestView: View {
         .mtSheet(isPresented: $findVM.isShowmtsheet) {} content: {
             VStack {
                 CodeItemList
+                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
+                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
+                
                 HStack(spacing:20) {
                     Button {
                         print("\(findVM.selectFindModel.subTitle)")
@@ -94,6 +100,8 @@ struct FindTestView: View {
 //            SecondItemListView
             ProductList
         }
+        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
+        .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
     }
     
     
@@ -126,6 +134,7 @@ struct FindTestView: View {
             .listStyle(PlainListStyle())
         }
     }
+    
     
     // MARK: 二级分类下列表数据
     var SecondItemListView: some View {
@@ -195,6 +204,7 @@ struct FindTestView: View {
                     switch findVM.selectCodeSelectStyle {
                     case .lang:
                         LangListView
+                        
                     case .to:
                         TechnologyListView
                         
@@ -313,7 +323,7 @@ struct FindTestView: View {
 //                findVM.updateItes(item: item)
 //            })
 //        }
-        ForEach(findVM.selectFindModel.data) { item in
+        ForEach(findVM.selectFindModel.priceList) { item in
             HStack {
                 Text(item.dictKey)
                     .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
