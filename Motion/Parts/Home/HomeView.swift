@@ -133,9 +133,13 @@ extension HomeView {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
 //                isShowPlaceholder.toggle()
-                isShowmtsheet.toggle()
-                TabbarState.shared.isShowTabbar = false 
+//                isShowmtsheet.toggle()
+//                TabbarState.shared.isShowTabbar = false
                
+                Networking.request(OSSApi.upload(images: [UIImage(named: "touxiang")!, UIImage(named: "touxiang")!])) { result in
+                    print("")
+                }
+                
             }, label: {
                 Text("查找朋友")
                     .mtButtonLabelStyle(.mainDefult())

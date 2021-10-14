@@ -102,6 +102,7 @@
 		DFF165912717C240004D1B72 /* LiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165902717C240004D1B72 /* LiVM.swift */; };
 		DFF165932717C2A8004D1B72 /* LiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165922717C2A8004D1B72 /* LiModel.swift */; };
 		DFF165952717EBBB004D1B72 /* ModifilerUserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */; };
+		DFF1659727181179004D1B72 /* OSSApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF1659627181179004D1B72 /* OSSApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		DFF165902717C240004D1B72 /* LiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiVM.swift; sourceTree = "<group>"; };
 		DFF165922717C2A8004D1B72 /* LiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiModel.swift; sourceTree = "<group>"; };
 		DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifilerUserInfoApi.swift; sourceTree = "<group>"; };
+		DFF1659627181179004D1B72 /* OSSApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +480,7 @@
 				A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */,
 				DF7061482715264F00761A19 /* CommunityServiceApi.swift */,
 				DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */,
+				DFF1659627181179004D1B72 /* OSSApi.swift */,
 				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 			);
 			path = Apis;
@@ -703,6 +706,7 @@
 				5A9155122704038800E8135F /* StorageView.swift in Sources */,
 				5AC8C6E526FC6B100075ABDA /* Ladder.swift in Sources */,
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
+				DFF1659727181179004D1B72 /* OSSApi.swift in Sources */,
 				5A6AB4AD2717E32600AED1B6 /* Motion.m in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
