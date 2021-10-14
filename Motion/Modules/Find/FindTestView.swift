@@ -41,8 +41,6 @@ struct FindTestView: View {
                 }
             }
         }
-
-        
         .frame(width: ScreenWidth())
 
         .mtNavbar(content: {
@@ -67,9 +65,8 @@ struct FindTestView: View {
                 CodeItemList
                 HStack(spacing:20) {
                     Button {
-                        
                         print("\(findVM.selectFindModel.subTitle)")
-                        
+                        findVM.clearItems()
                     } label: {
                         Text("重置")
                     }
@@ -182,9 +179,7 @@ struct FindTestView: View {
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
         
         ScrollView {
-            //            Rectangle()
-            //                .fill(Color.red)
-            //                .frame(height:100)
+            
             // 网格列表
             LazyVGrid(columns: columns,
                       alignment: .center,
@@ -207,7 +202,7 @@ struct FindTestView: View {
                         PriceListView
                         
                     default:
-                        Text("sdadad....")
+                        Text("加载中....")
                     }
                 }
             })

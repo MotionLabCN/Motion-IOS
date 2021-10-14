@@ -51,7 +51,7 @@ struct LoginSuccessInfo: Convertible {
         case unkown = "", 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
     }
     
-    var access_token = "" // = ""
+    var access_token = ""
     var token_type = "" //: "bearer",
     var refresh_token = "" //: "",
     var expires_in = 0 //: 28799,

@@ -37,7 +37,9 @@ class FindVM: ObservableObject {
     }
     
     // 当前记录二级选中索引
-    var selectDetail: Int = -1
+    var selectLangIndex: Int = 0
+    var selectTechnologyIndex: Int = 0
+    var selectPriceIndex: Int = 0
     
     enum CodeSelectStyle {
         case def,lang ,to ,price
@@ -85,10 +87,10 @@ extension FindVM {
     func requestWithMenuList() {
         // 语言
         let language = CodepowerApi.language(p: .init(group: "lang"))
-        Networking.requestObject(language, modeType: UserInfo.self) {[weak self] r, model in
+        Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
             // 成功...
-            if let model = model {
-                
+            if let list = list {
+                self?.itemList[0].data.append(contentsOf: list)
             }else {
                 //失败
                 let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
@@ -97,10 +99,10 @@ extension FindVM {
         }
         // 技术
         let technology = CodepowerApi.technology
-        Networking.requestObject(technology, modeType: UserInfo.self) {[weak self] r, model in
+        Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
             // 成功...
-            if let model = model {
-                
+            if let list = list {
+                self?.itemList[1].technologyList.append(contentsOf: list)
             }else {
                 let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
                 self?.itemList[1].technologyList.append(contentsOf: arr)
@@ -119,49 +121,69 @@ extension FindVM {
         ]
         
         let cars = json1.kj.modelArray(LangModel.self)
-        self.itemList[2].data.append(contentsOf: cars)
-        
-        
+        self.itemList[2].priceList.append(contentsOf: cars)
     }
     
     
     // MARK:产品列表接口
     func requestWithProductList() {
         
+        pageNum = 0
         switch selectCodeSelectStyle {
         case .def:
             labelIds = ""
             lang = ""
             price = ""
-            pageNum = 0
+            
         case .lang:
-            labelIds = ""
-            lang = itemList[0].data[selectDetail].dictValue
-            price = ""
-            pageNum = 0
+            if selectPriceIndex > -1 {
+                lang = itemList[0].data[selectLangIndex].dictValue
+            }
         case .to:
-            labelIds = itemList[1].technologyList[selectDetail].labelId
-            lang = ""
-            price = ""
-            pageNum = 0
+            if selectTechnologyIndex > -1 {
+                labelIds = itemList[1].technologyList[selectTechnologyIndex].labelId
+            }
         case .price:
-            labelIds = ""
-            lang = ""
-            price = itemList[2].data[selectDetail].dictValue
-            pageNum = 0
+            if selectPriceIndex > -1 {
+                price = itemList[2].data[selectPriceIndex].dictValue
+            }
         }
         
         let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
-        Networking.requestObject(technology, modeType: UserInfo.self) {[weak self] r, model in
+        Networking.requestArray(technology, modeType: CodeProductModel.self) {[weak self] r, list in
             // 成功...
-            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-            self?.proList.append(contentsOf: arr)
+            if let list = list {
+                self?.proList.append(contentsOf: list)
+            }else {
+                let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
+                self?.proList.append(contentsOf: arr)
+            }
         }
     }
 }
 
 // MARK: 模型处理模块
 extension FindVM {
+    //MARK: 重置数据
+    func clearItems() {
+        
+        selectCodeSelectStyle = .def
+        
+        
+        itemList[0].data[selectLangIndex].isSelect = false
+        itemList[1].technologyList[selectTechnologyIndex].isSelect = false
+        itemList[2].priceList[selectPriceIndex].isSelect = false
+        
+        selectLangIndex = 0
+        selectTechnologyIndex = 0
+        selectPriceIndex = 0
+        pageNum = 0
+        
+        lang = ""
+        price = ""
+        labelIds = ""
+    }
+    
     // MARK: 修改数据
     func updateItes(item: LangModel) {
         // 所有设置false
@@ -185,9 +207,19 @@ extension FindVM {
         if let index = selectFindModel.data.firstIndex(where: {$0.id == item.id}) {
             let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
             selectFindModel.data[index] = codeModel
-            itemList[selectIndex].data[index] = codeModel // 修改数据源
-            selectDetail = index
+            
+            if selectCodeSelectStyle == .lang {
+                selectLangIndex = index
+                itemList[selectIndex].data[index] = codeModel // 修改数据源
+                lang = codeModel.isSelect ? codeModel.dictValue : ""
+            }else {
+                selectPriceIndex = index
+                itemList[selectIndex].priceList[index] = codeModel // 修改数据源
+                price = codeModel.isSelect ? codeModel.dictValue : ""
+            }
+           
             itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
+            
         }
         isShowmtDetail.toggle()
     }
@@ -205,8 +237,9 @@ extension FindVM {
             let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
             selectFindModel.technologyList[index] = codeModel
             itemList[selectIndex].technologyList[index] = codeModel // 修改数据源
-            selectDetail = index
+            selectTechnologyIndex = index
             itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
+            labelIds = codeModel.isSelect ? codeModel.labelId : ""
         }
         isShowmtDetail.toggle()
     }
