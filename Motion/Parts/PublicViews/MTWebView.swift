@@ -20,7 +20,7 @@ struct MTWebView: View {
             ProgressView(value: webvm.estimatedProgress, total: 1)
                 .mtProgressLine(height: webvm.estimatedProgress < 0.8 ? 3 : 0)
                 .opacity(webvm.estimatedProgress < 0.8 ? 1 : 0)
-                .animation(.default.delay(0.2))
+                .mtAnimation(.default.delay(0.2))
             
             MTWebViewRepresentable(webView: webvm.webView)
                 .ignoresSafeArea(edges: .bottom)
@@ -29,6 +29,11 @@ struct MTWebView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             webvm.loadUrl(urlString: urlString)
+        }
+        .onDisappear {
+            withAnimation {
+                TabbarState.shared.isShowTabbar = true
+            }
         }
         
       

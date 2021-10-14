@@ -69,23 +69,27 @@ struct HomeView: View {
             print("mtTabbarKindChange \(kind)")
         })
         
-        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
-                VStack {
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-
-                    Button {
-                        isShowmtsheet = false
-                    } label: {
-                        Text("关闭")
-                    }
-                }
+        .mtRegisterRouter(isActive: $isShowmtsheet) {
+            MTWebView(urlString: "https://baidu.com")
         }
+        
+//        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
+//                VStack {
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//                    Text("currentOffsetY)")
+//
+//                    Button {
+//                        isShowmtsheet = false
+//                    } label: {
+//                        Text("关闭")
+//                    }
+//                }
+//        }
 
         
     }
@@ -130,6 +134,7 @@ extension HomeView {
             Button(action: {
 //                isShowPlaceholder.toggle()
                 isShowmtsheet.toggle()
+                TabbarState.shared.isShowTabbar = false 
                
             }, label: {
                 Text("查找朋友")
@@ -140,6 +145,7 @@ extension HomeView {
                     )
             })
                 .mtTapAnimation(style: .overlayOrScale())
+                
             
         }
     
