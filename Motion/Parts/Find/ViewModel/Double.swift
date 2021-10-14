@@ -20,7 +20,7 @@ extension Double {
         formatter.numberStyle = .currency
 //        formatter.locale = .current// 默认
 //        formatter.currencyCode = "usd"// 默认
-        formatter.currencySymbol = "¥ " // 默认美元符号
+        formatter.currencySymbol = "¥" // 默认美元符号
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         return formatter
@@ -28,11 +28,11 @@ extension Double {
     
     /// 浮点型字符转换为货币格式 保留二位小数
     /// ```
-    /// Conver 1234.56 to $1,234.56
+    /// Conver 1234.56 to 1,234.56
     ///```
     func asCurrencyWith2Decimals() -> String {
         let number = NSNumber(value: self)
-        return currencyFormatter2.string(from: number) ?? "$0.00"
+        return currencyFormatter2.string(from: number) ?? "¥0.00"
     }
     
     /// double类型转换为保留二位小数的字符串

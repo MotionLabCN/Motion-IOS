@@ -39,6 +39,11 @@
 		5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53376B26FB5FA900949087 /* PostDetailView.swift */; };
 		5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A53377426FC116600949087 /* MTLocUserAvatar.swift */; };
 		5A5842D526F4CDE100311388 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5842D426F4CDE100311388 /* MessageView.swift */; };
+		5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB49D2717D47300AED1B6 /* OrderView.swift */; };
+		5A6AB4A32717E26E00AED1B6 /* UMAnalyticsSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB4A02717E26E00AED1B6 /* UMAnalyticsSwift.swift */; };
+		5A6AB4A42717E26E00AED1B6 /* UMCommonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB4A12717E26E00AED1B6 /* UMCommonSwift.swift */; };
+		5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB4A22717E26E00AED1B6 /* UmMd.swift */; };
+		5A6AB4AD2717E32600AED1B6 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AB4AC2717E32600AED1B6 /* Motion.m */; };
 		5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF526F1DE240026D870 /* NotificationView.swift */; };
 		5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFF726F1DFDF0026D870 /* TeamView.swift */; };
 		5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EBFFA26F20CC40026D870 /* SettingView.swift */; };
@@ -107,6 +112,12 @@
 		5A53376B26FB5FA900949087 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		5A53377426FC116600949087 /* MTLocUserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLocUserAvatar.swift; sourceTree = "<group>"; };
 		5A5842D426F4CDE100311388 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		5A6AB49D2717D47300AED1B6 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		5A6AB4A02717E26E00AED1B6 /* UMAnalyticsSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMAnalyticsSwift.swift; sourceTree = "<group>"; };
+		5A6AB4A12717E26E00AED1B6 /* UMCommonSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMCommonSwift.swift; sourceTree = "<group>"; };
+		5A6AB4A22717E26E00AED1B6 /* UmMd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UmMd.swift; sourceTree = "<group>"; };
+		5A6AB4A62717E2D000AED1B6 /* Motion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Motion-Bridging-Header.h"; sourceTree = "<group>"; };
+		5A6AB4AC2717E32600AED1B6 /* Motion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		5A7EBFF526F1DE240026D870 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5A7EBFF726F1DFDF0026D870 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		5A7EBFFA26F20CC40026D870 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -215,6 +226,16 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		5A6AB49F2717E26E00AED1B6 /* UMSwift */ = {
+			isa = PBXGroup;
+			children = (
+				5A6AB4A02717E26E00AED1B6 /* UMAnalyticsSwift.swift */,
+				5A6AB4A12717E26E00AED1B6 /* UMCommonSwift.swift */,
+				5A6AB4A22717E26E00AED1B6 /* UmMd.swift */,
+			);
+			path = UMSwift;
+			sourceTree = "<group>";
+		};
 		5A7EBFF926F20CAD0026D870 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				5AC2146626F3787300D4457C /* ProfileView.swift */,
+				5A6AB49D2717D47300AED1B6 /* OrderView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -415,7 +437,10 @@
 				DF92E5AB271663FA005FD4E5 /* Motion.entitlements */,
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
+				5A6AB4A62717E2D000AED1B6 /* Motion-Bridging-Header.h */,
+				5A6AB4AC2717E32600AED1B6 /* Motion.m */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
+				5A6AB49F2717E26E00AED1B6 /* UMSwift */,
 				DFEB1D2B2704506600B7C1DB /* Apis */,
 				DFECAB0B26F30D9D00AB192C /* Models */,
 				DF4145B626F1B1C700DD5F9F /* Parts */,
@@ -488,6 +513,7 @@
 				DFE0C0A626E783CE00EDB44F /* Frameworks */,
 				DFE0C0A726E783CE00EDB44F /* Resources */,
 				4D83E138F4EA809BCB997C10 /* [CP] Embed Pods Frameworks */,
+				322CEBC849CFED08A116AE3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -509,6 +535,7 @@
 				TargetAttributes = {
 					DFE0C0A826E783CE00EDB44F = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1300;
 					};
 					DFE0C0BE26E784C500EDB44F = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -557,6 +584,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		322CEBC849CFED08A116AE3C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4D83E138F4EA809BCB997C10 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,10 +684,12 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
+				5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
+				5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
 				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
@@ -657,10 +703,12 @@
 				5A9155122704038800E8135F /* StorageView.swift in Sources */,
 				5AC8C6E526FC6B100075ABDA /* Ladder.swift in Sources */,
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
+				5A6AB4AD2717E32600AED1B6 /* Motion.m in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
 				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
 				A0731B44271522D200A6FF79 /* FindTestView.swift in Sources */,
+				5A6AB4A32717E26E00AED1B6 /* UMAnalyticsSwift.swift in Sources */,
 				DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */,
 				DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */,
 				A071104A271125E500963385 /* NoticeListView.swift in Sources */,
@@ -690,6 +738,7 @@
 				5A53377526FC116600949087 /* MTLocUserAvatar.swift in Sources */,
 				DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */,
 				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
+				5A6AB4A42717E26E00AED1B6 /* UMCommonSwift.swift in Sources */,
 				DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */,
 				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
 				DFF1658F2717C140004D1B72 /* ListApi.swift in Sources */,
@@ -821,9 +870,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -833,10 +883,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.001;
+				MARKETING_VERSION = 1.0.004;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Motion/Motion-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -848,9 +900,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -860,10 +913,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.001;
+				MARKETING_VERSION = 1.0.004;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Motion/Motion-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
