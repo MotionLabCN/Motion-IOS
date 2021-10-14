@@ -17,7 +17,7 @@ class LoginVM: ObservableObject {
     
     private(set) var channel: LoginSuccessInfo.ChannelType = .unkown {
         didSet {
-            phone = "15527864162"
+            phone = "15271327766"
         }
     }
 

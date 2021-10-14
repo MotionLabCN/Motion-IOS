@@ -72,7 +72,6 @@ extension ContentView {
                 HomeView()
             }
             .tag(MTTabbar.Kind.home)
-            //                .opacity(tabbarState.selectedKind == .home ? 1: 0)
             
             NavigationView {
                 FindTestView()
