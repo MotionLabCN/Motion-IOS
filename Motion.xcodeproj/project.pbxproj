@@ -426,10 +426,10 @@
 			isa = PBXGroup;
 			children = (
 				DF92E5AB271663FA005FD4E5 /* Motion.entitlements */,
-				5A6AB4A62717E2D000AED1B6 /* Motion-Bridging-Header.h */,
-				5A6AB4AC2717E32600AED1B6 /* Motion.m */,
 				DFE0C0AC26E783CE00EDB44F /* MotionApp.swift */,
 				DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */,
+				5A6AB4A62717E2D000AED1B6 /* Motion-Bridging-Header.h */,
+				5A6AB4AC2717E32600AED1B6 /* Motion.m */,
 				DFE0C0BB26E7848400EDB44F /* Common */,
 				5A6AB49F2717E26E00AED1B6 /* UMSwift */,
 				DFEB1D2B2704506600B7C1DB /* Apis */,

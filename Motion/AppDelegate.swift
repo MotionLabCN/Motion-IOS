@@ -12,10 +12,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         AppearConfig.config()
         
+        UMRUN()
+        
+        return true
+    }
+    
+
+}
+
+
+func UMRUN(){
+    DispatchQueue.global().async {
         UMAnalyticsSwift().run()
         UMAnalyticsSwift.beginLogPageView(pageName: "首页")
         UMCommonSwift().run()
-        
-        return true
     }
 }

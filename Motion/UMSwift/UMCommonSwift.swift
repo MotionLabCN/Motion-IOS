@@ -10,7 +10,6 @@ import Foundation
 
 class UMCommonSwift: NSObject {
     
-    
   
     func run(){
         UMCommonSwift.initWithAppkey(appKey: "6167aa2314e22b6a4f2138b6", channel: "Apple Store")
