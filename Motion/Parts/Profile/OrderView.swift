@@ -179,7 +179,6 @@ struct OrderList: View {
                     Spacer()
                     Text("待支付")
                         .font(.mt.body3, textColor: .mt.gray_900)
-                    
                 }
                 Text("价格")
                 

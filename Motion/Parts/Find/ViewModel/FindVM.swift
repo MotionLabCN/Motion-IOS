@@ -78,8 +78,7 @@ class FindVM: ObservableObject {
     
     init() {
         getItems()
-//        requestWithMenuList()
-        
+//      requestWithMenuList()
         requestWithProductList()
     }
     
@@ -108,13 +107,13 @@ extension FindVM {
     // MARK: 获取码力数据
     func requestWithMenuList() {
         // 显示加载
-        self.logicCode.isRequesting = true
+//        self.logicCode.isRequesting = true
 
         // 语言https
         let language = CodepowerApi.language(p: .init(group: "lang"))
         Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
             // 成功...
-            self?.logicCode.isRequesting = false
+//            self?.logicCode.isRequesting = false
             
             if let list = list {
                 self?.itemList[0].data = list

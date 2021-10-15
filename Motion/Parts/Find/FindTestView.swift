@@ -65,8 +65,8 @@ struct FindTestView: View {
         .mtSheet(isPresented: $findVM.isShowmtsheet) {} content: {
             VStack {
                 CodeItemList
-                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
-                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
+//                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
+//                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
                 
                 HStack(spacing:20) {
                     Button {
@@ -76,12 +76,12 @@ struct FindTestView: View {
                         Text("重置")
                     }
                     .mtButtonStyle(.smallStorker(isEnable: true))
-
+                    
                     Button {
                         findVM.isShowmtsheet.toggle()
                         
                         // 请求接口
-                        findVM.requestWithProductList()
+                    findVM.requestWithProductList()
                         
                     } label: {
                         Text("应用")
@@ -101,7 +101,7 @@ struct FindTestView: View {
 //            SecondListView()
 //                .environmentObject(findVM)
         }
-        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
+//        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
     }
     
