@@ -12,7 +12,7 @@ import MotionComponents
 enum LoginApi: CustomTargetType {
     case sendCode(p: SendCodeParameters)
     case loginInWithCode(p: PhoneLoginParameters)
-    
+    case apple(p: AppleParameters)
     var host: String {
 //        switch self {
 //        case .sendCode: return "183.66.65.207"
@@ -59,12 +59,13 @@ enum LoginApi: CustomTargetType {
         switch self {
         case .sendCode: return "verification/code/motion"
         case .loginInWithCode: return "oauth/token"
+        case .apple: return "union/login/apple/callback"
         }
     }
     
     var method: HTTPRequestMethod {
         switch self {
-        case .loginInWithCode: return .post
+        case .loginInWithCode, .apple: return .post
         default: return .get
         }
     }
@@ -73,6 +74,7 @@ enum LoginApi: CustomTargetType {
         switch self {
         case let .sendCode(p): return p.kj.JSONObject()
         case let .loginInWithCode(p): return p.kj.JSONObject()
+        case let .apple(p): return p.kj.JSONObject()
         }
     }
     
@@ -111,6 +113,11 @@ extension LoginApi {
         var scope = "all"
         var device = "ios"
         var motion = "1"
+    }
+    
+    struct AppleParameters: Convertible {
+        var appleIdentityToken = ""
+        var appleUserId = ""
     }
     
 }

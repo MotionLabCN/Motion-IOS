@@ -44,7 +44,9 @@ struct CodepowerView: View {
                 if vm.proList.count > 0 {
                     productList
                 } else {
+                    
                     Text("暂无数据")
+                        .font(.mt.body1.mtBlod(),textColor: .mt.gray_600)
                         .padding(.horizontal,16)
                         .frame(height:200)
                 }
@@ -68,7 +70,7 @@ struct CodepowerView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal,70)
             
-            Text("基于去中心化的分布式存储协议，享受存储服务的同时。")
+            Text("中小企业以灵活用工的方式落地现代技术方案。")
                 .font(.mt.body2,textColor: .mt.gray_500)
                 .lineSpacing(6)
                 .padding(.horizontal,56)
@@ -154,11 +156,14 @@ struct CodepowerView: View {
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
         
+        let arr = vm.proList
+        
         LazyVGrid(
             columns:columns,
             alignment: .center,
             spacing: 8,
             pinnedViews: .sectionFooters) {
+                
                 // vm.proList
                 ForEach(vm.proList) { item in
                     VStack(alignment: .leading, spacing: 8) {

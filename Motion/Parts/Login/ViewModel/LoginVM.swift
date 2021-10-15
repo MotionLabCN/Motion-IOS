@@ -217,6 +217,52 @@ class LoginVM: ObservableObject {
         })
     }
     
+    // apple登录
+    func loginInWithApple(preparePush: @escaping (() -> Void)) {
+        /// 获取苹果token
+//        Networking.request(LoginApi.apple(p: .init(appleIdentityToken: "eyJraWQiOiJZdXlYb1kiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwcGxlaWQuYXBwbGUuY29tIiwiYXVkIjoiY29tLnRudGxpbmtpbmcubW90aW9uIiwiZXhwIjoxNjM0MzQ3MTI5LCJpYXQiOjE2MzQyNjA3MjksInN1YiI6IjAwMDIxNS4wYjAyOGE1NDc0YWE0N2YwODVhN2Y0YzcwZWRkZmZhNC4wMDQ3IiwiY19oYXNoIjoicnVHR3Awd0VyWTRKSk13VHVDRXEtdyIsImF1dGhfdGltZSI6MTYzNDI2MDcyOSwibm9uY2Vfc3VwcG9ydGVkIjp0cnVlfQ.nhTf8yeNlf6FZ91rdsd5_BOAET_1_Y2F0LLFRJh4CdkdD1h39BxUmyZwvKOFJw3W-qvy7PyUKaGL37eXYUOnM5V326bjbDvmrxZk3KB84W0Eq6hy9CBUePZ_flnOntfmGb_s9gvepjI2SfIHHw5vIUmvtXEV213PxXpke8huBmJvGs4h6lIx7I__nuwPuuy8fBAi21Hp7PmKWwtLvOewyOsjkjQ7v_85_k55AzQ30kY2XNcIVN1Rl5tUdI2-1_maeulo2Nsoi0lGWJ2I4cYl07gdxzlvtj1bCpQe5R_cuSxyClyObI_cNoNVG7xhQdMTz6FYwQU0WQfEtQRrvT0cQA", appleUserId: "000215.0b028a5474aa47f085a7f4c70eddffa4.0047"))) { [weak self] result in
+//            let token = result.dataJson?["access_token"].string ?? ""
+//            UserManager.shared.loginSusscessSaveToken(LoginSuccessInfo(access_token: token), channel: .apple)
+//            // 调用接口信息
+//            // 去绑定手机号
+//            self?.getUserInfo()
+//
+//        }
+        
+        
+        channel = .apple
+        logicStart.isShowLoading = true
+        hanlderPushBlock = preparePush
+
+        ThirdAuth.shared.signIn(platform: .apple, completion: { [weak self] response in
+            guard let self = self  else {
+                return
+            }
+
+            guard  let res = response else {
+                self.logicStart.isShowToast = true
+                self.logicStart.toastText = "Apple登录失败"
+                self.logicStart.isShowLoading = false
+                return
+            }
+            switch res.response {
+            case let .apple(r):
+                /// 获取苹果token
+                Networking.request(LoginApi.apple(p: .init(appleIdentityToken: r.appleIdentityToken, appleUserId: r.appleUserid))) { [weak self] result in
+                    let token = result.dataJson?["access_token"].string ?? ""
+                    UserManager.shared.loginSusscessSaveToken(LoginSuccessInfo(access_token: token), channel: .apple)
+                    // 调用接口信息
+                    // 去绑定手机号
+                    self?.getUserInfo()
+
+                }
+            default: break
+            }
+
+
+        })
+    }
+    
     // 手机号验证码登录时
     @Published var isGetUserInfo = false
     func getUserInfo() {
@@ -251,7 +297,7 @@ class LoginVM: ObservableObject {
                 }
             case .一键手机登陆: break
             case .github, .apple: //绑定手机号
-                if UserManager.shared.user.mobileAuth { //已经授权了
+                if m.mobileAuth { //已经授权了
                     self.loginCompletion()
                 } else { // 去绑定手机号
                     self.hanlderPushBlock?()

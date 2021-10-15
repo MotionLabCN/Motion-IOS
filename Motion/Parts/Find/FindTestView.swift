@@ -32,9 +32,9 @@ struct FindTestView: View {
                         CodepowerView()
                             .environmentObject(findVM)
                         Ladder()
-                        
+
                         OpenSourceLibrary()
-                        
+
                         RecommendView()
                     }
                     .frame(width: ScreenWidth())

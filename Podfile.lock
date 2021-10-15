@@ -5,7 +5,7 @@ PODS:
   - Introspect (0.1.3)
   - KakaJSON (1.1.2)
   - KeychainAccess (4.2.2)
-  - Kingfisher (7.1.0)
+  - Kingfisher (6.0.1)
   - lottie-ios (3.2.3)
   - MotionComponents (0.1.0):
     - MotionComponents/Extensions (= 0.1.0)
@@ -39,7 +39,7 @@ PODS:
 
 DEPENDENCIES:
   - Introspect
-  - Kingfisher
+  - Kingfisher (~> 6.0.0)
   - lottie-ios
   - MotionComponents (from `./MotionComponents`)
   - UMCCommonLog
@@ -74,7 +74,7 @@ SPEC CHECKSUMS:
   Introspect: 2be020f30f084ada52bb4387fff83fa52c5c400e
   KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  Kingfisher: cdabaf49be7ee7cc124f0f276b355edf61903cf8
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   MotionComponents: 9513f9572f3a4901392b63089a22f01d807f68ed
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
@@ -84,6 +84,6 @@ SPEC CHECKSUMS:
   UMCommon: ab4d875ddefe1b06c60b577e4a58bc4d433ee067
   UMDevice: c13bbb2e8ca6c67d1e23e03162553e3ec5a8b5b0
 
-PODFILE CHECKSUM: 39c6bb38e194f528bdd60bd769ad630b46ce41f9
+PODFILE CHECKSUM: bc0bbb7fd1f18d310f428d2fa92ffbbb4c90d948
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.2

@@ -66,7 +66,11 @@ class FindVM: ObservableObject {
     
     //MARK: 产品接口模块 and 数据模型
     // 产品列表接口参数
-    @Published var proList: [CodeProductModel] = []
+    @Published var proList: [CodeProductModel] = [] {
+        didSet {
+            print("==proList did set")
+        }
+    }
     var pageNum: Int = 0
     var lang: String = ""
     var price: String = ""
@@ -384,7 +388,7 @@ struct TechnologyModel: Identifiable, Convertible {
 }
 
 struct CodeProductModel: Identifiable, Convertible {
-    var id: String = UUID().uuidString
+    var id: String { productId }
     var productId = "" //:"2c9780827c30630d017c306c65600000",
     var productName = ""//:"网站后台权限管理系统",
     var productLang = ""//:"Java",
