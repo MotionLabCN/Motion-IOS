@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 func UMRUN(){
-    DispatchQueue.global().async {
+    
         UMAnalyticsSwift().run()
         UMAnalyticsSwift.beginLogPageView(pageName: "首页")
         UMCommonSwift().run()
-    }
+    
 }
