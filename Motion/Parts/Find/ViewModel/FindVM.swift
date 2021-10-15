@@ -66,7 +66,11 @@ class FindVM: ObservableObject {
     
     //MARK: 产品接口模块 and 数据模型
     // 产品列表接口参数
-    @Published var proList: [CodeProductModel] = []
+    @Published var proList: [CodeProductModel] = [] {
+        didSet {
+            print("==proList did set")
+        }
+    }
     var pageNum: Int = 0
     var lang: String = ""
     var price: String = ""
@@ -76,7 +80,7 @@ class FindVM: ObservableObject {
         getItems()
 //        requestWithMenuList()
         
-//        requestWithProductList()
+        requestWithProductList()
     }
     
     func getItems() {
@@ -210,12 +214,12 @@ extension FindVM {
         Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
             // 成功...
             self?.logicProduct.isRequesting = false
-//            if let list = list {
-//                self?.proList.append(contentsOf: list)
-//            }else {
-//                self?.logicProduct.toastText = "请求失败"
-//                self?.logicProduct.isShowToast = true
-//            }
+            if let list = list {
+                self?.proList.append(contentsOf: list)
+            }else {
+                self?.logicProduct.toastText = "请求失败"
+                self?.logicProduct.isShowToast = true
+            }
             
             let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
             self?.proList.append(contentsOf: arr)
@@ -386,7 +390,7 @@ struct TechnologyModel: Identifiable, Convertible {
 }
 
 struct CodeProductModel: Identifiable, Convertible {
-    var id: String = UUID().uuidString
+    var id: String { productId }
     var productId = "" //:"2c9780827c30630d017c306c65600000",
     var productName = ""//:"网站后台权限管理系统",
     var productLang = ""//:"Java",
