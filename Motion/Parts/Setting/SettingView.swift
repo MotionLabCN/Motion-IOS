@@ -68,11 +68,11 @@ struct SettingView: View {
                     //用户名称
                     VStack(alignment: .leading, spacing: 4)  {
                         
-                        Text("梁泽")
+                        Text("Motion用户")
                             .font(.mt.body1.mtBlod(),textColor :.mt.gray_900)
                             .multilineTextAlignment(.leading)
                         //用户昵称
-                        Text("@" + "liangze")
+                        Text("@" + "motion")
                             .font(.mt.body3,textColor: .mt.gray_600)
                         Spacer()
 

@@ -13,30 +13,26 @@ enum LoginApi: CustomTargetType {
     case sendCode(p: SendCodeParameters)
     case loginInWithCode(p: PhoneLoginParameters)
     case apple(p: AppleParameters)
-    var host: String {
-//        switch self {
-//        case .sendCode: return "183.66.65.207"
-//        default: return ProjectConfig.host
-//        }
-        ProjectConfig.host
-    }
-    
+  
+    var host: String { ProjectConfig.host }
+
     var port: Int? {
-//        switch self {
-//        case .sendCode: return 8081
-//        default: return 8800
-//        }
         8800
     }
     
     var firstPath: String? {
-//        switch self {
-//        case .sendCode: return "api/authorization"
-//        default: return nil
-//        }
-        nil
+        if ProjectConfig.env == .local {
+            return nil
+        }
+        
+        switch self {
+        case .loginInWithCode:
+            return "api/authorization"
+        default: return nil
+        }
+        
     }
-    
+
     
     var headers: [String: String]? {
         var headers = [

@@ -17,7 +17,8 @@ class LoginVM: ObservableObject {
     
     var channel: LoginSuccessInfo.ChannelType = .unkown {
         didSet {
-            phone = "15271327766"
+//            phone = "15271327766"
+            phone = ""
         }
     }
 
@@ -53,7 +54,7 @@ class LoginVM: ObservableObject {
     }
     
     /// 基础资料
-    @Published var userName = "梁泽"
+    @Published var userName = ""
     
     private var accountIsExsit = false
     var userInfo: UserInfo?

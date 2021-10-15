@@ -43,7 +43,7 @@ struct PostCell: View {
     
     var name: some View {
         HStack(spacing: 0) {
-            Text("赵翔宇")
+            Text("Motion用户")
                 .font(.mt.body2.mtBlod(), textColor: .black)
             Text("@usernickname")
                 .font(.mt.body2, textColor: .mt.gray_600)

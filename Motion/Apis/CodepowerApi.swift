@@ -22,7 +22,9 @@ enum CodepowerApi: MTTargetType {
     case technology
     case productList(p:ProductListParameters)
     
-    var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
+//    var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
+    // 以后这里可以直接写host port 
+    var port: Int? { 8802 }
 
     var path: String {
         switch self {

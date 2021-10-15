@@ -19,7 +19,7 @@ public extension MoyaProviderType {
                                        progress: Moya.ProgressBlock? = .none,
                                        completion: @escaping (MoyaResult, T?) -> Void ) -> Cancellable {
         return request(target, callbackQueue: callbackQueue, progress: progress) { r in
-            let m = try? r.rawReponse?.mapObject(T.self, atKeyPath: keyPath)
+            let m = r.rawReponse?.mapObject(T.self, atKeyPath: keyPath)
             completion(r, m)
         }
     }
@@ -32,7 +32,7 @@ public extension MoyaProviderType {
                                       progress: Moya.ProgressBlock? = .none,
                                       completion: @escaping (MoyaResult, [T]?) -> Void ) -> Cancellable {
         return request(target, callbackQueue: callbackQueue, progress: progress) { r in
-            let ms = try? r.rawReponse?.mapArray(T.self, atKeyPath: keyPath)
+            let ms = r.rawReponse?.mapArray(T.self, atKeyPath: keyPath)
             completion(r, ms)
         }
     }

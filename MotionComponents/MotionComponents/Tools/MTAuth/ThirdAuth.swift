@@ -172,7 +172,7 @@ extension ThirdAuth: ASAuthorizationControllerDelegate {
     // Error in authorization
     public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         let er =  error as? ASAuthorizationError
-        let nser = error as? NSError
+//        _ = error as? NSError
         switch er?.code {
         case .canceled:
             print("用户取消")

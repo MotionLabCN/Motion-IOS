@@ -49,7 +49,7 @@ struct MockTool {
     
     /// 示例
     static func using() {
-        let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs")
+//        let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs")
         print("")
     }
 }

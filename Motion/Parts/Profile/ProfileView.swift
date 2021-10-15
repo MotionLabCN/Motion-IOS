@@ -123,9 +123,10 @@ struct ProfileView: View {
         VStack(alignment:.center, spacing:8){
             
             MTLocUserAvatar( frame: 82)
+                .disabled(true)
             
             VStack(alignment:.center, spacing:0){
-                Text("赵翔宇")
+                Text("Motion用户")
                     .font(.mt.body1.mtBlod(),textColor: .black)
                 Text("@liseami")
                     .font(.mt.body3,textColor: .mt.gray_600)

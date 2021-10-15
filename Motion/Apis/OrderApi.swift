@@ -7,7 +7,7 @@
 
 import MotionComponents
 /* URL
-    代码订单: https://ttchain.tntlinking.com/api/order/order/code/consume/page?page=0&size=10&name=&sort=
+ 代码订单: https://ttchain.tntlinking.com/api/order/order/code/consume/page?page=0&size=10&name=&sort=
  
  */
 enum OrderApi: MTTargetType {
@@ -24,20 +24,21 @@ enum OrderApi: MTTargetType {
             case .storeOrder: return "/"
             }
         }
-        
-        var method: HTTPRequestMethod {
-            switch self {
-            case .codeOrder: return .get
-            case .storeOrder: return .get
-            }
+    }
+    
+    var method: HTTPRequestMethod {
+        switch self {
+        case .codeOrder: return .get
+        case .storeOrder: return .get
         }
-        
-        var parameters: [String : Any]? {
-            switch self {
-            case let .codeOrder(p): return p.kj.JSONObject()
-            case let .storeOrder(p): return p.kj.JSONObject()
-            }
+    }
+    
+    var parameters: [String : Any]? {
+        switch self {
+        case let .codeOrder(p): return p.kj.JSONObject()
+        case let .storeOrder(p): return p.kj.JSONObject()
         }
+    }
 }
 
 
