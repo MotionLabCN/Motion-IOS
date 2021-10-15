@@ -14,9 +14,7 @@ struct LaunchView: View {
     var body: some View {
         ZStack{
             Color.white.ignoresSafeArea()
-          
             VStack(spacing:-12){
-             
                 if Step  > 1  {
                     Text("让技术发生")
                         .kerning(12)
@@ -26,12 +24,13 @@ struct LaunchView: View {
                         .transition(.move(edge: .top))
                 }
             }
-             
                 MTLottieView(lottieFliesName: "Launch", loopMode: .loop)
-                    .animation(.spring())
                     .transition(.opacity)
                     .frame(width:  ScreenWidth() * 0.7)
-                    .offset(x:Step == 2 ? ScreenWidth() : Step == 1 ? 0 : 0)
+                    .scaleEffect(Step == 2 ? 100 : Step == 1 ? 1 : 1)
+                    .offset(y: Step == 2 ? 160 : Step == 1 ? 1 : 1)
+                    .animation(.spring())
+                    
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
