@@ -17,7 +17,6 @@ class UMCommonSwift: NSObject {
 //        UMCommonSwift.setEncryptEnabled(value: true)
     }
     
-    
     /** 初始化友盟所有组件产品
      @param appKey 开发者在友盟官网申请的appkey.
      @param channel 渠道标识，可设置nil表示"App Store".
