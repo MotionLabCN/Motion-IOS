@@ -161,13 +161,13 @@ struct CodepowerView: View {
     var filter : some View {
         HStack{
             Text("语言:\(vm.selectLang)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Text("技术:\(vm.selectTec)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Text("价格:\(vm.selectPrice)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Spacer()
             
@@ -227,11 +227,11 @@ struct CodepowerView: View {
                         vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
                     }
                         Text(item.productName)
-                            .font(.mt.body1.bold(),textColor: .black)
+                            .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(2)
                         HStack(spacing:4){
                             Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
-                                .font(.mt.body2.bold(),textColor: .mt.accent_800)
+                                .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             Spacer()
                         }
                     }
@@ -280,11 +280,11 @@ struct CodepowerView_Previews: PreviewProvider {
 //
 //VStack(alignment: .leading, spacing: 8){
 //    Text(item.productName)
-//        .font(.mt.body1.bold(),textColor: .black)
+//        .font(.mt.body1.mtBold(),textColor: .black)
 //        .lineLimit(2)
 //    HStack(spacing:4){
 //        Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
-//            .font(.mt.body2.bold(),textColor: .mt.accent_800)
+//            .font(.mt.body2.mtBold(),textColor: .mt.accent_800)
 //        Spacer()
 //        Image.mt.load(.Visibility_Status_On)
 //            .resizable()

@@ -65,9 +65,9 @@ struct OpenSourceLibrary: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .foregroundColor(.random)
                             Text("SpringBoot")
-                                .font(.mt.body2.bold(),textColor: .black)
+                                .font(.mt.body2.mtBlod(),textColor: .black)
                             Text("8.9")
-                                .font(.mt.body2.bold(),textColor: .mt.accent_800)
+                                .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                         }
                         
                     }

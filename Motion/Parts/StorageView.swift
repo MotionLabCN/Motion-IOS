@@ -18,7 +18,7 @@ struct StorageView: View {
             TabView(selection: $pageIndex){
                 StoragePage().tag(0)
                 JoinPeerView().tag(1)
-                Text("page3").tag(2)
+                Text("天天数链/计算模块/IOS").tag(2)
             }.tabViewStyle(.page(indexDisplayMode: .never))
             
             header

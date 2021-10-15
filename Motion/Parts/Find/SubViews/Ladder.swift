@@ -29,7 +29,7 @@ struct Ladder: View {
             Image("Banner")
                 .resizable()
                 .scaledToFit()
-            Text("2021远程协作之星「新致奖」")
+            Text("2021技术落地顾问「新致奖」")
                 .font(.mt.title2.mtBlod(),textColor: .black)
                 .frame(maxWidth :.infinity,alignment: .leading)
         }

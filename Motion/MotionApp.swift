@@ -16,14 +16,28 @@ struct MotionApp: App {
     @StateObject var userManager = UserManager.shared
     
     @StateObject var findViewPageindex = FindViewState()
-
+    @State var showLaunch : Bool = true
     var body: some Scene {
         WindowGroup {
 //            LiV()
-            ContentView()
-                .environmentObject(tabbarState)
-                .environmentObject(userManager)
-                .environmentObject(findViewPageindex)
+            ZStack{
+                ContentView()
+                    .environmentObject(tabbarState)
+                    .environmentObject(userManager)
+                    .environmentObject(findViewPageindex)
+                
+                if showLaunch{
+                    LaunchView()
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    withAnimation(.spring()){
+                        showLaunch.toggle()
+                    }
+                }
+            }
+      
 
         }
         
