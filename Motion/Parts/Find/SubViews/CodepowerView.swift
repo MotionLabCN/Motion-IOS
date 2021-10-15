@@ -156,11 +156,14 @@ struct CodepowerView: View {
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
         
+        let arr = vm.proList
+        
         LazyVGrid(
             columns:columns,
             alignment: .center,
             spacing: 8,
             pinnedViews: .sectionFooters) {
+                
                 // vm.proList
                 ForEach(vm.proList) { item in
                     VStack(alignment: .leading, spacing: 8) {
