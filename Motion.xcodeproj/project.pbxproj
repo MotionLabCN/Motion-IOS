@@ -33,6 +33,8 @@
 
 /* Begin PBXBuildFile section */
 		585FD9BD9A46AE45FB92CD72 /* Pods_Motion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED4CE00E60F13437E024F2B /* Pods_Motion.framework */; };
+		5A00D7BB271967DD00FD409B /* OPPOSans-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7B9271967DD00FD409B /* OPPOSans-B.ttf */; };
+		5A00D7BC271967DD00FD409B /* OPPOSans-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7BA271967DD00FD409B /* OPPOSans-L.ttf */; };
 		5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */; };
 		5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */; };
 		5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA7026FCB1970011D3B0 /* money-falling.json */; };
@@ -111,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.release.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.release.xcconfig"; sourceTree = "<group>"; };
+		5A00D7B9271967DD00FD409B /* OPPOSans-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OPPOSans-B.ttf"; sourceTree = "<group>"; };
+		5A00D7BA271967DD00FD409B /* OPPOSans-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OPPOSans-L.ttf"; sourceTree = "<group>"; };
 		5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTLottieView.swift; sourceTree = "<group>"; };
 		5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moneyIcon.json; sourceTree = "<group>"; };
 		5A40BA7026FCB1970011D3B0 /* money-falling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "money-falling.json"; sourceTree = "<group>"; };
@@ -205,6 +209,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A00D7B8271967C400FD409B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5A00D7B9271967DD00FD409B /* OPPOSans-B.ttf */,
+				5A00D7BA271967DD00FD409B /* OPPOSans-L.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5A40BA6C26FCB1610011D3B0 /* LottieViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +386,7 @@
 				5AAACF95271552F70060A5DF /* Storage */,
 				5ACBA38E26F2D44100A5789E /* Team */,
 				5A53377326FC114F00949087 /* PublicViews */,
+				5A00D7B8271967C400FD409B /* Fonts */,
 				5A40BA6C26FCB1610011D3B0 /* LottieViews */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
 				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
@@ -601,6 +615,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A00D7BC271967DD00FD409B /* OPPOSans-L.ttf in Resources */,
+				5A00D7BB271967DD00FD409B /* OPPOSans-B.ttf in Resources */,
 				DF8E41212715894900B26E27 /* codepower_langs.json in Resources */,
 				5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */,
 				A07613F22716871D00138857 /* codepower_pro.json in Resources */,
