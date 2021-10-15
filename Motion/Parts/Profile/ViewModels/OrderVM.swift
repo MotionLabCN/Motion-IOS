@@ -25,12 +25,19 @@ class OrderVM: ObservableObject {
             if let list = list {
                 self?.codeItems = list
             }
-            
-            let arr = MockTool.readArray(OrderModel.self, fileName: "myorder_ code") ?? []
+            self?.isCodeLoading = false
+            let arr = MockTool.readArray(OrderModel.self, fileName: "myorder_code", atKeyPath: "data.content") ?? []
+//            let arr = MockTool.readArray(OrderModel.self, fileName: "myorder_ code") ?? []
             self?.codeItems = arr
         }
     }
+    
+    init() {
+        requestWithCodeList()
+    }
 }
+ 
+
 
 // MARK: 代码订单模型
 struct OrderModel: Identifiable, Convertible {
@@ -42,7 +49,32 @@ struct OrderModel: Identifiable, Convertible {
     var outTradeNo = ""//: "20211014000003012407890460938240",
     var fkProductImage = ""//: "/files/original/d1a29a85-eb0a-43e5-8c93-ea7c8cfc562d.png",
     var orderState = ""//: "ToBePaid",
-    var tradingPlatform = ""//: "Alipay",
+    
+    var tradingPlatform = "" //: "Alipay", "WeChat"
+    
     var cstCreate = ""//": "2021-10-14 15:53:29"
     
+    // 支付方式
+    var payStyle: String {
+        get {
+            if tradingPlatform == "Alipay" {
+                return "支付宝"
+            }else {
+                return "微信"
+            }
+        }
+    }
+    
+    // 订单状态
+    var orderStateString: String {
+        if orderState == "ToBePaid" {
+            return "待支付"
+        }else if orderState == "PaymentSuccessful" {
+            return "支付成功"
+        }else if orderState == "PaymentFailed" {
+            return "支付失败"
+        }else {
+            return ""
+        }
+    }
 }

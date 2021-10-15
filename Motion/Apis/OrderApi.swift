@@ -15,11 +15,12 @@ enum OrderApi: MTTargetType {
         case codeOrder(p:CodeParameters) // 代码订单
         case storeOrder(p:CodeParameters) // 存取订单
         
-        var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
+//        var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
+        var baseURL: URL { URL(string: "http://127.0.0.1:8802")! }
 
         var path: String {
             switch self {
-            case .codeOrder: return "/order/code/consume/page"
+            case .codeOrder: return "/api/order/order/code/consume/page"
             case .storeOrder: return "/"
             }
         }
