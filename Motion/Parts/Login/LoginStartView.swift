@@ -197,13 +197,10 @@ struct LoginStartView: View {
                 .mtButtonStyle(.mainStorKer())
             
             Button(action: {
-                print("使用Apple登录")
-//                toastStyle = .warning
-//                isShowToast = true
-//                toastText = "click pinggu"
-                ThirdAuth.shared.signIn(platform: .apple, completion: { response in
-                    print("Thread.shared.signIn(platform: .git(method: .asAuth), completion: { response : \(response)")
-                })
+                vm.loginInWithApple {
+                    isShowLoginSheet = false
+                    isPushInputPhoneView = true
+                }
             }, label: {
                 HStack {
                     Image.mt.load(.Github)

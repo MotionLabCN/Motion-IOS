@@ -17,6 +17,6 @@ class NotifListVM: ObservableObject {
     ]
     
     init() {
-        print("HomeVM init")
+        print("NotifListVM init")
     }
 }
