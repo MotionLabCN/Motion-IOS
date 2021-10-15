@@ -14,6 +14,9 @@ struct CodepowerView: View {
     @EnvironmentObject var vm: FindVM
     //    @Binding var isShowmtsheet: Bool
     @State  var offsetAnimation  : Bool = false
+    
+    @State private var isPushWebView: Bool = false
+    
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -44,17 +47,19 @@ struct CodepowerView: View {
                     Text("暂无数据")
                         .padding(.horizontal,16)
                         .frame(height:200)
-                        
                 }
-                
-                
             }
         }
         .frame(width: ScreenWidth())
         .onAppear {
             print("22222")
         }
+        .mtRegisterRouter(isActive: $isPushWebView) {
+//            MTWebView(urlString: "https://baidu.com")
+            MTWebView(urlString: vm.detailWebUrl)
+        }
     }
+
     
     var title : some View {
         VStack(spacing:6){
@@ -153,11 +158,10 @@ struct CodepowerView: View {
             columns:columns,
             alignment: .center,
             spacing: 8,
-            pinnedViews: .sectionFooters){
+            pinnedViews: .sectionFooters) {
                 // vm.proList
                 ForEach(vm.proList) { item in
-                    VStack(alignment: .leading, spacing: 8){
-                        
+                    VStack(alignment: .leading, spacing: 8) {
                         KFImage(URL(string: item.productImg))
                             .resizable()
                             .scaledToFill()
@@ -208,6 +212,10 @@ struct CodepowerView: View {
                     .background(Color.white)
                     .clipShape(RoundedRectangle.init(cornerRadius: 12, style: .continuous))
                     .mtShadow(type: .shadowLow)
+                    .onTapGesture {
+                        isPushWebView = true
+                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)"
+                    }
                 }
             }
     }

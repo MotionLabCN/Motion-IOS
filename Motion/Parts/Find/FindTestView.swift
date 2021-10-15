@@ -97,7 +97,9 @@ struct FindTestView: View {
         // 二级分类弹框
         .sheet(isPresented: $findVM.isShowmtDetail) {
 //            SecondItemListView
-            ProductList
+                SecondItemList
+//            SecondListView()
+//                .environmentObject(findVM)
         }
         .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
@@ -139,23 +141,76 @@ struct FindTestView: View {
     var SecondItemListView: some View {
         // 方法2
 //        @Environment(\.presentationMode) var presentationMode
-            ZStack (alignment: .topTrailing) {
-                Button {
-                    findVM.isShowmtDetail.toggle() // 方法1通过外面bool
-                    
-                    //                presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("完成")
-                        .font(.mt.body1, textColor: .blue)
-                }
-                .padding(20)
+        
+        NavigationView{
+//            ZStack (alignment: .topTrailing) {
+//                Button {
+//                    findVM.isShowmtDetail.toggle() // 方法1通过外面bool
+//
+//                    //                presentationMode.wrappedValue.dismiss()
+//                } label: {
+//                    Text("完成")
+//                        .font(.mt.body1, textColor: .blue)
+//                }
+//                .padding(20)
+//
+//                VStack {
+//                    Text(findVM.selectFindModel.title)
+//                        .font(.mt.title2, textColor: .mt.gray_900)
+//                        .padding()
+//                }
+//            }
+            List {
                 
-                VStack {
-                    Text(findVM.selectFindModel.title)
-                        .font(.mt.title2, textColor: .mt.gray_900)
-                        .padding()
-                    List {
-                        
+                switch findVM.selectCodeSelectStyle {
+                case .lang:
+                    LangListView
+                    
+                case .to:
+                    TechnologyListView
+                    
+                case .price:
+                    PriceListView
+                default:
+                    Text("findVM.selectFindModel.dictKey")
+                       .font(.mt.title2, textColor: .mt.gray_900)
+                       .padding()
+                }
+            }
+            .listStyle(PlainListStyle())
+
+        }
+        .listStyle(.grouped )
+        .navigationBarTitle(Text("我的订单"))
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarItems(trailing: closeBtn)
+    }
+    
+    
+    @ViewBuilder
+    var SecondItemList : some View {
+
+        let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
+        //排序方式
+        let columns = Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
+        
+        NavigationView {
+            
+            ScrollView {
+                // 网格列表
+                LazyVGrid(columns: columns,
+                          alignment: .center,
+                          spacing: 20,
+                          //                      pinnedViews: [.sectionHeaders],
+                          content: {
+//                    Section
+//                    (header:
+//                                Text(findVM.selectFindModel.title)
+//                                .font(.mt.title2, textColor: .mt.gray_900)
+//                                .frame(maxWidth: .infinity, alignment: .center)
+//                                .padding()
+//                    )
+//                    {
                         switch findVM.selectCodeSelectStyle {
                         case .lang:
                             LangListView
@@ -165,59 +220,37 @@ struct FindTestView: View {
                             
                         case .price:
                             PriceListView
+                            
                         default:
-                            Text("findVM.selectFindModel.dictKey")
-                               .font(.mt.title2, textColor: .mt.gray_900)
-                               .padding()
+                            Text("加载中....")
                         }
-                    }
-                    .listStyle(PlainListStyle())
-                }
+//                    }
+                })
             }
-        }
-    
-    @ViewBuilder
-    var ProductList : some View {
-        //        let columns: [GridItem] = [
-        //            GridItem(.adaptive(minimum: 100, maximum: 150)), // 范围内自动计算width
-        //        ]
-        let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
-        //排序方式
-        let columns =
-        Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
-        
-        ScrollView {
             
-            // 网格列表
-            LazyVGrid(columns: columns,
-                      alignment: .center,
-                      spacing: 20,
-                      //                      pinnedViews: [.sectionHeaders],
-                      content: {
-                Section(header:
-                            Text(findVM.selectFindModel.title)
-                            .font(.mt.title2, textColor: .mt.gray_900)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding()
-                ){
-                    switch findVM.selectCodeSelectStyle {
-                    case .lang:
-                        LangListView
-                        
-                    case .to:
-                        TechnologyListView
-                        
-                    case .price:
-                        PriceListView
-                        
-                    default:
-                        Text("加载中....")
-                    }
-                }
-            })
+            .listStyle(.grouped)
+            .navigationBarTitle(Text(findVM.selectFindModel.title))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarItems(trailing: closeBtn)
         }
     }
     
+    var closeBtn : some View {
+        
+        Button {
+//            self.persentationMode.wrappedValue.dismiss()
+            findVM.isShowmtDetail.toggle()
+        } label: {
+            Image.mt.load(.Close)
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .foregroundColor(Color.black)
+        .padding(.all,4)
+        .background(Color.mt.gray_100)
+        .clipShape(Circle())
+        .frame(maxWidth:.infinity,alignment: .trailing)
+    }
     
     //MARK: 语言view
     var LangListView: some View {
@@ -442,9 +475,149 @@ struct FindTestView: View {
 
 
 
+struct SecondListView: View {
+    
+    @EnvironmentObject var findVM: FindVM
+    
+    @State var tabIndex: Int = 0
+    
+    var body: some View {
+        
+        NavigationView {
+            
+            ScrollView {
+                
+                let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
+                //排序方式
+                let columns = Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
+                
+                // 网格列表
+                LazyVGrid(columns: columns,
+                          alignment: .center,
+                          spacing: 20,
+                          //                      pinnedViews: [.sectionHeaders],
+                          content: {
+                    
+                        switch findVM.selectCodeSelectStyle {
+                        case .lang:
+                            LangListView
+                            
+                        case .to:
+                            TechnologyListView
+                            
+                        case .price:
+                            PriceListView
+                            
+                        default:
+                            Text("加载中....")
+                        }
+                })
+            }
+            .listStyle(.grouped)
+            .navigationBarTitle(Text(findVM.selectFindModel.title))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarItems(trailing: closeBtn)
+        }
+//            .navigationBarItems(trailing: closeBtn)
+    }
 
 
-
+    //MARK: 语言view
+    var LangListView: some View {
+        ForEach(findVM.selectFindModel.data) { item in
+            
+            HStack {
+                Text(item.dictKey)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateItes(item: item)
+            })
+        }
+    }
+    //MARK: 技术view
+    var TechnologyListView: some View {
+        ForEach(findVM.selectFindModel.technologyList) { item in
+            
+            HStack {
+                Text(item.labelName)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateTechnologyItes(item: item)
+                
+            })
+        }
+    }
+    //MARK: 价格view
+    var PriceListView: some View {
+        ForEach(findVM.selectFindModel.priceList) { item in
+            HStack {
+                Text(item.dictKey)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                findVM.updateItes(item: item)
+            })
+        }
+    }
+    
+    var closeBtn : some View {
+        
+        Button {
+//            self.persentationMode.wrappedValue.dismiss()
+            findVM.isShowmtDetail.toggle()
+        } label: {
+            Image.mt.load(.Close)
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .foregroundColor(Color.black)
+        .padding(.all,4)
+        .background(Color.mt.gray_100)
+        .clipShape(Circle())
+        .frame(maxWidth:.infinity,alignment: .trailing)
+    }
+}
 
 
 struct FindTestView_Previews: PreviewProvider {
