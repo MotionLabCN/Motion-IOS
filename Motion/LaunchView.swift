@@ -19,6 +19,7 @@ struct LaunchView: View {
              
                 if Step  > 1  {
                     Text("让技术发生")
+                        .kerning(12)
                         .font(.custom("OPPOSans B", size: 24))
                         .foregroundColor(.mt.accent_purple)
                         .animation(.spring())
@@ -28,9 +29,9 @@ struct LaunchView: View {
              
                 MTLottieView(lottieFliesName: "Launch", loopMode: .loop)
                     .animation(.spring())
-                    .transition(.move(edge: .leading))
-                    .frame(width:  ScreenWidth() * 0.3)
-                    .offset(x:Step == 2 ? ScreenWidth() : Step == 1 ? 0 : -ScreenWidth() )
+                    .transition(.opacity)
+                    .frame(width:  ScreenWidth() * 0.7)
+                    .offset(x:Step == 2 ? ScreenWidth() : Step == 1 ? 0 : 0)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {

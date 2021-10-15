@@ -36,7 +36,7 @@
 		5A00D7BB271967DD00FD409B /* OPPOSans-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7B9271967DD00FD409B /* OPPOSans-B.ttf */; };
 		5A00D7BC271967DD00FD409B /* OPPOSans-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7BA271967DD00FD409B /* OPPOSans-L.ttf */; };
 		5A00D7C02719793100FD409B /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A00D7BF2719793100FD409B /* LaunchView.swift */; };
-		5A00D7C227197B9B00FD409B /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7C127197B9B00FD409B /* Launch.json */; };
+		5A00D7C427197D1500FD409B /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A00D7C327197D1500FD409B /* Launch.json */; };
 		5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */; };
 		5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */; };
 		5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BA7026FCB1970011D3B0 /* money-falling.json */; };
@@ -118,7 +118,7 @@
 		5A00D7B9271967DD00FD409B /* OPPOSans-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OPPOSans-B.ttf"; sourceTree = "<group>"; };
 		5A00D7BA271967DD00FD409B /* OPPOSans-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OPPOSans-L.ttf"; sourceTree = "<group>"; };
 		5A00D7BF2719793100FD409B /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		5A00D7C127197B9B00FD409B /* Launch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Launch.json; path = ../../../../../../Downloads/ICON/Launch.json; sourceTree = "<group>"; };
+		5A00D7C327197D1500FD409B /* Launch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Launch.json; sourceTree = "<group>"; };
 		5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTLottieView.swift; sourceTree = "<group>"; };
 		5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moneyIcon.json; sourceTree = "<group>"; };
 		5A40BA7026FCB1970011D3B0 /* money-falling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "money-falling.json"; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		5A40BA6C26FCB1610011D3B0 /* LottieViews */ = {
 			isa = PBXGroup;
 			children = (
-				5A00D7C127197B9B00FD409B /* Launch.json */,
+				5A00D7C327197D1500FD409B /* Launch.json */,
 				5A40BA6F26FCB1970011D3B0 /* moneyIcon.json */,
 				5A40BA7026FCB1970011D3B0 /* money-falling.json */,
 				5A40BA6D26FCB1740011D3B0 /* MTLottieView.swift */,
@@ -628,7 +628,7 @@
 				A07613F22716871D00138857 /* codepower_pro.json in Resources */,
 				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
 				A06A000D27191D7A0005A025 /* myorder_code.json in Resources */,
-				5A00D7C227197B9B00FD409B /* Launch.json in Resources */,
+				5A00D7C427197D1500FD409B /* Launch.json in Resources */,
 				A0731B52271539E100A6FF79 /* codepower_te.json in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
 				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
