@@ -13,8 +13,22 @@ extension Font: MTCompatible {
     }
     
     public func mtBlod() -> Font {
-        self.weight(.black)
-//        Font.custom("OPPOSans B", size: rawValue)
+//        self.weight(.black)
+        switch self {
+        case .mt.largeTitle: return MTFont.largeTitle.blodValue
+        case .mt.title1: return MTFont.title1.blodValue
+        case .mt.title2: return MTFont.title2.blodValue
+        case .mt.title3: return MTFont.title3.blodValue
+        case .mt.body1: return MTFont.body1.blodValue
+        case .mt.body2: return MTFont.body2.blodValue
+        case .mt.body3: return MTFont.body3.blodValue
+        case .mt.caption1: return MTFont.caption1.blodValue
+        case .mt.caption2: return MTFont.caption2.blodValue
+        default:  return MTFont.body1.blodValue
+        }
+        
+        
+       
 
     }
 }
@@ -56,6 +70,10 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
     public var value: Font {
         Font.custom("OPPOSans L", size: rawValue)
 //        Font.system(size: rawValue, weight: .regular, design: .monospaced)
+    }
+    
+    public var blodValue: Font {
+        Font.custom("OPPOSans B", size: rawValue)
     }
     
     public var uifont: UIFont {
