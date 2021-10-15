@@ -7,36 +7,38 @@
 
 import MotionComponents
 /* URL
-    代码订单: https://ttchain.tntlinking.com/api/order/order/code/consume/page?page=0&size=10&name=&sort=
+ 代码订单: https://ttchain.tntlinking.com/api/order/order/code/consume/page?page=0&size=10&name=&sort=
  
  */
 enum OrderApi: MTTargetType {
     
-        case codeOrder(p:CodeParameters) // 代码订单
-        case storeOrder(p:CodeParameters) // 存取订单
-        
-        var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
-
-        var path: String {
-            switch self {
-            case .codeOrder: return "/order/code/consume/page"
-            case .storeOrder: return "/"
-            }
+    case codeOrder(p:CodeParameters) // 代码订单
+    case storeOrder(p:CodeParameters) // 存取订单
+    
+    //        var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
+    // 以后这里可以直接写host port  也可以重写baseurl
+    var port: Int? { 8802 }
+    
+    var path: String {
+        switch self {
+        case .codeOrder: return "/order/code/consume/page"
+        case .storeOrder: return "/"
         }
-        
-        var method: HTTPRequestMethod {
-            switch self {
-            case .codeOrder: return .get
-            case .storeOrder: return .get
-            }
+    }
+    
+    var method: HTTPRequestMethod {
+        switch self {
+        case .codeOrder: return .get
+        case .storeOrder: return .get
         }
-        
-        var parameters: [String : Any]? {
-            switch self {
-            case let .codeOrder(p): return p.kj.JSONObject()
-            case let .storeOrder(p): return p.kj.JSONObject()
-            }
+    }
+    
+    var parameters: [String : Any]? {
+        switch self {
+        case let .codeOrder(p): return p.kj.JSONObject()
+        case let .storeOrder(p): return p.kj.JSONObject()
         }
+    }
 }
 
 

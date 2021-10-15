@@ -18,10 +18,19 @@ public protocol CustomTargetType: TargetType {
     var host: String { get }
     var port: Int? { get }
     var firstPath: String? { get }
+    var baseURLString: String { get }
 }
 
 public extension CustomTargetType {
     var baseURL: URL {
+        URL(string: baseURLString) ?? URL(string: "https://test.com")!
+    }
+    
+    var scheme: String { "http" }
+    var host: String { "" }
+    var port: Int? { nil }
+    var firstPath: String? { nil }
+    var baseURLString: String {
         var url = "\(scheme)://\(host)"
         if let p = port {
             url = "\(url):\(p)"
@@ -29,13 +38,8 @@ public extension CustomTargetType {
         if let first = firstPath {
             url = "\(url)/\(first)"
         }
-        return URL(string: url)!
+        return url
     }
-    
-    var scheme: String { "http" }
-    var host: String { "" }
-    var port: Int? { nil }
-    var firstPath: String? { nil }
 
     var method: HTTPRequestMethod {
         return .get

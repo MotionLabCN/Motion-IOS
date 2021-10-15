@@ -21,7 +21,7 @@ struct ProjectConfig {
     static var host: String {
         switch env {
         case .local: return "192.168.0.224"
-        case .test: return "192.168.0.224"
+        case .test: return "183.66.65.207" //http://183.66.65.207:8081/api/authorization/
         }
     }
     
@@ -31,6 +31,8 @@ struct ProjectConfig {
         case .test: return 8081
         }
     }
+    
+   
     
     static var firstPath: String? { nil }
     

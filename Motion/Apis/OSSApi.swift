@@ -11,6 +11,8 @@ import Moya
 enum OSSApi: MTTargetType {
     case upload(images: [UIImage])
 
+    var port: Int? { 8088 }
+    
     var path: String {
         switch self {
         case .upload: return "motion-file/files/upload/batch/1"
