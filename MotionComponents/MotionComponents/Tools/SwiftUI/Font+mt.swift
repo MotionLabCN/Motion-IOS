@@ -14,6 +14,8 @@ extension Font: MTCompatible {
     
     public func mtBlod() -> Font {
         self.weight(.black)
+//        Font.custom("OPPOSans B", size: rawValue)
+
     }
 }
 
@@ -52,11 +54,13 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
     case caption2 = 11
     
     public var value: Font {
-        Font.custom("", size: <#T##CGFloat#>)
+        Font.custom("OPPOSans L", size: rawValue)
 //        Font.system(size: rawValue, weight: .regular, design: .monospaced)
     }
     
-    public var uifont: UIFont { UIFont.monospacedSystemFont(ofSize: rawValue, weight: .regular) }
+    public var uifont: UIFont {
+        UIFont(name: "OPPOSans L", size: rawValue) ?? UIFont.monospacedSystemFont(ofSize: rawValue, weight: .regular)
+    }
     
     public var text: String {
         switch self {
@@ -79,7 +83,8 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
 extension UIFont: MTCompatible {
     public func mtBlod() -> UIFont {
 //        self.weight(.black)
-        UIFont.monospacedSystemFont(ofSize: pointSize, weight: .black)
+        UIFont(name: "OPPOSans B", size: self.pointSize) ?? UIFont.monospacedSystemFont(ofSize: self.pointSize, weight: .regular)
+//        UIFont.monospacedSystemFont(ofSize: pointSize, weight: .black)
     }
 }
 
