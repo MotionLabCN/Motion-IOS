@@ -16,6 +16,7 @@ struct CodepowerView: View {
     @State  var offsetAnimation  : Bool = false
     
     @State private var isPushWebView: Bool = false
+    @State private var isPublishProduct: Bool = false
     
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
@@ -33,7 +34,11 @@ struct CodepowerView: View {
                 
                 Spacer().frame(width: 0, height: 36)
                 
-                Button("上架技术方案"){}
+                Button("上架技术方案"){
+//                    let token = ""
+                    isPublishProduct = true
+                    vm.publishProductWebUrl = "https://ttchain.tntlinking.com/codeForce/publishProduct" // 暂时没有添加token 需要登录
+                }
                 .mtButtonStyle(.mainGradient)
                 .padding(.horizontal,80)
                 
@@ -59,9 +64,12 @@ struct CodepowerView: View {
             print("22222")
         }
         .mtRegisterRouter(isActive: $isPushWebView) {
-//            MTWebView(urlString: "https://baidu.com")
             MTWebView(urlString: vm.detailWebUrl)
         }
+        .mtRegisterRouter(isActive: $isPublishProduct) {
+            MTWebView(urlString: vm.publishProductWebUrl)
+        }
+
     }
 
    
