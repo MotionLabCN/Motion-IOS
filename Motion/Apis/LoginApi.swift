@@ -14,10 +14,25 @@ enum LoginApi: CustomTargetType {
     case loginInWithCode(p: PhoneLoginParameters)
     case apple(p: AppleParameters)
   
+    var host: String { ProjectConfig.host }
+
     var port: Int? {
         8800
     }
     
+    var firstPath: String? {
+        if ProjectConfig.env == .local {
+            return nil
+        }
+        
+        switch self {
+        case .loginInWithCode:
+            return "api/authorization"
+        default: return nil
+        }
+        
+    }
+
     
     var headers: [String: String]? {
         var headers = [
