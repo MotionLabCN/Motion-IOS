@@ -16,6 +16,9 @@ class OrderVM: ObservableObject {
 
     // MARK: 代码订单接口
     @Published var isCodeLoading = false
+    @Published var isShowToast = false
+    @Published var toastText = ""
+    
     func requestWithCodeList() {
         isCodeLoading = true
         
@@ -24,6 +27,9 @@ class OrderVM: ObservableObject {
             // 成功...
             if let list = list {
                 self?.codeItems = list
+            }else {
+                self?.toastText = "请求失败"
+                self?.isShowToast = true
             }
             self?.isCodeLoading = false
             let arr = MockTool.readArray(OrderModel.self, fileName: "myorder_code", atKeyPath: "data.content") ?? []

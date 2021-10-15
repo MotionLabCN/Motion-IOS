@@ -11,7 +11,6 @@ import MotionComponents
  
  */
 enum OrderApi: MTTargetType {
-    
     case codeOrder(p:CodeParameters) // 代码订单
     case storeOrder(p:CodeParameters) // 存取订单
     

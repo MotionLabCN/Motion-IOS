@@ -113,45 +113,7 @@ struct OrderView_Previews: PreviewProvider {
     }
 }
 
-//struct OrderCell: View {
-//
-//    var body: some View {
-//        HStack(alignment: .top,spacing: 20){
-//            Image("peers").resizable()
-//                .frame(width: 44, height: 44)
-//                .scaledToFit()
-//            VStack(alignment: .leading,spacing:12){
-//                HStack(alignment: .top){
-//                    Text("网站后台权限管理系统")
-//                        .font(.mt.body1.mtBlod(), textColor: .mt.gray_900)
-//                    Spacer()
-//                    Text("待支付")
-//                        .font(.mt.body3, textColor: .mt.gray_900)
-//
-//                }
-//                Text("价格")
-//
-//                HStack(alignment: .top){
-//                    Text("下单时间：2021-10-09 10:53:44")
-//                    Spacer()
-//                    Text("¥329.99")
-//                }
-//
-//                Text("订单编号:20211009000003010520515216543744")
-//                    .lineLimit(1)
-//
-//
-//            }
-//
-//
-//
-//        }.padding()
-//    }
-//}
-
 struct OrderList: View {
-    
-//    @EnvironmentObject var vm: OrderVM
     
     @StateObject private var vm = OrderVM()
     
@@ -164,7 +126,7 @@ struct OrderList: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(Text("订单"))
-        .mtTopProgress(vm.isCodeLoading, usingBackgorund: true)
-//        .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
+        .mtTopProgress(vm.isCodeLoading, usingBackgorund: false)
+//        .mtToast(isPresented: $vm.isShowToast, text: vm.toastText)
     }
 }
