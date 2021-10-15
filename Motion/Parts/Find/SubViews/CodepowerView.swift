@@ -41,6 +41,8 @@ struct CodepowerView: View {
                 
                 shopTitle
                 
+                filter
+                
                 if vm.proList.count > 0 {
                     productList
                 } else {
@@ -62,6 +64,7 @@ struct CodepowerView: View {
         }
     }
 
+   
     
     var title : some View {
         VStack(spacing:6){
@@ -105,47 +108,69 @@ struct CodepowerView: View {
     }
     
     var shopTitle : some View {
-        VStack(spacing:24){
             HStack{
-                Text("码力集市")
-                    .font(.mt.title1.mtBlod(),textColor: .black)
+                VStack(spacing:4){
+                    Text("\(vm.proList.count)")
+                        .kerning(2)
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                    Text("在售方案")
+                        .font(.mt.body3,textColor: .mt.gray_400)
+                }
                 Spacer()
-                
-                Text(vm.selectFindModel.subTitle)
-                    .font(.mt.body2.mtBlod(),textColor: .black)
-                
-                Button {
-                    vm.isShowmtsheet.toggle()
-                    vm.requestWithMenuList()
-                } label: {
-                    Image.mt.load(.Filter_list)
-                        .foregroundColor(.red)
-                }
-            }
-            HStack(spacing:48){
-                VStack{
-                    Text("32")
-                        .font(.mt.title1.mtBlod() ,textColor: .black)
-                    Text("在售")
-                        .font(.mt.body3 ,textColor: .mt.gray_800)
-                }
-                
-                VStack{
-                    Text("294")
-                        .font(.mt.title1.mtBlod() ,textColor: .black)
+                Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
+                    .opacity(0.2)
+                Spacer()
+                VStack(spacing:4){
+                    Text("\(vm.proList.count)")
+                        .kerning(2)
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
                     Text("顾问")
-                        .font(.mt.body3 ,textColor: .mt.gray_800)
+                        .font(.mt.body3,textColor: .mt.gray_400)
                 }
-                VStack{
-                    Text("90")
-                        .font(.mt.title1.mtBlod() ,textColor: .black)
-                    Text("案例")
-                        .font(.mt.body3 ,textColor: .mt.gray_800)
+              
+                Spacer()
+                Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
+                    .opacity(0.2)
+                Spacer()
+                VStack(spacing:4){
+                    Text("\(vm.proList.count)")
+                        .kerning(2)
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                    Text("近期成交")
+                        .font(.mt.body3,textColor: .mt.gray_400)
                 }
             }
-        }
-        .mtCardStyle()
+        .padding(.horizontal,32)
         .padding()
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .shadow(color: .black.opacity(0.03), radius: 16, x: 0, y: 8)
+        .shadow(color: .black.opacity(0.12), radius: 32, x: 0, y: 12)
+        .padding()
+    }
+    
+    @ViewBuilder
+    var filter : some View {
+        HStack{
+            Text("语言:\(vm.selectFindModel.subTitle)")
+                .font(.mt.body3.mtBlod(),textColor: .black)
+            
+            Text("技术:\(vm.selectFindModel.subTitle)")
+                .font(.mt.body3.mtBlod(),textColor: .black)
+            
+            Text("价格:\(vm.selectFindModel.subTitle)"  )
+                .font(.mt.body3.mtBlod(),textColor: .black)
+            
+            Spacer()
+            
+            Button {
+                vm.isShowmtsheet.toggle()
+                vm.requestWithMenuList()
+            } label: {
+                Image.mt.load(.Filter_list)
+                    .foregroundColor(.red)
+            }
+        }.padding(.horizontal)
     }
     
     @ViewBuilder
@@ -156,7 +181,7 @@ struct CodepowerView: View {
         let columns =
         Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
         
-        let arr = vm.proList
+
         
         LazyVGrid(
             columns:columns,
@@ -166,70 +191,107 @@ struct CodepowerView: View {
                 
                 // vm.proList
                 ForEach(vm.proList) { item in
-                    VStack(alignment: .leading, spacing: 8) {
+                    
+                    //
+                    VStack(alignment: .leading, spacing: 4){
+                        
                         KFImage(URL(string: item.productImg))
+                            .placeholder {
+                                Color.white
+                                    .overlay(  Image.mt.load(.Share_Android)
+                                                .resizable()
+                                                .foregroundColor(.mt.gray_400)
+                                                .scaledToFit()
+                                                .frame(width: 24, height: 24)
+                                    )
+                                   }
                             .resizable()
                             .scaledToFill()
                             .frame(width:cardWidth, height: cardWidth * 1.6)
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: 0)
-                            )
-                        
-                        VStack(alignment: .leading, spacing: 8){
-                            Text(item.productName)
-                                .font(.mt.body2.bold(),textColor: .black)
-                            
-                            Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
-                                .font(.mt.body2.bold(),textColor: .mt.accent_800)
-                            
-                            HStack {
-                                KFImage(URL(string: item.authorHeadImgUrl))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 30, height: 30)
-                                    .cornerRadius(15)
-                                    .background(
-                                        Circle()
-                                            .frame(width: 30, height: 30)
-                                            .foregroundColor(.random)
-                                    )
-//                                    .MTImageBorder(color: .random, lineWidth: 0)
-                                                            
-                                Text(item.authorNickname)
-                                    .font(.mt.body3, textColor: .mt.gray_500)
-                                    .frame(height: 20)
-                                
-                                Spacer()
-                                
-                                Image.mt.load(.Visibility_Status_On)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(.random)
-
-                                Text(item.countBrowses)
-                                    .font(.mt.body3, textColor: .mt.gray_500)
-                            }
-                        }
-                        .padding()
-                    }
-//                    .mtCardStyle(insets: .init(horizontal: 0, vertical: 0))
+                    .mtCardStyle(insets: .init(horizontal: 0, vertical: 0))
                     .background(Color.white)
                     .clipShape(RoundedRectangle.init(cornerRadius: 12, style: .continuous))
                     .mtShadow(type: .shadowLow)
                     .onTapGesture {
                         isPushWebView = true
-                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)"
+                        let ss = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0MjYwNDYwOTQ3IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDI4OTI2MCwiZGV2aWNlIjoiUEMiLCJqdGkiOiI0ZGZlY2FkYi0zYmZlLTRmMjgtYmQyZC1jMDRlM2U4Mzg2ZDkiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.OIVfewKTZKNJ4mIyMq1AYY3ybleOpNF0HcVAp7mweehJdgPTTDEmAKosAIt-IbBOadiieMCVGwGrqwyVdU1kHn8K8y-O2ZREmG32VVXSfvmzAbPhnpeamNnTC_daYflpCpZzd6CENjvHADyAr8tpW3A2kEnyeB5qb-8IJmI0esjq_olIOcGdSaw9aWdxYIKcB8t987mnZJmtOttisEehmRNKOAABCkzzb3wEbk2IGOcnOs6Wf3HSW6SgMyfDaKeolWg7DIpZB-HmPA0gHzNDZKjvd4nam2lJcMMcCp4GlCKD59zEFgOcfWBxi7pm1XJaQM7LEZw7KNhF4JCx3h5yyA"
+                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(ss)"
                     }
+                        Text(item.productName)
+                            .font(.mt.body1.bold(),textColor: .black)
+                            .lineLimit(2)
+                        HStack(spacing:4){
+                            Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
+                                .font(.mt.body2.bold(),textColor: .mt.accent_800)
+                            Spacer()
+                        }
+                    }
+                
+                   
                 }
             }
     }
 }
 
-//struct CodepowerView_Previews: PreviewProvider {
-//    @ViewBuilder
-//    static var previews: some View {
-//        @State var isShow: Bool = false
-//        CodepowerView(isShowmtsheet: $isShow)
+struct CodepowerView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        
+        CodepowerView()
+    }
+}
+//
+//
+//HStack {
+//    KFImage(URL(string: item.authorHeadImgUrl))
+//        .resizable()
+//        .placeholder {
+//            Image.mt.load(.Person)
+//                .resizable()
+//                .foregroundColor(.mt.gray_500)
+//                .scaledToFit()
+//                .frame(width: 24, height: 24)
+//                .clipShape(Capsule(style: .continuous))
+//        }
+//        .aspectRatio(contentMode: .fit)
+//        .frame(width: 30, height: 30)
+//        .cornerRadius(15)
+//        .background(
+//            Circle()
+//                .frame(width: 30, height: 30)
+//                .foregroundColor(.mt.gray_200)
+//        )
+//    Text(item.authorNickname)
+//        .font(.mt.body3, textColor: .mt.gray_500)
+//        .frame(height: 20)
+//
+//    Spacer()
+//}
+
+//
+//VStack(alignment: .leading, spacing: 8){
+//    Text(item.productName)
+//        .font(.mt.body1.bold(),textColor: .black)
+//        .lineLimit(2)
+//    HStack(spacing:4){
+//        Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
+//            .font(.mt.body2.bold(),textColor: .mt.accent_800)
+//        Spacer()
+//        Image.mt.load(.Visibility_Status_On)
+//            .resizable()
+//            .aspectRatio(contentMode: .fit)
+//            .frame(width: 12, height: 12)
+//            .foregroundColor(.mt.gray_500)
+//        Text(item.countBrowses)
+//            .font(.mt.body2, textColor: .mt.gray_500)
 //    }
 //}
+//.padding()
+
+//Image.mt.load(.Visibility_Status_On)
+//    .resizable()
+//    .aspectRatio(contentMode: .fit)
+//    .frame(width: 14, height: 14)
+//    .foregroundColor(.mt.gray_500)
+//Text(item.countBrowses)
+//    .font(.mt.body2, textColor: .mt.gray_500)

@@ -60,6 +60,9 @@
 		5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
+		A06A000D27191D7A0005A025 /* myorder_ code.json in Resources */ = {isa = PBXBuildFile; fileRef = A06A000C27191D7A0005A025 /* myorder_ code.json */; };
+		A06A000F2719218A0005A025 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A000E2719218A0005A025 /* OrderApi.swift */; };
+		A06A0011271925D60005A025 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A0010271925D60005A025 /* OrderVM.swift */; };
 		A071104A271125E500963385 /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0711049271125E500963385 /* NoticeListView.swift */; };
 		A071104C2711285700963385 /* NotifListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104B2711285700963385 /* NotifListVM.swift */; };
 		A071104E27112EA800963385 /* NotifiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104D27112EA800963385 /* NotifiListModel.swift */; };
@@ -136,6 +139,9 @@
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
+		A06A000C27191D7A0005A025 /* myorder_ code.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "myorder_ code.json"; sourceTree = "<group>"; };
+		A06A000E2719218A0005A025 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
+		A06A0010271925D60005A025 /* OrderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVM.swift; sourceTree = "<group>"; };
 		A0711049271125E500963385 /* NoticeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListView.swift; sourceTree = "<group>"; };
 		A071104B2711285700963385 /* NotifListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifListVM.swift; sourceTree = "<group>"; };
 		A071104D27112EA800963385 /* NotifiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiListModel.swift; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 		5AC2146526F3784B00D4457C /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A06A0012271925E80005A025 /* ViewModels */,
 				5AC2146626F3787300D4457C /* ProfileView.swift */,
 				5A6AB49D2717D47300AED1B6 /* OrderView.swift */,
 			);
@@ -294,6 +301,14 @@
 				5AC2146226F3766A00D4457C /* SubViews */,
 			);
 			path = Find;
+			sourceTree = "<group>";
+		};
+		A06A0012271925E80005A025 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A06A0010271925D60005A025 /* OrderVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		A071104F27117AA500963385 /* ViewModel */ = {
@@ -379,6 +394,7 @@
 				DF8E41202715894900B26E27 /* codepower_langs.json */,
 				A0731B51271539E100A6FF79 /* codepower_te.json */,
 				A07613F12716871D00138857 /* codepower_pro.json */,
+				A06A000C27191D7A0005A025 /* myorder_ code.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -482,6 +498,7 @@
 				DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */,
 				DFF1659627181179004D1B72 /* OSSApi.swift */,
 				DFF1658E2717C140004D1B72 /* ListApi.swift */,
+				A06A000E2719218A0005A025 /* OrderApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -577,6 +594,7 @@
 				5A40BA7126FCB1970011D3B0 /* moneyIcon.json in Resources */,
 				A07613F22716871D00138857 /* codepower_pro.json in Resources */,
 				DF95F21026FB15A700081A7D /* startVedio.mp4 in Resources */,
+				A06A000D27191D7A0005A025 /* myorder_ code.json in Resources */,
 				A0731B52271539E100A6FF79 /* codepower_te.json in Resources */,
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
 				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
@@ -691,6 +709,7 @@
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
+				A06A0011271925D60005A025 /* OrderVM.swift in Sources */,
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
 				5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
@@ -744,6 +763,7 @@
 				5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */,
 				5A6AB4A42717E26E00AED1B6 /* UMCommonSwift.swift in Sources */,
 				DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */,
+				A06A000F2719218A0005A025 /* OrderApi.swift in Sources */,
 				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
 				DFF1658F2717C140004D1B72 /* ListApi.swift in Sources */,
 			);
