@@ -83,6 +83,7 @@ struct CodepowerView: View {
             
             Text("中小企业以灵活用工的方式落地现代技术方案。")
                 .font(.mt.body2,textColor: .mt.gray_500)
+                .multilineTextAlignment(.center)
                 .lineSpacing(6)
                 .padding(.horizontal,56)
         }

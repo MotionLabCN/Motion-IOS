@@ -933,7 +933,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10151106;
+				CURRENT_PROJECT_VERSION = 1015;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -943,7 +943,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.004;
+				MARKETING_VERSION = 1.0.005;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -963,7 +963,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10151106;
+				CURRENT_PROJECT_VERSION = 1015;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -973,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.004;
+				MARKETING_VERSION = 1.0.005;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
