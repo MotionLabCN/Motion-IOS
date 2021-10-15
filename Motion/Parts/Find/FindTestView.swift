@@ -65,7 +65,7 @@ struct FindTestView: View {
         .mtSheet(isPresented: $findVM.isShowmtsheet) {} content: {
             VStack {
                 CodeItemList
-//                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
+                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
 //                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
                 
                 HStack(spacing:20) {
