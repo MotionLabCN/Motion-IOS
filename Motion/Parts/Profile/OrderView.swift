@@ -15,7 +15,7 @@ struct OrderView: View {
     var body: some View {
         
         NavigationView{
-        
+            
             List{
                 Section {
                     
@@ -26,7 +26,6 @@ struct OrderView: View {
                         //收入订单
                         incomeOrder
                     }
-                
                 }header: {
                     
                     Picker(selection: $tabIndex, label: Text("Picker")) {
@@ -43,8 +42,7 @@ struct OrderView: View {
             .navigationBarItems(trailing: closeBtn)
     }
         .accentColor(Color.mt.accent_purple)
-      
-    }
+}
     
     @ViewBuilder
     var incomeOrder : some View {

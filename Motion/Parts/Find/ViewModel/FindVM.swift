@@ -20,6 +20,8 @@ class FindVM: ObservableObject {
     // MARK:语言技术价格
     @Published var logicCode = LogicProduct()
     
+    @Published var detailWebUrl: String = ""
+    
     // 当前记录一级选中索引
     var selectCodeSelectStyle: CodeSelectStyle = .def
     
@@ -113,8 +115,7 @@ extension FindVM {
             if let list = list {
                 self?.itemList[0].data = list
                 
-//                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-//                self?.itemList[0].data = arr
+               
             }else {
                 //失败
 //                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
@@ -123,6 +124,9 @@ extension FindVM {
                     self?.logicCode.toastText = "请求失败"
                     self?.logicCode.isShowToast = true
             }
+            
+            let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
+            self?.itemList[0].data = arr
             
             // 拿到数据开始设置上次选中模型 设置选中状态
             if self?.lang.isEmpty == false {
@@ -206,14 +210,15 @@ extension FindVM {
         Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
             // 成功...
             self?.logicProduct.isRequesting = false
-            if let list = list {
-                self?.proList.append(contentsOf: list)
-            }else {
-                self?.logicProduct.toastText = "请求失败"
-                self?.logicProduct.isShowToast = true
-//                let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-//                self?.proList.append(contentsOf: arr)
-            }
+//            if let list = list {
+//                self?.proList.append(contentsOf: list)
+//            }else {
+//                self?.logicProduct.toastText = "请求失败"
+//                self?.logicProduct.isShowToast = true
+//            }
+            
+            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
+            self?.proList.append(contentsOf: arr)
         }
     }
 }
@@ -401,7 +406,6 @@ struct CodeProductModel: Identifiable, Convertible {
     var productImg: String {
         storageAttachments.count > 2 ? storageAttachments[1].attachmentKey : ""
     }
-    
 }
 
 struct CodeDetailModel: Identifiable, Convertible {
