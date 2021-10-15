@@ -214,7 +214,8 @@ struct CodepowerView: View {
                     .mtShadow(type: .shadowLow)
                     .onTapGesture {
                         isPushWebView = true
-                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)"
+                        let ss = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0MjYwNDYwOTQ3IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDI4OTI2MCwiZGV2aWNlIjoiUEMiLCJqdGkiOiI0ZGZlY2FkYi0zYmZlLTRmMjgtYmQyZC1jMDRlM2U4Mzg2ZDkiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.OIVfewKTZKNJ4mIyMq1AYY3ybleOpNF0HcVAp7mweehJdgPTTDEmAKosAIt-IbBOadiieMCVGwGrqwyVdU1kHn8K8y-O2ZREmG32VVXSfvmzAbPhnpeamNnTC_daYflpCpZzd6CENjvHADyAr8tpW3A2kEnyeB5qb-8IJmI0esjq_olIOcGdSaw9aWdxYIKcB8t987mnZJmtOttisEehmRNKOAABCkzzb3wEbk2IGOcnOs6Wf3HSW6SgMyfDaKeolWg7DIpZB-HmPA0gHzNDZKjvd4nam2lJcMMcCp4GlCKD59zEFgOcfWBxi7pm1XJaQM7LEZw7KNhF4JCx3h5yyA"
+                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(ss)"
                     }
                 }
             }
