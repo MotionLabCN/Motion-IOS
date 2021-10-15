@@ -14,7 +14,7 @@ class UMCommonSwift: NSObject {
     func run(){
         UMCommonSwift.initWithAppkey(appKey: "6167aa2314e22b6a4f2138b6", channel: "Apple Store")
         UMCommonSwift.setLogEnabled(bFlag: true)
-//        UMCommonSwift.setEncryptEnabled(value: true)
+//      UMCommonSwift.setEncryptEnabled(value: true)
     }
     
     /** 初始化友盟所有组件产品

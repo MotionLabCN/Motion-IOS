@@ -17,17 +17,14 @@ class UmMd {
         case Add(things)
         case Delet(things)
         case Edit(things)
-        
         enum things {
             case friend
             case enent
             case tag
         }
-        
     }
     
     public func MD(type : MDtype){
-        
         DispatchQueue.global().async {
             switch type {
             case .Add(let things):
@@ -68,10 +65,5 @@ class UmMd {
                 }
             }
         }
-     
-        
     }
-    
-    
-    
 }
