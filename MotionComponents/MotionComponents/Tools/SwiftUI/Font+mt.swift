@@ -51,7 +51,10 @@ public enum MTFont: CGFloat, CaseIterable, Identifiable {
     case caption1 = 12
     case caption2 = 11
     
-    public var value: Font { Font.system(size: rawValue, weight: .regular, design: .monospaced) }
+    public var value: Font {
+        Font.custom("", size: <#T##CGFloat#>)
+//        Font.system(size: rawValue, weight: .regular, design: .monospaced)
+    }
     
     public var uifont: UIFont { UIFont.monospacedSystemFont(ofSize: rawValue, weight: .regular) }
     
