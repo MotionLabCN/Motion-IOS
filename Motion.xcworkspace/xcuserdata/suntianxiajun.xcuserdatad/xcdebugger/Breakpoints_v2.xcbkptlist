@@ -295,17 +295,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "81A5D670-9CE2-4BBB-B875-15E6EFABF7AE"
+            uuid = "5D02B79B-5707-4EED-BED1-3FAB6547D482"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Motion/Parts/Find/SubViews/CodepowerView.swift"
+            filePath = "Motion/Parts/Find/ViewModel/FindVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "productList"
-            landmarkType = "24">
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "requestWIthLangList()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
