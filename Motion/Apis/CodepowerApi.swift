@@ -10,7 +10,7 @@ import MotionComponents
 // 码力模块菜单 语言
 /*
  码力页面 URL
-    本地: http://127.0.0.1:8802/sys/dict/group/lang?group=lang
+    本地:                      http://127.0.0.1:8802/sys/dict/group/lang?group=lang
     语言:https://ttchain.tntlinking.com/api/codemart/sys/dict/group/lang?group=lang
     技术:https://ttchain.tntlinking.com/api/codemart/label_user_customize/all
  商品列表:https://ttchain.tntlinking.com/api/codemart/product/page?labelIds=2c9780827bf34b0e017c15c07235017e&lang=&price=&page=0&size=10&sort=
