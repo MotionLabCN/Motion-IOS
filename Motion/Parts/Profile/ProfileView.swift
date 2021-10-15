@@ -123,6 +123,7 @@ struct ProfileView: View {
         VStack(alignment:.center, spacing:8){
             
             MTLocUserAvatar( frame: 82)
+                .disabled(true)
             
             VStack(alignment:.center, spacing:0){
                 Text("Motion用户")
