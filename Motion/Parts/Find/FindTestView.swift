@@ -66,7 +66,7 @@ struct FindTestView: View {
             VStack {
                 CodeItemList
                 .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
-                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
+//                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
                 
                 HStack(spacing:20) {
                     Button {
@@ -98,7 +98,7 @@ struct FindTestView: View {
         .sheet(isPresented: $findVM.isShowmtDetail) {
                 SecondItemList
         }
-        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
+//        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
     }
     
@@ -120,12 +120,19 @@ struct FindTestView: View {
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
                     // 获取一级分类下 当前选中的二级分类列表数据.
-                    if let index = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
+                    if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
                         findVM.selectIndex = index
                         findVM.selectFindModel = item
+                        
+//                        if index == 0 {
+//                            // 语言
+//                            findVM.requestWIthLangList()
+//
+//                        }else if index == 1 {
+//                            // 技术
+//                            findVM.requestWithTechnology()
+//                        }
                     }
-                    
-//                    findVM.requestWIthLangList()
                     findVM.isShowmtDetail.toggle()
                 })
                 .frame(height:30)

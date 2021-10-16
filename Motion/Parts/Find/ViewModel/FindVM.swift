@@ -21,6 +21,7 @@ class FindVM: ObservableObject {
     @Published var logicCode = LogicProduct()
     
     @Published var detailWebUrl: String = ""
+    @Published var publishProductWebUrl: String = ""
     
     // 当前记录一级选中索引
     var selectCodeSelectStyle: CodeSelectStyle = .def

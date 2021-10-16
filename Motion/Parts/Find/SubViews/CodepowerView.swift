@@ -16,6 +16,7 @@ struct CodepowerView: View {
     @State  var offsetAnimation  : Bool = false
     
     @State private var isPushWebView: Bool = false
+    @State private var isPublishProduct: Bool = false
     
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
@@ -33,7 +34,11 @@ struct CodepowerView: View {
                 
                 Spacer().frame(width: 0, height: 36)
                 
-                Button("上架技术方案"){}
+                Button("上架技术方案"){
+//                    let token = ""
+                    isPublishProduct = true
+                    vm.publishProductWebUrl = "https://ttchain.tntlinking.com/codeForce/publishProduct" // 暂时没有添加token 需要登录
+                }
                 .mtButtonStyle(.mainGradient)
                 .padding(.horizontal,80)
                 
@@ -59,9 +64,12 @@ struct CodepowerView: View {
             print("22222")
         }
         .mtRegisterRouter(isActive: $isPushWebView) {
-//            MTWebView(urlString: "https://baidu.com")
             MTWebView(urlString: vm.detailWebUrl)
         }
+        .mtRegisterRouter(isActive: $isPublishProduct) {
+            MTWebView(urlString: vm.publishProductWebUrl)
+        }
+
     }
 
    
@@ -75,6 +83,7 @@ struct CodepowerView: View {
             
             Text("中小企业以灵活用工的方式落地现代技术方案。")
                 .font(.mt.body2,textColor: .mt.gray_500)
+                .multilineTextAlignment(.center)
                 .lineSpacing(6)
                 .padding(.horizontal,56)
         }
@@ -153,13 +162,13 @@ struct CodepowerView: View {
     var filter : some View {
         HStack{
             Text("语言:\(vm.selectLang)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Text("技术:\(vm.selectTec)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Text("价格:\(vm.selectPrice)")
-                .font(.mt.body3.mtBlod(),textColor: .black)
+                .font(.mt.body2.mtBlod(),textColor: .black)
             
             Spacer()
             
@@ -215,15 +224,15 @@ struct CodepowerView: View {
                     .onTapGesture {
                         isPushWebView = true
                         // 暂时token
-                        let token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0MjYwNDYwOTQ3IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDI4OTI2MCwiZGV2aWNlIjoiUEMiLCJqdGkiOiI0ZGZlY2FkYi0zYmZlLTRmMjgtYmQyZC1jMDRlM2U4Mzg2ZDkiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.OIVfewKTZKNJ4mIyMq1AYY3ybleOpNF0HcVAp7mweehJdgPTTDEmAKosAIt-IbBOadiieMCVGwGrqwyVdU1kHn8K8y-O2ZREmG32VVXSfvmzAbPhnpeamNnTC_daYflpCpZzd6CENjvHADyAr8tpW3A2kEnyeB5qb-8IJmI0esjq_olIOcGdSaw9aWdxYIKcB8t987mnZJmtOttisEehmRNKOAABCkzzb3wEbk2IGOcnOs6Wf3HSW6SgMyfDaKeolWg7DIpZB-HmPA0gHzNDZKjvd4nam2lJcMMcCp4GlCKD59zEFgOcfWBxi7pm1XJaQM7LEZw7KNhF4JCx3h5yyA"
+                        let token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0Mjg4OTI3MTE0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDMxNzcyNywiZGV2aWNlIjoiUEMiLCJqdGkiOiI3YjZiYmNkOC04MzFjLTQwYjUtODNhZi04YjE0ZTA2ZmU2MzciLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.SbI9E6GQsaVxW4hTbR-u3wzgcq-1c6faVi_CEOYLPGu4boQBrDg2V5LKpSB_Di0ROkgp3rZsBSnQoYjX9rfjGK4407cbrJ5RX7Uhh4-JWjN2ZUya5c8xL0bMD31ldC3HHiGA6QdXWsNS_Dia7jTEPrsxhXdQFNC3XYkg4jlqoIMJ-TDY49hlO2CHLytwdk4aeKDUue8VqgiJkWDnEHK54PMGWusgC8RsR8Rhka3uVdUjOyU9c4pls5WqR3S2uuwoT8to4dnHb4joP4bUZvnHkI_lO4I5UJtKb-jF1HYq2XdGiBOnLPL190vN2hhX_jY6nN8tEcUcQbaPhzY5GckZgg; refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0Mjg4OTI3MTE0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI3YjZiYmNkOC04MzFjLTQwYjUtODNhZi04YjE0ZTA2ZmU2MzciLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNjg4MDkyNywiZGV2aWNlIjoiUEMiLCJqdGkiOiJlM2MyNmY2MS00YWQwLTRhNjAtYjllNy00NDY3ZjMxMjVjMjciLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.gAX-e4iv4vhUp3pkDhOetYG_wE9DBYEnophwTUt4ykiJPlrQ_YCGrdp9vA-SAM5p3OhqBVEYejCOq8xmKQvJs-rShuNXb5ODcB2QM7FqZSl0EttwCOIrrD5qhOU2x3ddEwA_arBFGHk6XdaK7rAxj49aH-4JCdzslKqjCdcge7gsRMabH3WjqTF2kBUQSAu3W5_Mp1fwxY61cLGOo34UVDfWp_HGjfae6ikj0uGobrY4JK_qjVvHmymORylcpTRUwDwt8U_wdXw6lFzlTyWNEIAxagbG-J-NrXb-AG-dI86s-jxNoLMg3Lba20enA-d9E0yhAdrLe6ymtgdhVXuoHw"
                         vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
                     }
                         Text(item.productName)
-                            .font(.mt.body1.bold(),textColor: .black)
+                            .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(2)
                         HStack(spacing:4){
                             Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
-                                .font(.mt.body2.bold(),textColor: .mt.accent_800)
+                                .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             Spacer()
                         }
                     }
@@ -272,11 +281,11 @@ struct CodepowerView_Previews: PreviewProvider {
 //
 //VStack(alignment: .leading, spacing: 8){
 //    Text(item.productName)
-//        .font(.mt.body1.bold(),textColor: .black)
+//        .font(.mt.body1.mtBold(),textColor: .black)
 //        .lineLimit(2)
 //    HStack(spacing:4){
 //        Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
-//            .font(.mt.body2.bold(),textColor: .mt.accent_800)
+//            .font(.mt.body2.mtBold(),textColor: .mt.accent_800)
 //        Spacer()
 //        Image.mt.load(.Visibility_Status_On)
 //            .resizable()

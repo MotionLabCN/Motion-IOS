@@ -13,12 +13,9 @@ struct OrderView: View {
     
     @State var tabIndex : Int = 1
     var body: some View {
-        
         NavigationView{
-            
             List{
                 Section {
-                    
                     if tabIndex == 1{
                         //消费订单
                         consumptionOrder
@@ -27,13 +24,11 @@ struct OrderView: View {
                         incomeOrder
                     }
                 }header: {
-                    
                     Picker(selection: $tabIndex, label: Text("Picker")) {
                         Text("消费订单").tag(1)
                         Text("收益订单").tag(2)
                     }.pickerStyle(.segmented)
                         .padding(.bottom,42)
-
                 }
             }
             .listStyle(.grouped )
