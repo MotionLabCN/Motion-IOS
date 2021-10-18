@@ -115,8 +115,7 @@ struct ProfileView: View {
                     showSettingView.toggle()
                 }
         }
-           
-    
+   
     
        
     }
@@ -131,8 +130,8 @@ struct ProfileView: View {
                     .font(.mt.body1.mtBlod(),textColor: .black)
                 Text(userManager.user.nickname)
                     .font(.mt.body3,textColor: .mt.gray_600)
-                    
             }
+            
             HStack{
                 HStack{
                     Text(userManager.user.linkNum.string)
