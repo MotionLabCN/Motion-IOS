@@ -53,25 +53,29 @@ class FindVM: ObservableObject {
     enum CodeSelectStyle {
         case def,lang ,to ,price
     }
-    // 选中当前模型
-    
-    @Published var selectFindModel: FindModel = FindModel(title:"全部", data: [],technology: [],price:[])
-    
-//    @Published var sltLangModel: FindModel = FindModel(title:"语言",data: [], technology: [], price: [])
-//    @Published var sltTeModel: FindModel = FindModel(title:"技术",data: [], technology: [], price: [])
-//    @Published var sltPriceModel: FindModel = FindModel(title:"价格",data: [], technology: [], price: [])
-
+    // 选中二级分类字段
+    var selectSecondTitle: String {
+        switch selectCodeSelectStyle {
+        case .lang:
+            return itemList[0].title
+        
+        case .to:
+            return itemList[1].title
+            
+        case .price:
+            return itemList[2].title
+        default:
+            return ""
+        }
+    }
     
     // 码力数据源
     @Published var itemList: [FindModel] = []
     
     //MARK: 产品接口模块 and 数据模型
     // 产品列表接口参数
-    @Published var proList: [CodeProductModel] = [] {
-        didSet {
-            print("==proList did set")
-        }
-    }
+    @Published var proList: [CodeProductModel] = []
+    
     var pageNum: Int = 0
     var lang: String = ""
     var price: String = ""
@@ -91,8 +95,8 @@ class FindVM: ObservableObject {
     
     init() {
         getItems()
-//      requestWithMenuList()
         requestWithProductList()
+        getPriceItems()
     }
     
     func getItems() {
@@ -121,7 +125,7 @@ extension FindVM {
     func requestWIthLangList() {
         // 显示加载
         self.logicCode.isRequesting = true
-
+        
         // 语言https
         let language = CodepowerApi.language(p: .init(group: "lang"))
         Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
@@ -156,6 +160,7 @@ extension FindVM {
     
     func requestWithTechnology() {
         // 技术
+        
         let technology = CodepowerApi.technology
         Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
             self?.logicCode.isRequesting = false
@@ -243,19 +248,7 @@ extension FindVM {
             }
         }
         
-        // 价格
-        let json1: [[String: Any]] = [
-            ["dictKey": "全部", "dictValue": ""],
-            ["dictKey": "免费", "dictValue": "0"],
-            ["dictKey": "1-98", "dictValue": "1"],
-            ["dictKey": "99-198", "dictValue": "2"],
-            ["dictKey": "199-1998", "dictValue": "3"],
-            ["dictKey": "1999-2998", "dictValue": "4"],
-            ["dictKey": "2999以上", "dictValue": "5"]
-        ]
         
-        let cars = json1.kj.modelArray(LangModel.self)
-        self.itemList[2].priceList = cars
     }
     
     
@@ -300,6 +293,13 @@ extension FindVM {
             self?.proList.append(contentsOf: arr)
         }
     }
+    
+    // MARK: 获取价格数据
+    func getPriceItems() {
+        // 价格
+        let arr = MockTool.readArray(LangModel.self, fileName: "codepower_price") ?? []
+        self.itemList[2].priceList = arr
+    }
 }
 
 // MARK: 模型处理模块
@@ -328,77 +328,46 @@ extension FindVM {
     }
     
     // MARK: 修改数据
-    func updateItes(item: LangModel) {
-        // 所有设置false
-        var selectIndex = 0
-        switch selectCodeSelectStyle {
-        case .lang:
-            selectIndex = 0
-        case .to:
-            selectIndex = 1
-        case .price:
-            selectIndex = 2
-        case .def:
-            selectIndex = 0
+    func updateLangItems(item: LangModel) {
+        if let index = itemList[0].data.firstIndex(where: {$0.isSelect == true}) {
+            itemList[selectIndex].data[index].isSelect = false
         }
-        if let index = selectFindModel.data.firstIndex(where: {$0.isSelect == true}) {
-            selectFindModel.data[index].isSelect = false
-            
+        if let index = itemList[0].data.firstIndex(where: {$0.id == item.id}) {
+            let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
+            selectLangIndex = index
+            itemList[0].data[index] = codeModel // 修改数据源
+            lang = codeModel.isSelect ? codeModel.dictValue : ""
+            itemList[0].subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
+        }
+        isShowmtDetail.toggle()
+        
+    }
+    // MARK:修改价格
+    func updatePriceItes(item: LangModel) {
+        if let index = itemList[2].data.firstIndex(where: {$0.isSelect == true}) {
             itemList[selectIndex].data[index].isSelect = false
         }
         
-        if selectIndex == 0 {
-            if let index = selectFindModel.data.firstIndex(where: {$0.id == item.id}) {
-                let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
-                selectFindModel.data[index] = codeModel
-                
-                if selectCodeSelectStyle == .lang {
-                    selectLangIndex = index
-                    itemList[selectIndex].data[index] = codeModel // 修改数据源
-                    lang = codeModel.isSelect ? codeModel.dictValue : ""
-                }else {
-                    selectPriceIndex = index
-                    itemList[selectIndex].priceList[index] = codeModel // 修改数据源
-                    price = codeModel.isSelect ? codeModel.dictValue : ""
-                }
-               
-                itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
-            }
-
-        }else {
-            if let index = selectFindModel.priceList.firstIndex(where: {$0.id == item.id}) {
-                let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
-                selectFindModel.priceList[index] = codeModel
-                
-                if selectCodeSelectStyle == .lang {
-                    selectLangIndex = index
-                    itemList[selectIndex].priceList[index] = codeModel // 修改数据源
-                    lang = codeModel.isSelect ? codeModel.dictValue : ""
-                }else {
-                    selectPriceIndex = index
-                    itemList[selectIndex].priceList[index] = codeModel // 修改数据源
-                    price = codeModel.isSelect ? codeModel.dictValue : ""
-                }
-               
-                itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
-            }
-
+        if let index = itemList[2].priceList.firstIndex(where: {$0.id == item.id}) {
+            let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
+            selectPriceIndex = index
+            itemList[selectIndex].priceList[index] = codeModel // 修改数据源
+            price = codeModel.isSelect ? codeModel.dictValue : ""
+            itemList[2].subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
         }
         isShowmtDetail.toggle()
     }
+    
     //MARK: 技术选中数据模型更新
     func updateTechnologyItes(item: TechnologyModel) {
         // 所有设置false
         let selectIndex = 1
-        if let index = selectFindModel.technologyList.firstIndex(where: {$0.isSelect == true}) {
-            selectFindModel.technologyList[index].isSelect = false
-            
+        if let index = itemList[1].technologyList.firstIndex(where: {$0.isSelect == true}) {
             itemList[selectIndex].technologyList[index].isSelect = false
         }
         
-        if let index = selectFindModel.technologyList.firstIndex(where: {$0.id == item.id}) {
+        if let index = itemList[1].technologyList.firstIndex(where: {$0.id == item.id}) {
             let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
-            selectFindModel.technologyList[index] = codeModel
             itemList[selectIndex].technologyList[index] = codeModel // 修改数据源
             selectTechnologyIndex = index
             itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"

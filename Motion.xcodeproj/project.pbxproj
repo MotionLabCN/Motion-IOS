@@ -64,6 +64,7 @@
 		5ACB57ED26FC3374001BACDA /* OpenSourceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */; };
 		5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */; };
 		5ACBA39326F2EBA600A5789E /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACBA39226F2EBA600A5789E /* FindView.swift */; };
+		A0672F5C271D25510002271A /* codepower_price.json in Resources */ = {isa = PBXBuildFile; fileRef = A0672F5B271D25510002271A /* codepower_price.json */; };
 		A06A000D27191D7A0005A025 /* myorder_code.json in Resources */ = {isa = PBXBuildFile; fileRef = A06A000C27191D7A0005A025 /* myorder_code.json */; };
 		A06A000F2719218A0005A025 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A000E2719218A0005A025 /* OrderApi.swift */; };
 		A06A0011271925D60005A025 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A0010271925D60005A025 /* OrderVM.swift */; };
@@ -148,6 +149,7 @@
 		5ACBA38C26F2D42300A5789E /* TeamProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		5ACBA39226F2EBA600A5789E /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Motion.debug.xcconfig"; path = "Target Support Files/Pods-Motion/Pods-Motion.debug.xcconfig"; sourceTree = "<group>"; };
+		A0672F5B271D25510002271A /* codepower_price.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_price.json; sourceTree = "<group>"; };
 		A06A000C27191D7A0005A025 /* myorder_code.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myorder_code.json; sourceTree = "<group>"; };
 		A06A000E2719218A0005A025 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		A06A0010271925D60005A025 /* OrderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVM.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				DF8E41202715894900B26E27 /* codepower_langs.json */,
 				A0731B51271539E100A6FF79 /* codepower_te.json */,
 				A07613F12716871D00138857 /* codepower_pro.json */,
+				A0672F5B271D25510002271A /* codepower_price.json */,
 				A06A000C27191D7A0005A025 /* myorder_code.json */,
 			);
 			path = Mocks;
@@ -633,6 +636,7 @@
 				DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */,
 				5A40BA7226FCB1970011D3B0 /* money-falling.json in Resources */,
 				DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */,
+				A0672F5C271D25510002271A /* codepower_price.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
