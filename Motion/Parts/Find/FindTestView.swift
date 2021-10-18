@@ -98,7 +98,7 @@ struct FindTestView: View {
         .sheet(isPresented: $findVM.isShowmtDetail) {
                 SecondItemList
         }
-        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
+//        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
     }
     

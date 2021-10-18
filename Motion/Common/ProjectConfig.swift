@@ -10,7 +10,7 @@ import Foundation
 
 
 struct ProjectConfig {
-    static let env: Environment = .local
+    static let env: Environment = .test
     
     enum Environment {
     case local, test

@@ -17,11 +17,15 @@ enum LoginApi: CustomTargetType {
     var host: String { ProjectConfig.host }
 
     var port: Int? {
-        8800
+        switch self {
+        case .loginInWithCode:
+            return ProjectConfig.env == .test ? 8081 : 8800
+        default: return 8800
+        }
     }
     
     var firstPath: String? {
-        if ProjectConfig.env == .local {
+        guard ProjectConfig.env == .test else {
             return nil
         }
         

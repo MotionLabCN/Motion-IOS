@@ -31,7 +31,7 @@ struct LoginStartView: View {
             mp4
             
             logo
-            Text("算力、码力、人力，从Motion走向世界。")
+            Text("极大简化算力、码力、人力的运作方式，让技术自由发生。")
                 .font(.mt.title1.mtBlod(), textColor: .white)
                 .padding(.horizontal, 16)
             
