@@ -226,7 +226,6 @@ struct FindTestView: View {
     //MARK: 技术view
     var TechnologyListView: some View {
         ForEach(findVM.itemList[1].technologyList) { item in
-            
             HStack {
                 Text(item.labelName)
                     .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
