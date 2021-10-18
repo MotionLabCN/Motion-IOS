@@ -114,8 +114,7 @@ struct ProfileView: View {
                     showSettingView.toggle()
                 }
         }
-           
-    
+   
     
        
     }
@@ -130,8 +129,8 @@ struct ProfileView: View {
                     .font(.mt.body1.mtBlod(),textColor: .black)
                 Text("@liseami")
                     .font(.mt.body3,textColor: .mt.gray_600)
-                    
             }
+            
             HStack{
                 HStack{
                     Text("2394")
