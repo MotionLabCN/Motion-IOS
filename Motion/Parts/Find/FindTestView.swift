@@ -25,7 +25,7 @@ struct FindTestView: View {
         VStack(spacing:0){
             
             MTPageSegmentView(titles: findViewTabs, offset: $offset)
-
+            
             MTPageScrollView(offset: $offset) {
                 HStack(spacing: 0) {
                     Group {
@@ -41,9 +41,6 @@ struct FindTestView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            print("sssss")
-        })
         .frame(width: ScreenWidth())
         .mtNavbar(content: {
             Capsule().frame(width: 255, height: 32)
