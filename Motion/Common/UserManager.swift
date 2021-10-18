@@ -15,8 +15,8 @@ import SwiftUI
 //MARK: - 用户模型
 struct UserInfo: Convertible {
     var id = "" //: "e897c635-9ce6-4aa8-a9c0-e14180cee3e7",
-    var username = "" //: "15527864162",
-    var nickname = "" //: "15527864162",
+    var username = "Motion用户" //: "15527864162",
+    var nickname = "@motion" //: "15527864162",
     var headImgUrl = "" //: null,
     var country = "" //: null,
     var province = "" //: null,
@@ -37,8 +37,8 @@ struct UserInfo: Convertible {
     var unionid = "" //: null,
     var tcc = "" //: 0,
     var metaCoin = "" //: 5000,
-    var linkNum = "" //: 0,
-    var bylinkNum = "" //: 0,
+    var linkNum = 0 //: 0,
+    var bylinkNum = 0 //: 0,
     var description = "" //: null,
     var lastActiveTime = "" //: "2021-10-12 16:03:10",
     var linkUrl = "" //: null

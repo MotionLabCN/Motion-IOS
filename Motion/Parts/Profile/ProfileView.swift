@@ -13,6 +13,7 @@ struct ProfileView: View {
     @Environment(\.presentationMode) var persentationMode
     
     @EnvironmentObject var locUserVm: MTLocUserVM
+    @EnvironmentObject var userManager: UserManager
     
     @State private var showSettingView : Bool = false
     @State private var showOrderView : Bool = false
@@ -114,8 +115,7 @@ struct ProfileView: View {
                     showSettingView.toggle()
                 }
         }
-           
-    
+   
     
        
     }
@@ -126,21 +126,21 @@ struct ProfileView: View {
                 .disabled(true)
             
             VStack(alignment:.center, spacing:0){
-                Text("Motion用户")
+                Text(userManager.user.username)
                     .font(.mt.body1.mtBlod(),textColor: .black)
-                Text("@liseami")
+                Text(userManager.user.nickname)
                     .font(.mt.body3,textColor: .mt.gray_600)
-                    
             }
+            
             HStack{
                 HStack{
-                    Text("2394")
+                    Text(userManager.user.linkNum.string)
                         .font(.mt.body1.mtBlod(),textColor: .black)
                     Text("连接")
                         .font(.mt.body3,textColor: .mt.gray_900)
                 }
                 HStack{
-                    Text("204")
+                    Text(userManager.user.bylinkNum.string)
                         .font(.mt.body2.mtBlod(),textColor: .black)
                     Text("被连接")
                         .font(.mt.body3,textColor: .mt.gray_900)
@@ -148,6 +148,8 @@ struct ProfileView: View {
             }
         }
     }
+    
+    
 }
 
 struct LeftMenuView_Previews: PreviewProvider {

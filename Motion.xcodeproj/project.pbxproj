@@ -55,6 +55,8 @@
 		5A9155122704038800E8135F /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9155112704038800E8135F /* StorageView.swift */; };
 		5A91551427040CB700E8135F /* CodepowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91551327040CB700E8135F /* CodepowerView.swift */; };
 		5AAACF97271553070060A5DF /* DiskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAACF96271553070060A5DF /* DiskPage.swift */; };
+		5AB08E74271D5FC3002C5E3F /* PostEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */; };
+		5AB08E76271D6027002C5E3F /* SystemImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */; };
 		5AC2146426F3767800D4457C /* RecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146326F3767800D4457C /* RecommendView.swift */; };
 		5AC2146726F3787300D4457C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC2146626F3787300D4457C /* ProfileView.swift */; };
 		5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */; };
@@ -144,6 +146,8 @@
 		5A9155112704038800E8135F /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		5A91551327040CB700E8135F /* CodepowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodepowerView.swift; sourceTree = "<group>"; };
 		5AAACF96271553070060A5DF /* DiskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskPage.swift; sourceTree = "<group>"; };
+		5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorView.swift; sourceTree = "<group>"; };
+		5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImagePicker.swift; sourceTree = "<group>"; };
 		5AC2146326F3767800D4457C /* RecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendView.swift; sourceTree = "<group>"; };
 		5AC2146626F3787300D4457C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetail.swift; sourceTree = "<group>"; };
@@ -293,6 +297,15 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		5AB08E72271D5FB2002C5E3F /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */,
+				5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		5AC2146226F3766A00D4457C /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +431,7 @@
 				5A9155112704038800E8135F /* StorageView.swift */,
 				DF95F20A26FAF77100081A7D /* Login */,
 				5ACBA38F26F2E66E00A5789E /* Find */,
+				5AB08E72271D5FB2002C5E3F /* Post */,
 				DF1111C926F77F6E00ADB99A /* Home */,
 				5A5842D226F4CDBF00311388 /* Notification */,
 				5AC2146526F3784B00D4457C /* Profile */,
@@ -811,6 +825,7 @@
 				A071104A271125E500963385 /* NoticeListView.swift in Sources */,
 				DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */,
 				DFE0C0AD26E783CE00EDB44F /* MotionApp.swift in Sources */,
+				5AB08E74271D5FC3002C5E3F /* PostEditorView.swift in Sources */,
 				DFF165952717EBBB004D1B72 /* ModifilerUserInfoApi.swift in Sources */,
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
@@ -826,6 +841,7 @@
 				DF8E411F2715892700B26E27 /* MockTool.swift in Sources */,
 				A071104E27112EA800963385 /* NotifiListModel.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				5AB08E76271D6027002C5E3F /* SystemImagePicker.swift in Sources */,
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
 				A0672F63271D3CC30002271A /* LynnRefreshState.swift in Sources */,
@@ -973,7 +989,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1015;
+				CURRENT_PROJECT_VERSION = 1016;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -983,7 +999,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.005;
+				MARKETING_VERSION = 1.0.007;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1003,7 +1019,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1015;
+				CURRENT_PROJECT_VERSION = 1016;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -1013,7 +1029,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.005;
+				MARKETING_VERSION = 1.0.007;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tntlinking.motion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
