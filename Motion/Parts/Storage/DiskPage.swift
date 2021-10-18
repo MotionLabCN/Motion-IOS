@@ -11,8 +11,10 @@ import MotionComponents
 struct StoragePage: View {
     
     @State var animationInt : Int = 0
-    
+    // 进入成为存储提供者
     @State var isStorageList = false
+    // 存储文件web
+    @State var isStorageWeb = false
     
     var body: some View {
         
@@ -37,6 +39,7 @@ struct StoragePage: View {
                     .padding(.horizontal,56)
                     .offset(y: animationInt >= 4 ? 0 : -ScreenHeight() * 1.3)
                 Button("存储文件"){
+                    isStorageWeb.toggle()
                 }.mtButtonStyle(.mainGradient)
                     .padding(.horizontal,56)
                     .offset(y: animationInt >= 5 ? 0 : -ScreenHeight() * 1.3)
@@ -54,6 +57,10 @@ struct StoragePage: View {
         }
         .mtRegisterRouter(isActive: $isStorageList, destination: {
             StorageListView()
+        })
+        .mtRegisterRouter(isActive: $isStorageWeb, destination: {
+            let url = "https://ttchain.tntlinking.com/personal-center/my-storage"
+            MTWebView(urlString: url)
         })
     }
 }

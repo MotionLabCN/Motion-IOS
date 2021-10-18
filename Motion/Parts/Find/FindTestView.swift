@@ -159,7 +159,7 @@ struct FindTestView: View {
                         case .lang:
                             LangListView
                             
-                        case .to:
+                        case .technology:
                             TechnologyListView
                             
                         case .price:

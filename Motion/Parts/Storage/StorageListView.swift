@@ -23,7 +23,7 @@ struct StorageListView: View {
         ScrollView {
             ForEach(itemList) { item in
                 cellItem(item: item)
-                    .background(item.backgroundColor.opacity(0.2))
+                    .background(item.backgroundColor.opacity(0.1))
                     .cornerRadius(8)
                     .padding(.horizontal,10)
                     .onTapGesture {
@@ -38,7 +38,7 @@ struct StorageListView: View {
         .navigationTitle("共享存储")
     }
     
-    //MARK:cell
+    //MARK: cell
     @ViewBuilder
     func cellItem(item: ShardStorageModel) -> some View {
         HStack {
@@ -75,7 +75,7 @@ struct StorageListView: View {
     }
 }
 
-
+//MARK: 数据模型
 struct ShardStorageModel: Identifiable {
     let id = UUID().uuidString
     var name: String {
