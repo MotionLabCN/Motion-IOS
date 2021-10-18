@@ -70,7 +70,6 @@ struct FindTestView: View {
                 
                 HStack(spacing:20) {
                     Button {
-                        print("\(findVM.selectFindModel.subTitle)")
                         findVM.clearItems()
                     } label: {
                         Text("重置")
@@ -81,7 +80,7 @@ struct FindTestView: View {
                         findVM.isShowmtsheet.toggle()
                         
                         // 请求接口
-                    findVM.requestWithProductList()
+                        findVM.requestWithProductList()
                         
                     } label: {
                         Text("应用")
@@ -122,16 +121,17 @@ struct FindTestView: View {
                     // 获取一级分类下 当前选中的二级分类列表数据.
                     if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
                         findVM.selectIndex = index
-                        findVM.selectFindModel = item
+//                        findVM.selectFindModel = item
                         
-//                        if index == 0 {
-//                            // 语言
-//                            findVM.requestWIthLangList()
-//
-//                        }else if index == 1 {
-//                            // 技术
-//                            findVM.requestWithTechnology()
-//                        }
+                        if index == 0 {
+                            // 语言
+                            findVM.requestWIthLangList()
+                        
+
+                        }else if index == 1 {
+                            // 技术
+                            findVM.requestWithTechnology()
+                        }
                     }
                     findVM.isShowmtDetail.toggle()
                 })
@@ -171,12 +171,10 @@ struct FindTestView: View {
                         default:
                             Text("加载中....")
                         }
-//                    }
                 })
             }
-            
             .listStyle(.grouped)
-            .navigationBarTitle(Text(findVM.selectFindModel.title))
+            .navigationBarTitle(Text(findVM.selectSecondTitle))
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
         }
@@ -201,7 +199,7 @@ struct FindTestView: View {
     
     //MARK: 语言view
     var LangListView: some View {
-        ForEach(findVM.selectFindModel.data) { item in
+        ForEach(findVM.itemList[0].data) { item in
             
             HStack {
                 Text(item.dictKey)
@@ -221,13 +219,13 @@ struct FindTestView: View {
             .contentShape(Rectangle())
             .onTapGesture(perform: {
                 // 选中和取消
-                findVM.updateItes(item: item)
+                findVM.updateLangItems(item: item)
             })
         }
     }
     //MARK: 技术view
     var TechnologyListView: some View {
-        ForEach(findVM.selectFindModel.technologyList) { item in
+        ForEach(findVM.itemList[1].technologyList) { item in
             
             HStack {
                 Text(item.labelName)
@@ -254,7 +252,7 @@ struct FindTestView: View {
     }
     //MARK: 价格view
     var PriceListView: some View {
-        ForEach(findVM.selectFindModel.priceList) { item in
+        ForEach(findVM.itemList[2].priceList) { item in
             HStack {
                 Text(item.dictKey)
                     .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
@@ -273,7 +271,7 @@ struct FindTestView: View {
             .contentShape(Rectangle())
             .onTapGesture(perform: {
                 // 选中和取消
-                findVM.updateItes(item: item)
+                findVM.updatePriceItes(item: item)
             })
         }
     }

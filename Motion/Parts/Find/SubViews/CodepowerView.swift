@@ -174,7 +174,7 @@ struct CodepowerView: View {
             
             Button {
                 vm.isShowmtsheet.toggle()
-                vm.requestWithMenuList()
+//                vm.requestWithMenuList()
             } label: {
                 Image.mt.load(.Filter_list)
                     .foregroundColor(.red)
