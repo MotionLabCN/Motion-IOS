@@ -35,6 +35,7 @@ struct StorageListView: View {
                 MTWebView(urlString: webUrlString)
             }
         }
+        .navigationTitle("共享存储")
     }
     
     //MARK:cell

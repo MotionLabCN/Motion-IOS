@@ -293,6 +293,7 @@
 			children = (
 				A0672F66271D54D30002271A /* SubViews */,
 				5AAACF96271553070060A5DF /* DiskPage.swift */,
+				A0672F67271D55030002271A /* StorageListView.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -365,7 +366,6 @@
 		A0672F66271D54D30002271A /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				A0672F67271D55030002271A /* StorageListView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
