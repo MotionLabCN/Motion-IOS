@@ -30,14 +30,13 @@ struct HomeView: View {
         
         ScrollView {
             LazyVStack(spacing: 0.0) {
-                header
-                Divider.mt.defult()
+//                header
+//                Divider.mt.defult()
                 if isShowPlaceholder {
                     placeholder
                         .padding(.top, 150)
                 } else {
                     main
-                    
                 }
             }
         }

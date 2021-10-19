@@ -17,22 +17,24 @@ struct CodepowerView: View {
     
     @State private var isPushWebView: Bool = false
     @State private var isPublishProduct: Bool = false
+    @State private var product1 : Dictionary = ["":""]
+    @State private var product2 : Dictionary = ["":""]
     
     let animation = Animation.linear(duration: 10).repeatForever(autoreverses: true)
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: true) {
-            
             VStack(spacing:12){
                 
-                Spacer().frame(width: 0, height: 44)
+                Spacer().frame(width: 0, height: 24)
                 
                 title
                 
-                Spacer().frame(width: 0, height: 36)
+                Spacer().frame(width: 0, height: 24)
                 
-                scrollAnimation
+                codePowerCard
                 
-                Spacer().frame(width: 0, height: 36)
+                Spacer().frame(width: 0, height: 24)
                 
                 Button("上架技术方案"){
 //                    let token = ""
@@ -59,6 +61,10 @@ struct CodepowerView: View {
                 }
             }
         }
+        .onChange(of: vm.proList.count, perform: { newValue in
+            product1 = [vm.proList[0].productImg:vm.proList[0].productName]
+            product2 = [vm.proList[1].productImg:vm.proList[1].productName]
+        })
         .frame(width: ScreenWidth())
         .onAppear {
             print("22222")
@@ -75,12 +81,12 @@ struct CodepowerView: View {
    
     
     var title : some View {
+        
         VStack(spacing:6){
             Text("技术方案在这里流通与落地")
                 .font(.mt.largeTitle.mtBlod() ,textColor: .black)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal,70)
-            
             Text("中小企业以灵活用工的方式落地现代技术方案。")
                 .font(.mt.body2,textColor: .mt.gray_500)
                 .multilineTextAlignment(.center)
@@ -89,32 +95,67 @@ struct CodepowerView: View {
         }
     }
     
-    @ViewBuilder
-    var scrollAnimation : some View {
-        ScrollViewReader { prox in
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack{
-                    Spacer().frame(width: 16,height: 160)
-                    
-                    ForEach(0 ... 5000, id: \.self) { item in
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(Color.random)
-                            .frame(width: 100, height: 140)
-                            .offset(y: item % 2 == 0 ? 10 : -10 )
-                    }
+    struct CodePowerCard: View {
+        var imageurl : String = "IMG_5847"
+        let name : String
+        let level : Int = 5
+        
+        var body: some View {
+            
+            let w = ScreenWidth() / 3
+            VStack{
+                KFImage(URL(string: imageurl))
+                    .placeholder {
+                        Color.white
+                            .overlay(  Image.mt.load(.Share_Android)
+                                        .resizable()
+                                        .foregroundColor(.mt.gray_400)
+                                        .scaledToFit()
+                                        .frame(width: 24, height: 24)
+                            )
+                           }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width:w)
+                    .clipShape( RoundedRectangle(cornerRadius: 16, style: .continuous))
+                HStack{
+                    Text(name)
+                        .font(.mt.body2.mtBlod(), textColor: .mt.gray_900)
+                        .frame(maxWidth:.infinity,alignment: .leading)
+                    Spacer()
+                    Image.mt.load(.ATM).foregroundColor(.random)
                 }
-                //                .offset(x: offsetAnimation ? -300 : 0)
-                .onAppear {
-                    DispatchQueue.main.async {
-                        prox.scrollTo(2500, anchor: .center)
-                    }
-                    //                    withAnimation(self.animation){
-                    //                        self.offsetAnimation.toggle()
-                    //                    }
-                }
+                .padding(.vertical)
             }
+            .padding(.all,12)
+            .background(  ZStack{
+                Color.white.opacity(0.8)
+                BlurView(style: .regular)
+            } )
+            .clipShape( RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .frame(width:w )
+            .shadow(color: .black.opacity(0.14), radius: 16, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.07), radius: 24, x: 0, y: 6)
+            
+            
         }
     }
+
+    
+    @ViewBuilder
+    var codePowerCard : some View {
+         
+        ZStack{
+            CodePowerCard(imageurl: product2.keys.first!, name: product2.values.first!)
+                .rotationEffect(Angle(degrees: -9), anchor: .bottom)
+                .offset(x:-32)
+            CodePowerCard(imageurl: product2.keys.first!, name: product2.values.first!)
+                .rotationEffect(Angle(degrees: 9), anchor: .bottom)
+                .offset(x:32)
+            CodePowerCard(imageurl: product1.keys.first!, name: product1.values.first!)
+        }
+        
+        }
     
     var shopTitle : some View {
             HStack{
@@ -232,7 +273,7 @@ struct CodepowerView: View {
                             .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(2)
                         HStack(spacing:4){
-                            Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
+                            Text(item.productPrice.toDouble.mtCurrencyWith2Decimals())
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             Spacer()
                         }
@@ -304,3 +345,4 @@ struct CodepowerView_Previews: PreviewProvider {
 //    .foregroundColor(.mt.gray_500)
 //Text(item.countBrowses)
 //    .font(.mt.body2, textColor: .mt.gray_500)
+

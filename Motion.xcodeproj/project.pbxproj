@@ -78,6 +78,7 @@
 		A06A0011271925D60005A025 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A0010271925D60005A025 /* OrderVM.swift */; };
 		A06A001527195C8F0005A025 /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A001427195C8F0005A025 /* OrderItemCell.swift */; };
 		A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FC82F271E58BA004A21FE /* StorageAip.swift */; };
+		A06FC83B271E9026004A21FE /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FC83A271E9026004A21FE /* StorageViewModel.swift */; };
 		A071104A271125E500963385 /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0711049271125E500963385 /* NoticeListView.swift */; };
 		A071104C2711285700963385 /* NotifListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104B2711285700963385 /* NotifListVM.swift */; };
 		A071104E27112EA800963385 /* NotifiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104D27112EA800963385 /* NotifiListModel.swift */; };
@@ -173,6 +174,7 @@
 		A06A0010271925D60005A025 /* OrderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVM.swift; sourceTree = "<group>"; };
 		A06A001427195C8F0005A025 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
 		A06FC82F271E58BA004A21FE /* StorageAip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageAip.swift; sourceTree = "<group>"; };
+		A06FC83A271E9026004A21FE /* StorageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
 		A0711049271125E500963385 /* NoticeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListView.swift; sourceTree = "<group>"; };
 		A071104B2711285700963385 /* NotifListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifListVM.swift; sourceTree = "<group>"; };
 		A071104D27112EA800963385 /* NotifiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiListModel.swift; sourceTree = "<group>"; };
@@ -297,9 +299,10 @@
 		5AAACF95271552F70060A5DF /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A06FC839271E9026004A21FE /* ViewModel */,
 				5A9155112704038800E8135F /* StorageView.swift */,
-				5AB08E7B271E6FFA002C5E3F /* NewStorageView.swift */,
 				5AAACF96271553070060A5DF /* DiskPage.swift */,
+				5AB08E7B271E6FFA002C5E3F /* NewStorageView.swift */,
 				A0672F67271D55030002271A /* StorageListView.swift */,
 			);
 			path = Storage;
@@ -392,6 +395,14 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		A06FC839271E9026004A21FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A06FC83A271E9026004A21FE /* StorageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A071104F27117AA500963385 /* ViewModel */ = {
@@ -841,6 +852,7 @@
 				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
 				A07613F42716A19700138857 /* Double.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
+				A06FC83B271E9026004A21FE /* StorageViewModel.swift in Sources */,
 				DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */,
 				5ACB57EB26FC2AC1001BACDA /* PostEditor.swift in Sources */,
 				DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */,

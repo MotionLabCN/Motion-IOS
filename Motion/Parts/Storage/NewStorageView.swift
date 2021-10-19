@@ -12,8 +12,10 @@ public var storageViewTabs = ["存储","盈利","计算"]
 
 struct NewStorageView: View {
     @State var offset : CGFloat = 0
+    // vm
+    @StateObject var vm = StorageViewModel()
+    
     var body: some View {
-        
         
         VStack(spacing:0){
             MTPageSegmentView(titles: storageViewTabs, offset: $offset)
@@ -44,12 +46,8 @@ struct NewStorageView: View {
         }, trailing: {
             SettingBtn()
         })
+        .mtTopProgress(vm.isLoading, usingBackgorund: false)
         .navigationBarTitleDisplayMode(.inline)
-       
-        
-           
-        
-        
     }
     
     @ViewBuilder
@@ -59,10 +57,10 @@ struct NewStorageView: View {
             let w = CGFloat( ScreenWidth() / 2.2)
             let columns = Array(repeating:GridItem(.flexible(minimum: w, maximum: w) , spacing: 12), count: 2)
             LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
-                infoCard("全网节点数","240,2949","ij")
-                infoCard("有效文件数","793,399","ij")
-                infoCard("平均副本数","3925,540","ij")
-                infoCard("已用存储量","36340","ij")
+                infoCard("全网节点数",vm.storageModel?.totalStorageMessage.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("有效文件数",vm.storageModel?.validFilesNumber.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("平均副本数",vm.storageModel?.averageReplicasMessage.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("已用存储量",vm.storageModel?.usedStorageMessage.mtCurrencyWithInt() ?? "0","ij")
             }
             .padding()
             
