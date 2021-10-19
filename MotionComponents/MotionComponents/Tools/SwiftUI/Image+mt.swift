@@ -33,6 +33,9 @@ public extension MT where Base == Image {
     static func load(_ source: MTMapIcon) -> Image { source.value }
     static func load(_ source: MTNavigationIcon) -> Image { source.value }
     static func load(_ source: MTSocialIcon) -> Image { source.value }
+    static func load(_ source: MTDiskIcon) -> Image { source.value }
+
+    
 //    static func load(_ source: MTToggleIcon) -> Image { source.value }
     
     static var backImage: Image {
@@ -74,6 +77,12 @@ public enum MTContentIcon: String, CaseIterable, MTImageSource {
     public var named: String { rawValue }
 }
 
+public enum MTDiskIcon: String, CaseIterable, MTImageSource {
+    case Box,Dial_numbers,Group_folders,Selected_file,Money
+    
+    public var named: String { rawValue }
+}
+
 public enum MTFinancialIcon: String, CaseIterable, MTImageSource {
     case ATM, Bank_building, Banknote, Bitcoin, Credit_card, Development, Dicussion, Discount_percent, Doller, Euro, Exchange, Graph, Penny, Pie_chart, Piggy_bank, Pound, Price_tag, Reciept, Savings_bag, Shopper_bag, Transaction, Wallet, Yen
     
@@ -109,6 +118,7 @@ public enum MTSocialIcon: String, CaseIterable, MTImageSource {
     
     public var named: String { rawValue }
 }
+
 
 
 
