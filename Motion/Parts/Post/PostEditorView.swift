@@ -10,12 +10,6 @@ import MotionComponents
 
 
 
-public struct IDImage : Identifiable,Equatable{
-    public let id = UUID()
-    let image : Image
-}
-
-
 struct PostEditorView: View {
     @State private var showPhotoPicker : Bool = false
     @State private var isLoading : Bool = false
@@ -86,14 +80,11 @@ struct PostEditorView: View {
             
             Spacer()
             
-            Button {
-                
-                print("text = \(text), photos count = \(selectedPhotos.count)")
-            } label: {
+            Button(action: addPost) {
                 Text("发布")
                     .font(.mt.body1, textColor: .mt.accent_purple)
             }
-
+           
         }
         .padding(.horizontal, 12)
     }
@@ -120,29 +111,22 @@ struct PostEditorView: View {
               
                 
                 if  selectedPhotos.count != 0 {
-                    let images = selectedPhotos.map{ image in
-                        IDImage(image: Image(uiImage: image))
-                    }
-                    ForEach(images, id :\.id){  image in
-                        image.image
+                    ForEach(selectedPhotos.indices, id: \.self) { index in
+                        let shape =  RoundedRectangle(cornerRadius: 20, style: .continuous)
+//                        image.image
+                        Image(uiImage: selectedPhotos[index])
                             .resizable()
                             .scaledToFill()
                             .frame(width: 72, height: 72)
-                            .transition(.fly.animation(.spring()))
-                            .clipShape( RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .overlay( RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(lineWidth: 0.5).foregroundColor(.mt.gray_400))
-                            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .contextMenu(ContextMenu(menuItems:
-                                                        {
+//                            .transition(.fly.animation(.spring()))
+                            .clipShape(shape)
+                            .overlay(shape.stroke(lineWidth: 0.5).foregroundColor(.mt.gray_400))
+                            .contentShape(shape)
+                            .contextMenu(ContextMenu(menuItems:{
                                 Button("删除"){
-                                    withAnimation(.spring()){
-                                        if let index = images.firstIndex(of:  image ){
-                                            selectedPhotos.remove(at: index)
-                                        }
-                                    }
+                                    selectedPhotos.remove(at: index)
                                 }
-                            }
-                                                    ))
+                            }))//contextMenu end
                         
                     }
                 }
@@ -158,6 +142,23 @@ struct PostEditorView: View {
 
     }
     
+    
+    //MARK: - 发布
+    func addPost() {
+        // 1.先上传图片
+        if selectedPhotos.isEmpty {
+            print("直接传吧")
+        } else {
+            Networking.request(OSSApi.upload(images: selectedPhotos)) { result in
+                print("xxx")
+            }
+        }
+        
+    }
+    
+    func uploadImages() {
+        
+    }
 }
 
 struct PostEditorView_Previews: PreviewProvider {
