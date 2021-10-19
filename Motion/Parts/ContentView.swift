@@ -55,13 +55,13 @@ struct ContentView: View {
             .tag(MTTabbar.Kind.home)
             
             NavigationView {
-                FindTestView()
+                FindView()
 //               FindView()
             }
             .tag(MTTabbar.Kind.search)
             
             NavigationView {
-                StorageView()
+                NewStorageView()
             }
             .tag(MTTabbar.Kind.storage)
             

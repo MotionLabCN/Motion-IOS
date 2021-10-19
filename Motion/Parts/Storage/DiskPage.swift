@@ -11,39 +11,45 @@ import MotionComponents
 struct StoragePage: View {
     
     @State var animationInt : Int = 0
+    // 进入成为存储提供者
+    @State var isStorageList = false
+    // 存储文件web
+    @State var isStorageWeb = false
+    
+//    @StateObject var vm = StorageViewModel()
     
     var body: some View {
-
-                ScrollView(.vertical, showsIndicators: false) {
-                    
-                    Spacer()   .frame(height: ScreenWidth() * 0.3)
-                    LazyVStack{
-                        Today()
-                            .offset(y: animationInt >= 1 ? 0 : -ScreenHeight() * 1.3)
-                        ActiveUser()
-                            .offset(y: animationInt >= 2 ? 0 : -ScreenHeight() * 1.3)
-                        Message()
-                            .offset(y: animationInt >= 3 ? 0 : -ScreenHeight() * 1.3)
-                        
-                  
-                        Spacer()
-                            .frame(height: ScreenHeight() * 0.1)
-                        
-                        Button("成为存储提供者"){
-                        }.mtButtonStyle(.mainDefult(isEnable: true))
-                            .padding(.horizontal,56)
-                            .offset(y: animationInt >= 4 ? 0 : -ScreenHeight() * 1.3)
-                        Button("存储文件"){
-                        }.mtButtonStyle(.mainGradient)
-                            .padding(.horizontal,56)
-                            .offset(y: animationInt >= 5 ? 0 : -ScreenHeight() * 1.3)
-                        
-                    }
-                    
-                    .padding()
-                        
-                }
-
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            
+            Spacer()
+                .frame(height: ScreenWidth() * 0.3)
+            LazyVStack{
+//                Today(vm: vm)
+                Today()
+                    .offset(y: animationInt >= 1 ? 0 : -ScreenHeight() * 1.3)
+                ActiveUser()
+                    .offset(y: animationInt >= 2 ? 0 : -ScreenHeight() * 1.3)
+//                Message()
+//                    .offset(y: animationInt >= 3 ? 0 : -ScreenHeight() * 1.3)
+                
+                
+                Spacer()
+                    .frame(height: ScreenHeight() * 0.1)
+                
+                Button("成为存储提供者"){
+                    isStorageList.toggle()
+                }.mtButtonStyle(.mainDefult(isEnable: true))
+                    .padding(.horizontal,56)
+                    .offset(y: animationInt >= 4 ? 0 : -ScreenHeight() * 1.3)
+                Button("存储文件"){
+                    isStorageWeb.toggle()
+                }.mtButtonStyle(.mainGradient)
+                    .padding(.horizontal,56)
+                    .offset(y: animationInt >= 5 ? 0 : -ScreenHeight() * 1.3)
+            }
+            .padding()
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 for item in (1...6) {
@@ -53,6 +59,14 @@ struct StoragePage: View {
                 }
             }
         }
+//        .mtTopProgress(vm.isLoading, usingBackgorund: false)
+        .mtRegisterRouter(isActive: $isStorageList, destination: {
+            StorageListView()
+        })
+        .mtRegisterRouter(isActive: $isStorageWeb, destination: {
+            let url = "https://ttchain.tntlinking.com/personal-center/my-storage"
+            MTWebView(urlString: url)
+        })
     }
 }
 
@@ -130,50 +144,49 @@ struct Message: View {
         }
         .mtCardStyle()
         
-     
+        
     }
 }
 
 struct ActiveUser: View {
     
+//    var vm: StorageViewModel
+    
     var body: some View {
         HStack{
             VStack(alignment:.center){
-                Text("12")
-                    .font(.system(size: 26, weight: .light, design: .monospaced))
+//                Text(vm.storageModel?.validFilesNumber ?? "0")
+//                    .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("有效文件")
                     .font(.system(size:12, weight: .light, design: .monospaced))
                     .foregroundColor(.black.opacity(0.3))
             }
             Spacer()
-            PercentageData(PercentNumber: "29", showTag: true, tagName: "已用容量",tagColor: .blue)
-            Spacer()
-            PercentageData(PercentNumber: "71", showTag: true, tagName: "可用容量",tagColor: .green)
+//            PercentageData(PercentNumber: vm.storageModel?.usedStorageMessage ?? "0", showTag: true, tagName: "已用容量",tagColor: .blue)
+//            Spacer()
+//            PercentageData(PercentNumber: vm.storageModel?.availableStorageMessage ?? "0", showTag: true, tagName: "可用容量",tagColor: .green)
             Spacer()
             ZStack{
-
                 ProgessCircle(frame: 40, color: .green, progress: 0.29,lineWidth: 6)
                 ProgessCircle(frame: 40, color: .blue, progress: 0.71,lineWidth: 6)
                     .rotationEffect(Angle(degrees: 0.29 / 1 * 360))
             }
-           
-            
         }
         .mtCardStyle()
-        
-        
     }
 }
 
 
 struct Today: View {
     
+//    var vm:StorageViewModel
+    
     var body: some View {
         HStack(alignment:.center){
             Spacer()
             VStack(alignment:.center){
-                Text("4958")
-                    .font(.system(size: 26, weight: .light, design: .monospaced))
+//                Text(vm.storageModel?.storageNode ?? "0")
+//                    .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("当前节点数")
                     .font(.system(size:12, weight: .light, design: .monospaced))
                     .foregroundColor(.black.opacity(0.3))
@@ -186,9 +199,6 @@ struct Today: View {
             Spacer()
         }
         .mtCardStyle()
-       
-        
-        
     }
 }
 
@@ -209,7 +219,7 @@ struct ProgessCircle: View {
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(color,
-                    style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
+                        style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                 )
                 .frame(width: frame , height: frame)
         }

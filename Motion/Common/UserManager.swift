@@ -51,7 +51,7 @@ struct LoginSuccessInfo: Convertible {
         case unkown = "", 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
     }
     
-    var access_token = ""
+    var access_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0NjE1MzE2NzQ0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDY0NDExNiwiZGV2aWNlIjoiUEMiLCJqdGkiOiIwODQ3OWQzNy02YjIxLTRjN2MtOTYwMC02NDI0Y2FlZDcyZDMiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.J8YVXResjDMj27BV4sI0Z3RGeDlz0sqDwXZl6N7uTxHoWEU0GbeiTUXfqySeDZmY8w-RbRpY9p_WfBCLshjYja0y8cAVHg00WfycPOsb1_ol7PJWKB41OG_B3iQfn7Pz65FDArrT0nKMl1p33kdxngZJtmFRvf9oL8JagZe-cPM__oyuvDxfovtYbLvFqQsK3vwHvjCZ8BOCIlVly5jiecUT2r-m-LGEKdP9locFKGlwcvG5esZsqfBq_ajfO8XaqPadi9apv5Cx2VbgOJ065aKQQou0nEdKsJtDMmOryPjujF0jSmdFFCsJ2LZhSnRWLn8SLIaILpilyvZKXk51GQ"
     var token_type = "" //: "bearer",
     var refresh_token = "" //: "",
     var expires_in = 0 //: 28799,

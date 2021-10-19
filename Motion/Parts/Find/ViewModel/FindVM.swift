@@ -33,7 +33,7 @@ class FindVM: ObservableObject {
                 selectCodeSelectStyle = .lang
                 break
             case 1:
-                selectCodeSelectStyle = .to
+                selectCodeSelectStyle = .technology
                 break
             case 2:
                 selectCodeSelectStyle = .price
@@ -51,7 +51,7 @@ class FindVM: ObservableObject {
     var selectPriceIndex: Int = 0
     
     enum CodeSelectStyle {
-        case def,lang ,to ,price
+        case def,lang ,technology ,price
     }
     // 选中二级分类字段
     var selectSecondTitle: String {
@@ -59,7 +59,7 @@ class FindVM: ObservableObject {
         case .lang:
             return itemList[0].title
         
-        case .to:
+        case .technology:
             return itemList[1].title
             
         case .price:
@@ -130,6 +130,7 @@ extension FindVM {
         let language = CodepowerApi.language(p: .init(group: "lang"))
         Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
             // 成功...
+            
             self?.logicCode.isRequesting = false
             
 //            if let list = list {
@@ -267,7 +268,7 @@ extension FindVM {
             if selectPriceIndex > -1 {
                 lang = itemList[0].data[selectLangIndex].dictValue
             }
-        case .to:
+        case .technology:
             if selectTechnologyIndex > -1 {
                 labelIds = itemList[1].technologyList[selectTechnologyIndex].labelId
             }
@@ -280,17 +281,19 @@ extension FindVM {
         let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
         Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
             // 成功...
-            self?.logicProduct.isRequesting = false
+            guard let self = self else { return }
+            
+            self.logicProduct.isRequesting = false
             
             if let list = list {
-                self?.proList.append(contentsOf: list)
+                self.proList.append(contentsOf: list)
             }else {
-                self?.logicProduct.toastText = "请求失败"
-                self?.logicProduct.isShowToast = true
+                self.logicProduct.toastText = "请求失败"
+                self.logicProduct.isShowToast = true
             }
             
             let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-            self?.proList.append(contentsOf: arr)
+            self.proList.append(contentsOf: arr)
         }
     }
     
@@ -324,7 +327,6 @@ extension FindVM {
         lang = ""
         price = ""
         labelIds = ""
-        
     }
     
     // MARK: 修改数据
@@ -386,8 +388,6 @@ struct FindModel: Identifiable {
     
     var subTitle: String = "全部"
     
-//    var list: [FindModel] = []
-    
     // 语言
     var data: [LangModel] = []
     
@@ -396,9 +396,6 @@ struct FindModel: Identifiable {
     
     // 价格
     var priceList: [LangModel] = []
-    
-    // 用户是否选中
-//    var isSelect: Bool = false
     
     var showText: String {
         subTitle.isEmpty ? "全部" : subTitle
@@ -433,6 +430,7 @@ struct TechnologyModel: Identifiable, Convertible {
     var isSelect: Bool = false
 }
 
+// MARK: 产品模型
 struct CodeProductModel: Identifiable, Convertible {
     var id: String { productId }
     var productId = "" //:"2c9780827c30630d017c306c65600000",
