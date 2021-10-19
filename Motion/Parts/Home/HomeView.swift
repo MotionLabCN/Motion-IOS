@@ -69,27 +69,27 @@ struct HomeView: View {
             print("mtTabbarKindChange \(kind)")
         })
         
-        .mtRegisterRouter(isActive: $isShowmtsheet) {
-            MTWebView(urlString: "https://baidu.com")
-        }
-        
-//        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
-//                VStack {
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//                    Text("currentOffsetY)")
-//
-//                    Button {
-//                        isShowmtsheet = false
-//                    } label: {
-//                        Text("关闭")
-//                    }
-//                }
+//        .mtRegisterRouter(isActive: $isShowmtsheet) {
+//            MTWebView(urlString: "https://baidu.com")
 //        }
+        
+        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
+                VStack {
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+                    Text("currentOffsetY)")
+
+                    Button {
+                        isShowmtsheet = false
+                    } label: {
+                        Text("关闭")
+                    }
+                }
+        }
 
         
     }
@@ -133,12 +133,12 @@ extension HomeView {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
 //                isShowPlaceholder.toggle()
-//                isShowmtsheet.toggle()
+                isShowmtsheet.toggle()
 //                TabbarState.shared.isShowTabbar = false
                
-                Networking.request(OSSApi.upload(images: [UIImage(named: "touxiang")!, UIImage(named: "touxiang")!])) { result in
-                    print("")
-                }
+//                Networking.request(OSSApi.upload(images: [UIImage(named: "touxiang")!, UIImage(named: "touxiang")!])) { result in
+//                    print("")
+//                }
                 
             }, label: {
                 Text("查找朋友")

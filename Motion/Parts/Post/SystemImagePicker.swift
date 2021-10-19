@@ -17,8 +17,6 @@ struct SystemImagePicker: UIViewControllerRepresentable {
     var action :  (_ uiimages : [UIImage])-> Void
    
     
-    
-    
     func makeUIViewController(context: Context) -> some PHPickerViewController {
         var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         config.filter = .images

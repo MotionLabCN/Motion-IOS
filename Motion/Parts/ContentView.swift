@@ -18,13 +18,23 @@ struct ContentView: View {
             ZStack {
                 VStack(spacing: 0) {
                     main
+//                    if tabbarState.isShowTabbar {
+//                        MTTabbar(selectedKind: $tabbarState.selectedKind)
+//                            .transition(.move(edge: .bottom))
+//                    }
+                }
+                
+                VStack {
+                    Spacer()
+                    
                     if tabbarState.isShowTabbar {
                         MTTabbar(selectedKind: $tabbarState.selectedKind)
                             .transition(.move(edge: .bottom))
                     }
-                }                
+                }
+                
                 if tabbarState.selectedKind != .search && tabbarState.selectedKind != .storage{
-                    actionCricleBtn
+                    MTAddPostView()
                 }
             }
         }else{
@@ -34,33 +44,6 @@ struct ContentView: View {
             }
             .transition(.move(edge: .leading).combined(with: .opacity))
         }
-    }
-    
-}
-
-
-
-//MARK: - body
-extension ContentView {
-    var actionCricleBtn: some View {
-        VStack {
-            Spacer()
-            HStack{
-                
-                Spacer()
-                Button {
-                    userManager.logout()
-                } label: {
-                    Image.mt.load(.Add)
-                        .foregroundColor(.white)
-                }
-                .mtButtonStyle(.cricleDefult(.mt.accent_700))
-                .offset(y : -TabbarHeight - 16 )
-            }
-        }
-        .padding(.horizontal,16)
-        .opacity(tabbarState.isShowActionCricleBtn ? 1 : 0)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     var main: some View {
@@ -90,6 +73,8 @@ extension ContentView {
         }
         
     }
+    
+    
     
 }
 
