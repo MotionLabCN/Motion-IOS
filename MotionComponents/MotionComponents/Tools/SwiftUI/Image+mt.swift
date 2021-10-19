@@ -40,7 +40,8 @@ public extension MT where Base == Image {
     
     static var backImage: Image {
         Image.mt.load(.Chevron_left_On)
-            .renderingMode(.original)
+//            .renderingMode(.original)
+        
     }
 }
 

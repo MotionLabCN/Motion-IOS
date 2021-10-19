@@ -96,7 +96,8 @@ struct NewStorageView: View {
     func infoCard(_ text: String,_ number : String,_ iconName : MTDiskIcon) -> some View  {
         VStack(alignment: .leading, spacing:12){
             Image.mt.load(iconName)
-                .resizable().frame(width: 36, height: 36)
+                .resizable()
+                .frame(width: 36, height: 36)
                 .scaledToFit()
             VStack(alignment: .leading, spacing:4){
                 Text(text)
