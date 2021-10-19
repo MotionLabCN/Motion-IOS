@@ -10,6 +10,7 @@ import MotionComponents
 
 public var storageViewTabs = ["存储","盈利","计算"]
 
+
 struct NewStorageView: View {
     @State var offset : CGFloat = 0
     // vm
@@ -23,7 +24,7 @@ struct NewStorageView: View {
                 HStack(spacing: 0) {
                     Group {
                        storage
-                        JoinPeerView()
+                        JoinPeerView(vm: vm)
                        Text("天天数链/计算模块/开发中")
                     }
                     .frame(width: ScreenWidth())
@@ -48,6 +49,9 @@ struct NewStorageView: View {
         })
         .mtTopProgress(vm.isLoading, usingBackgorund: false)
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $vm.isShowmtDetail) {
+            StorageListView()
+        }
     }
     
     @ViewBuilder
@@ -65,11 +69,16 @@ struct NewStorageView: View {
             .padding()
             
             Section {
-                Spacer()
-                MTDescriptionView(title: "尚未存储任何文件", subTitle: "你存储的文件将会显示在这里。")
-                Spacer()
+                if vm.storageList.count > 0 {
+                    Text("sss")
+                } else {
+                    Spacer()
+                    MTDescriptionView(title: "尚未存储任何文件", subTitle: "你存储的文件将会显示在这里。")
+                    Spacer()
+                }
+                
             }
-            header: {
+        header: {
             HStack {
                 Text("我的存储")
                     .font(.mt.title2.mtBlod(),textColor: .black)
@@ -81,7 +90,6 @@ struct NewStorageView: View {
         }
             Spacer()
         }
-        
     }
     
     @ViewBuilder
@@ -112,6 +120,7 @@ struct NewStorageView_Previews: PreviewProvider {
 
 
 struct JoinPeerView: View {
+    var vm = StorageViewModel()
     var body: some View {
         VStack{
             Spacer()   .frame(height: ScreenWidth() * 0.1)
@@ -120,13 +129,15 @@ struct JoinPeerView: View {
                 .frame(width: ScreenWidth() * 0.6, height: ScreenWidth() * 0.6)
             VStack(spacing:12){
                 MTDescriptionView(title: "节点盈利", subTitle: "基于去中心化的分布式存储协议，享受存储服务的同时，有机会为他人提供存储空间，以获取收益。")
-                Button("加入存储节点"){}
+                Button("加入存储节点"){
+                    vm.isShowmtDetail.toggle()
+                }
                 .mtButtonStyle(.mainGradient)
                 .padding(.horizontal,42)
                 .padding(.vertical,16)
+                
             }
             .padding(.vertical,44)
-            
         }
     }
 }
