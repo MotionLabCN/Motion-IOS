@@ -9,7 +9,15 @@ import SwiftUI
 import MotionComponents
 
 struct SettingView: View {
+    
     @Environment(\.presentationMode) var persentationMode
+    @EnvironmentObject var userManager: UserManager
+    
+    @State private var showUserNameEditor : Bool = false
+    @State private var showAbout : Bool = false
+    @State private var showSDK : Bool = false
+    @State private var showUserInfoEditor : Bool = false
+    @State private var username : String = ""
     
     var body: some View {
         NavigationView{
@@ -21,14 +29,62 @@ struct SettingView: View {
         
                 aboutUs
             }
+            .background(navigationLinks)
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(Text("设置"))
             .navigationBarItems( trailing:completeBtn)
+           
+
         }
         
     }
     
+    var userInfoEditorView : some View {
+        
+        List
+        {
+            Button {
+                showUserNameEditor.toggle()
+            } label: {
+                HStack{
+                    Text("用户名")
+                    Spacer()
+                    Text("赵翔宇")
+                }
+                
+            }
+
+           
+            HStack{
+                Text("头像")
+                Spacer()
+                MTLocUserAvatar().disabled(true)
+            }
+      
+        }.listStyle(.insetGrouped)
+       
+        
+    }
+    var navigationLinks : some View{
+        ZStack{
+            NavigationLink(isActive: $showAbout) {
+                MTDescriptionView(title: "Motion", subTitle: "1.0.01")
+            } label: {
+                EmptyView()
+            }
+            NavigationLink(isActive: $showAbout) {
+                MTDescriptionView(title: "Motion", subTitle: "1.0.01")
+            } label: {
+                EmptyView()
+            }
+            NavigationLink(isActive: $showUserInfoEditor) {
+                userInfoEditorView
+            } label: {
+                EmptyView()
+            }
+        }
+    }
     var completeBtn : some View {
         Button(action: {
         self.persentationMode.wrappedValue.dismiss()
@@ -41,34 +97,43 @@ struct SettingView: View {
         //关于Sporip
         Section {
             Link(destination: URL(string: "https://apps.apple.com/al/app/%E7%94%B5%E6%B5%81Sporip/id1552862011")!, label: {
-                LableRow( text: "AppStore评分", icon: Image.mt.load(.Link))})
+                MtLableRow( text: "AppStore评分", icon: Image.mt.load(.Link)){}.disabled(true)
+            })
+            
             Link(destination: URL(string: "https://apps.apple.com/cn/app/id1528460698")!, label: {
-                LableRow( text: "微信公众号", icon: Image.mt.load(.Link))})
+                MtLableRow( text: "微信公众号", icon: Image.mt.load(.Link)){}.disabled(true)})
         }
     }
     var setting : some View {
         Section {
-        LableRow( text: "发现页管理", icon: Image.mt.load(.Search))
-        LableRow( text: "小队", icon: Image.mt.load(.Group))
-        LableRow( text: "通知", icon: Image.mt.load(.Notifications_outline))
-        LableRow( text: "安全", icon: Image.mt.load(.Savings_bag))
-        LableRow( text: "关于", icon: Image.mt.load(.Apps))
-        LableRow( text: "SDK声明", icon: Image.mt.load(.Chat))
-        LableRow( text: "鸣谢", icon: Image.mt.load(.Penny))
+//        LableRow( text: "发现页管理", icon: Image.mt.load(.Search))
+//        LableRow( text: "小队", icon: Image.mt.load(.Group))
+//        LableRow( text: "通知", icon: Image.mt.load(.Notifications_outline))
+//        LableRow( text: "安全", icon: Image.mt.load(.Savings_bag))
+        
+          
+            MtLableRow( text: "关于", icon: Image.mt.load(.Apps)){
+                showAbout.toggle()
+            }
+            MtLableRow( text: "SDK声明", icon: Image.mt.load(.Chat)){
+                showSDK.toggle()
+            }
+            
+//        LableRow( text: "鸣谢", icon: Image.mt.load(.Penny))
         }
     }
     
     var locUserInfo : some View {
         Section {
             Button(action: {
+                showUserInfoEditor.toggle()
             }){
                 HStack{
                     //用户头像
                     MTLocUserAvatar(frame: 64)
                     //用户名称
                     VStack(alignment: .leading, spacing: 4)  {
-                        
-                        Text("Motion用户")
+                        Text(userManager.user.username)
                             .font(.mt.body1.mtBlod(),textColor :.mt.gray_900)
                             .multilineTextAlignment(.leading)
                         //用户昵称
@@ -92,14 +157,15 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         SettingView()
+    
     }
 }
 
-struct LableRow: View {
+struct MtLableRow: View {
 
     var text : String
     var icon : Image
-    
+    var action : ()->()
     var body: some View {
     
         HStack (spacing:16){
@@ -117,6 +183,9 @@ struct LableRow: View {
             
             }
             .padding(.vertical,8)
+            .onTapGesture {
+                action()
+            }
         
     }
 }
