@@ -232,7 +232,7 @@ struct CodepowerView: View {
                             .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(2)
                         HStack(spacing:4){
-                            Text(item.productPrice.toDouble.asCurrencyWith2Decimals())
+                            Text(item.productPrice.toDouble.mtCurrencyWith2Decimals())
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             Spacer()
                         }

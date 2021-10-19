@@ -57,10 +57,10 @@ struct NewStorageView: View {
             let w = CGFloat( ScreenWidth() / 2.2)
             let columns = Array(repeating:GridItem(.flexible(minimum: w, maximum: w) , spacing: 12), count: 2)
             LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
-                infoCard("全网节点数",vm.storageModel?.totalStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0","ij")
-                infoCard("有效文件数",vm.storageModel?.validFilesNumber.symbolCurrencyWith2Decimals(symbol: "") ?? "0","ij")
-                infoCard("平均副本数",vm.storageModel?.averageReplicasMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0","ij")
-                infoCard("已用存储量",vm.storageModel?.usedStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0","ij")
+                infoCard("全网节点数",vm.storageModel?.totalStorageMessage.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("有效文件数",vm.storageModel?.validFilesNumber.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("平均副本数",vm.storageModel?.averageReplicasMessage.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("已用存储量",vm.storageModel?.usedStorageMessage.mtCurrencyWithInt() ?? "0","ij")
             }
             .padding()
             

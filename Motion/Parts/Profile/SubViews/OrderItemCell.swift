@@ -37,7 +37,7 @@ struct OrderItemCell: View {
                 HStack(alignment: .top){
                     Text("下单时间：\(item.cstCreate)")
                     Spacer()
-                    Text(item.totalAmount.toDouble.asCurrencyWith2Decimals())
+                    Text(item.totalAmount.toDouble.mtCurrencyWith2Decimals())
                 }
            
                 Text("订单编号:\(item.outTradeNo)")

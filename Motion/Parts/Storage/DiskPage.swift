@@ -154,16 +154,16 @@ struct ActiveUser: View {
     var body: some View {
         HStack{
             VStack(alignment:.center){
-                Text(vm.storageModel?.validFilesNumber.symbolCurrencyWith2Decimals(symbol: "") ?? "0")
+                Text(vm.storageModel?.validFilesNumber.mtCurrencyWithInt() ?? "0")
                     .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("有效文件")
                     .font(.system(size:12, weight: .light, design: .monospaced))
                     .foregroundColor(.black.opacity(0.3))
             }
             Spacer()
-            PercentageData(PercentNumber: vm.storageModel?.usedStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0", showTag: true, tagName: "已用容量",tagColor: .blue)
+            PercentageData(PercentNumber: vm.storageModel?.usedStorageMessage.mtCurrencyWithInt() ?? "0", showTag: true, tagName: "已用容量",tagColor: .blue)
             Spacer()
-            PercentageData(PercentNumber: vm.storageModel?.availableStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0", showTag: true, tagName: "可用容量",tagColor: .green)
+            PercentageData(PercentNumber: vm.storageModel?.availableStorageMessage.mtCurrencyWithInt() ?? "0", showTag: true, tagName: "可用容量",tagColor: .green)
             Spacer()
             ZStack{
                 ProgessCircle(frame: 40, color: .green, progress: 0.29,lineWidth: 6)
@@ -184,7 +184,7 @@ struct Today: View {
         HStack(alignment:.center){
             Spacer()
             VStack(alignment:.center){
-                Text(vm.storageModel?.storageNode.symbolCurrencyWith2Decimals(symbol: "") ?? "0")
+                Text(vm.storageModel?.storageNode.mtCurrencyWithInt() ?? "0")
                     .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("当前节点数")
                     .font(.system(size:12, weight: .light, design: .monospaced))

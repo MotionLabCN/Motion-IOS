@@ -30,7 +30,7 @@ extension Double {
     /// ```
     /// Conver 1234.56 to 1,234.56
     ///```
-    func asCurrencyWith2Decimals() -> String {
+    func mtCurrencyWith2Decimals() -> String {
         let number = NSNumber(value: self)
         return currencyFormatter2.string(from: number) ?? "¥0.00"
     }
@@ -40,7 +40,7 @@ extension Double {
     /// ```
     /// Conver 1234.56 to 1,234.56
     ///```
-    func symbolCurrencyWith2Decimals(symbol: String) -> String {
+    func mtCurrencyWithInt() -> String {
         let number = NSNumber(value: self)
         
         let formatter = NumberFormatter()
@@ -52,14 +52,14 @@ extension Double {
         formatter.minimumFractionDigits = 0 // 保留多少小数字
         formatter.maximumFractionDigits = 2
         
-        return formatter.string(from: number) ?? "\(symbol)0"
+        return formatter.string(from: number) ?? "0"
     }
     
     /// double类型转换为保留二位小数的字符串
     /// ```
     /// Conver 1.2345 to 1.23
     ///```
-    func asNUmberString() -> String {
+    func mtNUmberString() -> String {
         return String(format: "%.2f", self)
     }
     
@@ -67,7 +67,7 @@ extension Double {
     /// ```
     /// Conver 1.2345 to 1.23%
     ///```
-    func asPercentString() -> String {
-        return asNUmberString() + "%"
+    func mtPercentString() -> String {
+        return mtNUmberString() + "%"
     }
 }
