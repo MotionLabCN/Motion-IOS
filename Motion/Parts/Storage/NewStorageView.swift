@@ -57,14 +57,14 @@ struct NewStorageView: View {
     @ViewBuilder
     var storage : some View {
         
-        VStack{
+        ScrollView(.vertical, showsIndicators: false){
             let w = CGFloat( ScreenWidth() / 2.2)
             let columns = Array(repeating:GridItem(.flexible(minimum: w, maximum: w) , spacing: 12), count: 2)
             LazyVGrid(columns: columns, alignment: .center, spacing: 12) {
-                infoCard("全网节点数",vm.storageModel?.totalStorageMessage.mtCurrencyWithInt() ?? "0","ij")
-                infoCard("有效文件数",vm.storageModel?.validFilesNumber.mtCurrencyWithInt() ?? "0","ij")
-                infoCard("平均副本数",vm.storageModel?.averageReplicasMessage.mtCurrencyWithInt() ?? "0","ij")
-                infoCard("已用存储量",vm.storageModel?.usedStorageMessage.mtCurrencyWithInt() ?? "0","ij")
+                infoCard("全网节点数",vm.storageModel?.totalStorageMessage.mtCurrencyWithInt() ?? "0",.Dial_numbers)
+                infoCard("有效文件数",vm.storageModel?.validFilesNumber.mtCurrencyWithInt() ?? "0",.Group_folders)
+                infoCard("平均副本数",vm.storageModel?.averageReplicasMessage.mtCurrencyWithInt() ?? "0",.Selected_file)
+                infoCard("已用存储量",vm.storageModel?.usedStorageMessage.mtCurrencyWithInt() ?? "0",.Box)
             }
             .padding()
             
@@ -72,7 +72,7 @@ struct NewStorageView: View {
                 if vm.storageList.count > 0 {
                     Text("sss")
                 } else {
-                    Spacer()
+                    Spacer().frame(width: 0, height: ScreenHeight() * 0.1)
                     MTDescriptionView(title: "尚未存储任何文件", subTitle: "你存储的文件将会显示在这里。")
                     Spacer()
                 }
@@ -93,14 +93,17 @@ struct NewStorageView: View {
     }
     
     @ViewBuilder
-    func infoCard(_ text: String,_ number : String,_ iconName : String) -> some View  {
+    func infoCard(_ text: String,_ number : String,_ iconName : MTDiskIcon) -> some View  {
         VStack(alignment: .leading, spacing:12){
-            Image.mt.load(.ATM)
+            Image.mt.load(iconName)
+                .resizable().frame(width: 36, height: 36)
+                .scaledToFit()
             VStack(alignment: .leading, spacing:4){
                 Text(text)
                     .font(.mt.body3, textColor: .mt.gray_700)
                  Text(number)
                     .font(.mt.title2.mtBlod() , textColor: .black)
+                    .lineLimit(1)
             }
         
         }
