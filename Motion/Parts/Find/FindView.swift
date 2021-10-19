@@ -32,7 +32,7 @@ struct FindView: View {
                         CodepowerView()
                             .environmentObject(findVM)
                         Ladder()
-
+                        
                         OpenSourceLibrary()
 
                         RecommendView()

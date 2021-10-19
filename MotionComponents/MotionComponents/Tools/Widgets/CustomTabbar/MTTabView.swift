@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import MotionComponents
+
 
 public extension View {
     func mtTabbarItem(tab: MTTabKind, selection: Binding<MTTabKind>) -> some View {
