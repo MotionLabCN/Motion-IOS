@@ -9,8 +9,7 @@ import SwiftUI
 import MotionComponents
 import Lottie
 
-//public var findViewTabs = ["码力","开源","热门","天梯","公司"]
-
+public var findViewTabs = ["码力","人力","开源","热门"]
 struct FindView: View {
     
     // MARK: 码力集市价格语言
@@ -19,25 +18,49 @@ struct FindView: View {
     @StateObject var findVM: FindVM = FindVM()
     
     @State private var offset : CGFloat = 0
+    
+    @State private var pageIndex : Int = 0
+    
+    
     var body: some View {
         
 
         VStack(spacing:0){
             
             MTPageSegmentView(titles: findViewTabs, offset: $offset)
-            
+            Text("\(Int(floor(offset + 0.5) / ScreenWidth()))")
             MTPageScrollView(offset: $offset) {
                 HStack(spacing: 0) {
                     Group {
-                        CodepowerView()
-                            .environmentObject(findVM)
-                        Ladder()
+                        if pageIndex == 0{
+                            CodepowerView()
+                                   .environmentObject(findVM)
+                        }else{
+                            Color.white
+                        }
                         
-                        OpenSourceLibrary()
-
-                        RecommendView()
+                        if pageIndex == 1{
+                            Ladder()
+                        }else{
+                            Color.white
+                        }
+                     
+                        if pageIndex == 2{
+                            OpenSourceLibrary()
+                        }else{
+                            Color.white
+                        }
+                     
+                        if pageIndex == 3{
+                            RecommendView()
+                        }else{
+                            Color.white
+                        }
                     }
                     .frame(width: ScreenWidth())
+                    .onChange(of: offset) { value in
+                        self.pageIndex = Int(floor(offset + 0.5) / ScreenWidth())
+                    }
                 }
             }
         }
