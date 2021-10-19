@@ -17,10 +17,9 @@ enum LoginApi: CustomTargetType {
     var host: String { ProjectConfig.host }
 
     var port: Int? {
-        switch self {
-        case .loginInWithCode:
-            return ProjectConfig.env == .test ? 8081 : 8800
-        default: return 8800
+        switch ProjectConfig.env {
+        case .local: return 8800
+        case .test: return ProjectConfig.port
         }
     }
     
@@ -59,7 +58,7 @@ enum LoginApi: CustomTargetType {
         switch self {
         case .sendCode: return "verification/code/motion"
         case .loginInWithCode: return "oauth/token"
-        case .apple: return "union/login/apple/callback"
+        case .apple: return "api/authorization/union/login/apple/callback"
         }
     }
     
