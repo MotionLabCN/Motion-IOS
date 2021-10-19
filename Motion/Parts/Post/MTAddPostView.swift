@@ -19,7 +19,8 @@ struct MTAddPostView: View {
             HStack{
                 Spacer()
                 Button {
-                    isShowEditorPost.toggle()
+                    userManager.logout()
+//                    isShowEditorPost.toggle()
                 } label: {
                     Image.mt.load(.Add)
                         .foregroundColor(.white)

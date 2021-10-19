@@ -11,11 +11,18 @@ import MotionComponents
 enum CommunityServiceApi: MTTargetType {
     case userinfo
 
-    var port: Int? { 8088 }
+    var port: Int? {
+        switch ProjectConfig.env {
+        case .local: return 8088
+        case .test: return ProjectConfig.port
+        }
+        
+    }
+
     
     var path: String {
         switch self {
-        case .userinfo: return "motion-community/userext/info"
+        case .userinfo: return "api/gateway/motion-community/userext/info"
         }
     }
     

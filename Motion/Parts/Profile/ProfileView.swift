@@ -21,27 +21,21 @@ struct ProfileView: View {
     var body: some View {
         
         NavigationView{
-            ScrollView(.vertical, showsIndicators: false) {
-                Spacer().frame(width: 0, height: ScreenHeight() * 0.06)
-                        userInfo
-                
-                        Spacer.mt.max()
-                
-                        toolBtns
-                
-                    Spacer.mt.max()
-                    Spacer()
+            List{
+                Section{
+                    toolBtns
+                }header: {
+                    userInfo
+                }footer: {
                         logo
+                }
             }
-        .background(naviLinksandSheet)
-        .overlay( closeBtn,alignment: .topTrailing)
-        .navigationBarHidden(true)
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarTitleDisplayMode(.inline)
+            .background(naviLinksandSheet)
+            .overlay( closeBtn,alignment: .topTrailing)
+            .navigationBarHidden(true)
         }
-       
-           
-        
-        
-        
     }
     @ViewBuilder
     var naviLinksandSheet : some View {
@@ -80,46 +74,64 @@ struct ProfileView: View {
     }
     
     var logo : some View{
+        
         VStack{
             Image.mt.load(.Logo)
                 .foregroundColor(.mt.gray_300)
             Text("于2021年6月23日加入Motion")
                 .font(.mt.caption1,textColor: .mt.gray_400)
         }
-        .padding(.horizontal)
+        .frame(maxWidth:.infinity,alignment: .center)
+        .padding(.top,ScreenHeight() * 0.08)
+        .padding(.bottom,ScreenHeight() * 0.04)
     }
     
-  
+    @ViewBuilder
     var toolBtns : some View {
         
-        VStack{
-            ProfileListRow(icon: Image.mt.load(.Person), text: "查看个人主页")
+        Group{
+            MtLableRow( text: "查看个人主页", icon: Image.mt.load(.Link))
             {locUserVm.isShowProfile.toggle()
               persentationMode.wrappedValue.dismiss()}
             
-            ProfileListRow(icon: Image.mt.load(.Cart), text: "我的订单"){
+            MtLableRow( text: "我的订单", icon: Image.mt.load(.Link))
+            {
+                showOrderView.toggle()
+            }
+        
+            MtLableRow( text: "代码仓库", icon: Image.mt.load(.Link))
+            {
                 showOrderView.toggle()
             }
             
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "代码仓库"){
-                
+            MtLableRow( text: "储存空间", icon: Image.mt.load(.Link))
+            {
+                showOrderView.toggle()
             }
             
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "储存空间"){}
+            MtLableRow( text: "认证技术顾问", icon: Image.mt.load(.Link))
+            {
+                showOrderView.toggle()
+            }
             
-            ProfileListRow(icon: Image.mt.load(.Apps), text: "认证技术顾问"){}
-            
-            ProfileListRow(icon: Image.mt.load(.Logo), text: "元宇宙硬币"){}
-         
-            ProfileListRow(icon: Image.mt.load(.Setting), text: "设置"){
-                    showSettingView.toggle()
-                }
+            MtLableRow( text: "元宇宙硬币", icon: Image.mt.load(.Link))
+            {
+                showOrderView.toggle()
+            }
+
+            MtLableRow( text: "设置", icon: Image.mt.load(.Link))
+            {
+                showSettingView.toggle()
+            }
         }
-   
-    
-       
+            
+           
+
     }
+    
+    @ViewBuilder
     var userInfo : some View {
+        
         VStack(alignment:.center, spacing:8){
             
             MTLocUserAvatar( frame: 82)
@@ -147,6 +159,9 @@ struct ProfileView: View {
                 }
             }
         }
+        .frame(maxWidth:.infinity,alignment: .center)
+        .padding(.top,ScreenHeight() * 0.08)
+        .padding(.bottom,ScreenHeight() * 0.04)
     }
     
     
@@ -155,26 +170,5 @@ struct ProfileView: View {
 struct LeftMenuView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
-    }
-}
-
-struct ProfileListRow: View {
-    var icon : Image
-    var text : String
-    var action : ()->Void
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            HStack{
-                icon
-                    .foregroundColor(.mt.gray_600)
-                Text(text)
-                    .font(.mt.body1,textColor: .black)
-                Spacer()
-            }
-            .padding()
-            .padding(.horizontal)
-        }
     }
 }
