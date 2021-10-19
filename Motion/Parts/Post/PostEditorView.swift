@@ -19,102 +19,145 @@ public struct IDImage : Identifiable,Equatable{
 struct PostEditorView: View {
     @State private var showPhotoPicker : Bool = false
     @State private var isLoading : Bool = false
-    @State private var  selectedPhotos : [UIImage] = []
+    @State private var selectedPhotos : [UIImage] = []
     @State private var text : String = ""
-    @State private var  onelineheihgt : CGFloat = 0
+    private let  maxCount = 9
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-   
-            
+        VStack {
+            topToolbar
+                .frame(height: 50)
+                .padding(.top, 24)
             
             HStack(alignment: .top, spacing:12){
+                MTLocUserAvatar()
                 
-
-  MTLocUserAvatar()
-                VStack(alignment: .leading,spacing:12){
-                    
-              
-                    
-                    
-                    TextEditor(text: $text)
-                        .lineSpacing(8)
-                        .frame( height: onelineheihgt * 5)
-                        .padding(.trailing,24)
-                        .offset(x : -4)
-                        .overlay(
-                            Group(content: {
-                                if text.count == 0{
-                                    Text("今天说点什么？")
-                                        .offset(x: 2, y: 9)
-                                        .animation(.spring())
-                                        .transition(.opacity)
-                                }
-                            })
-                            ,alignment: .topLeading
-                        )
-                        .introspectTextView { UITextView in
-                            UITextView.becomeFirstResponder()
-                        }
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        
-                        HStack(alignment: .top, spacing: 12){
-                            
-                            Button {
-                                showPhotoPicker = true
-                            } label: {
-                                RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(lineWidth: 0.5).foregroundColor(.mt.gray_400)
-                                    .frame(width: 72, height: 72)
-                                    .overlay(Image.mt.load(.Person))
+                TextEditor(text: $text)
+                    .font(.mt.body1)
+                    .lineSpacing(8)
+                    .background(Color.random)
+                    .overlay(
+                        Group(content: {
+                            if text.isEmpty {
+                                Text("今天说点什么？")
+                                    .font(.mt.body1, textColor: .mt.gray_700)
+                                    .offset(x: 2, y: 9)
+                                    .animation(.spring())
+                                    .transition(.opacity)
+                                    
                             }
-                            
-                            if  selectedPhotos.count != 0 {
-                                let images = selectedPhotos.map{ image in
-                                    IDImage(image: Image(uiImage: image))
-                                }
-                                ForEach(images, id :\.id){  image in
-                                    image.image
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 72, height: 72)
-                                        .transition(.fly.animation(.spring()))
-                                        .clipShape( RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                        .overlay( RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(lineWidth: 0.5).foregroundColor(.mt.gray_400))
-                                        .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                                        .contextMenu(ContextMenu(menuItems:
-                                                                    {
-                                            Button("删除"){
-                                                withAnimation(.spring()){
-                                                    if let index = images.firstIndex(of:  image ){
-                                                        selectedPhotos.remove(at: index)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                                                ))
-                                 
-                                }
-                            }
-                        }
-                        .padding(.leading)
-                        .frame(alignment: .leading)
+                        })
+                        ,alignment: .topLeading
+                    )
+                    .introspectTextView { UITextView in
+                        UITextView.becomeFirstResponder()
                     }
-                    Spacer()
-                }
             }
+            .padding(.top, 24)
+            .padding(.horizontal, 24)
+            
+            bottomToolbar
+            
+        }
         
-            .padding(.top,ScreenHeight() * 0.1)
-            .padding(.leading,24)
-            .sheet(isPresented: $showPhotoPicker) {
-                SystemImagePicker(selectionLimit:  9 - selectedPhotos.count, show: $showPhotoPicker, isloading: $isLoading) { uiimages in
-                    for uiimage in uiimages {
-                        selectedPhotos.append(uiimage)
+        
+        .sheet(isPresented: $showPhotoPicker) {
+            SystemImagePicker(selectionLimit:  maxCount - selectedPhotos.count, show: $showPhotoPicker, isloading: $isLoading) { uiimages in
+                for uiimage in uiimages {
+                    selectedPhotos.append(uiimage)
+                }
+            }
+            .ignoresSafeArea()
+            .overlay(Group{if isLoading {ProgressView()}})
+        }
+        
+    }
+    
+    var topToolbar: some View {
+        HStack {
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("取消")
+                    .font(.mt.body1, textColor: .mt.gray_700)
+            }
+            
+            Spacer()
+            
+            Button {
+                
+                print("text = \(text), photos count = \(selectedPhotos.count)")
+            } label: {
+                Text("发布")
+                    .font(.mt.body1, textColor: .mt.accent_purple)
+            }
+
+        }
+        .padding(.horizontal, 12)
+    }
+    
+    @ViewBuilder
+    var bottomToolbar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 12){
+                if selectedPhotos.count < maxCount {
+                    Button {
+                        showPhotoPicker = true
+                    } label: {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .stroke(lineWidth: 0.5)
+                            .foregroundColor(.mt.gray_400)
+                            .frame(width: 72, height: 72)
+                            .overlay(
+                                Image.mt.load(.Add)
+                                    .foregroundColor(.mt.accent_purple)
+                            )
+                        
                     }
                 }
-                .ignoresSafeArea()
-                .overlay(Group{if isLoading {ProgressView()}})
+              
+                
+                if  selectedPhotos.count != 0 {
+                    let images = selectedPhotos.map{ image in
+                        IDImage(image: Image(uiImage: image))
+                    }
+                    ForEach(images, id :\.id){  image in
+                        image.image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 72, height: 72)
+                            .transition(.fly.animation(.spring()))
+                            .clipShape( RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .overlay( RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(lineWidth: 0.5).foregroundColor(.mt.gray_400))
+                            .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .contextMenu(ContextMenu(menuItems:
+                                                        {
+                                Button("删除"){
+                                    withAnimation(.spring()){
+                                        if let index = images.firstIndex(of:  image ){
+                                            selectedPhotos.remove(at: index)
+                                        }
+                                    }
+                                }
+                            }
+                                                    ))
+                        
+                    }
+                }
+                
+               
             }
+            .padding(.leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 12)
+            
+           
+        }
 
     }
+    
 }
 
 struct PostEditorView_Previews: PreviewProvider {

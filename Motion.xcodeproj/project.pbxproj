@@ -81,6 +81,7 @@
 		A07613F22716871D00138857 /* codepower_pro.json in Resources */ = {isa = PBXBuildFile; fileRef = A07613F12716871D00138857 /* codepower_pro.json */; };
 		A07613F42716A19700138857 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07613F32716A19700138857 /* Double.swift */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
+		DF334D91271D66B000509F6E /* MTAddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334D90271D66B000509F6E /* MTAddPostView.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
 		DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528426FD710B00993FA5 /* MTSheetManager.swift */; };
 		DF4145B526F1AD6700DD5F9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145B426F1AD6700DD5F9F /* HomeView.swift */; };
@@ -169,6 +170,7 @@
 		A07613F32716A19700138857 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		DF334D90271D66B000509F6E /* MTAddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAddPostView.swift; sourceTree = "<group>"; };
 		DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetViewModifier.swift; sourceTree = "<group>"; };
 		DF39528426FD710B00993FA5 /* MTSheetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTSheetManager.swift; sourceTree = "<group>"; };
 		DF4145B426F1AD6700DD5F9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 		5AB08E72271D5FB2002C5E3F /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				DF334D90271D66B000509F6E /* MTAddPostView.swift */,
 				5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */,
 				5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */,
 			);
@@ -763,6 +766,7 @@
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				A06A0011271925D60005A025 /* OrderVM.swift in Sources */,
+				DF334D91271D66B000509F6E /* MTAddPostView.swift in Sources */,
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
 				5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,

@@ -23,7 +23,9 @@ extension View {
 
 class TabbarState: ObservableObject {    
     static let shared = TabbarState()
-    @Published var selectedKind = MTTabbar.Kind.search
+    @Published var selectedKind = MTTabbar.Kind.home
+//    @Published var selectedKind = MTTabbar.Kind.search
+
     @Published var isShowTabbar = true
     @Published var isShowActionCricleBtn = true
 
