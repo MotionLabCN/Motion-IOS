@@ -16,7 +16,6 @@
 				B538C05AEE89BAFCBA68692E14CAFFEE /* PBXTargetDependency */,
 			);
 			name = UMCommon;
-			productName = UMCommon;
 		};
 		6075E73CE9761233A64B697DA4780D60 /* UMCCommonLog */ = {
 			isa = PBXAggregateTarget;
@@ -26,7 +25,6 @@
 			dependencies = (
 			);
 			name = UMCCommonLog;
-			productName = UMCCommonLog;
 		};
 		CEB9AD2C3CFC208BFBE1F22F5EC3E1FC /* UMDevice */ = {
 			isa = PBXAggregateTarget;
@@ -36,7 +34,6 @@
 			dependencies = (
 			);
 			name = UMDevice;
-			productName = UMDevice;
 		};
 /* End PBXAggregateTarget section */
 
@@ -1390,47 +1387,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		4421C6D701AFD8D1BE1F2F7038F10922 /* Alamofire */ = {
+		15D22DDECECDC3E7ED7D6B62EE33A5C9 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				220B0FA40726B8B4600537EFAB5301F3 /* AFError.swift */,
-				2A43758A71E8F1334DDFADD34ED57A65 /* Alamofire.swift */,
-				2E8493D9EA967D8A585F77A39D094FFD /* AlamofireExtended.swift */,
-				5E066D07F1789CF5AECBB16B7BC4B6B1 /* AuthenticationInterceptor.swift */,
-				0A9E496E4D687745AFA55AD30F6AB7E8 /* CachedResponseHandler.swift */,
-				5C05E9B849DC3618E67CA56043BED4FC /* Combine.swift */,
-				4440B4810B988BC93BE4C1B6438315E9 /* DispatchQueue+Alamofire.swift */,
-				DFDC986C8A652313DD13C0FDDA94CA41 /* EventMonitor.swift */,
-				7C8BEEED91B6476B382547A2AF9E6196 /* HTTPHeaders.swift */,
-				257F47A4B7A8FAFAAAAD4D77F57B7C16 /* HTTPMethod.swift */,
-				2141945D1B8E72E73DBC74DB6183EDE6 /* MultipartFormData.swift */,
-				21AEEDAB2197E42149BC9F91FFD08E1F /* MultipartUpload.swift */,
-				E8804DA8DE4EBCEC99220935809D1DDE /* NetworkReachabilityManager.swift */,
-				AA61BCB6B0FAF7A9132FFC5623E9DDF9 /* Notifications.swift */,
-				BB4E6C583EFA9C4ACDCFE34B54BC217F /* OperationQueue+Alamofire.swift */,
-				BBC894FE771C43FA869550383539E9E3 /* ParameterEncoder.swift */,
-				1815B0BA020BEDE4D834D8E315B9ADF8 /* ParameterEncoding.swift */,
-				26973CA8761C0A661385C3BCC5E44AC4 /* Protected.swift */,
-				D854E44042506D4BB9FD4BAA71AA554D /* RedirectHandler.swift */,
-				7E615E9C41722D021E42713100953963 /* Request.swift */,
-				18E34EF01EEC6A40FA85F2DD09D170F5 /* RequestInterceptor.swift */,
-				2D2E83D9A88B3ED56B2C606894E65685 /* RequestTaskMap.swift */,
-				A54A9C63CDBC3A253AAE4C31CC88DE3A /* Response.swift */,
-				97290617A059C4889BDB364E9D1EEA11 /* ResponseSerialization.swift */,
-				34A2FBE486632F0AC1A155F2B0204683 /* Result+Alamofire.swift */,
-				9D037584A37A1906B50FBD1051450E88 /* RetryPolicy.swift */,
-				232E3A4FE19AF1A560E9639DE7D816D7 /* ServerTrustEvaluation.swift */,
-				B16B9FF91108C61E1A11FF71829788EE /* Session.swift */,
-				8CC173EAFE96A703CC7B8AAAD16D833F /* SessionDelegate.swift */,
-				94F1607EBDB121ADC7CF1A1125AD5C18 /* StringEncoding+Alamofire.swift */,
-				EE631B3CBAA9BFC70A50AAB5F21A64A2 /* URLConvertible+URLRequestConvertible.swift */,
-				49D1BBAE3083BA1833E68B62ECFBFA85 /* URLEncodedFormEncoder.swift */,
-				35D28B60D1575C18C7D79CD9906E6AB3 /* URLRequest+Alamofire.swift */,
-				A72F12C082FA8F28000733C98C2D9FD8 /* URLSessionConfiguration+Alamofire.swift */,
-				2C4F3976D8C1EB9412B3688C0F592635 /* Validation.swift */,
-				E87BB07DB8EF83355FFE4EF49AF853A2 /* Support Files */,
+				7335255A3C97A118D459D60E60FF3B19 /* ListModel.swift */,
+				0E9D5D68A9A78CD6673CCE1152EE326C /* Networking.swift */,
+				BFEEDFBA438CD0C3BF2785020FB484A7 /* Extension */,
+				CE288842A8A0AE459D5FEE591615F69F /* Plugins */,
 			);
-			path = Alamofire;
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		17E4F8DB1CEFADA852869E7FE91857D3 /* Support Files */ = {
@@ -1463,24 +1428,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B22201084BABAAB5A2282B095C305E7 /* Extensions */ = {
+		3760BF55B23A8F6DD5663F9F0F019223 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				5B8B5D26E057272DE9BF86BF0E0E537D /* ExtensionsComponent.swift */,
-				42E0992C0C1ED95390E1B1C1D77B618D /* CoreGraphics */,
-				EC672AC814C4F9F30D67DB673D75D78A /* Foundation */,
-				DAAB43A9D147690F4446D92105AAD6C3 /* SwiftStdlib */,
-				3760BF55B23A8F6DD5663F9F0F019223 /* SwiftUI */,
+				1200919FDB400655668B90DFF26E0B1E /* ColorExtension.swift */,
+				AF418FBCD4053B641D055CC4755DA7CE /* EdgeInsetsExtensions.swift */,
+				1BEFD494DFA3ED7C8B1A9672498C300A /* EffectView.swift */,
+				75B48310947965697910ED9A46E91F09 /* GeometryProxyExtensions.swift */,
+				3BB210D3E80C1D7C9A25276DE7267024 /* TextExtensions.swift */,
+				7092308B5993FA5CB3556862BD92914B /* ViewExtensions.swift */,
 			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		6EBCFEA56E8F49A5C037735FF18945CD /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C27D44A65C69BF9E47A02B430FF8E77B /* Pods-Motion */,
-			);
-			name = "Targets Support Files";
+			name = SwiftUI;
+			path = MotionComponents/Extensions/SwiftUI;
 			sourceTree = "<group>";
 		};
 		3BA0CE15CC1B8670BA5763DD2606A2A0 /* iOS */ = {
@@ -1680,28 +1639,12 @@
 			path = "../Target Support Files/Moya";
 			sourceTree = "<group>";
 		};
-		A31C88435C61D6AFCBB5D037790F0999 /* SwiftUI */ = {
+		56287C525E5ED54227CB412B7EFF22E0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				01DBFA4DC35985471F2E837160CE0A2C /* AnyTransition+mt.swift */,
-				2A542CDF460D89979E695BF747EF1FCE /* Button+mt.swift */,
-				BE0152ED043E085434317A32771DF966 /* Color+mt.swift */,
-				A33B58EB9F0A70BFEA0928228C310374 /* Divider+mt.swift */,
-				AAB235548862AF09E6E7F6D1ECA875F4 /* Font+mt.swift */,
-				D9D3DD50DA09DCA27CFFD6A6359977BD /* Image+mt.swift */,
-				45342B53A8406C2FFB441721B9307B19 /* MTAnimationViewModifier.swift */,
-				C55C622D453798ECD71D1406E117CF71 /* MTNavbarViewModifier.swift */,
-				5106B6A72450A0CDD6530465D3E988A8 /* MTScrollViewOffsetViewModifier.swift */,
-				3A8D59D11EC8F96A7841C6D1DB6FD37C /* MTViewModifiers.swift */,
-				3B86E54505210AEA81D59D4F8B5FE57D /* ProgressView+mt.swift */,
-				7E04CBAC264AFB4536F1E72A770249A0 /* Shadow+mt.swift */,
-				96080DE83C6DDA0B675A7C41BA6A8848 /* Spacer+mt.swift */,
-				EC02BDE428F94810D11C8354AE76CB80 /* TextField+mt.swift */,
-				317F4D54CAA1F4A6727484229E7A7BC3 /* Toast+mt.swift */,
-				3444554B0B6C99EACCAB3CB9FB83C853 /* View+mt.swift */,
+				E2240E15331ECC547215C1C867DFFAC3 /* MotionComponents */,
 			);
-			name = SwiftUI;
-			path = MotionComponents/Tools/SwiftUI;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		5E06A6166401511BBAB9E0142042566B /* Frameworks */ = {
@@ -1733,7 +1676,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B2496636160B76844D9A1E8833BB7C79 /* Support Files */ = {
+		6B22201084BABAAB5A2282B095C305E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				5B8B5D26E057272DE9BF86BF0E0E537D /* ExtensionsComponent.swift */,
@@ -1928,14 +1871,28 @@
 			path = KakaJSON;
 			sourceTree = "<group>";
 		};
-		B92CEB3DB158F359D373758D916E4632 /* Support Files */ = {
+		A31C88435C61D6AFCBB5D037790F0999 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				508B5122DAE6DEEF2D7EF0CE68A624B1 /* UMDevice.debug.xcconfig */,
-				A7A37475D259EC476016E181B12C1BD8 /* UMDevice.release.xcconfig */,
+				01DBFA4DC35985471F2E837160CE0A2C /* AnyTransition+mt.swift */,
+				2A542CDF460D89979E695BF747EF1FCE /* Button+mt.swift */,
+				BE0152ED043E085434317A32771DF966 /* Color+mt.swift */,
+				A33B58EB9F0A70BFEA0928228C310374 /* Divider+mt.swift */,
+				AAB235548862AF09E6E7F6D1ECA875F4 /* Font+mt.swift */,
+				D9D3DD50DA09DCA27CFFD6A6359977BD /* Image+mt.swift */,
+				45342B53A8406C2FFB441721B9307B19 /* MTAnimationViewModifier.swift */,
+				C55C622D453798ECD71D1406E117CF71 /* MTNavbarViewModifier.swift */,
+				5106B6A72450A0CDD6530465D3E988A8 /* MTScrollViewOffsetViewModifier.swift */,
+				3A8D59D11EC8F96A7841C6D1DB6FD37C /* MTViewModifiers.swift */,
+				3B86E54505210AEA81D59D4F8B5FE57D /* ProgressView+mt.swift */,
+				7E04CBAC264AFB4536F1E72A770249A0 /* Shadow+mt.swift */,
+				96080DE83C6DDA0B675A7C41BA6A8848 /* Spacer+mt.swift */,
+				EC02BDE428F94810D11C8354AE76CB80 /* TextField+mt.swift */,
+				317F4D54CAA1F4A6727484229E7A7BC3 /* Toast+mt.swift */,
+				3444554B0B6C99EACCAB3CB9FB83C853 /* View+mt.swift */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/UMDevice";
+			name = SwiftUI;
+			path = MotionComponents/Tools/SwiftUI;
 			sourceTree = "<group>";
 		};
 		A802F66BAA84244B2CC6C1DFA65F5DA8 /* UMDevice */ = {
@@ -1951,10 +1908,20 @@
 		AE6EC2C0D2FA24CA0732BBC96152CDA0 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				3247AE9E35A16D73F6284D98ECE40629 /* SwiftyJSON.swift */,
-				F77D3F503A9E52B4775C3FA5B92C341B /* Support Files */,
+				881E9FDE9FE40C103BF2169BE2C4E69E /* MTBackgroundCleanerView.swift */,
+				0E902EEBE75FD189D8B5952C9CCDE8DB /* MTBarBackgorundView.swift */,
+				85B072BE601572DF3E1445583585BB7F /* MTDescriptionView.swift */,
+				72B3C809DC7268F23A4661CB23E3754A /* MTPageScrollView.swift */,
+				A6ED57690D65C86B931659EECDCD258E /* MTPageSegmentView.swift */,
+				F01ABD72ACEEC747D9F6B139A233912D /* MTPushNofi.swift */,
+				02381A95B36ACACBB8939166C3904A2B /* MTRichText.swift */,
+				F8D7DE109A69E31502507065A39CC4CE /* MTScrollView.swift */,
+				6463C434702318355B366EC077FCEC7E /* MTVideoPlayer.swift */,
+				B1F0512438E033F250C99B7E93ABABD1 /* MTWarningNofi.swift */,
+				C81AB08D896C9F4DF7667672C3E5D694 /* CustomTabbar */,
 			);
-			path = SwiftyJSON;
+			name = Widgets;
+			path = MotionComponents/Tools/Widgets;
 			sourceTree = "<group>";
 		};
 		B21E3FDCFBA50E80D4DCFDE53B2690D1 /* Frameworks */ = {
@@ -2237,6 +2204,7 @@
 				EB9CB71AD8088B960B2B61404CDC9B01 /* MTTabBar.swift */,
 				E97EFF7EDA293750A7D765F7D3AC21D9 /* MTTabView.swift */,
 			);
+			name = CustomTabbar;
 			path = CustomTabbar;
 			sourceTree = "<group>";
 		};
