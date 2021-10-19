@@ -11,6 +11,7 @@ import MotionComponents
 
 struct StorageListView: View {
     
+    @Environment(\.presentationMode) var persentationMode
     @State var isPushWeb: Bool = false
     @State var webUrlString: String = ""
     
@@ -20,22 +21,29 @@ struct StorageListView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            ForEach(itemList) { item in
-                cellItem(item: item)
-                    .background(item.backgroundColor.opacity(0.1))
-                    .cornerRadius(8)
-                    .padding(.horizontal,10)
-                    .onTapGesture {
-                        isPushWeb.toggle()
-                        webUrlString = item.webUrl
-                    }
+        NavigationView {
+            ScrollView {
+                ForEach(itemList) { item in
+                    cellItem(item: item)
+                        .background(item.backgroundColor.opacity(0.1))
+                        .cornerRadius(8)
+                        .padding(.horizontal,10)
+                        .onTapGesture {
+                            isPushWeb.toggle()
+                            webUrlString = item.webUrl
+                        }
+                }
+                .mtRegisterRouter(isActive: $isPushWeb) {
+                    MTWebView(urlString: webUrlString)
+                }
             }
-            .mtRegisterRouter(isActive: $isPushWeb) {
-                MTWebView(urlString: webUrlString)
-            }
+            
+            .listStyle(.grouped )
+            .navigationBarTitle(Text("共享存储"))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarItems(trailing: closeBtn)
         }
-        .navigationTitle("共享存储")
+        
     }
     
     //MARK: cell
@@ -72,6 +80,21 @@ struct StorageListView: View {
             }
         }
         .padding(.init(horizontal: 20, vertical: 0))
+    }
+    
+    var closeBtn : some View {
+        Button {
+            self.persentationMode.wrappedValue.dismiss()
+        } label: {
+            Image.mt.load(.Close)
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .foregroundColor(Color.black)
+        .padding(.all,4)
+        .background(Color.mt.gray_100)
+        .clipShape(Circle())
+        .frame(maxWidth:.infinity,alignment: .trailing)
     }
 }
 

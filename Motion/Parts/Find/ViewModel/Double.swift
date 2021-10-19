@@ -35,10 +35,9 @@ extension Double {
         return currencyFormatter2.string(from: number) ?? "¥0.00"
     }
     
-    /// 浮点型字符转换为货币格式 保留二位小数
-    ///  symbol： 需要显示的符号
+    /// 返回整数
     /// ```
-    /// Conver 1234.56 to 1,234.56
+    /// Conver 1234.56 to 1,234
     ///```
     func mtCurrencyWithInt() -> String {
         let number = NSNumber(value: self)

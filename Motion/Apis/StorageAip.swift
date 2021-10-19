@@ -9,28 +9,32 @@ import MotionComponents
 
 
 enum StorageApi: MTTargetType {
-   case storage
-   
+   case storageInfo
+   case storageList // 我的存储列表接口
+    
     var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
    // 以后这里可以直接写host port
 //   var port: Int? { 8802 }
     
    var path: String {
        switch self {
-       case .storage: return "/api/superPoints/v1/statistics/getStorageStatistics"
+       case .storageInfo: return "/api/superPoints/v1/statistics/getStorageStatistics"
+       case .storageList: return "/api/superPoints/v1/statistics/getStorageStatistics"
        }
    }
    
    var method: HTTPRequestMethod {
        switch self {
-       case .storage: return .get
+       case .storageInfo: return .get
+       case .storageList: return .get
        }
    }
    
    var parameters: [String : Any]? {
        switch self {
 //       case let .language(p): return p.kj.JSONObject()
-       case .storage: return nil
+       case .storageInfo: return nil
+       case .storageList: return nil
        }
    }
 }
