@@ -76,6 +76,8 @@
 		A06A000F2719218A0005A025 /* OrderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A000E2719218A0005A025 /* OrderApi.swift */; };
 		A06A0011271925D60005A025 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A0010271925D60005A025 /* OrderVM.swift */; };
 		A06A001527195C8F0005A025 /* OrderItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A001427195C8F0005A025 /* OrderItemCell.swift */; };
+		A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FC82F271E58BA004A21FE /* StorageAip.swift */; };
+		A06FC833271E6A8C004A21FE /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FC832271E6A8C004A21FE /* StorageViewModel.swift */; };
 		A071104A271125E500963385 /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0711049271125E500963385 /* NoticeListView.swift */; };
 		A071104C2711285700963385 /* NotifListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104B2711285700963385 /* NotifListVM.swift */; };
 		A071104E27112EA800963385 /* NotifiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071104D27112EA800963385 /* NotifiListModel.swift */; };
@@ -168,6 +170,8 @@
 		A06A000E2719218A0005A025 /* OrderApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderApi.swift; sourceTree = "<group>"; };
 		A06A0010271925D60005A025 /* OrderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVM.swift; sourceTree = "<group>"; };
 		A06A001427195C8F0005A025 /* OrderItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemCell.swift; sourceTree = "<group>"; };
+		A06FC82F271E58BA004A21FE /* StorageAip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageAip.swift; sourceTree = "<group>"; };
+		A06FC832271E6A8C004A21FE /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
 		A0711049271125E500963385 /* NoticeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListView.swift; sourceTree = "<group>"; };
 		A071104B2711285700963385 /* NotifListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifListVM.swift; sourceTree = "<group>"; };
 		A071104D27112EA800963385 /* NotifiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiListModel.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 		5AAACF95271552F70060A5DF /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A06FC831271E6A2F004A21FE /* ViewModel */,
 				A0672F66271D54D30002271A /* SubViews */,
 				5AAACF96271553070060A5DF /* DiskPage.swift */,
 				A0672F67271D55030002271A /* StorageListView.swift */,
@@ -384,6 +389,14 @@
 				A06A001427195C8F0005A025 /* OrderItemCell.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		A06FC831271E6A2F004A21FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A06FC832271E6A8C004A21FE /* StorageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A071104F27117AA500963385 /* ViewModel */ = {
@@ -576,8 +589,9 @@
 				DF7061482715264F00761A19 /* CommunityServiceApi.swift */,
 				DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */,
 				DFF1659627181179004D1B72 /* OSSApi.swift */,
-				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 				A06A000E2719218A0005A025 /* OrderApi.swift */,
+				A06FC82F271E58BA004A21FE /* StorageAip.swift */,
+				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -794,6 +808,7 @@
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				A06A0011271925D60005A025 /* OrderVM.swift in Sources */,
+				A06FC833271E6A8C004A21FE /* StorageViewModel.swift in Sources */,
 				DF39528726FD710B00993FA5 /* MTSheetManager.swift in Sources */,
 				5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
@@ -845,6 +860,7 @@
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
 				A0672F63271D3CC30002271A /* LynnRefreshState.swift in Sources */,
+				A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */,
 				5A8F6DA126FC7FBF007E9101 /* OfficialBusiness.swift in Sources */,
 				5A91551427040CB700E8135F /* CodepowerView.swift in Sources */,
 				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,

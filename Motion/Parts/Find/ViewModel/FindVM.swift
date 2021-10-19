@@ -130,6 +130,7 @@ extension FindVM {
         let language = CodepowerApi.language(p: .init(group: "lang"))
         Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
             // 成功...
+            
             self?.logicCode.isRequesting = false
             
 //            if let list = list {
@@ -280,17 +281,19 @@ extension FindVM {
         let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
         Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
             // 成功...
-            self?.logicProduct.isRequesting = false
+            guard let self = self else { return }
+            
+            self.logicProduct.isRequesting = false
             
             if let list = list {
-                self?.proList.append(contentsOf: list)
+                self.proList.append(contentsOf: list)
             }else {
-                self?.logicProduct.toastText = "请求失败"
-                self?.logicProduct.isShowToast = true
+                self.logicProduct.toastText = "请求失败"
+                self.logicProduct.isShowToast = true
             }
             
             let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-            self?.proList.append(contentsOf: arr)
+            self.proList.append(contentsOf: arr)
         }
     }
     
