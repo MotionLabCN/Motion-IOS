@@ -16,7 +16,7 @@ struct StoragePage: View {
     // 存储文件web
     @State var isStorageWeb = false
     
-//    @StateObject var vm = StorageViewModel()
+    @StateObject var vm = StorageViewModel()
     
     var body: some View {
         
@@ -25,10 +25,9 @@ struct StoragePage: View {
             Spacer()
                 .frame(height: ScreenWidth() * 0.3)
             LazyVStack{
-//                Today(vm: vm)
-                Today()
+                Today(vm: vm)
                     .offset(y: animationInt >= 1 ? 0 : -ScreenHeight() * 1.3)
-                ActiveUser()
+                ActiveUser(vm: vm)
                     .offset(y: animationInt >= 2 ? 0 : -ScreenHeight() * 1.3)
 //                Message()
 //                    .offset(y: animationInt >= 3 ? 0 : -ScreenHeight() * 1.3)
@@ -59,7 +58,7 @@ struct StoragePage: View {
                 }
             }
         }
-//        .mtTopProgress(vm.isLoading, usingBackgorund: false)
+        .mtTopProgress(vm.isLoading, usingBackgorund: false)
         .mtRegisterRouter(isActive: $isStorageList, destination: {
             StorageListView()
         })
@@ -150,21 +149,21 @@ struct Message: View {
 
 struct ActiveUser: View {
     
-//    var vm: StorageViewModel
+    var vm: StorageViewModel
     
     var body: some View {
         HStack{
             VStack(alignment:.center){
-//                Text(vm.storageModel?.validFilesNumber ?? "0")
-//                    .font(.system(size: 26, weight: .light, design: .monospaced))
+                Text(vm.storageModel?.validFilesNumber.symbolCurrencyWith2Decimals(symbol: "") ?? "0")
+                    .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("有效文件")
                     .font(.system(size:12, weight: .light, design: .monospaced))
                     .foregroundColor(.black.opacity(0.3))
             }
             Spacer()
-//            PercentageData(PercentNumber: vm.storageModel?.usedStorageMessage ?? "0", showTag: true, tagName: "已用容量",tagColor: .blue)
-//            Spacer()
-//            PercentageData(PercentNumber: vm.storageModel?.availableStorageMessage ?? "0", showTag: true, tagName: "可用容量",tagColor: .green)
+            PercentageData(PercentNumber: vm.storageModel?.usedStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0", showTag: true, tagName: "已用容量",tagColor: .blue)
+            Spacer()
+            PercentageData(PercentNumber: vm.storageModel?.availableStorageMessage.symbolCurrencyWith2Decimals(symbol: "") ?? "0", showTag: true, tagName: "可用容量",tagColor: .green)
             Spacer()
             ZStack{
                 ProgessCircle(frame: 40, color: .green, progress: 0.29,lineWidth: 6)
@@ -179,14 +178,14 @@ struct ActiveUser: View {
 
 struct Today: View {
     
-//    var vm:StorageViewModel
+    var vm:StorageViewModel
     
     var body: some View {
         HStack(alignment:.center){
             Spacer()
             VStack(alignment:.center){
-//                Text(vm.storageModel?.storageNode ?? "0")
-//                    .font(.system(size: 26, weight: .light, design: .monospaced))
+                Text(vm.storageModel?.storageNode.symbolCurrencyWith2Decimals(symbol: "") ?? "0")
+                    .font(.system(size: 26, weight: .light, design: .monospaced))
                 Text("当前节点数")
                     .font(.system(size:12, weight: .light, design: .monospaced))
                     .foregroundColor(.black.opacity(0.3))

@@ -21,8 +21,7 @@ class StorageViewModel: ObservableObject {
     
     func requestWithStorage() {
         isLoading = true
-        
-        Networking.requestObject(StorageApi.storage, modeType: StorageModel.self) { [weak self] r, model in
+        Networking.requestObject(StorageApi.storage, modeType: StorageModel.self, atKeyPath: nil) { [weak self] r, model in
             guard let self = self else { return }
             self.isLoading = false
             if let model = model {
@@ -42,17 +41,17 @@ extension StorageViewModel {
         
         var id: String = UUID().uuidString
         /// 存储节点
-        var storageNode = ""
+        var storageNode: Double = 0.00
         /// 有效文件数
-        var validFilesNumber = ""
+        var validFilesNumber: Double = 0.00
         /// 平均副本数
-        var averageReplicasMessage = ""
+        var averageReplicasMessage: Double = 0.00
         /// 已用存储量
-        var usedStorageMessage = ""
+        var usedStorageMessage: Double = 0.00
         ///可用存储量
-        var availableStorageMessage = ""
+        var availableStorageMessage: Double = 0.00
         /// 总存储量
-        var totalStorageMessage = ""
+        var totalStorageMessage: Double = 0.00
     }
     
 }

@@ -51,7 +51,7 @@ struct LoginSuccessInfo: Convertible {
         case unkown = "", 一键手机登陆 = "1", github = "2", apple = "3", wechat = "4", 手机验证码 = "5"
     }
     
-    var access_token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0NjE1MzE2NzQ0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDY0NDExNiwiZGV2aWNlIjoiUEMiLCJqdGkiOiIwODQ3OWQzNy02YjIxLTRjN2MtOTYwMC02NDI0Y2FlZDcyZDMiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.J8YVXResjDMj27BV4sI0Z3RGeDlz0sqDwXZl6N7uTxHoWEU0GbeiTUXfqySeDZmY8w-RbRpY9p_WfBCLshjYja0y8cAVHg00WfycPOsb1_ol7PJWKB41OG_B3iQfn7Pz65FDArrT0nKMl1p33kdxngZJtmFRvf9oL8JagZe-cPM__oyuvDxfovtYbLvFqQsK3vwHvjCZ8BOCIlVly5jiecUT2r-m-LGEKdP9locFKGlwcvG5esZsqfBq_ajfO8XaqPadi9apv5Cx2VbgOJ065aKQQou0nEdKsJtDMmOryPjujF0jSmdFFCsJ2LZhSnRWLn8SLIaILpilyvZKXk51GQ"
+    var access_token = ""
     var token_type = "" //: "bearer",
     var refresh_token = "" //: "",
     var expires_in = 0 //: 28799,
@@ -99,7 +99,8 @@ class UserManager: ObservableObject {
         }
     }
     var token: String {
-        tokenInfo.access_token
+        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0NjIyNDg4ODg4IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDY1MTI4OCwiZGV2aWNlIjoiUEMiLCJqdGkiOiIxYWIxZDY5MS1mN2U2LTRkMzEtOWI0YS1iZTQyZTEyZWEzYTQiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.WqcHE9xiosNJMwfhwdbcT0m4l4R6DYM67H0UhDHL8HVYZcXOXP9nIiLpp4h49xwWLM2AP37S0Zx6XU1dmLtoayj1rLLec080Sf-rTzvbN2KknJmsbGVMkpxtLn66aaWjSwvXb5IQxjUlpcldl_mmAAgBaAo5oBr6S8Pqttg75bwmJ91o57rDJYqyzKb_PhcmJNeSQRVldpp7xLhSmM4jQtbTMO77I7LAhVqhK-p9HmZ6-gvxV1hlhsFdCJBBbweY9_OwpAlLmxIIjiJYyoKfKrChl9pqQlQEAofX_0bzSvl2S29MzetrsxZ5fe9m5m07Bk5U3DhZbB3oKp3KHmg9Yg"
+//        tokenInfo.access_token
     }
     var channel: String { tokenInfo.channel.rawValue }
 

@@ -11,13 +11,13 @@ import MotionComponents
 enum StorageApi: MTTargetType {
    case storage
    
-    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/api")! }
+    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
    // 以后这里可以直接写host port
 //   var port: Int? { 8802 }
     
    var path: String {
        switch self {
-       case .storage: return "/api/superPoints/v1/statistics/getStorageStatictics"
+       case .storage: return "/api/superPoints/v1/statistics/getStorageStatistics"
        }
    }
    
