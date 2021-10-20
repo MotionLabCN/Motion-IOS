@@ -91,10 +91,10 @@ class FindVM: ObservableObject {
     }
     
     init() {
-        DispatchQueue.global().async {
         self.getItems()
         self.getPriceItems()
-        self.requestWithProductList()
+        DispatchQueue.global().async {
+            self.requestWithProductList()
         }
     }
     

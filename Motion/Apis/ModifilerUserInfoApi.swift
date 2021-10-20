@@ -16,9 +16,9 @@ enum ModifilerUserInfoApi: MTTargetType {
     
     var path: String {
         switch self {
-        case .sendCode: return "user/verification/code"
-        case .updatePhone: return "user/update/mobile"
-        case .updateInfo: return "user/update/info"
+        case .sendCode: return "api/consumer/user/verification/code"
+        case .updatePhone: return "api/consumer/user/update/mobile"
+        case .updateInfo: return "api/consumer/user/update/info"
         }
     }
     

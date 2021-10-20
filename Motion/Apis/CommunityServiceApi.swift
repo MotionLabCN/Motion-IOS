@@ -11,13 +11,13 @@ import MotionComponents
 enum CommunityServiceApi: MTTargetType {
     case userinfo
 
-    var port: Int? {
-        switch ProjectConfig.env {
-        case .local: return 8088
-        case .test: return ProjectConfig.port
-        }
-        
-    }
+//    var port: Int? {
+//        switch ProjectConfig.env {
+//        case .local: return 8088
+//        case .test: return ProjectConfig.port
+//        }
+//        
+//    }
 
     
     var path: String {

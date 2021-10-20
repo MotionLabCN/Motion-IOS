@@ -17,25 +17,8 @@ enum LoginApi: CustomTargetType {
     var host: String { ProjectConfig.host }
 
     var port: Int? {
-        switch ProjectConfig.env {
-        case .local: return 8800
-        case .test: return ProjectConfig.port
-        }
+        ProjectConfig.port
     }
-    
-    var firstPath: String? {
-        guard ProjectConfig.env == .test else {
-            return nil
-        }
-        
-        switch self {
-        case .loginInWithCode:
-            return "api/authorization"
-        default: return nil
-        }
-        
-    }
-
     
     var headers: [String: String]? {
         var headers = [
@@ -56,8 +39,8 @@ enum LoginApi: CustomTargetType {
     
     var path: String {
         switch self {
-        case .sendCode: return "verification/code/motion"
-        case .loginInWithCode: return "oauth/token"
+        case .sendCode: return "api/authorization/verification/code/motion"
+        case .loginInWithCode: return "api/authorization/oauth/token"
         case .apple: return "api/authorization/union/login/apple/callback"
         }
     }

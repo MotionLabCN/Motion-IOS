@@ -26,10 +26,7 @@ struct ProjectConfig {
     }
     
     static var port: Int? {
-        switch env {
-        case .local: return 8088
-        case .test: return 8081
-        }
+        return 8081
     }
     
    

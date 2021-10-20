@@ -13,8 +13,8 @@ import MotionComponents
 struct PostEditorView: View {
     @State private var showPhotoPicker : Bool = false
     @State private var isLoading : Bool = false
-    @State private var selectedPhotos : [UIImage] = []
-    @State private var text : String = ""
+    
+    @StateObject private var  vm = AddPostVM()
     private let  maxCount = 9
     
     @Environment(\.presentationMode) var presentationMode
@@ -28,13 +28,13 @@ struct PostEditorView: View {
             HStack(alignment: .top, spacing:12){
                 MTLocUserAvatar()
                 
-                TextEditor(text: $text)
+                TextEditor(text: $vm.text)
                     .font(.mt.body1)
                     .lineSpacing(8)
                     .background(Color.random)
                     .overlay(
                         Group(content: {
-                            if text.isEmpty {
+                            if vm.text.isEmpty {
                                 Text("今天说点什么？")
                                     .font(.mt.body1, textColor: .mt.gray_700)
                                     .offset(x: 2, y: 9)
@@ -58,9 +58,9 @@ struct PostEditorView: View {
         
         
         .sheet(isPresented: $showPhotoPicker) {
-            SystemImagePicker(selectionLimit:  maxCount - selectedPhotos.count, show: $showPhotoPicker, isloading: $isLoading) { uiimages in
+            SystemImagePicker(selectionLimit:  maxCount - vm.selectedPhotos.count, show: $showPhotoPicker, isloading: $isLoading) { uiimages in
                 for uiimage in uiimages {
-                    selectedPhotos.append(uiimage)
+                    vm.selectedPhotos.append(uiimage)
                 }
             }
             .ignoresSafeArea()
@@ -80,7 +80,7 @@ struct PostEditorView: View {
             
             Spacer()
             
-            Button(action: addPost) {
+            Button(action: vm.addPost) {
                 Text("发布")
                     .font(.mt.body1, textColor: .mt.accent_purple)
             }
@@ -93,7 +93,7 @@ struct PostEditorView: View {
     var bottomToolbar: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top, spacing: 12){
-                if selectedPhotos.count < maxCount {
+                if vm.selectedPhotos.count < maxCount {
                     Button {
                         showPhotoPicker = true
                     } label: {
@@ -110,11 +110,11 @@ struct PostEditorView: View {
                 }
               
                 
-                if  selectedPhotos.count != 0 {
-                    ForEach(selectedPhotos.indices, id: \.self) { index in
+                if  vm.selectedPhotos.count != 0 {
+                    ForEach(vm.selectedPhotos.indices, id: \.self) { index in
                         let shape =  RoundedRectangle(cornerRadius: 20, style: .continuous)
 //                        image.image
-                        Image(uiImage: selectedPhotos[index])
+                        Image(uiImage: vm.selectedPhotos[index])
                             .resizable()
                             .scaledToFill()
                             .frame(width: 72, height: 72)
@@ -124,7 +124,7 @@ struct PostEditorView: View {
                             .contentShape(shape)
                             .contextMenu(ContextMenu(menuItems:{
                                 Button("删除"){
-                                    selectedPhotos.remove(at: index)
+                                    vm.selectedPhotos.remove(at: index)
                                 }
                             }))//contextMenu end
                         
@@ -143,18 +143,7 @@ struct PostEditorView: View {
     }
     
     
-    //MARK: - 发布
-    func addPost() {
-        // 1.先上传图片
-        if selectedPhotos.isEmpty {
-            print("直接传吧")
-        } else {
-            Networking.request(OSSApi.upload(images: selectedPhotos)) { result in
-                print("xxx")
-            }
-        }
-        
-    }
+    
     
     func uploadImages() {
         
