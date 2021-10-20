@@ -59,28 +59,33 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         // TODO
 //        decisionHandler(.allow)
-        let urlScheme = navigationAction.request.url?.scheme ?? ""
-            let urlStr = navigationAction.request.url?.absoluteString ?? ""
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        let urlScheme = url.scheme ?? ""
+            let urlStr = url.absoluteString ?? ""
             
             // 此处拦截支付宝支付
             if urlScheme == "alipay" || urlScheme == "alipays" {
                     
                 // 此处是为处理支付宝支付链接的 scheme（解决支付完成后无法返回app的问题）
-                let aliPayUrl = handleAlipayUrl(url: navigationAction.request.url!)
+//                let aliPayUrl = handleAlipayUrl(url: navigationAction.request.url!)
 
-                if UIApplication.shared.canOpenURL((aliPayUrl ?? URL(string: "0"))!) {
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(aliPayUrl!, options: [:], completionHandler: nil)
-                    } else {
-                        UIApplication.shared.openURL(aliPayUrl!)
-                    }
+                let aliurl = url.absoluteString + "&fromAppUrlScheme=motionNative"
+                let aliPayUrl = URL(string: aliurl)!
+                
+                if UIApplication.shared.canOpenURL(aliPayUrl) {
+                    UIApplication.shared.open(aliPayUrl, options: [:], completionHandler: nil)
+
                     
-                    decisionHandler(WKNavigationActionPolicy.cancel)
+                    decisionHandler(.cancel)
                     return
                 } else {
                     webView.load(navigationAction.request)
 //                    self.webvm.loadUrl(urlString: navigationAction.request)
-                    decisionHandler(WKNavigationActionPolicy.allow)
+                    decisionHandler(.allow)
                 }
             } else {
 
@@ -121,16 +126,18 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         
         if url.absoluteString.hasPrefix("alipays://platformapi/") {
             // 更换scheme
-            var decodePar = url.query ?? ""
-            decodePar = decodePar.urlDecoded()
-            var dict = self.stringValueDic(decodePar)
-            dict?["fromAppUrlScheme"] = "你app的scheme"
-            if let strData = try? JSONSerialization.data(withJSONObject: dict as Any , options: []) {
-                var param = String(data: strData, encoding: .utf8)
-                param = param?.urlEncoded()
-                let finalStr = "alipays://platformapi/?\(param ?? "")"
-                return URL(string:finalStr)
-            }
+//            let aliurl = URL(string: url.absoluteString.replacingOccurrences(of: "alipays", with: "motionNative"))!
+//            let aliurl = url.absoluteString + "&fromAppUrlScheme=motionNative"
+//            var decodePar = url.query ?? ""
+//            decodePar = decodePar.urlDecoded()
+//            var dict = self.stringValueDic(decodePar)
+//            dict?["fromAppUrlScheme"] = "你app的scheme"
+//            if let strData = try? JSONSerialization.data(withJSONObject: dict as Any , options: []) {
+//                var param = String(data: strData, encoding: .utf8)
+//                param = param?.urlEncoded()
+//                let finalStr = "alipays://platformapi/?\(param ?? "")"
+//                return URL(string:finalStr)
+//            }
             return url
         }
         return nil
