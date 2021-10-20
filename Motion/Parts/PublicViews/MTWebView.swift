@@ -126,7 +126,7 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         
         if url.absoluteString.hasPrefix("alipays://platformapi/") {
             // 更换scheme
-            let aliurl = URL(string: urlString?.replacingOccurrences(of: "alipays", with: "my"))!
+//            let aliurl = URL(string: urlString?.replacingOccurrences(of: "alipays", with: "my"))!
 //            let aliurl = URL(string: url.absoluteString.replacingOccurrences(of: "alipays", with: "motionNative"))!
 //            let aliurl = url.absoluteString + "&fromAppUrlScheme=motionNative"
 //            var decodePar = url.query ?? ""
