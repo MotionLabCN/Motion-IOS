@@ -2,10 +2,10 @@
  platform :ios, '14.1'
 
 
-
 target 'Motion' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+
 
   pod 'MotionComponents', :path => './MotionComponents'
  
@@ -16,6 +16,5 @@ target 'Motion' do
   pod 'UMCommon'
   pod 'UMDevice'
   pod 'UMCCommonLog'
-
 
 end

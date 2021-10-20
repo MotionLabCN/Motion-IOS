@@ -13,7 +13,7 @@ struct LibraryDetail: View {
     
     var body: some View {
         VStack(spacing:16){
-            HStack{
+            HStack(alignment: .top, spacing: 6){
                 Rectangle()
                     .frame(width: ScreenWidth() / 4, height: ScreenWidth() / 4)
                     .clipShape(Capsule(style: .continuous))
