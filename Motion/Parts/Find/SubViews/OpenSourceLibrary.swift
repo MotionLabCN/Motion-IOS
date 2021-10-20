@@ -9,31 +9,16 @@ import SwiftUI
 import MotionComponents
 
 struct OpenSourceLibrary: View {
-    @State private var showMoney : Bool = false
+    
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing:16){
                 
-                if showMoney {
-                    MoneyNotiView()
-                }
-                
                 classic
-                
                 newStar
                 
             }.padding(.top,16)
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation {
-                    self.showMoney = true
-                }
-            }
-        }
-        .onDisappear {
-            self.showMoney = false
         }
     }
     
@@ -61,9 +46,13 @@ struct OpenSourceLibrary: View {
                 HStack(spacing:16){
                     ForEach(0 ..< 5) { item in
                         VStack(alignment: .leading,spacing:4){
-                            Rectangle().frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .foregroundColor(.random)
+                            NavigationLink {
+                                LibraryDetail()
+                            } label: {
+                                Rectangle().frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .foregroundColor(.random)
+                            }
                             Text("SpringBoot")
                                 .font(.mt.body2.mtBlod(),textColor: .black)
                             Text("8.9")

@@ -9,9 +9,11 @@ import SwiftUI
 import MotionComponents
 
 struct LibraryDetail: View {
+    
+    
     var body: some View {
         VStack(spacing:16){
-            HStack{
+            HStack(alignment: .top, spacing: 6){
                 Rectangle()
                     .frame(width: ScreenWidth() / 4, height: ScreenWidth() / 4)
                     .clipShape(Capsule(style: .continuous))
@@ -26,7 +28,7 @@ struct LibraryDetail: View {
                         Circle().frame(width: 12, height: 12)
                         Circle().frame(width: 12, height: 12)
                         Circle().frame(width: 12, height: 12)
-                        Text("29492个评分")
+                        Text("29492个Star")
                             .font(.mt.body2,textColor: .mt.gray_600)
                     }
                     .foregroundColor(.mt.gray_600)
@@ -35,7 +37,6 @@ struct LibraryDetail: View {
                 Spacer()
             }
             HStack{
-                Image.mt.load(.Map_place)
                 Text("OpenStack Swift 是一个分布式对象存储系统，旨在从单台机器扩展到数千台服务器。Swift 针对多租户和高并发进行了优化。Swift 是备份、Web 和移动内容以及任何其他可以无限增长的非结构化数据的理想选择。")
                     .font(.mt.body2.mtBlod(),textColor: .mt.gray_900)
                     .lineLimit(2)

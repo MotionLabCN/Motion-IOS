@@ -14,6 +14,9 @@ Pod::Spec.new do |s|
   # 框架的简单介绍
   s.summary          = '天天数链SwiftUI组件'
 
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  
   # 框架的详细描述(详细介绍，要比简介长)
   s.description      = <<-DESC
                       天天数连组件：

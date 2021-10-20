@@ -33,11 +33,15 @@ public extension MT where Base == Image {
     static func load(_ source: MTMapIcon) -> Image { source.value }
     static func load(_ source: MTNavigationIcon) -> Image { source.value }
     static func load(_ source: MTSocialIcon) -> Image { source.value }
+    static func load(_ source: MTDiskIcon) -> Image { source.value }
+
+    
 //    static func load(_ source: MTToggleIcon) -> Image { source.value }
     
     static var backImage: Image {
         Image.mt.load(.Chevron_left_On)
-            .renderingMode(.original)
+//            .renderingMode(.original)
+        
     }
 }
 
@@ -70,6 +74,12 @@ public enum MTAlertIcon: String, CaseIterable, MTImageSource {
 
 public enum MTContentIcon: String, CaseIterable, MTImageSource {
     case Add, Copy, Create, Filter_list, Link
+    
+    public var named: String { rawValue }
+}
+
+public enum MTDiskIcon: String, CaseIterable, MTImageSource {
+    case Box,Dial_numbers,Group_folders,Selected_file,Money
     
     public var named: String { rawValue }
 }
@@ -109,6 +119,7 @@ public enum MTSocialIcon: String, CaseIterable, MTImageSource {
     
     public var named: String { rawValue }
 }
+
 
 
 

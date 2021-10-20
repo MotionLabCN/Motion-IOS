@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-public var findViewTabs = ["码力","人力","开源","热门"]
+
 
 struct OldFindView: View {
     

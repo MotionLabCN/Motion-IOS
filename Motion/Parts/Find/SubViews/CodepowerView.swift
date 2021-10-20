@@ -12,7 +12,7 @@ import Kingfisher
 struct CodepowerView: View {
     
     @EnvironmentObject var vm: FindVM
-    //    @Binding var isShowmtsheet: Bool
+    //@Binding var isShowmtsheet: Bool
     @State  var offsetAnimation  : Bool = false
     
     @State private var isPushWebView: Bool = false
@@ -45,7 +45,7 @@ struct CodepowerView: View {
                 .padding(.horizontal,80)
                 
                 Spacer().frame(width: 0, height: 12)
-                
+               
                 shopTitle
                 
                 filter
@@ -66,9 +66,6 @@ struct CodepowerView: View {
             product2 = [vm.proList[1].productImg:vm.proList[1].productName]
         })
         .frame(width: ScreenWidth())
-        .onAppear {
-            print("22222")
-        }
         .mtRegisterRouter(isActive: $isPushWebView) {
             MTWebView(urlString: vm.detailWebUrl)
         }
