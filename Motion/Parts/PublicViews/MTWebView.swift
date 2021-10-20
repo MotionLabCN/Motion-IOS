@@ -29,14 +29,13 @@ struct MTWebView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             webvm.loadUrl(urlString: urlString)
+            TabbarState.shared.isShowTabbar = false
         }
         .onDisappear {
             withAnimation {
                 TabbarState.shared.isShowTabbar = true
             }
         }
-        
-      
     }
 }
 
@@ -59,13 +58,109 @@ struct MTWebViewRepresentable : UIViewRepresentable {
 class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         // TODO
-        decisionHandler(.allow)
+//        decisionHandler(.allow)
+        let urlScheme = navigationAction.request.url?.scheme ?? ""
+            let urlStr = navigationAction.request.url?.absoluteString ?? ""
+            
+            // 此处拦截支付宝支付
+            if urlScheme == "alipay" || urlScheme == "alipays" {
+                    
+                // 此处是为处理支付宝支付链接的 scheme（解决支付完成后无法返回app的问题）
+                let aliPayUrl = handleAlipayUrl(url: navigationAction.request.url!)
+
+                if UIApplication.shared.canOpenURL((aliPayUrl ?? URL(string: "0"))!) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(aliPayUrl!, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(aliPayUrl!)
+                    }
+                    
+                    decisionHandler(WKNavigationActionPolicy.cancel)
+                    return
+                } else {
+                    webView.load(navigationAction.request)
+//                    self.webvm.loadUrl(urlString: navigationAction.request)
+                    decisionHandler(WKNavigationActionPolicy.allow)
+                }
+            } else {
+
+                var request = navigationAction.request
+                let payUrl = request.url!
+                // 此处拦截微信支付
+                if urlStr.contains("wx.tenpay.com") && request.value(forHTTPHeaderField: "Referer") != "pay.dassoft.cn://" {
+                    decisionHandler(WKNavigationActionPolicy.cancel)
+                    request.setValue("pay.dassoft.cn://", forHTTPHeaderField: "Referer")
+//                    self.webView.load(request)
+                    
+                } else {
+
+                    if urlScheme == "weixin" {
+                        if payUrl.host == "wap" {
+                            if payUrl.relativePath == "/pay" {
+                                if UIApplication.shared.canOpenURL(payUrl) {
+                                    if #available(iOS 10.0, *) {
+//                                        UIApplication.shared.open(payUrl, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([convertFromUIApplicationOpenExternalURLOptionsKey(UIApplication.OpenExternalURLOptionsKey.universalLinksOnly): false]), completionHandler: nil)
+                                    } else {
+                                        UIApplication.shared.openURL(payUrl)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    decisionHandler(WKNavigationActionPolicy.allow)
+                }
+            }
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         // TODO
         decisionHandler(.allow)
     }
+    
+    fileprivate func handleAlipayUrl(url: URL) -> URL? {
+        
+        if url.absoluteString.hasPrefix("alipays://platformapi/") {
+            // 更换scheme
+            var decodePar = url.query ?? ""
+            decodePar = decodePar.urlDecoded()
+            var dict = self.stringValueDic(decodePar)
+            dict?["fromAppUrlScheme"] = "你app的scheme"
+            if let strData = try? JSONSerialization.data(withJSONObject: dict as Any , options: []) {
+                var param = String(data: strData, encoding: .utf8)
+                param = param?.urlEncoded()
+                let finalStr = "alipays://platformapi/?\(param ?? "")"
+                return URL(string:finalStr)
+            }
+            return url
+        }
+        return nil
+    }
+
+
+    func stringValueDic(_ str: String) -> [String : Any]?{
+        let data = str.data(using: String.Encoding.utf8)
+        if let dict = try? JSONSerialization.jsonObject(with: data!,
+                        options: .mutableContainers) as? [String : Any] {
+            return dict
+        }
+
+        return nil
+    }
+}
+
+//扩展类
+extension String {
+//将原始的url编码为合法的url
+func urlEncoded() -> String {
+    let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:
+        .urlQueryAllowed)
+    return encodeUrlString ?? ""
+  }
+ 
+//将编码后的url转换回原始的url
+func urlDecoded() -> String {
+    return self.removingPercentEncoding ?? ""
+  }
 }
 
 class MTWebViewModel: NSObject, ObservableObject {

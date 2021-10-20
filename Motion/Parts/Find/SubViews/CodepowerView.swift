@@ -262,7 +262,6 @@ struct CodepowerView: View {
                     .onTapGesture {
                         isPushWebView = true
                         // 暂时token
-//                        let token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0Mjg4OTI3MTE0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDMxNzcyNywiZGV2aWNlIjoiUEMiLCJqdGkiOiI3YjZiYmNkOC04MzFjLTQwYjUtODNhZi04YjE0ZTA2ZmU2MzciLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.SbI9E6GQsaVxW4hTbR-u3wzgcq-1c6faVi_CEOYLPGu4boQBrDg2V5LKpSB_Di0ROkgp3rZsBSnQoYjX9rfjGK4407cbrJ5RX7Uhh4-JWjN2ZUya5c8xL0bMD31ldC3HHiGA6QdXWsNS_Dia7jTEPrsxhXdQFNC3XYkg4jlqoIMJ-TDY49hlO2CHLytwdk4aeKDUue8VqgiJkWDnEHK54PMGWusgC8RsR8Rhka3uVdUjOyU9c4pls5WqR3S2uuwoT8to4dnHb4joP4bUZvnHkI_lO4I5UJtKb-jF1HYq2XdGiBOnLPL190vN2hhX_jY6nN8tEcUcQbaPhzY5GckZgg"
                         let token = UserManager.shared.token
                         vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
                     }
