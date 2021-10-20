@@ -115,6 +115,8 @@
 		DFE0C0B126E783CF00EDB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B026E783CF00EDB44F /* Assets.xcassets */; };
 		DFE0C0B426E783CF00EDB44F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */; };
 		DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */; };
+		DFE7B465271FDC7200038520 /* AddPostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B464271FDC7200038520 /* AddPostVM.swift */; };
+		DFE7B467271FEE1300038520 /* PostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7B466271FEE1300038520 /* PostApi.swift */; };
 		DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */; };
 		DFEB1D2D2704507600B7C1DB /* MTTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */; };
 		DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */; };
@@ -215,6 +217,8 @@
 		DFE0C0B326E783CF00EDB44F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFE0C0B526E783CF00EDB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE0C0BC26E7849E00EDB44F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DFE7B464271FDC7200038520 /* AddPostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVM.swift; sourceTree = "<group>"; };
+		DFE7B466271FEE1300038520 /* PostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApi.swift; sourceTree = "<group>"; };
 		DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConfig.swift; sourceTree = "<group>"; };
 		DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTTargetType.swift; sourceTree = "<group>"; };
 		DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 		5AB08E72271D5FB2002C5E3F /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				DFE7B463271FDC5E00038520 /* ViewModels */,
 				DF334D90271D66B000509F6E /* MTAddPostView.swift */,
 				5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */,
 				5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */,
@@ -586,6 +591,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		DFE7B463271FDC5E00038520 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFE7B464271FDC7200038520 /* AddPostVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		DFEB1D2B2704506600B7C1DB /* Apis */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +611,7 @@
 				A06A000E2719218A0005A025 /* OrderApi.swift */,
 				A06FC82F271E58BA004A21FE /* StorageAip.swift */,
 				DFF1658E2717C140004D1B72 /* ListApi.swift */,
+				DFE7B466271FEE1300038520 /* PostApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -819,6 +833,7 @@
 				5A6AB4A52717E26E00AED1B6 /* UmMd.swift in Sources */,
 				DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */,
 				A0672F68271D55030002271A /* StorageListView.swift in Sources */,
+				DFE7B465271FDC7200038520 /* AddPostVM.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
 				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
 				DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */,
@@ -865,6 +880,7 @@
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
 				5AB08E76271D6027002C5E3F /* SystemImagePicker.swift in Sources */,
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
+				DFE7B467271FEE1300038520 /* PostApi.swift in Sources */,
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
 				A0672F63271D3CC30002271A /* LynnRefreshState.swift in Sources */,
 				A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */,
