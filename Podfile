@@ -8,10 +8,10 @@ target 'Motion' do
   use_frameworks!
 
   pod 'MotionComponents', :path => './MotionComponents'
-  pod 'Kingfisher',  '~> 6.3.1'
+ 
   pod 'lottie-ios'
   pod 'Introspect'
-  
+  pod 'Kingfisher',  '~> 6.3.1'
   
   pod 'UMCommon'
   pod 'UMDevice'

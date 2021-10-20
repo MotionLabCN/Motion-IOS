@@ -14,7 +14,7 @@ struct FindView: View {
     
     // MARK: 码力集市价格语言
     @EnvironmentObject var findView: FindViewState
-
+    
     @StateObject var findVM: FindVM = FindVM()
     
     @State private var offset : CGFloat = 0
@@ -24,44 +24,13 @@ struct FindView: View {
     
     var body: some View {
         
-
+        
         VStack(spacing:0){
             
             MTPageSegmentView(titles: findViewTabs, offset: $offset)
-            Text("\(Int(floor(offset + 0.5) / ScreenWidth()))")
+            //            Text("\(Int(floor(offset + 0.5) / ScreenWidth()))")
             MTPageScrollView(offset: $offset) {
-                HStack(spacing: 0) {
-                    Group {
-                        if pageIndex == 0{
-                            CodepowerView()
-                                   .environmentObject(findVM)
-                        }else{
-                            Color.white
-                        }
-                        
-                        if pageIndex == 1{
-                            Ladder()
-                        }else{
-                            Color.white
-                        }
-                     
-                        if pageIndex == 2{
-                            OpenSourceLibrary()
-                        }else{
-                            Color.white
-                        }
-                     
-                        if pageIndex == 3{
-                            RecommendView()
-                        }else{
-                            Color.white
-                        }
-                    }
-                    .frame(width: ScreenWidth())
-                    .onChange(of: offset) { value in
-                        self.pageIndex = Int(floor(offset + 0.5) / ScreenWidth())
-                    }
-                }
+                mainViews
             }
         }
         .frame(width: ScreenWidth())
@@ -85,8 +54,8 @@ struct FindView: View {
         .mtSheet(isPresented: $findVM.isShowmtsheet) {} content: {
             VStack {
                 CodeItemList
-                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
-//                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
+                    .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
+                //                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
                 
                 HStack(spacing:20) {
                     Button {
@@ -110,17 +79,35 @@ struct FindView: View {
                     .mtButtonStyle(.mainDefult(isEnable: true))
                 }
                 .padding(.horizontal,20)
-           }
+            }
             .padding(.vertical,20)
         }
         // 二级分类弹框
         .sheet(isPresented: $findVM.isShowmtDetail) {
-                SecondItemList
+            SecondItemList
         }
-//        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
+        //        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
     }
     
+    @ViewBuilder
+    var mainViews : some View {
+        HStack(spacing: 0) {
+            Group {
+                
+                    CodepowerView()
+                        .environmentObject(findVM)
+                    Ladder()
+                    OpenSourceLibrary()
+                    RecommendView()
+               
+            }
+            .frame(width: ScreenWidth())
+            .onChange(of: offset) { value in
+                self.pageIndex = Int(floor(offset + 0.5) / ScreenWidth())
+            }
+        }
+    }
     
     // MARK:码力集市item List 一级分类列表
     var CodeItemList: some View {
@@ -141,13 +128,13 @@ struct FindView: View {
                     // 获取一级分类下 当前选中的二级分类列表数据.
                     if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
                         findVM.selectIndex = index
-//                        findVM.selectFindModel = item
+                        //                        findVM.selectFindModel = item
                         
                         if index == 0 {
                             // 语言
                             findVM.requestWIthLangList()
-                        
-
+                            
+                            
                         }else if index == 1 {
                             // 技术
                             findVM.requestWithTechnology()
@@ -165,7 +152,7 @@ struct FindView: View {
     // MARK: 二级分类下列表数据
     @ViewBuilder
     var SecondItemList : some View {
-
+        
         let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
         //排序方式
         let columns = Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
@@ -179,18 +166,18 @@ struct FindView: View {
                           spacing: 20,
                           content: {
                     switch findVM.selectCodeSelectStyle {
-                        case .lang:
-                            LangListView
-                            
-                        case .technology:
-                            TechnologyListView
-                            
-                        case .price:
-                            PriceListView
-                            
-                        default:
-                            Text("加载中....")
-                        }
+                    case .lang:
+                        LangListView
+                        
+                    case .technology:
+                        TechnologyListView
+                        
+                    case .price:
+                        PriceListView
+                        
+                    default:
+                        Text("加载中....")
+                    }
                 })
             }
             .listStyle(.grouped)
@@ -203,7 +190,7 @@ struct FindView: View {
     var closeBtn : some View {
         
         Button {
-//            self.persentationMode.wrappedValue.dismiss()
+            //            self.persentationMode.wrappedValue.dismiss()
             findVM.isShowmtDetail.toggle()
         } label: {
             Image.mt.load(.Close)
@@ -295,7 +282,7 @@ struct FindView: View {
         }
     }
 }
-        
+
 //
 //struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentable {
 //    @Binding var offset: CGFloat
