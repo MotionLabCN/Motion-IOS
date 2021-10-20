@@ -139,7 +139,9 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
 
     func stringValueDic(_ str: String) -> [String : Any]?{
         let data = str.data(using: String.Encoding.utf8)
-        if let dict = try? JSONSerialization.jsonObject(with: data!,
+        
+        if let dict = try?
+            JSONSerialization.jsonObject(with: data!,
                         options: .mutableContainers) as? [String : Any] {
             return dict
         }
