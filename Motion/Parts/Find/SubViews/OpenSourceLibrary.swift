@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MotionComponents
+import Kingfisher
 
 
 struct  OpenSourceLibraryModel: Identifiable, Convertible {
@@ -151,18 +152,22 @@ struct OpenSourceLibrary: View {
         Section {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing:16){
-                    ForEach(0 ..< 5) { item in
+                    ForEach(vm.hotList ,id: \.id) { item in
                         VStack(alignment: .leading,spacing:4){
                             NavigationLink {
                                 LibraryDetail()
                             } label: {
-                                Rectangle().frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
+                                KFImage(URL(string: item.avatarUrl))
+                                    .resizable()
+                                    .placeholder({ProgressView()})
+                                    .scaledToFill()
+                                    .frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                     .foregroundColor(.random)
                             }
-                            Text("SpringBoot")
+                            Text(item.name )
                                 .font(.mt.body2.mtBlod(),textColor: .black)
-                            Text("8.9")
+                            Text(item.forksCount)
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                         }
                         
