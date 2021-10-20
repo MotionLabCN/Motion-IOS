@@ -52,7 +52,6 @@ struct MTWebViewRepresentable : UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) { }
 
-
 }
 
 class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
@@ -90,7 +89,7 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
                 if urlStr.contains("wx.tenpay.com") && request.value(forHTTPHeaderField: "Referer") != "pay.dassoft.cn://" {
                     decisionHandler(WKNavigationActionPolicy.cancel)
                     request.setValue("pay.dassoft.cn://", forHTTPHeaderField: "Referer")
-//                    self.webView.load(request)
+                    webView.load(request)
                     
                 } else {
 
@@ -99,7 +98,7 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
                             if payUrl.relativePath == "/pay" {
                                 if UIApplication.shared.canOpenURL(payUrl) {
                                     if #available(iOS 10.0, *) {
-//                                        UIApplication.shared.open(payUrl, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([convertFromUIApplicationOpenExternalURLOptionsKey(UIApplication.OpenExternalURLOptionsKey.universalLinksOnly): false]), completionHandler: nil)
+                                        UIApplication.shared.open(payUrl, options: [:], completionHandler: nil)
                                     } else {
                                         UIApplication.shared.openURL(payUrl)
                                     }
@@ -121,16 +120,17 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         
         if url.absoluteString.hasPrefix("alipays://platformapi/") {
             // 更换scheme
-            var decodePar = url.query ?? ""
-            decodePar = decodePar.urlDecoded()
-            var dict = self.stringValueDic(decodePar)
-            dict?["fromAppUrlScheme"] = "你app的scheme"
-            if let strData = try? JSONSerialization.data(withJSONObject: dict as Any , options: []) {
-                var param = String(data: strData, encoding: .utf8)
-                param = param?.urlEncoded()
-                let finalStr = "alipays://platformapi/?\(param ?? "")"
-                return URL(string:finalStr)
-            }
+            let aliurl = URL(string: urlString?.replacingOccurrences(of: "alipays", with: "my"))!
+//            var decodePar = url.query ?? ""
+//            decodePar = decodePar.urlDecoded()
+//            var dict = self.stringValueDic(decodePar)
+//            dict?["fromAppUrlScheme"] = "你app的scheme"
+//            if let strData = try? JSONSerialization.data(withJSONObject: dict as Any , options: []) {
+//                var param = String(data: strData, encoding: .utf8)
+//                param = param?.urlEncoded()
+//                let finalStr = "alipays://platformapi/?\(param ?? "")"
+//                return URL(string:finalStr)
+//            }
             return url
         }
         return nil
