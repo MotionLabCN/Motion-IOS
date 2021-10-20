@@ -2,6 +2,12 @@
   "name": "MotionComponents",
   "version": "0.1.0",
   "summary": "天天数链SwiftUI组件",
+  "pod_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
+  "user_target_xcconfig": {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "arm64"
+  },
   "description": "天天数连组件：\n分类扩展",
   "homepage": "https://github.com/LZRight123/MotionComponents",
   "license": {
