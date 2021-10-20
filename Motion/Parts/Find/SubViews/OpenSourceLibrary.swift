@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-private typealias Image = SwiftUI.Image
+
 struct  OpenSourceLibraryModel: Identifiable, Convertible {
     var avatarUrl = ""
     var categoryId = ""
@@ -31,6 +31,11 @@ struct  OpenSourceLibraryModel: Identifiable, Convertible {
 }
 
 enum OpenSourceLibraryApi : MTTargetType{
+  
+    
+    case hotlist(p:hotlistParameters)
+    case newstar(p:newstarlistParameters)
+    
     var path: String {
         switch self {
         case .hotlist:
@@ -40,13 +45,26 @@ enum OpenSourceLibraryApi : MTTargetType{
         }
     }
     
-    case hotlist(p:hotlistParameters)
-    case newstar(p:hotlistParameters)
+    var parameters: [String : Any]? {
+        switch self {
+        case let .hotlist(p): return p.kj.JSONObject()
+        case let .newstar(p): return p.kj.JSONObject()
+        }
+    }
+    
+    var headers: [String: String]? {
+        nil
+    }
 }
 
 
 extension OpenSourceLibraryApi{
     struct hotlistParameters:Convertible{
+        var pageNum = 1
+        var pageSize = 10
+        var categoryId = 2
+    }
+    struct newstarlistParameters:Convertible{
         var pageNum = 1
         var pageSize = 10
         var categoryId = 2
@@ -89,7 +107,7 @@ class OpenSourceLibraryVm : ObservableObject{
 }
 
 struct OpenSourceLibrary: View {
-    
+    @StateObject var vm = OpenSourceLibraryVm()
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
@@ -104,14 +122,23 @@ struct OpenSourceLibrary: View {
     
     
     
-    
+    @ViewBuilder
     var newStar : some View {
+     
         Section {
-            ForEach(0 ..< 50) { item in
-                LibraryListCell()
-                    .padding(.horizontal)
-                Divider()
+            Button("获取"){
+                vm.request()
             }
+            Text("\(vm.newStarList.count)")
+            if vm.newStarList.isEmpty{ProgressView()}
+            else{
+                ForEach(vm.newStarList,id: \.id) { item in
+                    LibraryListCell()
+                        .padding(.horizontal)
+                    Divider()
+                }
+            }
+          
         } header: {
             Text("新星")
                 .font(.mt.title2.mtBlod(),textColor: .black)
