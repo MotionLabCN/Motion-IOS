@@ -65,6 +65,7 @@ class MTWebViewNavigationDelegate: NSObject, WKNavigationDelegate {
         }
         
         let urlScheme = url.scheme ?? ""
+        //hellow
             let urlStr = url.absoluteString ?? ""
             
             // 此处拦截支付宝支付
