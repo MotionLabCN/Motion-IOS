@@ -44,7 +44,6 @@ class StorageViewModel: ObservableObject {
          group.notify(queue: DispatchQueue.main) {[weak self] in
              // UI refresh
              self?.isLoading = false
-             
          }
     }
     
