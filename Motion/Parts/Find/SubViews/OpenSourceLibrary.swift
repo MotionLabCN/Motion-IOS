@@ -8,6 +8,86 @@
 import SwiftUI
 import MotionComponents
 
+private typealias Image = SwiftUI.Image
+struct  OpenSourceLibraryModel: Identifiable, Convertible {
+    var avatarUrl = ""
+    var categoryId = ""
+    var cloneUrl = ""
+    var createdAt = ""
+    var description = ""
+    var forksCount = ""
+    var fullName = ""
+    var htmlUrl = ""
+    var id = ""
+    var language = ""
+    var login = ""
+    var name = ""
+    var pushedAt = ""
+    var reposId = ""
+    var size = ""
+    var starCount = ""
+    var topics = ""
+    var updatedAt = ""
+}
+
+enum OpenSourceLibraryApi : MTTargetType{
+    var path: String {
+        switch self {
+        case .hotlist:
+            return "api/gateway/motion-community/github/repository/hot"
+        case .newstar:
+            return "/api/gateway/motion-community/github/repository/newstar"
+        }
+    }
+    
+    case hotlist(p:hotlistParameters)
+    case newstar(p:hotlistParameters)
+}
+
+
+extension OpenSourceLibraryApi{
+    struct hotlistParameters:Convertible{
+        var pageNum = 1
+        var pageSize = 10
+        var categoryId = 2
+    }
+}
+
+
+class OpenSourceLibraryVm : ObservableObject{
+    
+    @Published var hotList : [OpenSourceLibraryModel] = []
+    @Published var newStarList : [OpenSourceLibraryModel] = []
+    
+    init(){
+        request()
+    }
+    func request(){
+        let hotlist = OpenSourceLibraryApi.hotlist(p: .init(pageNum: 0, pageSize: 30, categoryId: 2))
+        let newstar = OpenSourceLibraryApi.newstar(p: .init(pageNum: 0, pageSize: 30, categoryId: 2))
+        Networking.requestArray(hotlist, modeType: OpenSourceLibraryModel.self, atKeyPath: "data.list") { [weak self] r, list in
+            guard let self = self else{
+                return
+            }
+            if let list = list{
+                self.hotList.append(contentsOf: list)
+            }else{
+                
+            }
+        }
+        Networking.requestArray(newstar, modeType: OpenSourceLibraryModel.self, atKeyPath: "data.list") { [weak self] r, list in
+            guard let self = self else{
+                return
+            }
+            if let list = list{
+                self.newStarList.append(contentsOf: list)
+            }else{
+                
+            }
+        }
+    }
+}
+
 struct OpenSourceLibrary: View {
     
     var body: some View {
