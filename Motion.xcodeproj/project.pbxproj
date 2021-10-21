@@ -86,6 +86,12 @@
 		A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */; };
 		A0731B44271522D200A6FF79 /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0731B43271522D200A6FF79 /* FindView.swift */; };
 		A0731B52271539E100A6FF79 /* codepower_te.json in Resources */ = {isa = PBXBuildFile; fileRef = A0731B51271539E100A6FF79 /* codepower_te.json */; };
+		A075B27627210D01005978F5 /* StorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27527210D01005978F5 /* StorageModel.swift */; };
+		A075B27827210DC2005978F5 /* FindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27727210DC2005978F5 /* FindModel.swift */; };
+		A075B27A27210E18005978F5 /* LangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27927210E18005978F5 /* LangModel.swift */; };
+		A075B27C27210E3E005978F5 /* TechnologyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27B27210E3E005978F5 /* TechnologyModel.swift */; };
+		A075B27E27210E64005978F5 /* CodeProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27D27210E64005978F5 /* CodeProductModel.swift */; };
+		A075B28027210E8C005978F5 /* CodeDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27F27210E8C005978F5 /* CodeDetailModel.swift */; };
 		A07613F22716871D00138857 /* codepower_pro.json in Resources */ = {isa = PBXBuildFile; fileRef = A07613F12716871D00138857 /* codepower_pro.json */; };
 		A07613F42716A19700138857 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07613F32716A19700138857 /* Double.swift */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
@@ -184,6 +190,12 @@
 		A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodepowerApi.swift; sourceTree = "<group>"; };
 		A0731B43271522D200A6FF79 /* FindView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
 		A0731B51271539E100A6FF79 /* codepower_te.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_te.json; sourceTree = "<group>"; };
+		A075B27527210D01005978F5 /* StorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModel.swift; sourceTree = "<group>"; };
+		A075B27727210DC2005978F5 /* FindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindModel.swift; sourceTree = "<group>"; };
+		A075B27927210E18005978F5 /* LangModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangModel.swift; sourceTree = "<group>"; };
+		A075B27B27210E3E005978F5 /* TechnologyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyModel.swift; sourceTree = "<group>"; };
+		A075B27D27210E64005978F5 /* CodeProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeProductModel.swift; sourceTree = "<group>"; };
+		A075B27F27210E8C005978F5 /* CodeDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDetailModel.swift; sourceTree = "<group>"; };
 		A07613F12716871D00138857 /* codepower_pro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_pro.json; sourceTree = "<group>"; };
 		A07613F32716A19700138857 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -622,6 +634,12 @@
 				DF8E411D2715891900B26E27 /* Mocks */,
 				A071104D27112EA800963385 /* NotifiListModel.swift */,
 				DFF165922717C2A8004D1B72 /* LiModel.swift */,
+				A075B27527210D01005978F5 /* StorageModel.swift */,
+				A075B27727210DC2005978F5 /* FindModel.swift */,
+				A075B27927210E18005978F5 /* LangModel.swift */,
+				A075B27B27210E3E005978F5 /* TechnologyModel.swift */,
+				A075B27D27210E64005978F5 /* CodeProductModel.swift */,
+				A075B27F27210E8C005978F5 /* CodeDetailModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -820,11 +838,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
+				A075B28027210E8C005978F5 /* CodeDetailModel.swift in Sources */,
 				5A00D7C02719793100FD409B /* LaunchView.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
+				A075B27E27210E64005978F5 /* CodeProductModel.swift in Sources */,
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				A06A0011271925D60005A025 /* OrderVM.swift in Sources */,
@@ -835,6 +855,7 @@
 				A0672F68271D55030002271A /* StorageListView.swift in Sources */,
 				DFE7B465271FDC7200038520 /* AddPostVM.swift in Sources */,
 				5A7EBFF626F1DE240026D870 /* NotificationView.swift in Sources */,
+				A075B27827210DC2005978F5 /* FindModel.swift in Sources */,
 				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
 				DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */,
 				A0672F64271D3CC30002271A /* LynnPullToRefreshModifier.swift in Sources */,
@@ -845,6 +866,7 @@
 				5ACBA39326F2EBA600A5789E /* OldFindView.swift in Sources */,
 				A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */,
 				5A9155122704038800E8135F /* StorageView.swift in Sources */,
+				A075B27A27210E18005978F5 /* LangModel.swift in Sources */,
 				5AC8C6E526FC6B100075ABDA /* Ladder.swift in Sources */,
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
 				DFF1659727181179004D1B72 /* OSSApi.swift in Sources */,
@@ -853,6 +875,8 @@
 				A0672F65271D3CC30002271A /* LynnPullToRefresh.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
 				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
+				A075B27C27210E3E005978F5 /* TechnologyModel.swift in Sources */,
+				A075B27627210D01005978F5 /* StorageModel.swift in Sources */,
 				A0731B44271522D200A6FF79 /* FindView.swift in Sources */,
 				5A6AB4A32717E26E00AED1B6 /* UMAnalyticsSwift.swift in Sources */,
 				DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */,
