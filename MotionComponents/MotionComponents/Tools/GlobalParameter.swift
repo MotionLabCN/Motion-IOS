@@ -44,7 +44,7 @@ public typealias Block_T_Any = (Any?) -> Void
 
 
 
-public enum RequestStatus {
+public enum RequestStatus: Equatable {
     /// 准备状态
     case prepare
     /// 请求中

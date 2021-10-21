@@ -106,6 +106,7 @@
 		DF95F21326FB222200081A7D /* MTWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF95F21226FB222200081A7D /* MTWebView.swift */; };
 		DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796D27003B5D00202D07 /* LoginVM.swift */; };
 		DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */; };
+		DFB12FC627210D000058E281 /* UploadFileResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB12FC527210D000058E281 /* UploadFileResModel.swift */; };
 		DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */; };
 		DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB93270184EF009698B6 /* MTLogoView.swift */; };
 		DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */; };
@@ -206,6 +207,7 @@
 		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFA3796D27003B5D00202D07 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPhoneView.swift; sourceTree = "<group>"; };
+		DFB12FC527210D000058E281 /* UploadFileResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResModel.swift; sourceTree = "<group>"; };
 		DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidateCodeView.swift; sourceTree = "<group>"; };
 		DFDFDB93270184EF009698B6 /* MTLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLogoView.swift; sourceTree = "<group>"; };
 		DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseInfoView.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				DF8E411D2715891900B26E27 /* Mocks */,
 				A071104D27112EA800963385 /* NotifiListModel.swift */,
 				DFF165922717C2A8004D1B72 /* LiModel.swift */,
+				DFB12FC527210D000058E281 /* UploadFileResModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				DFE0C0BD26E7849E00EDB44F /* AppDelegate.swift in Sources */,
 				5A00D7C02719793100FD409B /* LaunchView.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
+				DFB12FC627210D000058E281 /* UploadFileResModel.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
