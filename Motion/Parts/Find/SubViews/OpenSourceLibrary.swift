@@ -7,8 +7,9 @@
 
 import SwiftUI
 import MotionComponents
+import Kingfisher
 
-private typealias Image = SwiftUI.Image
+//MARK: Model
 struct  OpenSourceLibraryModel: Identifiable, Convertible {
     var avatarUrl = ""
     var categoryId = ""
@@ -30,7 +31,14 @@ struct  OpenSourceLibraryModel: Identifiable, Convertible {
     var updatedAt = ""
 }
 
+
+//MARK: Api.enum
 enum OpenSourceLibraryApi : MTTargetType{
+    
+    
+    case hotlist(p:hotlistParameters)
+    case newstar(p:newstarlistParameters)
+    
     var path: String {
         switch self {
         case .hotlist:
@@ -40,20 +48,34 @@ enum OpenSourceLibraryApi : MTTargetType{
         }
     }
     
-    case hotlist(p:hotlistParameters)
-    case newstar(p:hotlistParameters)
-}
-
-
-extension OpenSourceLibraryApi{
-    struct hotlistParameters:Convertible{
-        var pageNum = 1
-        var pageSize = 10
-        var categoryId = 2
+    var parameters: [String : Any]? {
+        switch self {
+        case let .hotlist(p): return p.kj.JSONObject()
+        case let .newstar(p): return p.kj.JSONObject()
+        }
+    }
+    
+    var headers: [String: String]? {
+        nil
     }
 }
 
 
+//MARK: Api.p
+extension OpenSourceLibraryApi{
+    struct hotlistParameters:Convertible{
+        var pageNum = 1
+        var pageSize = 20
+        var categoryId = 2
+    }
+    struct newstarlistParameters:Convertible{
+        var pageNum = 1
+        var pageSize = 20
+        var categoryId = 2
+    }
+}
+
+//MARK: Vm
 class OpenSourceLibraryVm : ObservableObject{
     
     @Published var hotList : [OpenSourceLibraryModel] = []
@@ -88,30 +110,43 @@ class OpenSourceLibraryVm : ObservableObject{
     }
 }
 
+//MARK: View
 struct OpenSourceLibrary: View {
-    
+    @StateObject var vm = OpenSourceLibraryVm()
     var body: some View {
-        
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing:16){
-                
                 classic
                 newStar
-                
             }.padding(.top,16)
-        }
+        }.navigationBarHidden(true)
+        
     }
     
     
     
-    
+    @ViewBuilder
     var newStar : some View {
+        
         Section {
-            ForEach(0 ..< 50) { item in
-                LibraryListCell()
-                    .padding(.horizontal)
-                Divider()
+            //            Button("获取"){
+            //                vm.request()
+            //            }
+            //            Text("\(vm.newStarList.count)")
+            if vm.newStarList.isEmpty{ProgressView()}
+            else{
+                ForEach(vm.newStarList,id: \.id) { item in
+                    NavigationLink {
+                        LibraryDetail(item: item)
+                    } label: {
+                        LibraryListCell(item: item)
+                            .padding(.horizontal)
+                    }
+                    
+                    Divider()
+                }
             }
+            
         } header: {
             Text("新星")
                 .font(.mt.title2.mtBlod(),textColor: .black)
@@ -122,25 +157,34 @@ struct OpenSourceLibrary: View {
     
     var classic : some View{
         Section {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing:16){
-                    ForEach(0 ..< 5) { item in
-                        VStack(alignment: .leading,spacing:4){
-                            NavigationLink {
-                                LibraryDetail()
-                            } label: {
-                                Rectangle().frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .foregroundColor(.random)
+            if vm.hotList.isEmpty{ProgressView()}
+            else{
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing:16){
+                        ForEach(vm.hotList ,id: \.id) { item in
+                            VStack(alignment: .leading,spacing:4){
+                                NavigationLink {
+                                    LibraryDetail(item: item)
+                                } label: {
+                                    KFImage(URL(string: item.avatarUrl))
+                                        .resizable()
+                                        .placeholder({Color.mt.gray_400})
+                                        .scaledToFill()
+                                        .frame(width: ScreenWidth() / 3, height: ScreenWidth() / 3 * 1.4)
+                                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                                        .foregroundColor(.random)
+                                }
+                                Text(item.name )
+                                    .font(.mt.body2.mtBlod(),textColor: .black)
+                                Text(item.forksCount)
+                                    .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             }
-                            Text("SpringBoot")
-                                .font(.mt.body2.mtBlod(),textColor: .black)
-                            Text("8.9")
-                                .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
+                            
                         }
                         
-                    }
-                }.padding(.horizontal)
+                        
+                    }.padding(.horizontal)
+                }
             }
         } header: {
             HStack {
@@ -163,17 +207,24 @@ struct OpenSourceLibrary_Previews: PreviewProvider {
 }
 
 struct LibraryListCell: View {
+    
+    var item : OpenSourceLibraryModel
     var body: some View {
         
         HStack{
-            Rectangle()
+            KFImage(URL(string: item.avatarUrl))
+                .resizable()
+                .placeholder({
+                    Color.mt.gray_200
+                })
+                .scaledToFill()
                 .frame(width: ScreenWidth() / 6, height: ScreenWidth() / 6)
                 .clipShape(Capsule(style: .continuous))
                 .foregroundColor(.random)
             VStack(alignment: .leading, spacing: 6){
-                Text("OpenStack Swift")
+                Text(item.name)
                     .font(.mt.body1.mtBlod(),textColor: .mt.gray_900)
-                Text("分布式对象存储系统")
+                Text(item.fullName)
                     .font(.mt.caption1.mtBlod(),textColor: .mt.gray_600)
                 HStack{
                     Circle().frame(width: 12, height: 12)
@@ -181,7 +232,7 @@ struct LibraryListCell: View {
                     Circle().frame(width: 12, height: 12)
                     Circle().frame(width: 12, height: 12)
                     Circle().frame(width: 12, height: 12)
-                    Text("29492个评分")
+                    Text("\(item.forksCount)个Star")
                         .font(.mt.body2,textColor: .mt.gray_600)
                 }
                 .foregroundColor(.mt.gray_600)

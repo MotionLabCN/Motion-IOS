@@ -94,13 +94,11 @@ struct FindView: View {
     var mainViews : some View {
         HStack(spacing: 0) {
             Group {
-                
                     CodepowerView()
                         .environmentObject(findVM)
                     Ladder()
                     OpenSourceLibrary()
                     RecommendView()
-               
             }
             .frame(width: ScreenWidth())
             .onChange(of: offset) { value in
