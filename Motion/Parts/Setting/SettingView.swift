@@ -28,6 +28,8 @@ struct SettingView: View {
                 setting
         
                 aboutUs
+                
+                loginOut
             }
             .background(navigationLinks)
             .listStyle(InsetGroupedListStyle())
@@ -104,6 +106,23 @@ struct SettingView: View {
                 MtLableRow( text: "微信公众号", icon: Image.mt.load(.Link)){}.disabled(true)})
         }
     }
+    
+    var loginOut: some View {
+        Section {
+            Button {
+                persentationMode.wrappedValue.dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    userManager.logout()
+                }
+            } label: {
+                MtLableRow( text: "退出登录", icon: Image.mt.load(.Link)){
+                    
+                }
+            }
+
+        }
+    }
+    
     var setting : some View {
         Section {
 //        LableRow( text: "发现页管理", icon: Image.mt.load(.Search))

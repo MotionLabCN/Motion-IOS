@@ -12,9 +12,8 @@ import MotionComponents
 //MARK: - 首页
 struct HomeView: View {
     
-    @StateObject var vm = HomeVM()
+    @StateObject var vm = HomeVM.shared
     
-    @State private var isShowPlaceholder = true
 
     @State private var isShowmtsheet = false
 
@@ -32,7 +31,7 @@ struct HomeView: View {
             LazyVStack(spacing: 0.0) {
 //                header
 //                Divider.mt.defult()
-                if isShowPlaceholder {
+                if vm.list.isEmpty {
                     placeholder
                         .padding(.top, 150)
                 } else {
@@ -108,19 +107,17 @@ extension HomeView {
     
     var main: some View {
         LazyVStack {
-            ForEach(1...119, id: \.self) { count in
-                
+            ForEach(vm.list) { item in
                 Button(action: {
-                        isShowmtsheet = true
+//                    isShowmtsheet = true
                 }){
-                    PostCell()
+                    PostCell(model: item)
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
-              
-                
             }
+            
         }
         .frame(maxWidth: .infinity)
         
@@ -131,7 +128,6 @@ extension HomeView {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
-//                isShowPlaceholder.toggle()
                 isShowmtsheet.toggle()
 //                TabbarState.shared.isShowTabbar = false
                

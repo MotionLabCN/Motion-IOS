@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct PostCell: View {
-    @State private var textHeight: CGFloat = 0
+    let model: PostItemModel
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             MTAvatar(frame : 52) {}
@@ -23,7 +23,7 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
 
-                MTRichText( "5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。 @ElonMusk")
+                MTRichText(model.content)
                 
                 Spacer.mt.mid()
                 
@@ -43,9 +43,9 @@ struct PostCell: View {
     
     var name: some View {
         HStack(spacing: 0) {
-            Text("Motion用户")
+            Text(model.userVO.username)
                 .font(.mt.body2.mtBlod(), textColor: .black)
-            Text("@usernickname")
+            Text("@\(model.userVO.nickname)")
                 .font(.mt.body2, textColor: .mt.gray_600)
 
             Spacer()
@@ -189,9 +189,9 @@ extension PostCell {
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PostCell()
-                .padding()
-                .previewLayout(.sizeThatFits)
+//            PostCell()
+//                .padding()
+//                .previewLayout(.sizeThatFits)
             
             PostCell.PostToolBar()
                 .previewLayout(.sizeThatFits)

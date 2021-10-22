@@ -9,17 +9,34 @@ import Combine
 import MotionComponents
 
 class HomeVM: ObservableObject {
+    static let shared = HomeVM()
+    
     let page = PageRequest()
+    @Published var list = [PostItemModel]()
     init() {
         print("HomeVM init")
+        page.pageSize = 50
         requestPostList()
     }
     
 
-    
+    @Published var requestPostListStatus = RequestStatus.prepare
     func requestPostList() {
-        Networking.request(PostApi.get(type: .首页, p: page)) { result in
-            print("sss")
+        requestPostListStatus = .requesting
+        
+        Networking.requestArray(PostApi.get(type: .首页, p: page), modeType: PostItemModel.self, atKeyPath: "data.list") { [weak self] _, l in
+            guard let self = self else { return }
+            
+            self.requestPostListStatus = .completion
+            
+            self.list = l ?? []
+        
         }
+       
+    }
+    
+    func refresh() {
+        page.reset()
+        requestPostList()
     }
 }

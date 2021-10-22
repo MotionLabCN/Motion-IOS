@@ -39,7 +39,7 @@ enum PostApi: MTTargetType {
     
     var parameters: [String : Any]? {
         switch self {
-        case .release: return nil
+        case let .release(p): return p.kj.JSONObject()
         case let .get(_, page):
             return page.kj.JSONObject()
         }

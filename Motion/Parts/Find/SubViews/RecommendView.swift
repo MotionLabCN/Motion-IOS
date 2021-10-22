@@ -25,7 +25,7 @@ struct RecommendView: View {
                         showDetail.toggle()
                     } label: {
                         
-                        PostCell()
+                        PostCell(model: .init())
                             .padding(.horizontal)
                             .padding(.vertical, 8)
                     }

@@ -43,6 +43,7 @@ class AddPostVM: ObservableObject {
         Networking.request(PostApi.release(p: req)) { [weak self] result in
             if result.isSuccess {
                 self?.requestAddPostStatus = .completion
+                HomeVM.shared.refresh()
             } else {
                 self?.requestAddPostStatus = .completionTip(text: result.message)
             }
