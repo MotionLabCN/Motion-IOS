@@ -105,6 +105,7 @@
 		DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7061482715264F00761A19 /* CommunityServiceApi.swift */; };
 		DF75D9A3272251CC00347D9A /* PostItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A2272251CC00347D9A /* PostItemModel.swift */; };
 		DF75D9A52722746D00347D9A /* RecommendVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A42722746D00347D9A /* RecommendVM.swift */; };
+		DF75D9A727227B6500347D9A /* MTResponsePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */; };
@@ -214,6 +215,7 @@
 		DF7061482715264F00761A19 /* CommunityServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityServiceApi.swift; sourceTree = "<group>"; };
 		DF75D9A2272251CC00347D9A /* PostItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemModel.swift; sourceTree = "<group>"; };
 		DF75D9A42722746D00347D9A /* RecommendVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendVM.swift; sourceTree = "<group>"; };
+		DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTResponsePlugin.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DF8E411E2715892700B26E27 /* MockTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTool.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				DF8298BB26F07A720007DEEA /* AppState.swift */,
 				DF2A627026F7582E000DAF83 /* UserManager.swift */,
 				DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */,
+				DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
 				A0672F63271D3CC30002271A /* LynnRefreshState.swift in Sources */,
 				A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */,
+				DF75D9A727227B6500347D9A /* MTResponsePlugin.swift in Sources */,
 				5A8F6DA126FC7FBF007E9101 /* OfficialBusiness.swift in Sources */,
 				5A91551427040CB700E8135F /* CodepowerView.swift in Sources */,
 				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,

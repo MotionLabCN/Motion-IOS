@@ -5,12 +5,10 @@
 //  Created by ash on 2019/10/16.
 //
 
-import Foundation
 import Moya
-import Network
 import SwiftyJSON
 
-public class ResponsePlugin: PluginType {
+public class MTResponsePlugin: PluginType {
     public init() {}
 
     /// Called to modify a result before completion.
@@ -44,13 +42,12 @@ public class ResponsePlugin: PluginType {
 //    }
     
     public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
-        print("")
-//        switch result.status {
-//        case .success: break
-//        case .unlogin: break
-//        default: break
-////            HUD.showText(result.message)
-//        }
+        switch result.rawReponse?.statusCode {
+        case 401:
+            UserManager.shared.logout()
+        default: break
+        }
+
     }
     
 }

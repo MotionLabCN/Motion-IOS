@@ -7,10 +7,13 @@
 
 import Foundation
 import MotionComponents
-
+import Moya
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        Networking.defaultProvider =  CGI<MultiTarget>(plugins: [NetworkHeaderPlugin(), MTResponsePlugin(), CustomNetworkLoggerPlugin()])
+
+        
         AppearConfig.config()
         
         UMRUN()
