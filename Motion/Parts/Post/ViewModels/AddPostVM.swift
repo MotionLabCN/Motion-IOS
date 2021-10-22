@@ -16,6 +16,12 @@ class AddPostVM: ObservableObject {
     //MARK: - 发布
     @Published var requestAddPostStatus = RequestStatus.prepare
     func addPost() {
+        if text.trimmed.isEmpty {
+            requestAddPostStatus = .completionTip(text: "请输入内容", status: .defult)
+            return
+        }
+        
+        
         // 1.先上传图片
         requestAddPostStatus = .requesting
         

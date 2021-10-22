@@ -19,4 +19,15 @@ struct PostItemModel: Convertible, Identifiable {
     var recommend = ""// null
     var pics = [String]()// []
     var userVO = UserInfo()// ""
+
+    
+    var layout: PostCell.CoversView.Layout {
+        switch pics.count {
+        case 1: return .one
+        case 2: return .oneByOne
+        case 3: return .oneByTwo
+        case 4: return .twoByTwo
+        default: return .one
+        }
+    }
 }

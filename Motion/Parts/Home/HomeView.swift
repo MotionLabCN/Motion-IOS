@@ -38,6 +38,8 @@ struct HomeView: View {
                     main
                 }
             }
+            
+            Spacer.mt.tabbar()
         }
         .mtNavbar(content: {
             Image.mt.load(.Logo)
@@ -116,6 +118,8 @@ extension HomeView {
                         .padding(.vertical, 8)
                 }
                 .mtTapAnimation(style: .rotation3D)
+                
+                Divider.mt.defult()
             }
             
         }

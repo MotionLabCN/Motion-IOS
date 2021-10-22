@@ -7,6 +7,7 @@
 
 import MotionComponents
 import SwiftUI
+import Kingfisher
 
 
 struct PostCell: View {
@@ -27,8 +28,11 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
                 
-                CoversView(layout: .one)
-                    .frame(height: 200)
+                if !model.pics.isEmpty {
+                    CoversView(list: model.pics, layout: model.layout)
+                        .frame(height: 200)
+                }
+               
                 
                 Spacer.mt.mid()
 
@@ -116,8 +120,8 @@ extension PostCell {
         enum Layout {
             case one, oneByOne, oneByTwo, twoByTwo
         }
-        typealias ModelType = Int
-        var list = [ModelType]()
+
+        var list: [String]
         var layout: Layout
         
         private let spacing: CGFloat = 4
@@ -126,38 +130,77 @@ extension PostCell {
             HStack(spacing: spacing) { // 最外层H start
                 switch layout {
                 case .one:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
 
                 case .oneByOne:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
-                    Image.mt.load(.ATM)
-                        .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                    
+                    KFImage(list[1].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)
                 case .oneByTwo:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
+
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[1].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[2].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                 case .twoByTwo:
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[0].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[1].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                     
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[2].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[3].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                 }
@@ -196,17 +239,17 @@ struct PostCell_Previews: PreviewProvider {
             PostCell.PostToolBar()
                 .previewLayout(.sizeThatFits)
 
-            PostCell.CoversView(layout: .one)
-                .previewLayout(.fixed(width: 415, height: 100))
-            
-            PostCell.CoversView(layout: .oneByOne)
-                .previewLayout(.fixed(width: 415, height: 100))
-            
-            PostCell.CoversView(layout: .oneByTwo)
-                .previewLayout(.fixed(width: 415, height: 200))
-            
-            PostCell.CoversView(layout: .twoByTwo)
-                .previewLayout(.fixed(width: 415, height: 200))
+//            PostCell.CoversView(layout: .one)
+//                .previewLayout(.fixed(width: 415, height: 100))
+//
+//            PostCell.CoversView(layout: .oneByOne)
+//                .previewLayout(.fixed(width: 415, height: 100))
+//
+//            PostCell.CoversView(layout: .oneByTwo)
+//                .previewLayout(.fixed(width: 415, height: 200))
+//
+//            PostCell.CoversView(layout: .twoByTwo)
+//                .previewLayout(.fixed(width: 415, height: 200))
 
         }
     }
