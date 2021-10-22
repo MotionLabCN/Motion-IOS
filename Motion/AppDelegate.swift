@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         AppearConfig.config()
-        
         UMRUN()
-        
         return true
     }
     
