@@ -23,6 +23,7 @@ struct OpenSourceLibrary: View {
         
             .sheet(isPresented: $vm.isShowCategory) {
                 CategoryItemList
+//                    .mtPlaceholderProgress(vm.isLoadingCategory)
             }
     }
         
@@ -51,7 +52,7 @@ struct OpenSourceLibrary: View {
         }
     }
 
-    //MARK: 语言view
+    //MARK: 分类语言view
     var LangListView: some View {
         ForEach(vm.categoryList) { item in
             HStack {
@@ -79,7 +80,6 @@ struct OpenSourceLibrary: View {
     
     var closeBtn : some View {
         Button {
-            //            self.persentationMode.wrappedValue.dismiss()
             vm.isShowCategory.toggle()
         } label: {
             Image.mt.load(.Close)
@@ -147,10 +147,7 @@ struct OpenSourceLibrary: View {
                                 Text(item.forksCount)
                                     .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             }
-                            
                         }
-                        
-                        
                     }.padding(.horizontal)
                 }
             }
@@ -160,7 +157,7 @@ struct OpenSourceLibrary: View {
                     .font(.mt.title2.mtBlod(),textColor: .black)
                 Spacer()
                 Button {
-                    vm.githubList()
+                    vm.requestWithCategoryList()
                     vm.isShowCategory.toggle()
                 } label: {
                     Text(vm.categoryName)

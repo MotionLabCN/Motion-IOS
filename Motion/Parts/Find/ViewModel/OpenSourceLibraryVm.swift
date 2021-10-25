@@ -10,6 +10,8 @@ import MotionComponents
 
 class OpenSourceLibraryVm : ObservableObject{
     @Published var isShowCategory: Bool = false //显示语言
+    @Published var isLoadingCategory: Bool = false //请求分类语言
+    
     @Published var hotList : [OpenSourceLibraryModel] = []
     @Published var newStarList : [OpenSourceLibraryModel] = []
     
@@ -47,7 +49,8 @@ class OpenSourceLibraryVm : ObservableObject{
         }
     }
     
-    func githubList() {
+    func requestWithCategoryList() {
+        isLoadingCategory = true
         Networking.requestArray(OpenSourceLibraryApi.category, modeType: OpenSourceCategoryModel.self) { [weak self] r, list in
             guard let self = self else { return }
             if let list = list{
@@ -62,6 +65,7 @@ class OpenSourceLibraryVm : ObservableObject{
 //                    self.categoryId = self.categoryList[index].categoryId
                 }
             }
+            self.isLoadingCategory = false
         }
     }
     
