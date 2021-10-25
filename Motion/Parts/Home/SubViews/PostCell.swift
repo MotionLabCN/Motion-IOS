@@ -11,7 +11,11 @@ import Kingfisher
 
 
 struct PostCell: View {
+    @State var isAlert = false
+    
     let model: PostItemModel
+    var didAlert: Block_T? = nil
+
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             MTAvatar(frame : 52) {}
@@ -94,6 +98,8 @@ struct PostCell: View {
             })
             Spacer()
             
+            
+            /// 假举报
             Button(action: {
             }, label: {
                 HStack {
@@ -103,12 +109,21 @@ struct PostCell: View {
             })
                 .contextMenu(
                     ContextMenu {
-                        Button("♥️ - Hearts", action: {
-                            
+                        Button("举报", action: {
+                            isAlert.toggle()
                         })
                     }
                 )
-            
+                .alert(isPresented: $isAlert, content: {
+                    Alert(title: Text("举报"), message: Text("是否举报该动态"), primaryButton: Alert.Button.cancel(Text("取消"), action: {
+                        isAlert.toggle()
+                    }), secondaryButton: Alert.Button.default(Text("确定"), action: {
+                        didAlert?()
+                        isAlert.toggle()
+                        
+                    }))
+                })
+               
             
             Spacer()
         }

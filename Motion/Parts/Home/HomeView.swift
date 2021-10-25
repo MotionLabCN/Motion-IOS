@@ -17,8 +17,13 @@ struct HomeView: View {
 
     @State private var isShowmtsheet = false
     @State private var showDetail : Bool = false
+    
+    @State private var isShowToast = false
+    @State private var toastText = ""
 
     @EnvironmentObject var tabbarState: TabbarState
+    
+    
 
     init() {
         print("HomeView init")
@@ -97,6 +102,8 @@ struct HomeView: View {
             PostDetailView()
         }
         
+        .mtToast(isPresented: $isShowToast, text: toastText, postion: .bottom(offsetY: 86))
+        
     }
 }
 
@@ -118,7 +125,10 @@ extension HomeView {
                 Button(action: {
                     showDetail.toggle()
                 }){
-                    PostCell(model: item)
+                    PostCell(model: item, didAlert:  {
+                        toastText = "举报成功，稍后人工客服会和您联系"
+                        isShowToast = true
+                    })
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }
@@ -137,12 +147,8 @@ extension HomeView {
         VStack(spacing: 20) {
             MTDescriptionView(title: "尚未连接任何人", subTitle: "Motion是创造者们加速他们伟大创造的地方。科技、艺术、制造业工作者们在这里见面，组成协作小队。")
             Button(action: {
-                isShowmtsheet.toggle()
-//                TabbarState.shared.isShowTabbar = false
-               
-//                Networking.request(OSSApi.upload(images: [UIImage(named: "touxiang")!, UIImage(named: "touxiang")!])) { result in
-//                    print("")
-//                }
+                vm.refresh()
+
                 
             }, label: {
                 Text("查找朋友")

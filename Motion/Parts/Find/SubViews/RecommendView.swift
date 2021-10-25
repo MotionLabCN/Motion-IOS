@@ -12,6 +12,9 @@ struct RecommendView: View {
     @State private var showMoney : Bool = false
     @State private var showDetail : Bool = false
     
+    @State private var isShowToast = false
+    @State private var toastText = ""
+    
     @StateObject private var vm = RecommendVM()
     var body: some View {
         
@@ -27,7 +30,10 @@ struct RecommendView: View {
                         showDetail.toggle()
                     } label: {
                         
-                        PostCell(model: item)
+                        PostCell(model: item, didAlert: {
+                            toastText = "举报成功，稍后人工客服会和您联系"
+                            isShowToast = true
+                        })
                             .padding(.horizontal)
                             .padding(.vertical, 8)
                     }
@@ -62,6 +68,8 @@ struct RecommendView: View {
             BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
             PostDetailView()
         }
+        
+        .mtToast(isPresented: $isShowToast, text: toastText, postion: .bottom(offsetY: 86))
 
     }
 }

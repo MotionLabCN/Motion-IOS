@@ -13,6 +13,10 @@ import AVKit
 
 struct LoginStartView: View {
     @State private var isShowTermsOfService = false
+    @State private var isShowUserProtocol = false
+    @State private var isShowPrivacy = false
+
+    
     @EnvironmentObject var userManager: UserManager
     var player = AVPlayer()
     
@@ -73,13 +77,6 @@ struct LoginStartView: View {
             startBtn
             
             HStack(spacing: 0) {
-                NavigationLink(
-                    destination: MTWebView(urlString: "https://m.baidu.com"),
-                    isActive: $isShowTermsOfService,
-                    label: {
-                        EmptyView()
-                    })
-                
                 Button {
                     print("click 选中")
                 } label: {
@@ -96,24 +93,38 @@ struct LoginStartView: View {
                 // 减去 容器padding - 图片大小 - stack间隙
                 let text = "同意《中国移动认证服务条款》，以及Motion的用户协议、隐私条款和其他声明。"
                 let customType1 = ActiveType.custom(pattern: "《中国移动认证服务条款》")
-                MTRichText(text)
+                let customType2 = ActiveType.custom(pattern: "用户协议")
+                let customType3 = ActiveType.custom(pattern: "隐私条款")
+
+                 MTRichText(text)
                     .textColor(.white, font: .mt.body3)
                     .lineSpacing(2)
-                    .customTypes([customType1])
+                    .customTypes([customType1, customType2, customType3])
                     .configureLinkAttribute { type, attri, _ in
                         var mattri = attri
                         switch type {
-                        case .custom:
+                        case customType1:
                             mattri[.font] = UIFont.mt.body3.mtBlod()
+                            mattri[.foregroundColor] = UIColor.white
+                        case customType2, customType3:
+                            mattri[.font] = UIFont.mt.body3
                             mattri[.foregroundColor] = UIColor.white
                         default:  break
                         }
                         return mattri
                     }
-                    .onCustomTap(for: customType1) { text in
-                        print("click \(customType1) text: \(text)")
-                        isShowTermsOfService.toggle()
-                    }
+                    .onCustomTaps(actions: [
+                        customType1 : { _ in
+                            isShowTermsOfService.toggle()
+                        },
+                        customType2 : { _ in
+                            isShowUserProtocol.toggle()
+                        },
+                        customType3 : { _ in
+                            isShowPrivacy.toggle()
+                        },
+                    ])
+                
                 
                 
             }
@@ -124,6 +135,16 @@ struct LoginStartView: View {
             Spacer.mt.mid()
         }
         .frame(width: ScreenWidth() - 76)
+        .mtRegisterRouter(isActive: $isShowTermsOfService) {
+            MTWebView(urlString: "https://revome.cn/#/protocol")
+        }
+        .mtRegisterRouter(isActive: $isShowUserProtocol) {
+            MTWebView(urlString: "https://revome.cn/#/protocol")
+        }
+        .mtRegisterRouter(isActive: $isShowPrivacy) {
+            MTWebView(urlString: "https://revome.cn/#/privacyPolicy")
+        }
+       
     }
     
     var startBtn: some View {
