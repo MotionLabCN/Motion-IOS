@@ -11,6 +11,8 @@ import MotionComponents
 struct RecommendView: View {
     @State private var showMoney : Bool = false
     @State private var showDetail : Bool = false
+    
+    @StateObject private var vm = RecommendVM()
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
@@ -20,12 +22,12 @@ struct RecommendView: View {
                     MoneyNotiView()
                 }
                 
-                ForEach(1...119, id: \.self) { count in
+                ForEach(vm.list) { item in
                     Button {
                         showDetail.toggle()
                     } label: {
                         
-                        PostCell()
+                        PostCell(model: item)
                             .padding(.horizontal)
                             .padding(.vertical, 8)
                     }
@@ -37,6 +39,9 @@ struct RecommendView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            
+            Spacer.mt.tabbar()
+
         }
         
         //Money💰💰💰💰💰💰

@@ -103,6 +103,9 @@
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
 		DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50804C270DD2D3003C7538 /* HomeVM.swift */; };
 		DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7061482715264F00761A19 /* CommunityServiceApi.swift */; };
+		DF75D9A3272251CC00347D9A /* PostItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A2272251CC00347D9A /* PostItemModel.swift */; };
+		DF75D9A52722746D00347D9A /* RecommendVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A42722746D00347D9A /* RecommendVM.swift */; };
+		DF75D9A727227B6500347D9A /* MTResponsePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */; };
 		DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298B926F079ED0007DEEA /* NextView.swift */; };
 		DF8298BC26F07A720007DEEA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8298BB26F07A720007DEEA /* AppState.swift */; };
 		DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */; };
@@ -112,6 +115,7 @@
 		DF95F21326FB222200081A7D /* MTWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF95F21226FB222200081A7D /* MTWebView.swift */; };
 		DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796D27003B5D00202D07 /* LoginVM.swift */; };
 		DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */; };
+		DFB12FC627210D000058E281 /* UploadFileResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB12FC527210D000058E281 /* UploadFileResModel.swift */; };
 		DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */; };
 		DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB93270184EF009698B6 /* MTLogoView.swift */; };
 		DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */; };
@@ -209,6 +213,9 @@
 		DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
 		DF50804C270DD2D3003C7538 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		DF7061482715264F00761A19 /* CommunityServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityServiceApi.swift; sourceTree = "<group>"; };
+		DF75D9A2272251CC00347D9A /* PostItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemModel.swift; sourceTree = "<group>"; };
+		DF75D9A42722746D00347D9A /* RecommendVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendVM.swift; sourceTree = "<group>"; };
+		DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTResponsePlugin.swift; sourceTree = "<group>"; };
 		DF8298B926F079ED0007DEEA /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		DF8298BB26F07A720007DEEA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DF8E411E2715892700B26E27 /* MockTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTool.swift; sourceTree = "<group>"; };
@@ -218,6 +225,7 @@
 		DF95F21226FB222200081A7D /* MTWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTWebView.swift; sourceTree = "<group>"; };
 		DFA3796D27003B5D00202D07 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		DFA3796F27003C6900202D07 /* LoginInputPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputPhoneView.swift; sourceTree = "<group>"; };
+		DFB12FC527210D000058E281 /* UploadFileResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileResModel.swift; sourceTree = "<group>"; };
 		DFDD628D27015D5A0059D2CE /* LoginValidateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidateCodeView.swift; sourceTree = "<group>"; };
 		DFDFDB93270184EF009698B6 /* MTLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLogoView.swift; sourceTree = "<group>"; };
 		DFDFDB95270186FD009698B6 /* LoginBaseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseInfoView.swift; sourceTree = "<group>"; };
@@ -427,6 +435,7 @@
 			children = (
 				A071105027117AC700963385 /* FindVM.swift */,
 				A07613F32716A19700138857 /* Double.swift */,
+				DF75D9A42722746D00347D9A /* RecommendVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -599,6 +608,7 @@
 				DF8298BB26F07A720007DEEA /* AppState.swift */,
 				DF2A627026F7582E000DAF83 /* UserManager.swift */,
 				DFEB1D2927044C8900B7C1DB /* ProjectConfig.swift */,
+				DF75D9A627227B6500347D9A /* MTResponsePlugin.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -634,12 +644,14 @@
 				DF8E411D2715891900B26E27 /* Mocks */,
 				A071104D27112EA800963385 /* NotifiListModel.swift */,
 				DFF165922717C2A8004D1B72 /* LiModel.swift */,
+				DFB12FC527210D000058E281 /* UploadFileResModel.swift */,
 				A075B27527210D01005978F5 /* StorageModel.swift */,
 				A075B27727210DC2005978F5 /* FindModel.swift */,
 				A075B27927210E18005978F5 /* LangModel.swift */,
 				A075B27B27210E3E005978F5 /* TechnologyModel.swift */,
 				A075B27D27210E64005978F5 /* CodeProductModel.swift */,
 				A075B27F27210E8C005978F5 /* CodeDetailModel.swift */,
+				DF75D9A2272251CC00347D9A /* PostItemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -663,8 +675,8 @@
 				DFE0C0A526E783CE00EDB44F /* Sources */,
 				DFE0C0A626E783CE00EDB44F /* Frameworks */,
 				DFE0C0A726E783CE00EDB44F /* Resources */,
-				C12023338FFC65C76315D73F /* [CP] Embed Pods Frameworks */,
-				D08B812BC8C8E624701AD31D /* [CP] Copy Pods Resources */,
+				2A88C29DAEC4A11C0ADE2D38 /* [CP] Embed Pods Frameworks */,
+				EDC4CEDA97DFFD5A62FE2BDF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -740,6 +752,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2A88C29DAEC4A11C0ADE2D38 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5BA5CACF63605B238BE17FB4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,40 +789,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C12023338FFC65C76315D73F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D08B812BC8C8E624701AD31D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFE0C0C626E784D400EDB44F /* ShellScript */ = {
@@ -830,6 +825,23 @@
 			shellPath = /bin/sh;
 			shellScript = "cd ${SRCROOT}\npython3 Script/SVConfiguration.py -c Dev\n";
 		};
+		EDC4CEDA97DFFD5A62FE2BDF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Motion/Pods-Motion-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -841,10 +853,12 @@
 				A075B28027210E8C005978F5 /* CodeDetailModel.swift in Sources */,
 				5A00D7C02719793100FD409B /* LaunchView.swift in Sources */,
 				5AC2146426F3767800D4457C /* RecommendView.swift in Sources */,
+				DFB12FC627210D000058E281 /* UploadFileResModel.swift in Sources */,
 				DF8298BC26F07A720007DEEA /* AppState.swift in Sources */,
 				5A6AB49E2717D47400AED1B6 /* OrderView.swift in Sources */,
 				DFDFDB96270186FD009698B6 /* LoginBaseInfoView.swift in Sources */,
 				A075B27E27210E64005978F5 /* CodeProductModel.swift in Sources */,
+				DF75D9A52722746D00347D9A /* RecommendVM.swift in Sources */,
 				5AAACF97271553070060A5DF /* DiskPage.swift in Sources */,
 				DF95F21326FB222200081A7D /* MTWebView.swift in Sources */,
 				A06A0011271925D60005A025 /* OrderVM.swift in Sources */,
@@ -874,6 +888,7 @@
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				A0672F65271D3CC30002271A /* LynnPullToRefresh.swift in Sources */,
 				5A5842D526F4CDE100311388 /* MessageView.swift in Sources */,
+				DF75D9A3272251CC00347D9A /* PostItemModel.swift in Sources */,
 				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
 				A075B27C27210E3E005978F5 /* TechnologyModel.swift in Sources */,
 				A075B27627210D01005978F5 /* StorageModel.swift in Sources */,
@@ -908,6 +923,7 @@
 				DFA3797027003C6900202D07 /* LoginInputPhoneView.swift in Sources */,
 				A0672F63271D3CC30002271A /* LynnRefreshState.swift in Sources */,
 				A06FC830271E58BA004A21FE /* StorageAip.swift in Sources */,
+				DF75D9A727227B6500347D9A /* MTResponsePlugin.swift in Sources */,
 				5A8F6DA126FC7FBF007E9101 /* OfficialBusiness.swift in Sources */,
 				5A91551427040CB700E8135F /* CodepowerView.swift in Sources */,
 				5A53376C26FB5FA900949087 /* PostDetailView.swift in Sources */,
@@ -1049,12 +1065,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7593AFE3357F8C4290E57512 /* Pods-Motion.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1016;
+				CURRENT_PROJECT_VERSION = 10221815;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;
@@ -1079,12 +1096,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2489304ED38A13284B16870C /* Pods-Motion.release.xcconfig */;
 			buildSettings = {
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Motion/Motion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1016;
+				CURRENT_PROJECT_VERSION = 10221815;
 				DEVELOPMENT_ASSET_PATHS = "\"Motion/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z99F74JZM;
 				ENABLE_PREVIEWS = YES;

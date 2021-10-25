@@ -23,6 +23,8 @@ public enum StatusCode: Int {
 //    case noResponse = -1
 //
     case success = 200
+    
+    case tokenFail = 401
 //    case exception = 400
 //    /// 用户未登录 登陆超期
 //    case unlogin = 1003

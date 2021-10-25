@@ -11,23 +11,47 @@ import Combine
 class AddPostVM: ObservableObject {
     @Published var text = ""
     @Published var selectedPhotos : [UIImage] = []
-
+    
     
     //MARK: - 发布
+    @Published var requestAddPostStatus = RequestStatus.prepare
     func addPost() {
+        if text.trimmed.isEmpty {
+            requestAddPostStatus = .completionTip(text: "请输入内容", status: .defult)
+            return
+        }
+        
+        
         // 1.先上传图片
+        requestAddPostStatus = .requesting
+        
         if selectedPhotos.isEmpty {
-            print("直接传吧")
-            let picArr: [PostApi.ReleaseParameters.PicItem] = []
-            let req: PostApi.ReleaseParameters = .init(content: "", pics: picArr)
-            Networking.request(PostApi.release(p: req)) { result in
-                print("")
-            }
-            
-            
+            releasePost(pics: [])
         } else {
-            Networking.request(OSSApi.upload(images: selectedPhotos)) { result in
-                print("xxx")
+            Networking.requestArray(OSSApi.upload(images: selectedPhotos), modeType: UploadFileResModel.self) { [weak self] r, list in
+                if list.isNilOrEmpty {
+                    self?.requestAddPostStatus = .completionTip(text: "上传图片失败", status: .danger)
+                } else {
+                    self?.releasePost(pics: list!)
+                }
+            }
+        }
+        
+    }
+    
+    func releasePost(pics: [UploadFileResModel]) {
+        var picArr: [PostApi.ReleaseParameters.PicItem] = []
+        for (i, item) in pics.enumerated() {
+            picArr.append(.init(seq: i + 1, picId: item.id))
+        }
+        
+        let req: PostApi.ReleaseParameters = .init(content: text, pics: picArr)
+        Networking.request(PostApi.release(p: req)) { [weak self] result in
+            if result.isSuccess {
+                self?.requestAddPostStatus = .completion
+                HomeVM.shared.refresh()
+            } else {
+                self?.requestAddPostStatus = .completionTip(text: result.message)
             }
         }
         

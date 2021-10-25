@@ -7,10 +7,11 @@
 
 import MotionComponents
 import SwiftUI
+import Kingfisher
 
 
 struct PostCell: View {
-    @State private var textHeight: CGFloat = 0
+    let model: PostItemModel
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             MTAvatar(frame : 52) {}
@@ -23,12 +24,15 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
 
-                MTRichText( "5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。 @ElonMusk")
+                MTRichText(model.content)
                 
                 Spacer.mt.mid()
                 
-                CoversView(layout: .one)
-                    .frame(height: 200)
+                if !model.pics.isEmpty {
+                    CoversView(list: model.pics, layout: model.layout)
+                        .frame(height: 200)
+                }
+               
                 
                 Spacer.mt.mid()
 
@@ -43,9 +47,9 @@ struct PostCell: View {
     
     var name: some View {
         HStack(spacing: 0) {
-            Text("Motion用户")
+            Text(model.userVO.username)
                 .font(.mt.body2.mtBlod(), textColor: .black)
-            Text("@usernickname")
+            Text("@\(model.userVO.nickname)")
                 .font(.mt.body2, textColor: .mt.gray_600)
 
             Spacer()
@@ -116,8 +120,8 @@ extension PostCell {
         enum Layout {
             case one, oneByOne, oneByTwo, twoByTwo
         }
-        typealias ModelType = Int
-        var list = [ModelType]()
+
+        var list: [String]
         var layout: Layout
         
         private let spacing: CGFloat = 4
@@ -126,38 +130,77 @@ extension PostCell {
             HStack(spacing: spacing) { // 最外层H start
                 switch layout {
                 case .one:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
 
                 case .oneByOne:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
-                    Image.mt.load(.ATM)
-                        .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
+                    
+                    KFImage(list[1].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
+                        .frame(maxWidth: .infinity, maxHeight: maxHeight)
                 case .oneByTwo:
-                    Image.mt.load(.ATM)
+                    KFImage(list[0].url)
+                        .resizable()
+                        .placeholder({
+                            Color.mt.gray_800
+                        })
                         .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                        .background(Color.random)
+
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[1].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[2].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                 case .twoByTwo:
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[0].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[1].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                     
                     VStack(spacing: spacing)  {
-                        Image.mt.load(.ATM)
+                        KFImage(list[2].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
-                        Image.mt.load(.ATM)
+                        KFImage(list[3].url)
+                            .resizable()
+                            .placeholder({
+                                Color.mt.gray_800
+                            })
                             .frame(maxWidth: .infinity, maxHeight: maxHeight)                        .background(Color.random)
                     }
                 }
@@ -189,24 +232,24 @@ extension PostCell {
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PostCell()
-                .padding()
-                .previewLayout(.sizeThatFits)
+//            PostCell()
+//                .padding()
+//                .previewLayout(.sizeThatFits)
             
             PostCell.PostToolBar()
                 .previewLayout(.sizeThatFits)
 
-            PostCell.CoversView(layout: .one)
-                .previewLayout(.fixed(width: 415, height: 100))
-            
-            PostCell.CoversView(layout: .oneByOne)
-                .previewLayout(.fixed(width: 415, height: 100))
-            
-            PostCell.CoversView(layout: .oneByTwo)
-                .previewLayout(.fixed(width: 415, height: 200))
-            
-            PostCell.CoversView(layout: .twoByTwo)
-                .previewLayout(.fixed(width: 415, height: 200))
+//            PostCell.CoversView(layout: .one)
+//                .previewLayout(.fixed(width: 415, height: 100))
+//
+//            PostCell.CoversView(layout: .oneByOne)
+//                .previewLayout(.fixed(width: 415, height: 100))
+//
+//            PostCell.CoversView(layout: .oneByTwo)
+//                .previewLayout(.fixed(width: 415, height: 200))
+//
+//            PostCell.CoversView(layout: .twoByTwo)
+//                .previewLayout(.fixed(width: 415, height: 200))
 
         }
     }

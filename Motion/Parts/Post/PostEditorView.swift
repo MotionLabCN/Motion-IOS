@@ -11,12 +11,16 @@ import MotionComponents
 
 
 struct PostEditorView: View {
+    @Environment(\.presentationMode) var persentationMode
+
     @State private var showPhotoPicker : Bool = false
     @State private var isLoading : Bool = false
     
     @StateObject private var  vm = AddPostVM()
     private let  maxCount = 9
     
+    @State private var isShowToast = false
+    @State private var toastText = ""
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -67,6 +71,21 @@ struct PostEditorView: View {
             .overlay(Group{if isLoading {ProgressView()}})
         }
         
+        .mtTopProgress(vm.requestAddPostStatus.isRequesting)
+        .onChange(of: vm.requestAddPostStatus) { newValue in
+            
+            switch newValue {
+            case .completion:
+                persentationMode.wrappedValue.dismiss()
+            case let .completionTip(text, _):
+                isShowToast = true
+                toastText = text
+            default: break
+            }
+            
+        }
+        
+        .mtToast(isPresented: $isShowToast, text: toastText, style: .danger)
     }
     
     var topToolbar: some View {

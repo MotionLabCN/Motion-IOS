@@ -44,6 +44,7 @@ public class ResponsePlugin: PluginType {
 //    }
     
     public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
+        print("")
 //        switch result.status {
 //        case .success: break
 //        case .unlogin: break

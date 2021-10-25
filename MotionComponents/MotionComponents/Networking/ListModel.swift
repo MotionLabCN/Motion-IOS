@@ -11,7 +11,7 @@ import SwiftyJSON
 import KakaJSON
 
 public class PageRequest: Convertible {
-    public var pageNumber = 1
+    public var pageNum = 1
     public var pageSize = 10
     
     public required init() {
@@ -19,21 +19,21 @@ public class PageRequest: Convertible {
     }
     
     /// 重置到开始 下拉刷新 等
-    public func reset() { pageNumber = 1 }
+    public func reset() { pageNum = 1 }
     /// 上提加载
-    public func increase() { pageNumber += 1 }
+    public func increase() { pageNum += 1 }
     /// 上提后 没数据回滚一格
-    public func rollback() { pageNumber = max(1, pageNumber - 1) }
+    public func rollback() { pageNum = max(1, pageNum - 1) }
     /// 是否是头一页
-    public var isStart: Bool { pageNumber == 1}
+    public var isStart: Bool { pageNum == 1}
     
-    public func kj_modelKey(from property: Property) -> ModelPropertyKey {
-        switch property.name {
-        case "pageNumber": return "pageNum"
-        case "pageSize": return "pageSize"
-        default: return property.name
-        }
-    }
+//    public func kj_modelKey(from property: Property) -> ModelPropertyKey {
+//        switch property.name {
+//        case "pageNum": return "pageNum"
+//        case "pageSize": return "pageSize"
+//        default: return property.name
+//        }
+//    }
 }
 
 
