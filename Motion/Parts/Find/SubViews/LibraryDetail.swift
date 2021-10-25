@@ -32,20 +32,20 @@ struct LibraryDetail: View {
             
             VStack(spacing: 15){
                 
-              
+                
                 headerView
                 
                 VStack(spacing:0){
                     
-                       
+                    
                     avatarImage
                     
                     infos
-                   
+                    
                     tabBtns
                     
                     pageView
-                 
+                    
                 }
                 .padding(.horizontal)
                 .zIndex(-offset > 80 ? 0 : 1)
@@ -101,13 +101,13 @@ struct LibraryDetail: View {
                     .font(.mt.body2,textColor: .mt.gray_800)
             }
             .padding(.top,8)
-       
+            
             
             Text("开源库的介绍文案，能不能拿到Readme的前10行字。开源库的介绍文案，能不能拿到Readme的前10行字。")
                 .font(.mt.body2,textColor: .mt.gray_800)
                 .padding(.horizontal,42)
             
-         
+            
             HStack{
                 Image.mt.load(.Github)
                 Text(item.htmlUrl)
@@ -127,7 +127,6 @@ struct LibraryDetail: View {
                     return Color.clear
                 }
                     .frame(width: 0, height: 0) ,alignment: .top)
-        
     }
     
     var tabBtns : some View {
@@ -142,24 +141,24 @@ struct LibraryDetail: View {
         }
         .frame(width: ScreenWidth())
         .overlay(Divider(),alignment: .bottom)
-.padding(.top,30)
-.background(Color.white)
-.offset(y: tabBarOffset < 90 ? -tabBarOffset + 90 : 0)
-.overlay(
-    GeometryReader{reader -> Color in
-        let minY = reader.frame(in: .global).minY
-        
-        DispatchQueue.main.async {
-            self.tabBarOffset = minY
-        }
-        
-        return Color.clear
-    }
-        .frame(width: 0, height: 0)
-    
-    ,alignment: .top
-)
-.zIndex(1)
+        .padding(.top,30)
+        .background(Color.white)
+        .offset(y: tabBarOffset < 90 ? -tabBarOffset + 90 : 0)
+        .overlay(
+            GeometryReader{reader -> Color in
+                let minY = reader.frame(in: .global).minY
+                
+                DispatchQueue.main.async {
+                    self.tabBarOffset = minY
+                }
+                
+                return Color.clear
+            }
+                .frame(width: 0, height: 0)
+            
+            ,alignment: .top
+        )
+        .zIndex(1)
     }
     var headerView : some View {
         // Header View...

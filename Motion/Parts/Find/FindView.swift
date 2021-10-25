@@ -126,13 +126,10 @@ struct FindView: View {
                     // 获取一级分类下 当前选中的二级分类列表数据.
                     if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
                         findVM.selectIndex = index
-                        //                        findVM.selectFindModel = item
                         
                         if index == 0 {
                             // 语言
                             findVM.requestWIthLangList()
-                            
-                            
                         }else if index == 1 {
                             // 技术
                             findVM.requestWithTechnology()

@@ -160,34 +160,32 @@ extension FindVM {
     
     func requestWithTechnology() {
         // 技术
-        DispatchQueue.global().async {
-            let technology = CodepowerApi.technology
-            Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
-                self?.logicCode.isRequesting = false
-                // 成功...
-    //            if let list = list {
-    ////                self?.itemList[1].technologyList.append(contentsOf: list)
-    //                    self?.itemList[1].technologyList = list
-    //            }else {
-    //                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-    //                self?.itemList[1].technologyList = arr
-    //            }
-                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-                self?.itemList[1].technologyList = arr
-                // 拿到数据开始设置上次选中模型 设置选中状态
-                if self?.labelIds.isEmpty == false {
-                    if let index = self?.itemList[1].technologyList.firstIndex(where: {$0.labelId == self?.labelIds}) {
-                        DispatchQueue.main.async {
-                            self?.selectTechnologyIndex = index
-                            let technologyModel = self?.itemList[1].technologyList[index] ?? TechnologyModel()
-                            self?.itemList[1].technologyList[index].isSelect = true
-                            self?.itemList[1].subTitle = technologyModel.labelName
-                        }
+        
+        let technology = CodepowerApi.technology
+        Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
+            self?.logicCode.isRequesting = false
+            // 成功...
+            //            if let list = list {
+            ////                self?.itemList[1].technologyList.append(contentsOf: list)
+            //                    self?.itemList[1].technologyList = list
+            //            }else {
+            //                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+            //                self?.itemList[1].technologyList = arr
+            //            }
+            let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+            self?.itemList[1].technologyList = arr
+            // 拿到数据开始设置上次选中模型 设置选中状态
+            if self?.labelIds.isEmpty == false {
+                if let index = self?.itemList[1].technologyList.firstIndex(where: {$0.labelId == self?.labelIds}) {
+                    DispatchQueue.main.async {
+                        self?.selectTechnologyIndex = index
+                        let technologyModel = self?.itemList[1].technologyList[index] ?? TechnologyModel()
+                        self?.itemList[1].technologyList[index].isSelect = true
+                        self?.itemList[1].subTitle = technologyModel.labelName
                     }
                 }
             }
         }
-      
     }
     
     func requestWithMenuList() {
@@ -370,19 +368,20 @@ extension FindVM {
     //MARK: 技术选中数据模型更新
     func updateTechnologyItes(item: TechnologyModel) {
         // 所有设置false
-        let selectIndex = 1
+        
         if let index = itemList[1].technologyList.firstIndex(where: {$0.isSelect == true}) {
-            itemList[selectIndex].technologyList[index].isSelect = false
+            itemList[1].technologyList[index].isSelect = false
         }
         
         if let index = itemList[1].technologyList.firstIndex(where: {$0.id == item.id}) {
             let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
-            itemList[selectIndex].technologyList[index] = codeModel // 修改数据源
+            itemList[1].technologyList[index] = codeModel // 修改数据源
             selectTechnologyIndex = index
-            itemList[selectIndex].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
+            itemList[1].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
             labelIds = codeModel.isSelect ? codeModel.labelId : ""
         }
         isShowmtDetail.toggle()
     }
 }
+
 
