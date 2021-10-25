@@ -24,9 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 func UMRUN(){
-    
         UMAnalyticsSwift().run()
         UMAnalyticsSwift.beginLogPageView(pageName: "首页")
         UMCommonSwift().run()
-    
 }
