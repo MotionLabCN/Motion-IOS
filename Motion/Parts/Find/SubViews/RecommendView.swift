@@ -21,9 +21,9 @@ struct RecommendView: View {
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack {
                 
-                if showMoney {
-                    MoneyNotiView()
-                }
+//                if showMoney {
+//                    MoneyNotiView()
+//                }
                 
                 ForEach(vm.list) { item in
                     Button {

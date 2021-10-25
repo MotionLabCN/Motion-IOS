@@ -26,7 +26,7 @@ struct HomeView: View {
     
 
     init() {
-        print("HomeView init")
+//        print("HomeView init")
     }
 
     
@@ -54,14 +54,15 @@ struct HomeView: View {
         }, leading: {
             MTLocUserAvatar()
         }
-                  , trailing: {
-            NavigationLink {
-                NoticeListView()
-            } label: {
-                Image.mt.load(.Mail)
-             .foregroundColor(.mt.gray_800)
-            }
-        })
+//                  , trailing: {
+//            NavigationLink {
+//                NoticeListView()
+//            } label: {
+//                Image.mt.load(.Mail)
+//             .foregroundColor(.mt.gray_800)
+//            }
+//        }
+        )
         .fullScreenCover(isPresented: .constant(false)) {
             EmptyView()
         }

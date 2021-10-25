@@ -98,26 +98,26 @@ struct ProfileView: View {
             {
                 showOrderView.toggle()
             }
-        
-            MtLableRow( text: "代码仓库", icon: Image.mt.load(.Link))
-            {
-                showOrderView.toggle()
-            }
-            
-            MtLableRow( text: "储存空间", icon: Image.mt.load(.Link))
-            {
-                showOrderView.toggle()
-            }
-            
-            MtLableRow( text: "认证技术顾问", icon: Image.mt.load(.Link))
-            {
-                showOrderView.toggle()
-            }
-            
-            MtLableRow( text: "元宇宙硬币", icon: Image.mt.load(.Link))
-            {
-                showOrderView.toggle()
-            }
+//
+//            MtLableRow( text: "代码仓库", icon: Image.mt.load(.Link))
+//            {
+//                showOrderView.toggle()
+//            }
+//
+//            MtLableRow( text: "储存空间", icon: Image.mt.load(.Link))
+//            {
+//                showOrderView.toggle()
+//            }
+//
+//            MtLableRow( text: "认证技术顾问", icon: Image.mt.load(.Link))
+//            {
+//                showOrderView.toggle()
+//            }
+//
+//            MtLableRow( text: "元宇宙硬币", icon: Image.mt.load(.Link))
+//            {
+//                showOrderView.toggle()
+//            }
 
             MtLableRow( text: "设置", icon: Image.mt.load(.Link))
             {

@@ -73,29 +73,29 @@ struct PostCell: View {
     var toolbar: some View {
         HStack {
            
-            Button(action: {
-                
-            }, label: {
-                HStack {
-                    Image.mt.load(.Cached)
-                        .mtSize(18, foregroundColor: .blue)
-                        
-                    Text("\(Int.random(in: 10...300))")
-                        .font(.mt.caption1, textColor: .mt.gray_600)
-                }
-            })
+//            Button(action: {
+//
+//            }, label: {
+//                HStack {
+//                    Image.mt.load(.Cached)
+//                        .mtSize(18, foregroundColor: .blue)
+//
+//                    Text("\(Int.random(in: 10...300))")
+//                        .font(.mt.caption1, textColor: .mt.gray_600)
+//                }
+//            })
             Spacer()
-            Button(action: {
-                
-            }, label: {
-                HStack {
-                    Image.mt.load(.Penny)
-                        .mtSize(18, foregroundColor: .mt.status_warnning)
-                       
-                    Text("\(Int.random(in: 10...300))")
-                        .font(.mt.caption1, textColor: .mt.gray_600)
-                }
-            })
+//            Button(action: {
+//
+//            }, label: {
+//                HStack {
+//                    Image.mt.load(.Penny)
+//                        .mtSize(18, foregroundColor: .mt.status_warnning)
+//
+//                    Text("\(Int.random(in: 10...300))")
+//                        .font(.mt.caption1, textColor: .mt.gray_600)
+//                }
+//            })
             Spacer()
             
             

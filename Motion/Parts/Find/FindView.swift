@@ -9,7 +9,7 @@ import SwiftUI
 import MotionComponents
 import Lottie
 
-public var findViewTabs = ["码力","人力","开源","热门"]
+public var findViewTabs = ["码力","开源","热门"]
 struct FindView: View {
     
     // MARK: 码力集市价格语言
@@ -96,7 +96,7 @@ struct FindView: View {
             Group {
                     CodepowerView()
                         .environmentObject(findVM)
-                    Ladder()
+//                    Ladder()
                     OpenSourceLibrary()
                     RecommendView()
             }
