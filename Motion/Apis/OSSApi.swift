@@ -11,12 +11,7 @@ import Moya
 enum OSSApi: MTTargetType {
     case upload(images: [UIImage])
 
-//    var port: Int? {
-//        switch ProjectConfig.env {
-//        case .local: return 8088
-//        case .test: return ProjectConfig.port
-//        }
-//    }
+
     
     
     var path: String {

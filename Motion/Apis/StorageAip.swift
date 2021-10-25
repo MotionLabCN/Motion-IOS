@@ -14,7 +14,7 @@ enum StorageApi: MTTargetType {
     
     var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
    // 以后这里可以直接写host port
-//   var port: Int? { 8802 }
+
     
    var path: String {
        switch self {

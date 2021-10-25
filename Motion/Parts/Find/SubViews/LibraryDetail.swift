@@ -59,7 +59,7 @@ struct LibraryDetail: View {
         switch currentTab {
         case "介绍" :
             Color.white.frame(width: ScreenWidth(), height: ScreenHeight())
-                .overlay(MTWebView(urlString: "https://github.com/MotionLabCN/Motion-IOS"))
+                .overlay(MTWebView(urlString: item.htmlUrl))
         case "评论":
             MTDescriptionView(title: "暂无评论", subTitle: "开源库的评论会显示在这里。")
                 .padding(.top,56)

@@ -132,6 +132,10 @@ class UserManager: ObservableObject {
         user.username = name
     }
     
+    func updateNickName(_ name: String)  {
+        user.nickname = name
+    }
+    
     func updatePhone(_ phone: String) {
         user.mobile = phone
         user.mobileAuth = true 

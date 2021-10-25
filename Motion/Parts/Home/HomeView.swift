@@ -16,6 +16,7 @@ struct HomeView: View {
     
 
     @State private var isShowmtsheet = false
+    @State private var showDetail : Bool = false
 
     @EnvironmentObject var tabbarState: TabbarState
 
@@ -91,6 +92,10 @@ struct HomeView: View {
                 }
         }
 
+        .mtFullScreenCover(isPresented: $showDetail) {
+            BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
+            PostDetailView()
+        }
         
     }
 }
@@ -111,7 +116,7 @@ extension HomeView {
         LazyVStack {
             ForEach(vm.list) { item in
                 Button(action: {
-//                    isShowmtsheet = true
+                    showDetail.toggle()
                 }){
                     PostCell(model: item)
                         .padding(.horizontal)
