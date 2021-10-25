@@ -42,32 +42,7 @@ struct SettingView: View {
         
     }
     
-    var userInfoEditorView : some View {
-        
-        List
-        {
-            Button {
-                showUserNameEditor.toggle()
-            } label: {
-                HStack{
-                    Text("用户名")
-                    Spacer()
-                    Text("赵翔宇")
-                }
-                
-            }
-
-           
-            HStack{
-                Text("头像")
-                Spacer()
-                MTLocUserAvatar().disabled(true)
-            }
-      
-        }.listStyle(.insetGrouped)
-       
-        
-    }
+  
     var navigationLinks : some View{
         ZStack{
             NavigationLink(isActive: $showAbout) {
@@ -81,7 +56,7 @@ struct SettingView: View {
                 EmptyView()
             }
             NavigationLink(isActive: $showUserInfoEditor) {
-                userInfoEditorView
+                UserInfoEditorView()
             } label: {
                 EmptyView()
             }
@@ -156,19 +131,20 @@ struct SettingView: View {
                             .font(.mt.body1.mtBlod(),textColor :.mt.gray_900)
                             .multilineTextAlignment(.leading)
                         //用户昵称
-                        Text("@" + "motion")
+                        Text("@" + userManager.user.nickname)
                             .font(.mt.body3,textColor: .mt.gray_600)
                         Spacer()
-
-                }
+                        
+                    }
                     .padding(.top,6)
                     .lineLimit(1)
                     Spacer()
-                        Image.mt.load(.Create).foregroundColor(.mt.gray_500)
+                    
+                    Image.mt.load(.Create).foregroundColor(.mt.gray_500)
                         .padding()
+                }
+                .padding(.vertical,8)
             }
-            .padding(.vertical,8)
-        }
         }
     }
 }

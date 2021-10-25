@@ -99,10 +99,15 @@ class UserManager: ObservableObject {
         }
     }
     var token: String {
-
         tokenInfo.access_token
-
     }
+    
+    /// 正式环境 临时token，  后期找机会删掉
+    var mockProToken: String {
+        ""
+        //        "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcnQiOiIxNjM0ODg2OTI1NDY0IiwidXNlcl9pZCI6ImE3NTdiZDU5LWRhMTUtNDM2OS1hNzViLWRlNDI4NWJhZGQ4YyIsInNjb3BlIjpbImFsbCJdLCJtb2JpbGUiOiIxNTUyNzg2NDE2MiIsImV4cCI6MTYzNDkxNTcyNSwiZGV2aWNlIjoiUEMiLCJqdGkiOiJhN2JkNjRmMi02ZWQ2LTRkZDAtYmJjMS0xMGYzMDFkOGZmYjAiLCJjbGllbnRfaWQiOiJ0bnRsaW5raW5nIn0.c3GQ-Wd5C1XYaMds-sUlX68lqZGE5LzpuAR-CFECuaQNQpumx0EKROsqxQVxFksM2NvWy5ir2iGp1iWWp_cgBozc0t5W2qP3A9oUfrEme30zg3_UNxwDlLJl_i76D-SX7Jlg-IItjlvjefuFTycjO-Ft3pRglBVDVldjs7crDo4KQs12Tm4SZ8bT4X-2MBZhHex3pSB4EPw6lhgjbS4LxGUkYjH9DQSLSTdEZB9LvhDaP9gkUOhyn9NR13oq6IUOmopPfGYzt6kAL32-jwaMyi5OH0aiwmcbvbNix3Sxcv5LXOK_sT41pNgDw7EX5o_ettjusWlM4vM0-lJ4R0wQWQ"
+    }
+    
     var channel: String { tokenInfo.channel.rawValue }
 
     
@@ -122,9 +127,9 @@ class UserManager: ObservableObject {
         }
     }
     
-    /// 修改用户昵称 并触发 Publisher 示例
-    func changeNickName(_ name: String)  {
-
+    /// 修改用户名
+    func updateUserName(_ name: String)  {
+        user.username = name
     }
     
     func updatePhone(_ phone: String) {

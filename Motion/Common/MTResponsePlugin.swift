@@ -42,11 +42,16 @@ public class MTResponsePlugin: PluginType {
 //    }
     
     public func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
-//        switch result.rawReponse?.statusCode {
-//        case 401:
-//            UserManager.shared.logout()
-//        default: break
-//        }
+        /// 临时解决方案
+        if target.baseURL.absoluteString.contains("https://ttchain.tntlinking.com") {
+             return
+        }
+        
+        switch result.rawReponse?.statusCode {
+        case 401:
+            UserManager.shared.logout()
+        default: break
+        }
 
     }
     
