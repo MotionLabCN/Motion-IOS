@@ -7,3 +7,8 @@ Pods/Pods.xcodeproj/xcuserdata/liseami.xcuserdatad/xcschemes/xcschememanagement.
 Pods
 Pods/*
 
+*.ipa
+
+Targets
+Targets/*
+
