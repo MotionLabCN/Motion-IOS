@@ -343,17 +343,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D157A638-274F-41A9-ABD4-5C43C2E68A96"
+            uuid = "FC63CD78-FCD4-4A71-A168-03681702B25A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Motion/Common/UserManager.swift"
+            filePath = "Motion/Parts/Find/SubViews/OpenSourceLibrary.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "token"
-            landmarkType = "24">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "OpenSourceLibrary"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
