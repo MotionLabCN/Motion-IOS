@@ -22,7 +22,7 @@ enum CodepowerApi: MTTargetType {
     case technology
     case productList(p:ProductListParameters)
     
-//    var baseURL: URL { URL(string: "http://192.168.0.224:8802")! }
+    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/api/codemart")! }
     // 以后这里可以直接写host port
 
     var path: String {
