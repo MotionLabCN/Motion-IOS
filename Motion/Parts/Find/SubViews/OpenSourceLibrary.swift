@@ -9,14 +9,6 @@ import SwiftUI
 import MotionComponents
 import Kingfisher
 
-//MARK: Model
-
-//MARK: Api.enum
-
-
-//MARK: Vm
-
-
 //MARK: View
 struct OpenSourceLibrary: View {
     @StateObject var vm = OpenSourceLibraryVm()
@@ -29,34 +21,77 @@ struct OpenSourceLibrary: View {
             
         }.navigationBarHidden(true)
         
+            .sheet(isPresented: $vm.isShowCategory) {
+                CategoryItemList
+//                    .mtPlaceholderProgress(vm.isLoadingCategory)
+            }
+    }
+        
+
+    @ViewBuilder
+    var CategoryItemList : some View {
+        let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
+        //排序方式
+        let columns = Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
+
+        NavigationView {
+
+            ScrollView {
+                // 网格列表
+                LazyVGrid(columns: columns,
+                          alignment: .center,
+                          spacing: 20,
+                          content: {
+                    LangListView
+                })
+            }
+            .listStyle(.grouped)
+            .navigationBarTitle(Text("热门分类"))
+            .navigationBarTitleDisplayMode(.large)
+            .navigationBarItems(trailing: closeBtn)
+        }
+    }
+
+    //MARK: 分类语言view
+    var LangListView: some View {
+        ForEach(vm.categoryList) { item in
+            HStack {
+                Text(item.name)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .frame(height:40)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal,16)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.mt.gray_200)
+            )
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+            )
+            .contentShape(Rectangle())
+            .onTapGesture(perform: {
+                // 选中和取消
+                vm.updateLangItems(item: item)
+            })
+        }
     }
     
-//    //MARK: 语言view
-//    var LangListView: some View {
-//        ForEach(vm.itemList[0].data) { item in
-//
-//            HStack {
-//                Text(item.dictKey)
-//                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
-//                    .frame(height:40)
-//            }
-//            .frame(maxWidth: .infinity)
-//            .padding(.horizontal,16)
-//            .background(
-//                RoundedRectangle(cornerRadius: 8)
-//                    .fill(Color.mt.gray_200)
-//            )
-//            .background(
-//                RoundedRectangle(cornerRadius: 8)
-//                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
-//            )
-//            .contentShape(Rectangle())
-//            .onTapGesture(perform: {
-//                // 选中和取消
-////                findVM.updateLangItems(item: item)
-//            })
-//        }
-//    }
+    var closeBtn : some View {
+        Button {
+            vm.isShowCategory.toggle()
+        } label: {
+            Image.mt.load(.Close)
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .foregroundColor(Color.black)
+        .padding(.all,4)
+        .background(Color.mt.gray_100)
+        .clipShape(Circle())
+        .frame(maxWidth:.infinity,alignment: .trailing)
+    }
     
     @ViewBuilder
     var newStar : some View {
@@ -112,10 +147,7 @@ struct OpenSourceLibrary: View {
                                 Text(item.forksCount)
                                     .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
                             }
-                            
                         }
-                        
-                        
                     }.padding(.horizontal)
                 }
             }
@@ -125,13 +157,13 @@ struct OpenSourceLibrary: View {
                     .font(.mt.title2.mtBlod(),textColor: .black)
                 Spacer()
                 Button {
-                    vm.isShowLang.toggle()
+                    vm.requestWithCategoryList()
+                    vm.isShowCategory.toggle()
                 } label: {
-                    Text("Swift")
+                    Text(vm.categoryName)
                         .font(.mt.title3.mtBlod(),textColor: .red)
                     Image.mt.load(.Filter_list)
                 }
-
             }
             .padding(.horizontal)
         }
