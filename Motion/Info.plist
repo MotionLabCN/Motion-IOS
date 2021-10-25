@@ -40,7 +40,18 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>10251727</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>baidumap</string>
+		<string>iosamap</string>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>weixinULAPI</string>
+		<string>wx.tenpay.com</string>
+		<string>mclient.alipay.com</string>
+		<string>alipays</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -79,18 +90,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>baidumap</string>
-        <string>iosamap</string>
-        <string>wechat</string>
-        <string>weixin</string>
-        <string>weixinULAPI</string>
-        <string>wx.tenpay.com</string>
-        <string>mclient.alipay.com</string>
-        <string>alipays</string>
-    </array>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
