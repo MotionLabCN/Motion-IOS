@@ -14,7 +14,7 @@ struct FindView: View {
     
     // MARK: 码力集市价格语言
     @EnvironmentObject var findView: FindViewState
-    
+//    @StateObject var vm: OpenSourceLibraryVm = OpenSourceLibraryVm()
     @StateObject var findVM: FindVM = FindVM()
     
     @State private var offset : CGFloat = 0

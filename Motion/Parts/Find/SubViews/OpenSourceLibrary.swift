@@ -10,105 +10,12 @@ import MotionComponents
 import Kingfisher
 
 //MARK: Model
-struct  OpenSourceLibraryModel: Identifiable, Convertible {
-    var avatarUrl = ""
-    var categoryId = ""
-    var cloneUrl = ""
-    var createdAt = ""
-    var description = ""
-    var forksCount = ""
-    var fullName = ""
-    var htmlUrl = ""
-    var id = ""
-    var language = ""
-    var login = ""
-    var name = ""
-    var pushedAt = ""
-    var reposId = ""
-    var size = ""
-    var starCount = ""
-    var topics = ""
-    var updatedAt = ""
-}
-
 
 //MARK: Api.enum
-enum OpenSourceLibraryApi : MTTargetType{
-    
-    
-    case hotlist(p:hotlistParameters)
-    case newstar(p:newstarlistParameters)
-    
-    var path: String {
-        switch self {
-        case .hotlist:
-            return "api/gateway/motion-community/github/repository/hot"
-        case .newstar:
-            return "/api/gateway/motion-community/github/repository/newstar"
-        }
-    }
-    
-    var parameters: [String : Any]? {
-        switch self {
-        case let .hotlist(p): return p.kj.JSONObject()
-        case let .newstar(p): return p.kj.JSONObject()
-        }
-    }
-    
-    var headers: [String: String]? {
-        nil
-    }
-}
 
-
-//MARK: Api.p
-extension OpenSourceLibraryApi{
-    struct hotlistParameters:Convertible{
-        var pageNum = 1
-        var pageSize = 20
-        var categoryId = 2
-    }
-    struct newstarlistParameters:Convertible{
-        var pageNum = 1
-        var pageSize = 20
-        var categoryId = 2
-    }
-}
 
 //MARK: Vm
-class OpenSourceLibraryVm : ObservableObject{
-    
-    @Published var hotList : [OpenSourceLibraryModel] = []
-    @Published var newStarList : [OpenSourceLibraryModel] = []
-    
-    init(){
-        request()
-    }
-    func request(){
-        let hotlist = OpenSourceLibraryApi.hotlist(p: .init(pageNum: 0, pageSize: 30, categoryId: 2))
-        let newstar = OpenSourceLibraryApi.newstar(p: .init(pageNum: 0, pageSize: 30, categoryId: 2))
-        Networking.requestArray(hotlist, modeType: OpenSourceLibraryModel.self, atKeyPath: "data.list") { [weak self] r, list in
-            guard let self = self else{
-                return
-            }
-            if let list = list{
-                self.hotList.append(contentsOf: list)
-            }else{
-                
-            }
-        }
-        Networking.requestArray(newstar, modeType: OpenSourceLibraryModel.self, atKeyPath: "data.list") { [weak self] r, list in
-            guard let self = self else{
-                return
-            }
-            if let list = list{
-                self.newStarList.append(contentsOf: list)
-            }else{
-                
-            }
-        }
-    }
-}
+
 
 //MARK: View
 struct OpenSourceLibrary: View {
@@ -119,11 +26,37 @@ struct OpenSourceLibrary: View {
                 classic
                 newStar
             }.padding(.top,16)
+            
         }.navigationBarHidden(true)
         
     }
     
-    
+//    //MARK: 语言view
+//    var LangListView: some View {
+//        ForEach(vm.itemList[0].data) { item in
+//
+//            HStack {
+//                Text(item.dictKey)
+//                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+//                    .frame(height:40)
+//            }
+//            .frame(maxWidth: .infinity)
+//            .padding(.horizontal,16)
+//            .background(
+//                RoundedRectangle(cornerRadius: 8)
+//                    .fill(Color.mt.gray_200)
+//            )
+//            .background(
+//                RoundedRectangle(cornerRadius: 8)
+//                    .stroke(item.isSelect ? Color.blue : .mt.gray_200, lineWidth: 1)
+//            )
+//            .contentShape(Rectangle())
+//            .onTapGesture(perform: {
+//                // 选中和取消
+////                findVM.updateLangItems(item: item)
+//            })
+//        }
+//    }
     
     @ViewBuilder
     var newStar : some View {
@@ -191,9 +124,14 @@ struct OpenSourceLibrary: View {
                 Text("热门")
                     .font(.mt.title2.mtBlod(),textColor: .black)
                 Spacer()
-                Text("Swift")
-                    .font(.mt.title3.mtBlod(),textColor: .red)
-                Image.mt.load(.Filter_list)
+                Button {
+                    vm.isShowLang.toggle()
+                } label: {
+                    Text("Swift")
+                        .font(.mt.title3.mtBlod(),textColor: .red)
+                    Image.mt.load(.Filter_list)
+                }
+
             }
             .padding(.horizontal)
         }

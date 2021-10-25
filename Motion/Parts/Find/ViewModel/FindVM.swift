@@ -7,7 +7,6 @@
 
 
 import MotionComponents
-import Foundation
 
 class FindVM: ObservableObject {
     

@@ -94,6 +94,10 @@
 		A075B28027210E8C005978F5 /* CodeDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A075B27F27210E8C005978F5 /* CodeDetailModel.swift */; };
 		A07613F22716871D00138857 /* codepower_pro.json in Resources */ = {isa = PBXBuildFile; fileRef = A07613F12716871D00138857 /* codepower_pro.json */; };
 		A07613F42716A19700138857 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07613F32716A19700138857 /* Double.swift */; };
+		A077A6F42726851D00E33EFE /* OpenSourceCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077A6F32726851D00E33EFE /* OpenSourceCategoryModel.swift */; };
+		A077A6F6272685C900E33EFE /* OpenSourceLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077A6F5272685C900E33EFE /* OpenSourceLibraryModel.swift */; };
+		A077A6F8272685F300E33EFE /* OpenSourceLibraryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077A6F7272685F300E33EFE /* OpenSourceLibraryApi.swift */; };
+		A077A6FA2726865400E33EFE /* OpenSourceLibraryVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077A6F92726865400E33EFE /* OpenSourceLibraryVm.swift */; };
 		DF2A627126F7582E000DAF83 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A627026F7582E000DAF83 /* UserManager.swift */; };
 		DF334D91271D66B000509F6E /* MTAddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF334D90271D66B000509F6E /* MTAddPostView.swift */; };
 		DF39528626FD710B00993FA5 /* MTSheetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39528326FD710A00993FA5 /* MTSheetViewModifier.swift */; };
@@ -202,6 +206,10 @@
 		A075B27F27210E8C005978F5 /* CodeDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDetailModel.swift; sourceTree = "<group>"; };
 		A07613F12716871D00138857 /* codepower_pro.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = codepower_pro.json; sourceTree = "<group>"; };
 		A07613F32716A19700138857 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		A077A6F32726851D00E33EFE /* OpenSourceCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceCategoryModel.swift; sourceTree = "<group>"; };
+		A077A6F5272685C900E33EFE /* OpenSourceLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLibraryModel.swift; sourceTree = "<group>"; };
+		A077A6F7272685F300E33EFE /* OpenSourceLibraryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLibraryApi.swift; sourceTree = "<group>"; };
+		A077A6F92726865400E33EFE /* OpenSourceLibraryVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLibraryVm.swift; sourceTree = "<group>"; };
 		CED4CE00E60F13437E024F2B /* Pods_Motion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Motion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2A627026F7582E000DAF83 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		DF334D90271D66B000509F6E /* MTAddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTAddPostView.swift; sourceTree = "<group>"; };
@@ -436,6 +444,7 @@
 				A071105027117AC700963385 /* FindVM.swift */,
 				A07613F32716A19700138857 /* Double.swift */,
 				DF75D9A42722746D00347D9A /* RecommendVM.swift */,
+				A077A6F92726865400E33EFE /* OpenSourceLibraryVm.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -634,6 +643,7 @@
 				A06FC82F271E58BA004A21FE /* StorageAip.swift */,
 				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 				DFE7B466271FEE1300038520 /* PostApi.swift */,
+				A077A6F7272685F300E33EFE /* OpenSourceLibraryApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -652,6 +662,8 @@
 				A075B27D27210E64005978F5 /* CodeProductModel.swift */,
 				A075B27F27210E8C005978F5 /* CodeDetailModel.swift */,
 				DF75D9A2272251CC00347D9A /* PostItemModel.swift */,
+				A077A6F32726851D00E33EFE /* OpenSourceCategoryModel.swift */,
+				A077A6F5272685C900E33EFE /* OpenSourceLibraryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -884,6 +896,7 @@
 				5AC8C6E526FC6B100075ABDA /* Ladder.swift in Sources */,
 				DFA3796E27003B5D00202D07 /* LoginVM.swift in Sources */,
 				DFF1659727181179004D1B72 /* OSSApi.swift in Sources */,
+				A077A6F8272685F300E33EFE /* OpenSourceLibraryApi.swift in Sources */,
 				5A6AB4AD2717E32600AED1B6 /* Motion.m in Sources */,
 				5ACBA38D26F2D42300A5789E /* TeamProfileView.swift in Sources */,
 				A0672F65271D3CC30002271A /* LynnPullToRefresh.swift in Sources */,
@@ -893,6 +906,7 @@
 				A075B27C27210E3E005978F5 /* TechnologyModel.swift in Sources */,
 				A075B27627210D01005978F5 /* StorageModel.swift in Sources */,
 				A0731B44271522D200A6FF79 /* FindView.swift in Sources */,
+				A077A6F42726851D00E33EFE /* OpenSourceCategoryModel.swift in Sources */,
 				5A6AB4A32717E26E00AED1B6 /* UMAnalyticsSwift.swift in Sources */,
 				DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */,
 				DFDD628E27015D5A0059D2CE /* LoginValidateCodeView.swift in Sources */,
@@ -905,6 +919,7 @@
 				DF8298BA26F079ED0007DEEA /* NextView.swift in Sources */,
 				5A40BA6E26FCB1740011D3B0 /* MTLottieView.swift in Sources */,
 				A07613F42716A19700138857 /* Double.swift in Sources */,
+				A077A6F6272685C900E33EFE /* OpenSourceLibraryModel.swift in Sources */,
 				DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */,
 				A06FC83B271E9026004A21FE /* StorageViewModel.swift in Sources */,
 				DFDFDB94270184EF009698B6 /* MTLogoView.swift in Sources */,
@@ -917,6 +932,7 @@
 				DF8E411F2715892700B26E27 /* MockTool.swift in Sources */,
 				A071104E27112EA800963385 /* NotifiListModel.swift in Sources */,
 				5A7EBFFB26F20CC40026D870 /* SettingView.swift in Sources */,
+				A077A6FA2726865400E33EFE /* OpenSourceLibraryVm.swift in Sources */,
 				5AB08E76271D6027002C5E3F /* SystemImagePicker.swift in Sources */,
 				5ACB57E926FC11B8001BACDA /* SettingBtn.swift in Sources */,
 				DFE7B467271FEE1300038520 /* PostApi.swift in Sources */,
