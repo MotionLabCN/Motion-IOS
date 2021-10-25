@@ -23,7 +23,22 @@ enum CodepowerApi: MTTargetType {
     case productList(p:ProductListParameters)
     
     var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/api/codemart")! }
-    // 以后这里可以直接写host port
+    
+    var headers: [String: String]? {
+        var headers = [
+            "apiVersion": "1.0",
+            "os": "1",// 1.ios, 2.android
+        ]
+        if !UserManager.shared.channel.isEmpty {
+            headers["channel"] = UserManager.shared.channel
+        }
+        if !UserManager.shared.token.isEmpty {
+            headers["Authorization"] = "Bearer" + " " + UserManager.shared.mockProToken
+        }
+        return headers
+    }
+    
+    
 
     var path: String {
         switch self {

@@ -102,6 +102,9 @@
 		DF4145BD26F2EB5500DD5F9F /* HomeHeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BC26F2EB5500DD5F9F /* HomeHeaderItemView.swift */; };
 		DF4145BF26F2EB9700DD5F9F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4145BE26F2EB9700DD5F9F /* PostCell.swift */; };
 		DF50804D270DD2D3003C7538 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF50804C270DD2D3003C7538 /* HomeVM.swift */; };
+		DF6704ED27267E2800884626 /* UserInfoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6704EC27267E2800884626 /* UserInfoEditorView.swift */; };
+		DF6704EF272680F100884626 /* ModifilerUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6704EE272680F100884626 /* ModifilerUserNameView.swift */; };
+		DF6704F22726819A00884626 /* UserInfoEditorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6704F12726819A00884626 /* UserInfoEditorVM.swift */; };
 		DF7061492715264F00761A19 /* CommunityServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7061482715264F00761A19 /* CommunityServiceApi.swift */; };
 		DF75D9A3272251CC00347D9A /* PostItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A2272251CC00347D9A /* PostItemModel.swift */; };
 		DF75D9A52722746D00347D9A /* RecommendVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75D9A42722746D00347D9A /* RecommendVM.swift */; };
@@ -212,6 +215,9 @@
 		DF4145BE26F2EB9700DD5F9F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		DF4FD4AE26FC1C5F00A7AFD2 /* LoginStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStartView.swift; sourceTree = "<group>"; };
 		DF50804C270DD2D3003C7538 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		DF6704EC27267E2800884626 /* UserInfoEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditorView.swift; sourceTree = "<group>"; };
+		DF6704EE272680F100884626 /* ModifilerUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifilerUserNameView.swift; sourceTree = "<group>"; };
+		DF6704F12726819A00884626 /* UserInfoEditorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditorVM.swift; sourceTree = "<group>"; };
 		DF7061482715264F00761A19 /* CommunityServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityServiceApi.swift; sourceTree = "<group>"; };
 		DF75D9A2272251CC00347D9A /* PostItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemModel.swift; sourceTree = "<group>"; };
 		DF75D9A42722746D00347D9A /* RecommendVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendVM.swift; sourceTree = "<group>"; };
@@ -315,7 +321,10 @@
 		5A7EBFF926F20CAD0026D870 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				DF6704F02726818B00884626 /* ViewModels */,
 				5A7EBFFA26F20CC40026D870 /* SettingView.swift */,
+				DF6704EC27267E2800884626 /* UserInfoEditorView.swift */,
+				DF6704EE272680F100884626 /* ModifilerUserNameView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -504,6 +513,14 @@
 			children = (
 				DF50804C270DD2D3003C7538 /* HomeVM.swift */,
 				A071104B2711285700963385 /* NotifListVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DF6704F02726818B00884626 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DF6704F12726819A00884626 /* UserInfoEditorVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -872,6 +889,7 @@
 				A075B27827210DC2005978F5 /* FindModel.swift in Sources */,
 				5AC8C6E326FC33B30075ABDA /* LibraryDetail.swift in Sources */,
 				DF8D130A26FC4C9100504594 /* LoginStartView.swift in Sources */,
+				DF6704EF272680F100884626 /* ModifilerUserNameView.swift in Sources */,
 				A0672F64271D3CC30002271A /* LynnPullToRefreshModifier.swift in Sources */,
 				A071105127117AC700963385 /* FindVM.swift in Sources */,
 				5A7EBFF826F1DFDF0026D870 /* TeamView.swift in Sources */,
@@ -879,6 +897,7 @@
 				DFE0C0AF26E783CE00EDB44F /* ContentView.swift in Sources */,
 				5ACBA39326F2EBA600A5789E /* OldFindView.swift in Sources */,
 				A0731B4227151A7D00A6FF79 /* CodepowerApi.swift in Sources */,
+				DF6704ED27267E2800884626 /* UserInfoEditorView.swift in Sources */,
 				5A9155122704038800E8135F /* StorageView.swift in Sources */,
 				A075B27A27210E18005978F5 /* LangModel.swift in Sources */,
 				5AC8C6E526FC6B100075ABDA /* Ladder.swift in Sources */,
@@ -937,6 +956,7 @@
 				A06A000F2719218A0005A025 /* OrderApi.swift in Sources */,
 				DFEB1D2F2704528E00B7C1DB /* LoginApi.swift in Sources */,
 				DFF1658F2717C140004D1B72 /* ListApi.swift in Sources */,
+				DF6704F22726819A00884626 /* UserInfoEditorVM.swift in Sources */,
 				5AB08E7C271E6FFA002C5E3F /* NewStorageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
