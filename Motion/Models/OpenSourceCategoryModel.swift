@@ -12,4 +12,6 @@ struct OpenSourceCategoryModel: Convertible, Identifiable {
     var name = ""// swift
     var parentId = ""
     var status = ""
+    // 用户是否选中
+    var isSelect: Bool = false
 }

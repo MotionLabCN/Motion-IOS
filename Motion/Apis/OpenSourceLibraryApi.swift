@@ -11,15 +11,15 @@ enum OpenSourceLibraryApi : MTTargetType{
     
     case hotlist(p:hotlistParameters)
     case newstar(p:newstarlistParameters)
-    case langList
+    case category
     
     var path: String {
         switch self {
-        case .hotlist:
+        case .hotlist: // 热门
             return "api/gateway/motion-community/github/repository/hot"
-        case .newstar:
+        case .newstar: // 新星
             return "/api/gateway/motion-community/github/repository/newstar"
-        case .langList: // 开源分类
+        case .category: // 分类
             return "/api/gateway/motion-community/github/repository/category"
         }
     }
@@ -28,7 +28,7 @@ enum OpenSourceLibraryApi : MTTargetType{
         switch self {
         case let .hotlist(p): return p.kj.JSONObject()
         case let .newstar(p): return p.kj.JSONObject()
-        case .langList: return nil
+        case .category: return nil
         }
     }
     
@@ -42,11 +42,11 @@ extension OpenSourceLibraryApi{
     struct hotlistParameters:Convertible{
         var pageNum = 1
         var pageSize = 20
-        var categoryId = 2
+        var categoryId: String = ""
     }
     struct newstarlistParameters:Convertible{
         var pageNum = 1
         var pageSize = 20
-        var categoryId = 2
+        var categoryId: String = ""
     }
 }
