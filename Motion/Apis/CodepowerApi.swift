@@ -32,7 +32,7 @@ enum CodepowerApi: MTTargetType {
         if !UserManager.shared.channel.isEmpty {
             headers["channel"] = UserManager.shared.channel
         }
-        if !UserManager.shared.token.isEmpty {
+        if !UserManager.shared.mockProToken.isEmpty {
             headers["Authorization"] = "Bearer" + " " + UserManager.shared.mockProToken
         }
         return headers
