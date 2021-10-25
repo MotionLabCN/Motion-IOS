@@ -12,25 +12,51 @@ struct UserInfoEditorView: View {
     @EnvironmentObject var userManager: UserManager
     
     @State var isShowUserNameEditor = false
+    @State var isShowNickNameEditor = false
+
+    
     
     var body: some View {
         
         List
         {
+            
+            
             Button {
                 isShowUserNameEditor.toggle()
             } label: {
                 HStack{
                     Text("用户名")
+                        .font(.mt.body1, textColor: .mt.gray_900)
+
                     Spacer()
+                    
                     Text(userManager.user.username)
+                        .font(.mt.body1, textColor: .mt.gray_900)
+
                 }
                 
             }
 
+            Button {
+                isShowNickNameEditor.toggle()
+            } label: {
+                HStack{
+                    Text("昵称")
+                        .font(.mt.body1, textColor: .mt.gray_900)
+
+                    Spacer()
+                    
+                    Text(userManager.user.nickname)
+                        .font(.mt.body1, textColor: .mt.gray_900)
+                }
+                
+            }
            
             HStack{
                 Text("头像")
+                    .font(.mt.body1, textColor: .mt.gray_900)
+
                 Spacer()
                 MTLocUserAvatar().disabled(true)
             }
@@ -40,7 +66,10 @@ struct UserInfoEditorView: View {
         .navigationBarTitle("修改用户资料")
 //        .navigationBarTitleDisplayMode(.inline)
         .mtRegisterRouter(isActive: $isShowUserNameEditor) {
-            ModifilerUserNameView()
+            ModifilerUserNameView(style: .用户名)
+        }
+        .mtRegisterRouter(isActive: $isShowNickNameEditor) {
+            ModifilerUserNameView(style: .昵称)
         }
        
     }

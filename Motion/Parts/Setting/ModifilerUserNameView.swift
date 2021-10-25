@@ -9,6 +9,11 @@ import SwiftUI
 import MotionComponents
 
 struct ModifilerUserNameView: View {
+    enum Style {
+        case 用户名, 昵称
+    }
+    let style: Style
+    
     @Environment(\.presentationMode) var persentationMode
     @EnvironmentObject var userManager: UserManager
     
@@ -23,8 +28,8 @@ struct ModifilerUserNameView: View {
             Text("修改用户名")
                 .font(.mt.title2.mtBlod(), textColor: .mt.gray_800)
             
-            TextField("用户名", text: $vm.userName)
-                .mtTextFieldStyle($vm.userName, config: textFieldConfig)
+            TextField("用户名", text: style == .用户名 ? $vm.userName : $vm.nickName)
+                .mtTextFieldStyle(style == .用户名 ? $vm.userName : $vm.nickName, config: textFieldConfig)
                 .introspectTextField { textField in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak textField] in
                         textField?.becomeFirstResponder()
@@ -38,7 +43,7 @@ struct ModifilerUserNameView: View {
         .padding(.horizontal, 36)
         .mtNavBarLogo()
         .mtToast(isPresented: $isShowToast, text: toastText)
-        .onChange(of: vm.requestStateForUpdateUserName) { newValue in
+        .onChange(of: vm.requestStateForUpdate) { newValue in
             switch newValue {
             case .completion:
                 persentationMode.wrappedValue.dismiss()
@@ -53,20 +58,22 @@ struct ModifilerUserNameView: View {
 
     var rightBtn: some View {
         Button(action: {
-//            vm.updateUserBaseInfo()
-//            LoginCreateTeamView()
-//                .environmentObject(vm)
+            switch style {
+            case .用户名: vm.updateUserName()
+            case .昵称: vm.updateNickName()
+            }
+            
         }, label: {
             Image.mt.load(.Chevron_right_On)
                 .foregroundColor(.white)
-//                .mtPlaceholderProgress(vm.requestStateForBaseInfo.isRequesting, progressColor: .white)
+                .mtPlaceholderProgress(vm.requestStateForUpdate.isRequesting, progressColor: .white)
         })
         .mtButtonStyle(.cricleDefult(.black))
-        .frame(maxWidth: .infinity, alignment: vm.isCanModifierUserName ? .trailing : .center)
+        .frame(maxWidth: .infinity, alignment: vm.isCanModifierName ? .trailing : .center)
         .mtAnimation(.spring())
         .padding(.bottom, 16)
-        .opacity(vm.isCanModifierUserName ? 1 : 0.6)
-        .disabled(!vm.isCanModifierUserName)
+        .opacity(vm.isCanModifierName ? 1 : 0.6)
+        .disabled(!vm.isCanModifierName)
 
     }
 }
@@ -74,7 +81,7 @@ struct ModifilerUserNameView: View {
 struct ModifilerUserNameView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ModifilerUserNameView()
+            ModifilerUserNameView(style: .昵称)
         }
     }
 }

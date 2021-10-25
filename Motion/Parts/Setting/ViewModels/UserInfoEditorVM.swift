@@ -10,30 +10,49 @@ import MotionComponents
 
 class UserInfoEditorVM: ObservableObject {
     @Published var userName = UserManager.shared.user.username
-    
-    @Published var isCanModifierUserName = false
-    
+    @Published var nickName = UserManager.shared.user.nickname
+
+    @Published var isCanModifierName = false
+    @Published var isCanModifierNickName = false
+
     
     init() {
         $userName.map({ $0.count > 0 && $0 != UserManager.shared.user.username })
-            .assign(to: &$isCanModifierUserName)
+            .assign(to: &$isCanModifierName)
+        
+        $nickName.map({ $0.count > 0 && $0 != UserManager.shared.user.nickname })
+            .assign(to: &$isCanModifierName)
     }
     
     
     
-    @Published var requestStateForUpdateUserName = RequestStatus.prepare
+    @Published var requestStateForUpdate = RequestStatus.prepare
     /// 目前只修改user name success: @escaping (Bool) -> ()
     func updateUserName() {
-        requestStateForUpdateUserName = .requesting
+        requestStateForUpdate = .requesting
         let un = userName
-        Networking.request(ModifilerUserInfoApi.updateInfo(p: .init(nickname: userName))) { [weak self] result in
+        Networking.request(ModifilerUserInfoApi.updateInfo(p: .init(username: userName))) { [weak self] result in
             if result.isSuccess {
                 UserManager.shared.updateUserName(un)
-                self?.requestStateForUpdateUserName = .completion
+                self?.requestStateForUpdate = .completion
             } else {
-                self?.requestStateForUpdateUserName = .completionTip(text: result.message)
+                self?.requestStateForUpdate = .completionTip(text: result.message)
             }
         }
     }
+    
+    func updateNickName() {
+        requestStateForUpdate = .requesting
+        let nn = nickName
+        Networking.request(ModifilerUserInfoApi.updateInfo(p: .init(nickname: nickName))) { [weak self] result in
+            if result.isSuccess {
+                UserManager.shared.updateNickName(nn)
+                self?.requestStateForUpdate = .completion
+            } else {
+                self?.requestStateForUpdate = .completionTip(text: result.message)
+            }
+        }
+    }
+
     
 }

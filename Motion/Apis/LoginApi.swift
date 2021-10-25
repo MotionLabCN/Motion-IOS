@@ -16,9 +16,8 @@ enum LoginApi: CustomTargetType {
   
     var host: String { ProjectConfig.host }
 
-    var port: Int? {
-        ProjectConfig.port
-    }
+
+    var port: Int? { 8081 }
     
     var headers: [String: String]? {
         var headers = [

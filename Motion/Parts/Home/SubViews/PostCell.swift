@@ -36,8 +36,7 @@ struct PostCell: View {
                 
                 Spacer.mt.mid()
 
-                PostToolBar()
-
+                toolbar
             }
             .frame(maxWidth: .infinity)
         }
@@ -65,50 +64,53 @@ struct PostCell: View {
             Spacer()
         }
     }
-}
-
-//MARK: - toolbar
-extension PostCell {
     
-    struct PostToolBar: View {
-        var body: some View {
-            HStack {
-                Button(action: {
-                }, label: {
-                    HStack {
-                        Image.mt.load(.Comment)
-                            .mtSize(18, foregroundColor: .mt.gray_600)
-
-                        Text("12")
-                            .font(.mt.caption1, textColor: .mt.gray_600)
-                    }
-                })
-                Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    HStack {
-                        Image.mt.load(.Cached)
-                            .mtSize(18, foregroundColor: .blue)
+    
+    var toolbar: some View {
+        HStack {
+           
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Image.mt.load(.Cached)
+                        .mtSize(18, foregroundColor: .blue)
+                        
+                    Text("\(Int.random(in: 10...300))")
+                        .font(.mt.caption1, textColor: .mt.gray_600)
+                }
+            })
+            Spacer()
+            Button(action: {
+                
+            }, label: {
+                HStack {
+                    Image.mt.load(.Penny)
+                        .mtSize(18, foregroundColor: .mt.status_warnning)
+                       
+                    Text("\(Int.random(in: 10...300))")
+                        .font(.mt.caption1, textColor: .mt.gray_600)
+                }
+            })
+            Spacer()
+            
+            Button(action: {
+            }, label: {
+                HStack {
+                    Image.mt.load(.More_horiz)
+                        .mtSize(18, foregroundColor: .mt.gray_600)
+                }
+            })
+                .contextMenu(
+                    ContextMenu {
+                        Button("♥️ - Hearts", action: {
                             
-                        Text("324")
-                            .font(.mt.caption1, textColor: .mt.gray_600)
+                        })
                     }
-                })
-                Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    HStack {
-                        Image.mt.load(.Penny)
-                            .mtSize(18, foregroundColor: .mt.status_warnning)
-                           
-                        Text("77")
-                            .font(.mt.caption1, textColor: .mt.gray_600)
-                    }
-                })
-                Spacer()
-            }
+                )
+            
+            
+            Spacer()
         }
     }
 }
@@ -232,12 +234,12 @@ extension PostCell {
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-//            PostCell()
+            PostCell(model: .init())
 //                .padding()
 //                .previewLayout(.sizeThatFits)
             
-            PostCell.PostToolBar()
-                .previewLayout(.sizeThatFits)
+//            PostCell.PostToolBar()
+//                .previewLayout(.sizeThatFits)
 
 //            PostCell.CoversView(layout: .one)
 //                .previewLayout(.fixed(width: 415, height: 100))
