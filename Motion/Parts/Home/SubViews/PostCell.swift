@@ -11,7 +11,11 @@ import Kingfisher
 
 
 struct PostCell: View {
+    @State var isAlert = false
+    
     let model: PostItemModel
+    var didAlert: Block_T? = nil
+
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             MTAvatar(frame : 52) {}
@@ -69,31 +73,33 @@ struct PostCell: View {
     var toolbar: some View {
         HStack {
            
-            Button(action: {
-                
-            }, label: {
-                HStack {
-                    Image.mt.load(.Cached)
-                        .mtSize(18, foregroundColor: .blue)
-                        
-                    Text("\(Int.random(in: 10...300))")
-                        .font(.mt.caption1, textColor: .mt.gray_600)
-                }
-            })
+//            Button(action: {
+//
+//            }, label: {
+//                HStack {
+//                    Image.mt.load(.Cached)
+//                        .mtSize(18, foregroundColor: .blue)
+//
+//                    Text("\(Int.random(in: 10...300))")
+//                        .font(.mt.caption1, textColor: .mt.gray_600)
+//                }
+//            })
             Spacer()
-            Button(action: {
-                
-            }, label: {
-                HStack {
-                    Image.mt.load(.Penny)
-                        .mtSize(18, foregroundColor: .mt.status_warnning)
-                       
-                    Text("\(Int.random(in: 10...300))")
-                        .font(.mt.caption1, textColor: .mt.gray_600)
-                }
-            })
+//            Button(action: {
+//
+//            }, label: {
+//                HStack {
+//                    Image.mt.load(.Penny)
+//                        .mtSize(18, foregroundColor: .mt.status_warnning)
+//
+//                    Text("\(Int.random(in: 10...300))")
+//                        .font(.mt.caption1, textColor: .mt.gray_600)
+//                }
+//            })
             Spacer()
             
+            
+            /// 假举报
             Button(action: {
             }, label: {
                 HStack {
@@ -103,12 +109,21 @@ struct PostCell: View {
             })
                 .contextMenu(
                     ContextMenu {
-                        Button("♥️ - Hearts", action: {
-                            
+                        Button("举报", action: {
+                            isAlert.toggle()
                         })
                     }
                 )
-            
+                .alert(isPresented: $isAlert, content: {
+                    Alert(title: Text("举报"), message: Text("是否举报该动态"), primaryButton: Alert.Button.cancel(Text("取消"), action: {
+                        isAlert.toggle()
+                    }), secondaryButton: Alert.Button.default(Text("确定"), action: {
+                        didAlert?()
+                        isAlert.toggle()
+                        
+                    }))
+                })
+               
             
             Spacer()
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 import MotionComponents
 
-public var storageViewTabs = ["存储","盈利","计算"]
+public var storageViewTabs = ["存储","盈利"]
 
 
 struct NewStorageView: View {
@@ -23,9 +23,9 @@ struct NewStorageView: View {
             MTPageScrollView(offset: $offset) {
                 HStack(spacing: 0) {
                     Group {
-                       storage
+                        storage
                         JoinPeerView(vm: vm)
-                       Text("天天数链/计算模块/开发中")
+//                       Text("天天数链/计算模块/开发中")
                     }
                     .frame(width: ScreenWidth())
                 }

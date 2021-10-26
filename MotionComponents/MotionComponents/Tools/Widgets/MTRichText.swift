@@ -143,6 +143,15 @@ public extension MTRichText {
         return self
     }
 
+    func onCustomTaps(actions: [ActiveType : ((String) -> ())]) -> Self {
+        config.customTapHandlers = actions
+        return self
+    }
+    
+    func onCustomTapActions1(actions: Int) -> MTRichText {
+//        config.customTapHandlers = typeActions
+        return self
+    }
 
     func updateForState(_ isUpdate: Bool) -> Self {
         config.needUpdateForState = isUpdate

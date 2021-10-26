@@ -27,9 +27,9 @@ struct SettingView: View {
                 
                 setting
         
-                aboutUs
+//                aboutUs
                 
-                loginOut
+//                loginOut
             }
             .background(navigationLinks)
             .listStyle(InsetGroupedListStyle())
@@ -109,9 +109,9 @@ struct SettingView: View {
             MtLableRow( text: "关于", icon: Image.mt.load(.Apps)){
                 showAbout.toggle()
             }
-            MtLableRow( text: "SDK声明", icon: Image.mt.load(.Chat)){
-                showSDK.toggle()
-            }
+//            MtLableRow( text: "SDK声明", icon: Image.mt.load(.Chat)){
+//                showSDK.toggle()
+//            }
             
 //        LableRow( text: "鸣谢", icon: Image.mt.load(.Penny))
         }
