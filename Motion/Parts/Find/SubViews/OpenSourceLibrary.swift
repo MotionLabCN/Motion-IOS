@@ -49,12 +49,12 @@ struct OpenSourceLibrary: View {
             .navigationBarTitle(Text("热门分类"))
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
+            .mtTopProgress(vm.isLoadingCategory)
         }
         .onAppear {
             // 每次出现调用接口
             vm.requestWithCategoryList()
         }
-        .mtTopProgress(vm.isLoadingCategory)
     }
 
     //MARK: 分类语言view
@@ -128,7 +128,7 @@ struct OpenSourceLibrary: View {
         }
     }
     
-    var classic : some View{
+    var classic: some View{
         Section {
             if vm.hotList.isEmpty{ProgressView()}
             else{
