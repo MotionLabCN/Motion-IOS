@@ -24,8 +24,10 @@ struct OpenSourceLibrary: View {
         .sheet(isPresented: $isShowCategory) {
             CategoryItemList
         }
+        .mtTopProgress(vm.isLoadingInfo, usingBackgorund: true)
     }
 
+    
 // MARK: 开源热门语言弹框
     @ViewBuilder
     var CategoryItemList : some View {
@@ -49,9 +51,10 @@ struct OpenSourceLibrary: View {
             .navigationBarItems(trailing: closeBtn)
         }
         .onAppear {
+            // 每次出现调用接口
             vm.requestWithCategoryList()
         }
-//        .mtPlaceholderProgress(vm.isLoadingCategory)
+        .mtTopProgress(vm.isLoadingCategory)
     }
 
     //MARK: 分类语言view
@@ -75,8 +78,8 @@ struct OpenSourceLibrary: View {
             .contentShape(Rectangle())
             .onTapGesture(perform: {
                 // 选中和取消
-                vm.updateLangItems(item: item)
                 isShowCategory.toggle()
+                vm.updateLangItems(item: item)
             })
         }
     }

@@ -256,7 +256,6 @@ extension FindVM {
     // MARK:产品列表接口
     func requestWithProductList() {
         
-       
         logicProduct.isRequesting = true
 
         pageNum = 0
