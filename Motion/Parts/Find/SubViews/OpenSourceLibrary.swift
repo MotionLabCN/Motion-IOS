@@ -23,7 +23,6 @@ struct OpenSourceLibrary: View {
         
             .sheet(isPresented: $vm.isShowCategory) {
                 CategoryItemList
-//                    .mtPlaceholderProgress(vm.isLoadingCategory)
             }
     }
         
@@ -50,6 +49,7 @@ struct OpenSourceLibrary: View {
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
         }
+//        .mtPlaceholderProgress(vm.isLoadingCategory)
     }
 
     //MARK: 分类语言view
