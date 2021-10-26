@@ -142,6 +142,7 @@
 		DFF165932717C2A8004D1B72 /* LiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165922717C2A8004D1B72 /* LiModel.swift */; };
 		DFF165952717EBBB004D1B72 /* ModifilerUserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */; };
 		DFF1659727181179004D1B72 /* OSSApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF1659627181179004D1B72 /* OSSApi.swift */; };
+		DFFEBE5A2727D8FB0013BE95 /* PostDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFEBE592727D8FB0013BE95 /* PostDetailVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +262,7 @@
 		DFF165922717C2A8004D1B72 /* LiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiModel.swift; sourceTree = "<group>"; };
 		DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifilerUserInfoApi.swift; sourceTree = "<group>"; };
 		DFF1659627181179004D1B72 /* OSSApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSSApi.swift; sourceTree = "<group>"; };
+		DFFEBE592727D8FB0013BE95 /* PostDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +358,7 @@
 				DF334D90271D66B000509F6E /* MTAddPostView.swift */,
 				5AB08E73271D5FC3002C5E3F /* PostEditorView.swift */,
 				5AB08E75271D6027002C5E3F /* SystemImagePicker.swift */,
+				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -503,7 +506,6 @@
 				5A00D7B8271967C400FD409B /* Fonts */,
 				5A40BA6C26FCB1610011D3B0 /* LottieViews */,
 				5A7EBFF926F20CAD0026D870 /* Setting */,
-				5A53376B26FB5FA900949087 /* PostDetailView.swift */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -643,6 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE7B464271FDC7200038520 /* AddPostVM.swift */,
+				DFFEBE592727D8FB0013BE95 /* PostDetailVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				DF75D9A3272251CC00347D9A /* PostItemModel.swift in Sources */,
 				DFEB1D2A27044C8900B7C1DB /* ProjectConfig.swift in Sources */,
 				A075B27C27210E3E005978F5 /* TechnologyModel.swift in Sources */,
+				DFFEBE5A2727D8FB0013BE95 /* PostDetailVM.swift in Sources */,
 				A075B27627210D01005978F5 /* StorageModel.swift in Sources */,
 				A0731B44271522D200A6FF79 /* FindView.swift in Sources */,
 				A077A6F42726851D00E33EFE /* OpenSourceCategoryModel.swift in Sources */,

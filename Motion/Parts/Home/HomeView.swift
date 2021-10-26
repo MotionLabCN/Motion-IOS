@@ -16,7 +16,7 @@ struct HomeView: View {
     
 
     @State private var isShowmtsheet = false
-    @State private var showDetail : Bool = false
+    @State private var selectedPost : PostItemModel? = nil
     
     @State private var isShowToast = false
     @State private var toastText = ""
@@ -32,79 +32,90 @@ struct HomeView: View {
     
     var body: some View {
         
-        
-        ScrollView {
-            LazyVStack(spacing: 0.0) {
-//                header
-//                Divider.mt.defult()
-                if vm.list.isEmpty {
-                    placeholder
-                        .padding(.top, 150)
-                } else {
-                    main
-                }
+        if vm.list.isEmpty && vm.requestPostListStatus.isRequesting { // 请求中
+            VStack {
+                Spacer()
+                
+                ProgressView()
+                    .mt(style: .mid)
+                
+                Spacer()
             }
-            
-            Spacer.mt.tabbar()
-        }
-        .mtNavbar(content: {
-            Image.mt.load(.Logo)
-                .resizable()
-                .frame(size: .init(width: 33, height: 33))
-        }, leading: {
-            MTLocUserAvatar()
-        }
-//                  , trailing: {
-//            NavigationLink {
-//                NoticeListView()
-//            } label: {
-//                Image.mt.load(.Mail)
-//             .foregroundColor(.mt.gray_800)
-//            }
-//        }
-        )
-        .fullScreenCover(isPresented: .constant(false)) {
-            EmptyView()
-        }
-        .onChange(of: tabbarState.selectedKind, perform: { newvalue in
-            if newvalue == .home {
-                print("home selected appear")
-            }
-        })
-    
-        .mtTabbarKindChange(hanlder: { kind in
-            print("mtTabbarKindChange \(kind)")
-        })
-        
-//        .mtRegisterRouter(isActive: $isShowmtsheet) {
-//            MTWebView(urlString: "https://baidu.com")
-//        }
-        
-        .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
-                VStack {
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-                    Text("currentOffsetY)")
-
-                    Button {
-                        isShowmtsheet = false
-                    } label: {
-                        Text("关闭")
+        } else {
+            ScrollView {
+                LazyVStack(spacing: 0.0) {
+    //                header
+    //                Divider.mt.defult()
+                    
+                    
+                    if vm.list.isEmpty {
+                        placeholder
+                            .padding(.top, 150)
+                    } else {
+                        main
                     }
                 }
-        }
+                
+                Spacer.mt.tabbar()
+            }
+            .mtNavbar(content: {
+                Image.mt.load(.Logo)
+                    .resizable()
+                    .frame(size: .init(width: 33, height: 33))
+            }, leading: {
+                MTLocUserAvatar()
+            }
+    //                  , trailing: {
+    //            NavigationLink {
+    //                NoticeListView()
+    //            } label: {
+    //                Image.mt.load(.Mail)
+    //             .foregroundColor(.mt.gray_800)
+    //            }
+    //        }
+            )
+            .onChange(of: tabbarState.selectedKind, perform: { newvalue in
+                if newvalue == .home {
+                    print("home selected appear")
+                }
+            })
+        
+            .mtTabbarKindChange(hanlder: { kind in
+                print("mtTabbarKindChange \(kind)")
+            })
+            
+    //        .mtRegisterRouter(isActive: $isShowmtsheet) {
+    //            MTWebView(urlString: "https://baidu.com")
+    //        }
+            
+            .mtSheet(isPresented: $isShowmtsheet, isCanDrag: true) {
+                    VStack {
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
+                        Text("currentOffsetY)")
 
-        .mtFullScreenCover(isPresented: $showDetail) {
-            BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
-            PostDetailView()
+                        Button {
+                            isShowmtsheet = false
+                        } label: {
+                            Text("关闭")
+                        }
+                    }
+            }
+
+            .mtFullScreenCover(item: $selectedPost, content: { item in
+                BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
+                PostDetailView(inputPost: item)
+            })
+        
+        
+            .mtToast(isPresented: $isShowToast, text: toastText, postion: .bottom(offsetY: 86))
+            
         }
-        
-        .mtToast(isPresented: $isShowToast, text: toastText, postion: .bottom(offsetY: 86))
-        
+      
     }
 }
 
@@ -124,7 +135,7 @@ extension HomeView {
         LazyVStack {
             ForEach(vm.list) { item in
                 Button(action: {
-                    showDetail.toggle()
+                    selectedPost = item
                 }){
                     PostCell(model: item, didAlert:  {
                         toastText = "举报成功，稍后人工客服会和您联系"
