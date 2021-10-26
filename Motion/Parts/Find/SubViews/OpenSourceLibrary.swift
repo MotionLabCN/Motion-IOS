@@ -11,6 +11,7 @@ import Kingfisher
 
 //MARK: View
 struct OpenSourceLibrary: View {
+    @State var isShowCategory: Bool = false //显示语言
     @StateObject var vm = OpenSourceLibraryVm()
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -18,15 +19,14 @@ struct OpenSourceLibrary: View {
                 classic
                 newStar
             }.padding(.top,16)
-            
-        }.navigationBarHidden(true)
-        
-            .sheet(isPresented: $vm.isShowCategory) {
-                CategoryItemList
-            }
+        }
+        .navigationBarHidden(true)
+        .sheet(isPresented: $isShowCategory) {
+            CategoryItemList
+        }
     }
-        
 
+// MARK: 开源热门语言弹框
     @ViewBuilder
     var CategoryItemList : some View {
         let cardWidth = (ScreenWidth() - 40 - 20 ) / 3
@@ -34,7 +34,6 @@ struct OpenSourceLibrary: View {
         let columns = Array(repeating:  GridItem(.fixed(cardWidth)), count: 3)
 
         NavigationView {
-
             ScrollView {
                 // 网格列表
                 LazyVGrid(columns: columns,
@@ -49,6 +48,9 @@ struct OpenSourceLibrary: View {
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
         }
+        .onAppear {
+            vm.requestWithCategoryList()
+        }
 //        .mtPlaceholderProgress(vm.isLoadingCategory)
     }
 
@@ -57,7 +59,7 @@ struct OpenSourceLibrary: View {
         ForEach(vm.categoryList) { item in
             HStack {
                 Text(item.name)
-                    .font(.mt.body1, textColor: item.isSelect ? .blue : .mt.gray_900)
+                    .font(.mt.body1, textColor: item.isSelect ? .blue: .mt.gray_900)
                     .frame(height:40)
             }
             .frame(maxWidth: .infinity)
@@ -74,13 +76,14 @@ struct OpenSourceLibrary: View {
             .onTapGesture(perform: {
                 // 选中和取消
                 vm.updateLangItems(item: item)
+                isShowCategory.toggle()
             })
         }
     }
     
     var closeBtn : some View {
         Button {
-            vm.isShowCategory.toggle()
+            isShowCategory.toggle()
         } label: {
             Image.mt.load(.Close)
                 .resizable()
@@ -114,7 +117,6 @@ struct OpenSourceLibrary: View {
                     Divider()
                 }
             }
-            
         } header: {
             Text("新星")
                 .font(.mt.title2.mtBlod(),textColor: .black)
@@ -142,7 +144,7 @@ struct OpenSourceLibrary: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
                                         .foregroundColor(.random)
                                 }
-                                Text(item.name )
+                                Text(item.name)
                                     .font(.mt.body2.mtBlod(),textColor: .black)
                                 Text(item.forksCount)
                                     .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
@@ -157,8 +159,8 @@ struct OpenSourceLibrary: View {
                     .font(.mt.title2.mtBlod(),textColor: .black)
                 Spacer()
                 Button {
-                    vm.requestWithCategoryList()
-                    vm.isShowCategory.toggle()
+                    isShowCategory.toggle()
+                    
                 } label: {
                     Text(vm.categoryName)
                         .font(.mt.title3.mtBlod(),textColor: .red)

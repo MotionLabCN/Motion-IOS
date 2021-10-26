@@ -9,7 +9,6 @@
 import MotionComponents
 
 class OpenSourceLibraryVm : ObservableObject{
-    @Published var isShowCategory: Bool = false //显示语言
     @Published var isLoadingCategory: Bool = false //请求分类语言
     
     @Published var hotList : [OpenSourceLibraryModel] = []
@@ -81,7 +80,7 @@ class OpenSourceLibraryVm : ObservableObject{
             categoryId = self.categoryList[index].id
             categoryName = self.categoryList[index].name
         }
-        isShowCategory.toggle()
+        
         request()
     }
 }
