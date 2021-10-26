@@ -157,8 +157,8 @@ struct OpenSourceLibrary: View {
                     .font(.mt.title2.mtBlod(),textColor: .black)
                 Spacer()
                 Button {
-                    vm.requestWithCategoryList()
                     vm.isShowCategory.toggle()
+                    vm.requestWithCategoryList()
                 } label: {
                     Text(vm.categoryName)
                         .font(.mt.title3.mtBlod(),textColor: .red)
