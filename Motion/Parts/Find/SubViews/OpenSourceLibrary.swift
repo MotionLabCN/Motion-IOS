@@ -27,6 +27,7 @@ struct OpenSourceLibrary: View {
         .sheet(isPresented: $isShowCategory) {
             CategoryItemList
         }
+        .mtTopProgress(vm.isLoading)
     }
 
     
