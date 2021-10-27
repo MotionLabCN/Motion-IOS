@@ -11,8 +11,11 @@ import Kingfisher
 
 //MARK: View
 struct OpenSourceLibrary: View {
-    @State var isShowCategory: Bool = false //显示语言
-    @StateObject var vm = OpenSourceLibraryVm()
+    
+    @State private var isShowCategory: Bool = false //显示语言
+    @StateObject private var vm = OpenSourceLibraryVm()
+    
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing:16){

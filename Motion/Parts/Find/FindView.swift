@@ -13,12 +13,11 @@ public var findViewTabs = ["码力","开源","热门"]
 struct FindView: View {
     
     // MARK: 码力集市价格语言
-    @EnvironmentObject var findView: FindViewState
+    @EnvironmentObject private var findView: FindViewState
 //    @StateObject var vm: OpenSourceLibraryVm = OpenSourceLibraryVm()
-    @StateObject var findVM: FindVM = FindVM()
+    @StateObject private var findVM: FindVM = FindVM()
     
     @State private var offset : CGFloat = 0
-    
     @State private var pageIndex : Int = 0
     
     
