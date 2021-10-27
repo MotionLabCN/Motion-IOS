@@ -16,13 +16,14 @@ struct FindView: View {
     @EnvironmentObject private var findView: FindViewState
 //    @StateObject var vm: OpenSourceLibraryVm = OpenSourceLibraryVm()
     @StateObject private var findVM: FindVM = FindVM()
+    /// MARK: 开源请求loading
+    @State private var isOpenLoading: Bool = false
     
     @State private var offset : CGFloat = 0
     @State private var pageIndex : Int = 0
     
     
     var body: some View {
-        
         
         VStack(spacing:0){
             
@@ -87,6 +88,9 @@ struct FindView: View {
         }
         //        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
         .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
+        // 开源接口请求loading
+        .mtTopProgress(isOpenLoading, usingBackgorund: true)
+        
     }
     
     @ViewBuilder
@@ -96,7 +100,7 @@ struct FindView: View {
                     CodepowerView()
                         .environmentObject(findVM)
 //                    Ladder()
-                    OpenSourceLibrary()
+                    OpenSourceLibrary(isOpenLoading: $isOpenLoading)
                     RecommendView()
             }
             .frame(width: ScreenWidth())

@@ -14,7 +14,7 @@ struct OpenSourceLibrary: View {
     
     @State private var isShowCategory: Bool = false //显示语言
     @StateObject private var vm = OpenSourceLibraryVm()
-    
+    @Binding var isOpenLoading: Bool 
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -27,7 +27,6 @@ struct OpenSourceLibrary: View {
         .sheet(isPresented: $isShowCategory) {
             CategoryItemList
         }
-        .mtTopProgress(vm.isLoadingInfo, usingBackgorund: true)
     }
 
     
@@ -178,11 +177,12 @@ struct OpenSourceLibrary: View {
     }
 }
 
-struct OpenSourceLibrary_Previews: PreviewProvider {
-    static var previews: some View {
-        OpenSourceLibrary()
-    }
-}
+//struct OpenSourceLibrary_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let isOpenLoading: Bool = false
+//        OpenSourceLibrary(isOpenLoading: $isOpenLoading)
+//    }
+//}
 
 struct LibraryListCell: View {
     

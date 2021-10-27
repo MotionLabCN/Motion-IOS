@@ -16,7 +16,7 @@ struct OldFindView: View {
     @EnvironmentObject var findView: FindViewState
     @State private var offset : CGFloat = 0.0
     @GestureState var move : CGFloat = 0
-    
+    @State private var isOpenLoading: Bool = false
     let pageNumbers = 4
  
     func getOffset() -> CGFloat {
@@ -89,14 +89,14 @@ struct OldFindView: View {
     @ViewBuilder
     var findViews : some View {
         HStack(spacing:0){
-            OpenSourceLibrary()
+            OpenSourceLibrary(isOpenLoading: $isOpenLoading)
             RecommendView()
             Ladder()
             RecommendView()
             //写法需要优化一下，但是这样减少了很多卡顿。否则一次性加载4个页面。
             CodepowerView()
             Ladder()
-            OpenSourceLibrary()
+//            OpenSourceLibrary()
             RecommendView()
 //            RecommendView()
 //            OfficialBusiness()
