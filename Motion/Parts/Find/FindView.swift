@@ -87,9 +87,6 @@ struct FindView: View {
     var SelectLtpView: some View {
         VStack {
             CodeItemList
-                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
-            //                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
-            
             HStack(spacing:20) {
                 Button {
                     findVM.clearItems()
@@ -132,6 +129,7 @@ struct FindView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
+                    findVM.isShowmtDetail.toggle()
                     // 获取一级分类下 当前选中的二级分类列表数据.
                     if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
                         findVM.selectIndex = index
@@ -144,7 +142,6 @@ struct FindView: View {
                             findVM.requestWithTechnology()
                         }
                     }
-                    findVM.isShowmtDetail.toggle()
                 })
                 .frame(height:30)
             }
@@ -188,6 +185,7 @@ struct FindView: View {
             .navigationBarTitle(Text(findVM.selectSecondTitle))
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
+            .mtTopProgress(findVM.logicCode.isRequesting)
         }
     }
     

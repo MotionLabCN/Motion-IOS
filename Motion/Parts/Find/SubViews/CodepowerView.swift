@@ -24,6 +24,7 @@ struct CodepowerView: View {
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: true) {
+            
             VStack(spacing:12){
                 
                 Spacer().frame(width: 0, height: 24)
@@ -72,7 +73,6 @@ struct CodepowerView: View {
         .mtRegisterRouter(isActive: $isPublishProduct) {
             MTWebView(urlString: vm.publishProductWebUrl)
         }
-        
     }
     
     
@@ -258,11 +258,10 @@ struct CodepowerView: View {
                                 let token = UserManager.shared.token
                                 vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
                             }
-                        Spacer(minLength: 10)
+                        Spacer(minLength: 8)
                         Text(item.productName)
                             .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(1)
-                        Spacer(minLength: 8)
                         HStack(spacing:4){
                             Text(item.productPrice.toDouble.mtCurrencyWith2Decimals())
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)

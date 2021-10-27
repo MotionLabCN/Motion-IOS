@@ -29,7 +29,7 @@ struct OpenSourceLibrary: View {
         .sheet(isPresented: $isShowCategory) {
             CategoryItemList
         }
-        .mtTopProgress(vm.isLoading)
+//        .mtTopProgress(vm.isLoading)
     }
 
     
@@ -84,7 +84,7 @@ struct OpenSourceLibrary: View {
             .onTapGesture(perform: {
                 // 选中和取消
                 isShowCategory.toggle()
-                vm.updateLangItems(item: item)
+//                vm.updateLangItems(item: item)
             })
         }
     }

@@ -22,7 +22,7 @@ enum CodepowerApi: MTTargetType {
     case technology
     case productList(p:ProductListParameters)
     
-    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/api/codemart")! }
+//    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/")! }
     
     var headers: [String: String]? {
         var headers = [
@@ -42,9 +42,9 @@ enum CodepowerApi: MTTargetType {
 
     var path: String {
         switch self {
-        case .language: return "/sys/dict/group/lang"
-        case .technology: return "/label_user_customize/all"
-        case .productList: return "/product/page"
+        case .language: return "api/codemart/sys/dict/group/lang"
+        case .technology: return "api/codemart/label_user_customize/all"
+        case .productList: return "api/codemart/product/page"
         }
     }
     

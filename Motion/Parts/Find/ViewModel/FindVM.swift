@@ -159,6 +159,7 @@ extension FindVM {
     
     func requestWithTechnology() {
         // 技术
+        self.logicCode.isRequesting = true
         
         let technology = CodepowerApi.technology
         Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
