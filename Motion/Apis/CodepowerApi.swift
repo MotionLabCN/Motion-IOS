@@ -22,7 +22,7 @@ enum CodepowerApi: MTTargetType {
     case technology
     case productList(p:ProductListParameters)
     
-//    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/")! }
+    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/")! }
     
     var headers: [String: String]? {
         var headers = [
