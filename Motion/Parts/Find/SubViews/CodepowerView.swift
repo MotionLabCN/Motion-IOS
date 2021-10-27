@@ -37,7 +37,7 @@ struct CodepowerView: View {
                 Spacer().frame(width: 0, height: 24)
                 
                 Button("上架技术方案"){
-//                    let token = ""
+                    //                    let token = ""
                     isPublishProduct = true
                     vm.publishProductWebUrl = "https://ttchain.tntlinking.com/codeForce/publishProduct" // 暂时没有添加token 需要登录
                 }
@@ -45,7 +45,7 @@ struct CodepowerView: View {
                 .padding(.horizontal,80)
                 
                 Spacer().frame(width: 0, height: 12)
-               
+                
                 shopTitle
                 
                 filter
@@ -53,13 +53,13 @@ struct CodepowerView: View {
                 if vm.proList.count > 0 {
                     productList
                 } else {
-                    
                     Text("暂无数据")
                         .font(.mt.body1.mtBlod(),textColor: .mt.gray_600)
                         .padding(.horizontal,16)
                         .frame(height:200)
                 }
             }
+            Spacer.mt.tabbar()
         }
         .onChange(of: vm.proList.count, perform: { newValue in
             product1 = [vm.proList[0].productImg:vm.proList[0].productName]
@@ -72,10 +72,10 @@ struct CodepowerView: View {
         .mtRegisterRouter(isActive: $isPublishProduct) {
             MTWebView(urlString: vm.publishProductWebUrl)
         }
-
+        
     }
-
-   
+    
+    
     
     var title : some View {
         
@@ -110,7 +110,7 @@ struct CodepowerView: View {
                                         .scaledToFit()
                                         .frame(width: 24, height: 24)
                             )
-                           }
+                    }
                     .resizable()
                     .scaledToFill()
                     .frame(width:w)
@@ -137,11 +137,11 @@ struct CodepowerView: View {
             
         }
     }
-
+    
     
     @ViewBuilder
     var codePowerCard : some View {
-         
+        
         ZStack{
             CodePowerCard(imageurl: product2.keys.first!, name: product2.values.first!)
                 .rotationEffect(Angle(degrees: -9), anchor: .bottom)
@@ -151,42 +151,41 @@ struct CodepowerView: View {
                 .offset(x:32)
             CodePowerCard(imageurl: product1.keys.first!, name: product1.values.first!)
         }
-        
-        }
+    }
     
     var shopTitle : some View {
-            HStack{
-                VStack(spacing:4){
-                    Text("\(vm.proList.count)")
-                        .kerning(2)
-                        .font(.system(size: 26, weight: .bold, design: .rounded))
-                    Text("在售方案")
-                        .font(.mt.body3,textColor: .mt.gray_400)
-                }
-                Spacer()
-                Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
-                    .opacity(0.2)
-                Spacer()
-                VStack(spacing:4){
-                    Text("\(vm.proList.count)")
-                        .kerning(2)
-                        .font(.system(size: 26, weight: .bold, design: .rounded))
-                    Text("顾问")
-                        .font(.mt.body3,textColor: .mt.gray_400)
-                }
-              
-                Spacer()
-                Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
-                    .opacity(0.2)
-                Spacer()
-                VStack(spacing:4){
-                    Text("\(vm.proList.count)")
-                        .kerning(2)
-                        .font(.system(size: 26, weight: .bold, design: .rounded))
-                    Text("近期成交")
-                        .font(.mt.body3,textColor: .mt.gray_400)
-                }
+        HStack{
+            VStack(spacing:4){
+                Text("\(vm.proList.count)")
+                    .kerning(2)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                Text("在售方案")
+                    .font(.mt.body3,textColor: .mt.gray_400)
             }
+            Spacer()
+            Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
+                .opacity(0.2)
+            Spacer()
+            VStack(spacing:4){
+                Text("\(vm.proList.count)")
+                    .kerning(2)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                Text("顾问")
+                    .font(.mt.body3,textColor: .mt.gray_400)
+            }
+            
+            Spacer()
+            Capsule(style: .continuous).frame(width: 0.5).foregroundColor(.mt.gray_400)
+                .opacity(0.2)
+            Spacer()
+            VStack(spacing:4){
+                Text("\(vm.proList.count)")
+                    .kerning(2)
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                Text("近期成交")
+                    .font(.mt.body3,textColor: .mt.gray_400)
+            }
+        }
         .padding(.horizontal,32)
         .padding()
         .background(Color.white)
@@ -212,7 +211,7 @@ struct CodepowerView: View {
             
             Button {
                 vm.isShowmtsheet.toggle()
-//                vm.requestWithMenuList()
+                //                vm.requestWithMenuList()
             } label: {
                 Image.mt.load(.Filter_list)
                     .foregroundColor(.red)
@@ -223,51 +222,46 @@ struct CodepowerView: View {
     @ViewBuilder
     var productList : some View {
         //卡片宽度
-        let cardWidth = (ScreenWidth() - 32 - 8 ) / 2
+        let cardWidth = (ScreenWidth() - 32 - 20 ) / 2
         //排序方式
-        let columns =
-        Array(repeating:  GridItem(.fixed(cardWidth)), count: 2)
-        
-
+        let columns = Array(repeating: GridItem(.fixed(cardWidth)), count: 2)
         
         LazyVGrid(
             columns:columns,
             alignment: .center,
-            spacing: 8,
-            pinnedViews: .sectionFooters) {
-                
+            spacing: 20,
+            content: {
+//            pinnedViews: .sectionFooters) {
                 // vm.proList
                 ForEach(vm.proList) { item in
-                    
                     //
                     VStack(alignment: .leading, spacing: 4){
-                        
                         KFImage(URL(string: item.productImg))
                             .placeholder {
                                 Color.white
-                                    .overlay(  Image.mt.load(.Share_Android)
+                                    .overlay(Image.mt.load(.Share_Android)
                                                 .resizable()
                                                 .foregroundColor(.mt.gray_400)
                                                 .scaledToFit()
                                                 .frame(width: 24, height: 24)
                                     )
-                                   }
+                            }
                             .resizable()
                             .scaledToFill()
                             .frame(width:cardWidth, height: cardWidth * 1.6)
-                    .mtCardStyle(insets: .init(horizontal: 0, vertical: 0))
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle.init(cornerRadius: 12, style: .continuous))
-                    .mtShadow(type: .shadowLow)
-                    .onTapGesture {
-                        isPushWebView = true
-                        // 暂时token
-                        let token = UserManager.shared.token
-                        vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
-                    }
+                            .mtCardStyle(insets: .init(horizontal: 0, vertical: 0))
+                            .background(Color.white)
+                            .clipShape(RoundedRectangle.init(cornerRadius: 12, style: .continuous))
+                            .mtShadow(type: .shadowLow)
+                            .onTapGesture {
+                                isPushWebView = true
+                                // 暂时token
+                                let token = UserManager.shared.token
+                                vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
+                            }
                         Text(item.productName)
                             .font(.mt.body1.mtBlod(),textColor: .black)
-                            .lineLimit(2)
+                            .lineLimit(1)
                         HStack(spacing:4){
                             Text(item.productPrice.toDouble.mtCurrencyWith2Decimals())
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
@@ -275,7 +269,7 @@ struct CodepowerView: View {
                         }
                     }
                 }
-            }
+            })
     }
 }
 
@@ -286,8 +280,8 @@ struct CodepowerView_Previews: PreviewProvider {
         CodepowerView()
     }
 }
-//
-//
+
+
 //HStack {
 //    KFImage(URL(string: item.authorHeadImgUrl))
 //        .resizable()

@@ -14,7 +14,7 @@ class FindVM: ObservableObject {
     @Published var isShowmtsheet: Bool = false // 一级分类下弹框
     @Published var isShowmtDetail: Bool = false// 二级分类下弹框
     // MARK: 项目列表弹框
-    @Published var logicProduct = LogicProduct()
+//    @Published var logicProduct = LogicProduct()
     // MARK: 语言技术价格
     @Published var logicCode = LogicProduct()
     @Published var detailWebUrl: String = ""
@@ -256,7 +256,7 @@ extension FindVM {
     // MARK:产品列表接口
     func requestWithProductList() {
         
-        logicProduct.isRequesting = true
+//        logicProduct.isRequesting = true
 
         pageNum = 0
         switch selectCodeSelectStyle {
@@ -284,13 +284,13 @@ extension FindVM {
             // 成功...
             guard let self = self else { return }
             
-            self.logicProduct.isRequesting = false
+//            self.logicProduct.isRequesting = false
             
             if let list = list {
                 self.proList.append(contentsOf: list)
             }else {
-                self.logicProduct.toastText = "请求失败"
-                self.logicProduct.isShowToast = true
+//                self.logicProduct.toastText = "请求失败"
+//                self.logicProduct.isShowToast = true
             }
             
             let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []

@@ -22,6 +22,8 @@ struct OpenSourceLibrary: View {
                 classic
                 newStar
             }.padding(.top,16)
+            
+            Spacer.mt.tabbar()
         }
         .navigationBarHidden(true)
         .sheet(isPresented: $isShowCategory) {

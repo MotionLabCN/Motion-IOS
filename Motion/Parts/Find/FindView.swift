@@ -10,12 +10,14 @@ import MotionComponents
 import Lottie
 
 public var findViewTabs = ["码力","开源","热门"]
+
 struct FindView: View {
     
     // MARK: 码力集市价格语言
     @EnvironmentObject private var findView: FindViewState
 //    @StateObject var vm: OpenSourceLibraryVm = OpenSourceLibraryVm()
     @StateObject private var findVM: FindVM = FindVM()
+    
     /// MARK: 开源请求loading
     @State private var isOpenLoading: Bool = false
     
@@ -26,7 +28,6 @@ struct FindView: View {
     var body: some View {
         
         VStack(spacing:0){
-            
             MTPageSegmentView(titles: findViewTabs, offset: $offset)
             //            Text("\(Int(floor(offset + 0.5) / ScreenWidth()))")
             MTPageScrollView(offset: $offset) {
@@ -52,62 +53,67 @@ struct FindView: View {
         .navigationBarTitleDisplayMode(.inline)
         // 一级分类弹框
         .mtSheet(isPresented: $findVM.isShowmtsheet) {} content: {
-            VStack {
-                CodeItemList
-                    .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
-                //                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
-                
-                HStack(spacing:20) {
-                    Button {
-                        findVM.clearItems()
-                    } label: {
-                        Text("重置")
-                    }
-                    .mtButtonStyle(.smallStorker(isEnable: true))
-                    
-                    Button {
-                        findVM.isShowmtsheet.toggle()
-                        
-                        // 请求接口
-                        findVM.requestWithProductList()
-                        
-                    } label: {
-                        Text("应用")
-                            .foregroundColor(.white)
-                            .font(.mt.body1)
-                    }
-                    .mtButtonStyle(.mainDefult(isEnable: true))
-                }
-                .padding(.horizontal,20)
-            }
-            .padding(.vertical,20)
+            SelectLtpView
         }
         // 二级分类弹框
         .sheet(isPresented: $findVM.isShowmtDetail) {
             SecondItemList
         }
-        //        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
-        .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
-        // 开源接口请求loading
         .mtTopProgress(isOpenLoading, usingBackgorund: true)
-        
+//        .mtToast(isPresented: $findVM.logicProduct.isShowToast, text: findVM.logicProduct.toastText)
+        // 开源接口请求loading
+//        .mtTopProgress(findVM.logicProduct.isRequesting, usingBackgorund: true)
     }
     
     @ViewBuilder
     var mainViews : some View {
         HStack(spacing: 0) {
             Group {
-                    CodepowerView()
-                        .environmentObject(findVM)
-//                    Ladder()
-                    OpenSourceLibrary(isOpenLoading: $isOpenLoading)
-                    RecommendView()
+                CodepowerView()
+                    .environmentObject(findVM)
+                //                    Ladder()
+                OpenSourceLibrary(isOpenLoading: $isOpenLoading)
+                RecommendView()
             }
             .frame(width: ScreenWidth())
             .onChange(of: offset) { value in
                 self.pageIndex = Int(floor(offset + 0.5) / ScreenWidth())
             }
         }
+    }
+    
+    
+    // MARK: 一级分类 语言技术 价格弹框view
+    var SelectLtpView: some View {
+        VStack {
+            CodeItemList
+                .mtTopProgress(findVM.logicCode.isRequesting, usingBackgorund: true)
+            //                .mtToast(isPresented: $findVM.logicCode.isShowToast, text: findVM.logicCode.toastText)
+            
+            HStack(spacing:20) {
+                Button {
+                    findVM.clearItems()
+                } label: {
+                    Text("重置")
+                }
+                .mtButtonStyle(.smallStorker(isEnable: true))
+                
+                Button {
+                    findVM.isShowmtsheet.toggle()
+                    
+                    // 请求接口
+                    findVM.requestWithProductList()
+                    
+                } label: {
+                    Text("应用")
+                        .foregroundColor(.white)
+                        .font(.mt.body1)
+                }
+                .mtButtonStyle(.mainDefult(isEnable: true))
+            }
+            .padding(.horizontal,20)
+        }
+        .padding(.vertical,20)
     }
     
     // MARK:码力集市item List 一级分类列表
