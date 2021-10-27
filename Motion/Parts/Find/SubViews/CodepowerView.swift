@@ -231,7 +231,6 @@ struct CodepowerView: View {
             alignment: .center,
             spacing: 20,
             content: {
-//            pinnedViews: .sectionFooters) {
                 // vm.proList
                 ForEach(vm.proList) { item in
                     //
@@ -259,9 +258,11 @@ struct CodepowerView: View {
                                 let token = UserManager.shared.token
                                 vm.detailWebUrl = "https://ttchain.tntlinking.com/codeForce/codeDetails/\(item.productId)?info=\(token)"
                             }
+                        Spacer(minLength: 10)
                         Text(item.productName)
                             .font(.mt.body1.mtBlod(),textColor: .black)
                             .lineLimit(1)
+                        Spacer(minLength: 8)
                         HStack(spacing:4){
                             Text(item.productPrice.toDouble.mtCurrencyWith2Decimals())
                                 .font(.mt.body2.mtBlod(),textColor: .mt.accent_800)
