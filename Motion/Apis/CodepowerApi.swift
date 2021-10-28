@@ -22,21 +22,21 @@ enum CodepowerApi: MTTargetType {
     case technology
     case productList(p:ProductListParameters)
     
-    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/")! }
+//    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com/")! }
     
-    var headers: [String: String]? {
-        var headers = [
-            "apiVersion": "1.0",
-            "os": "1",// 1.ios, 2.android
-        ]
-        if !UserManager.shared.channel.isEmpty {
-            headers["channel"] = UserManager.shared.channel
-        }
-        if !UserManager.shared.mockProToken.isEmpty {
-            headers["Authorization"] = "Bearer" + " " + UserManager.shared.mockProToken
-        }
-        return headers
-    }
+//    var headers: [String: String]? {
+//        var headers = [
+//            "apiVersion": "1.0",
+//            "os": "1",// 1.ios, 2.android
+//        ]
+//        if !UserManager.shared.channel.isEmpty {
+//            headers["channel"] = UserManager.shared.channel
+//        }
+//        if !UserManager.shared.token.isEmpty {
+//            headers["Authorization"] = "Bearer" + " " + UserManager.shared.mockProToken
+//        }
+//        return headers
+//    }
     
     
 

@@ -343,32 +343,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1FFCC6C6-4595-4581-996E-344376324DCB"
+            uuid = "CD332DF8-40C4-424A-8FE3-836504C7572D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Motion/Common/MTResponsePlugin.swift"
+            filePath = "Motion/Parts/Find/ViewModel/FindVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "didReceive(_:target:)"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "requestWithProductList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7623EBA7-8DD2-4EE0-98ED-B4694A8C4390"
+            uuid = "970EB656-8E71-453F-A9E6-B891D5751CB6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Motion/Common/MTResponsePlugin.swift"
+            filePath = "Motion/Parts/Find/ViewModel/FindVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "didReceive(_:target:)"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "requestWithProductList()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A655F6A-CAE6-4BE8-BAD1-99393BDF33D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Motion/Parts/Find/ViewModel/FindVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "requestWithProductList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
