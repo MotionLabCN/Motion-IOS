@@ -216,15 +216,15 @@ extension FindVM {
 //            self.logicProduct.isRequesting = false
             
             if let list = list {
-                self.proList = list
+//                self.proList = list
 //                self.proList.append(contentsOf: list)
             }else {
 //                self.logicProduct.toastText = "请求失败"
 //                self.logicProduct.isShowToast = true
             }
             
-//            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-//            self.proList.append(contentsOf: arr)
+            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
+            self.proList.append(contentsOf: arr)
         }
     }
     
