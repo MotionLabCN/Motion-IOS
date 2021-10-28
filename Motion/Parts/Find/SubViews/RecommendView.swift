@@ -10,7 +10,7 @@ import MotionComponents
 
 struct RecommendView: View {
     @State private var showMoney : Bool = false
-    @State private var showDetail : Bool = false
+    @State private var selectedPost : PostItemModel? = nil
     
     @State private var isShowToast = false
     @State private var toastText = ""
@@ -27,7 +27,7 @@ struct RecommendView: View {
                 
                 ForEach(vm.list) { item in
                     Button {
-                        showDetail.toggle()
+                        selectedPost = item
                     } label: {
                         
                         PostCell(model: item, didAlert: {
@@ -64,10 +64,11 @@ struct RecommendView: View {
 
             self.showMoney = false
         }
-        .mtFullScreenCover(isPresented: $showDetail) {
+      
+        .mtFullScreenCover(item: $selectedPost, content: { item in
             BlurView(style: .systemChromeMaterialDark).ignoresSafeArea()
-            PostDetailView()
-        }
+            PostDetailView(inputPost: item)
+        })
         
         .mtToast(isPresented: $isShowToast, text: toastText, postion: .bottom(offsetY: 86))
 

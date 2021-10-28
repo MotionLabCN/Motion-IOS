@@ -7,13 +7,16 @@
 
 import SwiftUI
 import MotionComponents
+import Kingfisher
 
 struct PostDetailView: View {
     
     @Environment(\.presentationMode) var persentationMode
  
-        
+    let inputPost: PostItemModel
   
+    @StateObject var vm = PostDetailVM()
+    
     var body: some View {
         
         ZStack{
@@ -26,6 +29,10 @@ struct PostDetailView: View {
             bottomInfoBar
         }
         .transition(.move(edge: .bottom).animation(.linear))
+        
+        .onAppear {
+            vm.getDetail(inputPost)
+        }
     }
   
     
@@ -51,39 +58,39 @@ struct PostDetailView: View {
     var imageTabview : some View {
         
         TabView {
-            ForEach(0..<4){index in
-                postImage.tag(index)
+            ForEach(0..<vm.model.pics.count){index in
+                //PostImage
+                GeometryReader { proxy in
+                    ZStack{
+                        VStack{
+                            KFImage(URL(string: vm.model.pics[index]))
+                                .resizable()
+                                .placeholder({Color.mt.gray_400})
+                                .scaledToFill()
+                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                .frame(minWidth: ScreenWidth(),maxHeight: (ScreenHeight() - SafeBottomArea() - StatusBarH() - 68),alignment: .center)
+                            Spacer()
+                        }
+                    }
+                    .rotation3DEffect(getAngle(proxy: proxy),
+                                      axis: (x: 0, y: 0.5, z: 0), anchor: proxy.frame(in: .global).minX > 0 ? .leading : .trailing,
+                                      perspective: 2.5)
+                }
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(maxWidth : .infinity,maxHeight : .infinity)
     }
     
-    
-    var postImage : some View {
-        
-        GeometryReader { proxy in
-            ZStack{
-                VStack{
-                    Image("touxiang")
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .frame(minWidth: ScreenWidth(),maxHeight: (ScreenHeight() - SafeBottomArea() - StatusBarH() - 68),alignment: .center)
-                    Spacer()
-                }
-            }
-            .rotation3DEffect(getAngle(proxy: proxy),
-                              axis: (x: 0, y: 0.5, z: 0), anchor: proxy.frame(in: .global).minX > 0 ? .leading : .trailing,
-                              perspective: 2.5)
-        }
-    }
+  
     
     var posttext : some View {
         VStack{
             Spacer()
-            Text("5 月 5 日星期三，序列号 15（SN15）的 Starship 成功完成了 SpaceX 对来自德克萨斯州 Starbase 的 Starship 原型机的第五次高空飞行测试。")
+            Text(vm.model.content)
                 .font(.mt.body2,textColor: .white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.leading)
         }
         .padding(.bottom, SafeBottomArea() + 32)
         .padding()
@@ -99,9 +106,9 @@ struct PostDetailView: View {
                     
                 }
                 VStack(alignment: .leading,spacing:4){
-                    Text("小梁同学")
+                    Text(vm.model.userVO.username)
                         .font(.mt.body2.mtBlod(),textColor: .white)
-                    Text("@Xiaoliangtongxue")
+                    Text("\(vm.model.userVO.nickname)")
                         .font(.mt.caption2,textColor: .mt.gray_100)
                 }
                 Spacer()
@@ -115,13 +122,13 @@ struct PostDetailView: View {
         VStack{
             HStack{
                 VStack(alignment: .leading){
-                    Text("7月20日 ")
+                    Text(vm.model.createDate)
                         .font(.mt.caption1.mtBlod(),textColor: .white)
-                    +
-                    Text("2021")
-                        .font(.mt.caption1,textColor: .mt.gray_100)
-                    Text("11:09")
-                        .font(.mt.caption2,textColor: .mt.gray_100)
+//                    +
+//                    Text("2021")
+//                        .font(.mt.caption1,textColor: .mt.gray_100)
+//                    Text("11:09")
+//                        .font(.mt.caption2,textColor: .mt.gray_100)
                 }
                 Spacer()
                 Image.mt.load(.More_horiz)
@@ -146,7 +153,7 @@ struct PostDetailView: View {
                 HStack {
                     Image.mt.load(.Comment)
                         .mtSize(18, foregroundColor: .white)
-                    Text("12")
+                    Text("\(Int.random(in: 10...30))")
                         .font(.mt.caption1, textColor: .mt.gray_100)
                 }
             })
@@ -156,7 +163,7 @@ struct PostDetailView: View {
                 HStack {
                     Image.mt.load(.Cached)
                         .mtSize(18, foregroundColor: .white)
-                    Text("34")
+                    Text("\(Int.random(in: 10...30))")
                         .font(.mt.caption1, textColor: .mt.gray_100)
                 }
             })
@@ -167,7 +174,7 @@ struct PostDetailView: View {
                     Image.mt.load(.Penny)
                         .mtSize(18, foregroundColor: .white)
                     
-                    Text("77")
+                    Text("\(Int.random(in: 10...30))")
                         .font(.mt.caption1, textColor: .mt.gray_100)
                 }
             })
@@ -177,7 +184,7 @@ struct PostDetailView: View {
 
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PostDetailView()
+        PostDetailView(inputPost: .init())
     }
 }
 

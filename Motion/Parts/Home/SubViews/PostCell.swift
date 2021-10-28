@@ -52,7 +52,7 @@ struct PostCell: View {
         HStack(spacing: 0) {
             Text(model.userVO.username)
                 .font(.mt.body2.mtBlod(), textColor: .black)
-            Text("@\(model.userVO.nickname)")
+            Text("\(model.userVO.nickname)")
                 .font(.mt.body2, textColor: .mt.gray_600)
 
             Spacer()
@@ -107,6 +107,7 @@ struct PostCell: View {
                         .mtSize(18, foregroundColor: .mt.gray_600)
                 }
             })
+                .padding(.trailing, 20)
                 .contextMenu(
                     ContextMenu {
                         Button("举报", action: {
@@ -125,7 +126,7 @@ struct PostCell: View {
                 })
                
             
-            Spacer()
+//            Spacer()
         }
     }
 }
