@@ -11,20 +11,25 @@ import Kingfisher
 
 //MARK: View
 struct OpenSourceLibrary: View {
-    @State var isShowCategory: Bool = false //显示语言
-    @StateObject var vm = OpenSourceLibraryVm()
+    
+    @State private var isShowCategory: Bool = false //显示语言
+    @StateObject private var vm = OpenSourceLibraryVm()
+    @Binding var isOpenLoading: Bool 
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing:16){
                 classic
                 newStar
             }.padding(.top,16)
+            
+            Spacer.mt.tabbar()
         }
         .navigationBarHidden(true)
         .sheet(isPresented: $isShowCategory) {
             CategoryItemList
         }
-        .mtTopProgress(vm.isLoadingInfo, usingBackgorund: true)
+//        .mtTopProgress(vm.isLoading)
     }
 
     
@@ -79,7 +84,7 @@ struct OpenSourceLibrary: View {
             .onTapGesture(perform: {
                 // 选中和取消
                 isShowCategory.toggle()
-                vm.updateLangItems(item: item)
+//                vm.updateLangItems(item: item)
             })
         }
     }
@@ -175,11 +180,12 @@ struct OpenSourceLibrary: View {
     }
 }
 
-struct OpenSourceLibrary_Previews: PreviewProvider {
-    static var previews: some View {
-        OpenSourceLibrary()
-    }
-}
+//struct OpenSourceLibrary_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let isOpenLoading: Bool = false
+//        OpenSourceLibrary(isOpenLoading: $isOpenLoading)
+//    }
+//}
 
 struct LibraryListCell: View {
     

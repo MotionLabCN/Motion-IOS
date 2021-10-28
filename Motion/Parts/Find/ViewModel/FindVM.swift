@@ -14,7 +14,7 @@ class FindVM: ObservableObject {
     @Published var isShowmtsheet: Bool = false // 一级分类下弹框
     @Published var isShowmtDetail: Bool = false// 二级分类下弹框
     // MARK: 项目列表弹框
-    @Published var logicProduct = LogicProduct()
+//    @Published var logicProduct = LogicProduct()
     // MARK: 语言技术价格
     @Published var logicCode = LogicProduct()
     @Published var detailWebUrl: String = ""
@@ -131,19 +131,15 @@ extension FindVM {
             
             self?.logicCode.isRequesting = false
             
-//            if let list = list {
-//                self?.itemList[0].data = list
-//            }else {
-                //失败
+            if let list = list {
+                self?.itemList[0].data = list
+            }else {
+                //                失败
 //                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
 //                self?.itemList[0].data = arr
-                
-//                    self?.logicCode.toastText = "请求失败"
-//                    self?.logicCode.isShowToast = true
-//            }
-            
-            let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-            self?.itemList[0].data = arr
+//                self?.logicCode.toastText = "请求失败"
+//                self?.logicCode.isShowToast = true
+            }
             
             // 拿到数据开始设置上次选中模型 设置选中状态
             if self?.lang.isEmpty == false {
@@ -159,20 +155,19 @@ extension FindVM {
     
     func requestWithTechnology() {
         // 技术
+        self.logicCode.isRequesting = true
         
         let technology = CodepowerApi.technology
         Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
             self?.logicCode.isRequesting = false
             // 成功...
-            //            if let list = list {
-            ////                self?.itemList[1].technologyList.append(contentsOf: list)
-            //                    self?.itemList[1].technologyList = list
-            //            }else {
-            //                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-            //                self?.itemList[1].technologyList = arr
-            //            }
-            let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-            self?.itemList[1].technologyList = arr
+                if let list = list {
+    
+                        self?.itemList[1].technologyList = list
+                }else {
+//                    let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
+//                    self?.itemList[1].technologyList = arr
+                }
             // 拿到数据开始设置上次选中模型 设置选中状态
             if self?.labelIds.isEmpty == false {
                 if let index = self?.itemList[1].technologyList.firstIndex(where: {$0.labelId == self?.labelIds}) {
@@ -187,76 +182,10 @@ extension FindVM {
         }
     }
     
-    func requestWithMenuList() {
-        // 显示加载
-        self.logicCode.isRequesting = true
-
-        // 语言https
-        let language = CodepowerApi.language(p: .init(group: "lang"))
-        Networking.requestArray(language, modeType: LangModel.self) {[weak self] r, list in
-            // 成功...
-            self?.logicCode.isRequesting = false
-            
-//            if let list = list {
-//                self?.itemList[0].data = list
-//
-//
-//            }else {
-                //失败
-//                let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-//                self?.itemList[0].data = arr
-                
-//                    self?.logicCode.toastText = "请求失败"
-//                    self?.logicCode.isShowToast = true
-//            }
-            
-            let arr = MockTool.readArray(LangModel.self, fileName: "codepower_langs") ?? []
-            self?.itemList[0].data = arr
-            
-            // 拿到数据开始设置上次选中模型 设置选中状态
-            if self?.lang.isEmpty == false {
-                if let index = self?.itemList[0].data.firstIndex(where: {$0.dictValue == self?.lang}) {
-                    self?.selectLangIndex = index
-                    let langModel = self?.itemList[0].data[index] ?? LangModel()
-                    self?.itemList[0].data[index].isSelect = true
-                    self?.itemList[0].subTitle = langModel.dictValue
-                }
-            }
-        }
-        
-        // 技术
-        let technology = CodepowerApi.technology
-        Networking.requestArray(technology, modeType: TechnologyModel.self) {[weak self] r, list in
-            self?.logicCode.isRequesting = false
-            // 成功...
-//            if let list = list {
-////                self?.itemList[1].technologyList.append(contentsOf: list)
-//                    self?.itemList[1].technologyList = list
-//            }else {
-//                let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-//                self?.itemList[1].technologyList = arr
-//            }
-            let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
-            self?.itemList[1].technologyList = arr
-            // 拿到数据开始设置上次选中模型 设置选中状态
-            if self?.labelIds.isEmpty == false {
-                if let index = self?.itemList[1].technologyList.firstIndex(where: {$0.labelId == self?.labelIds}) {
-                    self?.selectTechnologyIndex = index
-                    let technologyModel = self?.itemList[1].technologyList[index] ?? TechnologyModel()
-                    self?.itemList[1].technologyList[index].isSelect = true
-                    self?.itemList[1].subTitle = technologyModel.labelName
-                }
-            }
-        }
-        
-        
-    }
-    
-    
     // MARK:产品列表接口
     func requestWithProductList() {
         
-        logicProduct.isRequesting = true
+//        logicProduct.isRequesting = true
 
         pageNum = 0
         switch selectCodeSelectStyle {
@@ -266,15 +195,17 @@ extension FindVM {
             price = ""
             
         case .lang:
-            if selectPriceIndex > -1 {
+            if selectPriceIndex > -1 && itemList[0].data.count > 0{
                 lang = itemList[0].data[selectLangIndex].dictValue
             }
         case .technology:
-            if selectTechnologyIndex > -1 {
+            if selectTechnologyIndex > -1 && itemList[1].technologyList.count > 0 {
+                
                 labelIds = itemList[1].technologyList[selectTechnologyIndex].labelId
+
             }
         case .price:
-            if selectPriceIndex > -1 {
+            if selectPriceIndex > -1 && itemList[2].priceList.count > 0 {
                 price = itemList[2].priceList[selectPriceIndex].dictValue
             }
         }
@@ -284,19 +215,18 @@ extension FindVM {
             // 成功...
             guard let self = self else { return }
             
-            self.logicProduct.isRequesting = false
+//            self.logicProduct.isRequesting = false
             
             if let list = list {
-                self.proList.append(contentsOf: list)
+                self.proList = list
+//                self.proList.append(contentsOf: list)
             }else {
-                self.logicProduct.toastText = "请求失败"
-                self.logicProduct.isShowToast = true
+//                self.logicProduct.toastText = "请求失败"
+//                self.logicProduct.isShowToast = true
             }
             
-            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
-            
-            self.proList.append(contentsOf: arr)
-            
+//            let arr = MockTool.readArray(CodeProductModel.self, fileName: "codepower_pro", atKeyPath: "data.content") ?? []
+//            self.proList.append(contentsOf: arr)
         }
     }
     

@@ -49,10 +49,9 @@ public class MTResponsePlugin: PluginType {
         
         switch result.rawReponse?.statusCode {
         case 401:
-            UserManager.shared.logout()
+//            UserManager.shared.logout()
+            return
         default: break
         }
-
     }
-    
 }

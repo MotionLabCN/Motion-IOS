@@ -56,7 +56,6 @@ struct ContentView: View {
             
             NavigationView {
                 FindView()
-//               FindView()
             }
             .tag(MTTabbar.Kind.search)
             

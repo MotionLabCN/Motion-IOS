@@ -7,11 +7,16 @@
 
 
 import MotionComponents
+import Combine
+
+//typealias isLoadingBlock = (Bool) ->()
 
 class OpenSourceLibraryVm : ObservableObject {
     /// loading
     @Published var isLoadingCategory: Bool = false //请求分类语言
-    @Published var isLoadingInfo: Bool = false //请求接口loading
+    
+//    var isLoadingBlock: isLoadingBlock?
+    @Published var isLoading: Bool = false
     
     /// 数据
     @Published var hotList : [OpenSourceLibraryModel] = []
@@ -46,8 +51,12 @@ class OpenSourceLibraryVm : ObservableObject {
 
 /// 请求接口方法
 extension OpenSourceLibraryVm {
+    
     func requestWtihHotNew() {
-        isLoadingInfo = true
+        
+        // block
+//        isLoadingBlock!(true)
+        isLoading = true
         
         let groupQueue = DispatchGroup()
         let queue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
@@ -55,8 +64,8 @@ extension OpenSourceLibraryVm {
         // 线程执行完毕调用方法
         defer {
             groupQueue.notify(queue: DispatchQueue.main) {
-                debugPrint("执行完成\(Thread.current)")
-                self.isLoadingInfo = false
+//                self.isLoadingBlock!(false)
+                self.isLoading = false
             }
         }
        

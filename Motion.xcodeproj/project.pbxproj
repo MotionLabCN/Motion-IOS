@@ -366,12 +366,12 @@
 		5AC2146226F3766A00D4457C /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				5AC2146326F3767800D4457C /* RecommendView.swift */,
+				5A91551327040CB700E8135F /* CodepowerView.swift */,
 				5ACB57EC26FC3374001BACDA /* OpenSourceLibrary.swift */,
+				5AC2146326F3767800D4457C /* RecommendView.swift */,
 				5AC8C6E226FC33B30075ABDA /* LibraryDetail.swift */,
 				5AC8C6E426FC6B100075ABDA /* Ladder.swift */,
 				5A8F6DA026FC7FBF007E9101 /* OfficialBusiness.swift */,
-				5A91551327040CB700E8135F /* CodepowerView.swift */,
 				A0672F5D271D3CC20002271A /* PullToRefresh */,
 			);
 			path = SubViews;
@@ -453,8 +453,8 @@
 		A071104F27117AA500963385 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A071105027117AC700963385 /* FindVM.swift */,
 				A07613F32716A19700138857 /* Double.swift */,
+				A071105027117AC700963385 /* FindVM.swift */,
 				DF75D9A42722746D00347D9A /* RecommendVM.swift */,
 				A077A6F92726865400E33EFE /* OpenSourceLibraryVm.swift */,
 			);
@@ -656,6 +656,7 @@
 				DFEB1D2C2704507600B7C1DB /* MTTargetType.swift */,
 				DFEB1D2E2704528E00B7C1DB /* LoginApi.swift */,
 				A0731B4127151A7D00A6FF79 /* CodepowerApi.swift */,
+				A077A6F7272685F300E33EFE /* OpenSourceLibraryApi.swift */,
 				DF7061482715264F00761A19 /* CommunityServiceApi.swift */,
 				DFF165942717EBBB004D1B72 /* ModifilerUserInfoApi.swift */,
 				DFF1659627181179004D1B72 /* OSSApi.swift */,
@@ -663,7 +664,6 @@
 				A06FC82F271E58BA004A21FE /* StorageAip.swift */,
 				DFF1658E2717C140004D1B72 /* ListApi.swift */,
 				DFE7B466271FEE1300038520 /* PostApi.swift */,
-				A077A6F7272685F300E33EFE /* OpenSourceLibraryApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
