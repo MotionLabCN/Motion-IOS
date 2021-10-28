@@ -15,7 +15,7 @@ enum OrderApi: MTTargetType {
     case storeOrder(p:CodeParameters) // 存取订单
     
     //        var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
-    var baseURL: URL { URL(string: "http://127.0.0.1:8802")! }
+//    var baseURL: URL { URL(string: "http://127.0.0.1:8802")! }
     
     var path: String {
         switch self {

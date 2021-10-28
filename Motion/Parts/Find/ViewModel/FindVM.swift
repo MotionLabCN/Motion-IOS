@@ -200,9 +200,7 @@ extension FindVM {
             }
         case .technology:
             if selectTechnologyIndex > -1 && itemList[1].technologyList.count > 0 {
-                
                 labelIds = itemList[1].technologyList[selectTechnologyIndex].labelId
-
             }
         case .price:
             if selectPriceIndex > -1 && itemList[2].priceList.count > 0 {

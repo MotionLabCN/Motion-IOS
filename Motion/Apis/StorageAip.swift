@@ -12,7 +12,7 @@ enum StorageApi: MTTargetType {
    case storageInfo
    case storageList // 我的存储列表接口
     
-    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
+//    var baseURL: URL { URL(string: "https://ttchain.tntlinking.com")! }
    // 以后这里可以直接写host port
 
     
