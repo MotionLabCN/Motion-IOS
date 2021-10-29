@@ -15,4 +15,13 @@ struct LangModel: Identifiable, Convertible {
     var dictValue: String = ""
     // 用户是否选中
     var isSelect: Bool = false
+    
+//    init(id: String = UUID().uuidString, dictKeyGroup: String, dictKey: String, dictValue: String, isSelect: Bool) {
+//        self.id = id
+//        self.dictKeyGroup = dictKeyGroup
+//        self.dictKey = dictKey
+//        self.dictValue = dictValue
+//        self.isSelect = isSelect
+//
+//    }
 }

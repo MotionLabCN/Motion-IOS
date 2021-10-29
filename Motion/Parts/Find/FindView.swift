@@ -129,19 +129,7 @@ struct FindView: View {
                 }
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
-                    findVM.isShowmtDetail.toggle()
-                    // 获取一级分类下 当前选中的二级分类列表数据.
-                    if let index: Int = findVM.itemList.firstIndex(where: {$0.id == item.id}) {
-                        findVM.selectIndex = index
-                        
-                        if index == 0 {
-                            // 语言
-                            findVM.requestWIthLangList()
-                        }else if index == 1 {
-                            // 技术
-                            findVM.requestWithTechnology()
-                        }
-                    }
+                    findVM.selectCellWithModel(item: item)
                 })
                 .frame(height:30)
             }
