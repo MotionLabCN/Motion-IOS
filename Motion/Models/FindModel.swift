@@ -42,18 +42,10 @@ struct FindModel: Identifiable {
     }
 }
 
-
+/// MARK: 语言
 extension FindModel {
-    
-//    func updateCompletion() -> LangModel {
-//        return LangModel(dictKeyGroup: dictKeyGroup, dictKey: dictKey, dictValue: dictValue, isSelect: isSelect)
-//    }
-    
-    
-    
-    // MARK: 更新当前选中item
+    // MARK: 语言 更新当前选中item
     mutating func langUpdate(item: LangModel) {
-        
         if let index = data.firstIndex(where: {$0.isSelect == true}) {
             data[index].isSelect = false
         }
@@ -66,9 +58,39 @@ extension FindModel {
         }
     }
     
-    mutating func priceUpdate(item: LangModel) {
+    // 获取上次
+    mutating func langUpdateSelectItem () {
+        // 拿到数据开始设置上次选中模型 设置选中状态
+        if selectValue.isEmpty == false {
+            if let index = data.firstIndex(where: {$0.dictValue == selectValue}) {
+                let langModel = data[index]
+                data[index].isSelect = true
+                subTitle = langModel.dictKey
+            }
+        }
+    }
+    
+    // 清空语言之前选中item
+    mutating func clearLangSelectItem() {
+        subTitle = "全部"
+        selectValue = ""
+        guard selectValue.count == 0 else {
+            return
+        }
         
         if let index = data.firstIndex(where: {$0.isSelect == true}) {
+            data[index].isSelect = false
+        }
+    }
+}
+
+
+// 价格
+extension FindModel {
+    
+    // MARK: 价格 更新当前选中item
+    mutating func priceUpdate(item: LangModel) {
+        if let index = priceList.firstIndex(where: {$0.isSelect == true}) {
             priceList[index].isSelect = false
         }
         
@@ -81,27 +103,69 @@ extension FindModel {
     }
     
     // 获取上次
-    mutating func langUpdateSelectItem () {
+    mutating func priceUpdateSelectItem () {
         // 拿到数据开始设置上次选中模型 设置选中状态
         if selectValue.isEmpty == false {
-            if let index = data.firstIndex(where: {$0.dictValue == selectValue}) {
-                let langModel = data[index]
-                data[index].isSelect = true
-                subTitle = langModel.dictValue
+            if let index = priceList.firstIndex(where: {$0.dictValue == selectValue}) {
+                let priceModel = priceList[index]
+                priceList[index].isSelect = true
+                subTitle = priceModel.dictKey
             }
         }
     }
     
-    // 清空之前选中item
-    mutating func clearSelectItem() {
+    // 清空价格之前选中item
+    mutating func clearPriceSelectItem() {
         subTitle = "全部"
         selectValue = ""
         guard selectValue.count == 0 else {
             return
         }
         
-        if let index = data.firstIndex(where: {$0.isSelect == true}) {
-            data[index].isSelect = false
+        if let index = priceList.firstIndex(where: {$0.isSelect == true}) {
+            priceList[index].isSelect = false
+        }
+    }
+}
+
+
+extension FindModel {
+    // MARK: 技术 更新当前选中item
+    mutating func technologyUpdate(item: TechnologyModel) {
+        if let index = technologyList.firstIndex(where: {$0.isSelect == true}) {
+            technologyList[index].isSelect = false
+        }
+        
+        if let index = technologyList.firstIndex(where: {$0.id == item.id}) {
+            let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
+            technologyList[index] = codeModel // 修改数据源
+            selectValue = codeModel.isSelect ? codeModel.labelId : ""
+            subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
+        }
+    }
+    
+    // 获取上次
+    mutating func technologyUpdateSelectItem () {
+        // 拿到数据开始设置上次选中模型 设置选中状态
+        if selectValue.isEmpty == false {
+            if let index = technologyList.firstIndex(where: {$0.labelId == selectValue}) {
+                let priceModel = technologyList[index]
+                technologyList[index].isSelect = true
+                subTitle = priceModel.labelName
+            }
+        }
+    }
+    
+    // 清空价格之前选中item
+    mutating func clearTechnologySelectItem() {
+        subTitle = "全部"
+        selectValue = ""
+        guard selectValue.count == 0 else {
+            return
+        }
+        
+        if let index = technologyList.firstIndex(where: {$0.isSelect == true}) {
+            technologyList[index].isSelect = false
         }
     }
 }

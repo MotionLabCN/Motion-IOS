@@ -43,10 +43,6 @@ class FindVM: ObservableObject {
         }
     }
     
-    // 当前记录二级选中索引
-    var selectTechnologyIndex: Int = 0
-    
-    
     enum CodeSelectStyle {
         case def,lang ,technology ,price
     }
@@ -74,13 +70,7 @@ class FindVM: ObservableObject {
     @Published var proList: [CodeProductModel] = []
     var pageNum: Int = 0
     
-//    var lang: String {
-//        itemList[0].selectValue
-//    }
-    
 
-    var labelIds: String = ""
-    
     // 选中
     var selectLang: String {
         itemList[0].subTitle
@@ -146,15 +136,6 @@ extension FindVM {
             self?.itemList[0].data = arr
             // 拿到数据开始设置上次选中模型 设置选中状态
             self?.itemList[0].langUpdateSelectItem()
-            
-//            if self?.lang.isEmpty == false {
-//                if let index = self?.itemList[0].data.firstIndex(where: {$0.dictValue == self?.lang}) {
-//                    self?.selectLangIndex = index
-//                    let langModel = self?.itemList[0].data[index] ?? LangModel()
-//                    self?.itemList[0].data[index].isSelect = true
-//                    self?.itemList[0].subTitle = langModel.dictValue
-//                }
-//            }
         }
     }
     
@@ -175,16 +156,7 @@ extension FindVM {
             let arr = MockTool.readArray(TechnologyModel.self, fileName: "codepower_te") ?? []
             self?.itemList[1].technologyList = arr
             // 拿到数据开始设置上次选中模型 设置选中状态
-            if self?.labelIds.isEmpty == false {
-                if let index = self?.itemList[1].technologyList.firstIndex(where: {$0.labelId == self?.labelIds}) {
-                    DispatchQueue.main.async {
-                        self?.selectTechnologyIndex = index
-                        let technologyModel = self?.itemList[1].technologyList[index] ?? TechnologyModel()
-                        self?.itemList[1].technologyList[index].isSelect = true
-                        self?.itemList[1].subTitle = technologyModel.labelName
-                    }
-                }
-            }
+            self?.itemList[1].technologyUpdateSelectItem()
         }
     }
     
@@ -206,6 +178,7 @@ extension FindVM {
         
         let lang = itemList[0].selectValue
         let price = itemList[2].selectValue
+        let labelIds = itemList[1].selectValue
         
         let technology = CodepowerApi.productList(p: .init(labelIds: labelIds, lang: lang, price: price, page: pageNum, size: 10, sort: ""))
         Networking.requestArray(technology, modeType: CodeProductModel.self, atKeyPath: "data.content") {[weak self] r, list in
@@ -242,20 +215,10 @@ extension FindVM {
         selectCodeSelectStyle = .def
         
         // 清空选中
-        itemList[0].clearSelectItem()
-        
-//        itemList[1].technologyList[selectTechnologyIndex].isSelect = false
-//        itemList[1].subTitle = "全部"
-//        itemList[2].priceList[selectPriceIndex].isSelect = false
-//        itemList[2].subTitle = "全部"
-        
-
-        selectTechnologyIndex = 0
-//        selectPriceIndex = 0
         pageNum = 0
-        
-//        price = ""
-        labelIds = ""
+        itemList[0].clearLangSelectItem()
+        itemList[1].clearTechnologySelectItem()
+        itemList[2].clearPriceSelectItem()
     }
     
     // MARK:点击一级分类
@@ -271,6 +234,9 @@ extension FindVM {
             }else if index == 1 {
                 // 技术
                 requestWithTechnology()
+            }else {
+                
+                itemList[2].priceUpdateSelectItem()
             }
         }
     }
@@ -290,17 +256,18 @@ extension FindVM {
     //MARK: 技术选中数据模型更新
     func updateTechnologyItes(item: TechnologyModel) {
         // 所有设置false
-        if let index = itemList[1].technologyList.firstIndex(where: {$0.isSelect == true}) {
-            itemList[1].technologyList[index].isSelect = false
-        }
-        
-        if let index = itemList[1].technologyList.firstIndex(where: {$0.id == item.id}) {
-            let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
-            itemList[1].technologyList[index] = codeModel // 修改数据源
-            selectTechnologyIndex = index
-            itemList[1].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
-            labelIds = codeModel.isSelect ? codeModel.labelId : ""
-        }
+//        if let index = itemList[1].technologyList.firstIndex(where: {$0.isSelect == true}) {
+//            itemList[1].technologyList[index].isSelect = false
+//        }
+//
+//        if let index = itemList[1].technologyList.firstIndex(where: {$0.id == item.id}) {
+//            let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
+//            itemList[1].technologyList[index] = codeModel // 修改数据源
+//            selectTechnologyIndex = index
+//            itemList[1].subTitle = codeModel.isSelect ? codeModel.labelName : "全部"
+//            labelIds = codeModel.isSelect ? codeModel.labelId : ""
+//        }
+        itemList[1].technologyUpdate(item: item)
         isShowmtDetail.toggle()
     }
 }
