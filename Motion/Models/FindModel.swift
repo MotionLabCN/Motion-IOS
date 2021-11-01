@@ -19,7 +19,7 @@ struct FindModel: Identifiable {
     var subTitle: String = "全部"
 
     // 语言
-    var data: [LangModel] = []
+    var langList: [LangModel] = []
     
     // 技术
     var technologyList: [TechnologyModel] = []
@@ -33,10 +33,10 @@ struct FindModel: Identifiable {
     // 选中接口需要的字段
     var selectValue: String = ""
     
-    init(id: String = UUID().uuidString, title:String, data: [LangModel], technology: [TechnologyModel],price: [LangModel]) {
+    init(id: String = UUID().uuidString, title:String, langList: [LangModel], technology: [TechnologyModel],price: [LangModel]) {
         self.id = id
         self.title = title
-        self.data = data
+        self.langList = langList
         self.technologyList = technology
         self.priceList = price
     }
@@ -46,13 +46,13 @@ struct FindModel: Identifiable {
 extension FindModel {
     // MARK: 语言 更新当前选中item
     mutating func langUpdate(item: LangModel) {
-        if let index = data.firstIndex(where: {$0.isSelect == true}) {
-            data[index].isSelect = false
+        if let index = langList.firstIndex(where: {$0.isSelect == true}) {
+            langList[index].isSelect = false
         }
         
-        if let index = data.firstIndex(where: {$0.id == item.id}) {
-            let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
-            data[index] = codeModel // 修改数据源
+        if let index = langList.firstIndex(where: {$0.id == item.id}) {
+            let codeModel = item.updateCompletion()
+            langList[index] = codeModel // 修改数据源
             selectValue = codeModel.isSelect ? codeModel.dictValue : ""
             subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
         }
@@ -62,9 +62,9 @@ extension FindModel {
     mutating func langUpdateSelectItem () {
         // 拿到数据开始设置上次选中模型 设置选中状态
         if selectValue.isEmpty == false {
-            if let index = data.firstIndex(where: {$0.dictValue == selectValue}) {
-                let langModel = data[index]
-                data[index].isSelect = true
+            if let index = langList.firstIndex(where: {$0.dictValue == selectValue}) {
+                let langModel = langList[index]
+                langList[index].isSelect = true
                 subTitle = langModel.dictKey
             }
         }
@@ -78,8 +78,8 @@ extension FindModel {
             return
         }
         
-        if let index = data.firstIndex(where: {$0.isSelect == true}) {
-            data[index].isSelect = false
+        if let index = langList.firstIndex(where: {$0.isSelect == true}) {
+            langList[index].isSelect = false
         }
     }
 }
@@ -87,7 +87,6 @@ extension FindModel {
 
 // 价格
 extension FindModel {
-    
     // MARK: 价格 更新当前选中item
     mutating func priceUpdate(item: LangModel) {
         if let index = priceList.firstIndex(where: {$0.isSelect == true}) {
@@ -95,10 +94,11 @@ extension FindModel {
         }
         
         if let index = priceList.firstIndex(where: {$0.id == item.id}) {
-            let codeModel = LangModel(dictKeyGroup: item.dictKeyGroup, dictKey: item.dictKey, dictValue: item.dictValue, isSelect: !item.isSelect)
-            priceList[index] = codeModel // 修改数据源
-            selectValue = codeModel.isSelect ? codeModel.dictValue : ""
-            subTitle = codeModel.isSelect ? codeModel.dictKey : "全部"
+            
+            let priceModel = item.updateCompletion()
+            priceList[index] = priceModel // 修改数据源
+            selectValue = priceModel.isSelect ? priceModel.dictValue : ""
+            subTitle = priceModel.isSelect ? priceModel.dictKey : "全部"
         }
     }
     
@@ -137,7 +137,7 @@ extension FindModel {
         }
         
         if let index = technologyList.firstIndex(where: {$0.id == item.id}) {
-            let codeModel = TechnologyModel(labelId: item.labelId, labelName: item.labelName, labelHeat: item.labelHeat, isSelect: !item.isSelect)
+            let codeModel = item.updateCompletion()
             technologyList[index] = codeModel // 修改数据源
             selectValue = codeModel.isSelect ? codeModel.labelId : ""
             subTitle = codeModel.isSelect ? codeModel.labelName : "全部"

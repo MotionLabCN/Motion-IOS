@@ -15,4 +15,8 @@ struct TechnologyModel: Identifiable, Convertible {
     var labelHeat: String = ""
     // 用户是否选中
     var isSelect: Bool = false
+    
+    func updateCompletion() -> TechnologyModel {
+        return TechnologyModel(labelId: labelId, labelName: labelName, labelHeat: labelHeat, isSelect: !isSelect)
+    }
 }

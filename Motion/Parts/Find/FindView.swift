@@ -173,7 +173,7 @@ struct FindView: View {
             .navigationBarTitle(Text(findVM.selectSecondTitle))
             .navigationBarTitleDisplayMode(.large)
             .navigationBarItems(trailing: closeBtn)
-            .mtTopProgress(findVM.logicCode.isRequesting)
+            .mtTopProgress(findVM.requestAddPostStatus.isRequesting)
         }
     }
     
@@ -196,7 +196,7 @@ struct FindView: View {
     
     //MARK: 语言view
     var LangListView: some View {
-        ForEach(findVM.itemList[0].data) { item in
+        ForEach(findVM.itemList[0].langList) { item in
             
             HStack {
                 Text(item.dictKey)
