@@ -37,8 +37,6 @@ enum CodepowerApi: MTTargetType {
 //        }
 //        return headers
 //    }
-    
-    
 
     var path: String {
         switch self {
