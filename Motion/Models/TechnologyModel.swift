@@ -17,6 +17,8 @@ struct TechnologyModel: Identifiable, Convertible {
     var isSelect: Bool = false
     
     func updateCompletion() -> TechnologyModel {
-        return TechnologyModel(labelId: labelId, labelName: labelName, labelHeat: labelHeat, isSelect: !isSelect)
+        var model = self
+        model.isSelect.toggle()
+        return model
     }
 }

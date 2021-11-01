@@ -9,30 +9,17 @@ import MotionComponents
 
 // MARK: 语言 or 价格模型
 struct LangModel: Identifiable, Convertible {
+
     let id: String = UUID().uuidString
     var dictKeyGroup: String = ""
     var dictKey: String = ""
     var dictValue: String = ""
     // 用户是否选中
     var isSelect: Bool = false
-    
-    
-//    let id: String
-//    var dictKeyGroup: String
-//    var dictKey: String
-//    var dictValue: String
-//    // 用户是否选中
-//    var isSelect: Bool
-//
-//    init(id: String = UUID().uuidString, dictKeyGroup: String, dictKey: String, dictValue: String, isSelect: Bool) {
-//        self.id = id
-//        self.dictKeyGroup = dictKeyGroup
-//        self.dictKey = dictKey
-//        self.dictValue = dictValue
-//        self.isSelect = isSelect
-//    }
-    
+  
     func updateCompletion() -> LangModel {
-        return LangModel(dictKeyGroup: dictKeyGroup, dictKey: dictKey, dictValue: dictValue, isSelect: !isSelect)
+        var tmp = self
+        tmp.isSelect.toggle()
+        return tmp
     }
 }
