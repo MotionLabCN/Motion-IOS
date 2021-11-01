@@ -8,13 +8,20 @@ target 'Motion' do
 
 
   pod 'MotionComponents', :path => './MotionComponents'
- 
+
   pod 'lottie-ios'
   pod 'Introspect'
   pod 'Kingfisher',  '~> 6.3.1'
-  
+
   pod 'UMCommon'
   pod 'UMDevice'
   pod 'UMCCommonLog'
 
+end
+
+
+post_install do |installer|
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings["EXCLUDED_ARCHS[skd=iphonesimulator*]"] = "arm64"
+    end
 end
